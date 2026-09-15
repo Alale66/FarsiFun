@@ -1,0 +1,366 @@
+fileFormatVersion: 2
+guid: e4e2083e8e4104448a631ca724330732
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3842337180442723354
+    second: Codex Image Sep 11, 2026, 11_01_45 AM_0
+  - first:
+      213: 4072242470256892055
+    second: Codex Image Sep 11, 2026, 11_01_45 AM_1
+  - first:
+      213: 6374361027434850286
+    second: Codex Image Sep 11, 2026, 11_01_45 AM_2
+  - first:
+      213: 6908346893695960535
+    second: Codex Image Sep 11, 2026, 11_01_45 AM_3
+  - first:
+      213: 216972793768521566
+    second: Codex Image Sep 11, 2026, 11_01_45 AM_4
+  - first:
+      213: -7961240843058331474
+    second: Codex Image Sep 11, 2026, 11_01_45 AM_5
+  - first:
+      213: 403017674179866177
+    second: Codex Image Sep 11, 2026, 11_01_45 AM_6
+  - first:
+      213: -3550971658029462988
+    second: Codex Image Sep 11, 2026, 11_01_45 AM_7
+  - first:
+      213: -4338256759696498691
+    second: Codex Image Sep 11, 2026, 11_01_45 AM_8
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Codex Image Sep 11, 2026, 11_01_45 AM_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1237
+        height: 1236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6eb7f6421b64daac0800000000000000
+      internalID: -3842337180442723354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Codex Image Sep 11, 2026, 11_01_45 AM_1
+      rect:
+        serializedVersion: 2
+        x: 814
+        y: 1209
+        width: 15
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 798dbe673f2838830800000000000000
+      internalID: 4072242470256892055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Codex Image Sep 11, 2026, 11_01_45 AM_2
+      rect:
+        serializedVersion: 2
+        x: 1109
+        y: 673
+        width: 15
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee72956e497467850800000000000000
+      internalID: 6374361027434850286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Codex Image Sep 11, 2026, 11_01_45 AM_3
+      rect:
+        serializedVersion: 2
+        x: 1147
+        y: 658
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d5cbe7d5e06fdf50800000000000000
+      internalID: 6908346893695960535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Codex Image Sep 11, 2026, 11_01_45 AM_4
+      rect:
+        serializedVersion: 2
+        x: 1143
+        y: 644
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5f2f7a3b97d20300800000000000000
+      internalID: 216972793768521566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Codex Image Sep 11, 2026, 11_01_45 AM_5
+      rect:
+        serializedVersion: 2
+        x: 1163
+        y: 628
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea04d2a32adf38190800000000000000
+      internalID: -7961240843058331474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Codex Image Sep 11, 2026, 11_01_45 AM_6
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 594
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14ee1bb707ec79500800000000000000
+      internalID: 403017674179866177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Codex Image Sep 11, 2026, 11_01_45 AM_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 441
+        width: 5
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43a8ca3471a68bec0800000000000000
+      internalID: -3550971658029462988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Codex Image Sep 11, 2026, 11_01_45 AM_8
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 168
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dff5add467a6bc3c0800000000000000
+      internalID: -4338256759696498691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Codex Image Sep 11, 2026, 11_01_45 AM_0: -3842337180442723354
+      Codex Image Sep 11, 2026, 11_01_45 AM_1: 4072242470256892055
+      Codex Image Sep 11, 2026, 11_01_45 AM_2: 6374361027434850286
+      Codex Image Sep 11, 2026, 11_01_45 AM_3: 6908346893695960535
+      Codex Image Sep 11, 2026, 11_01_45 AM_4: 216972793768521566
+      Codex Image Sep 11, 2026, 11_01_45 AM_5: -7961240843058331474
+      Codex Image Sep 11, 2026, 11_01_45 AM_6: 403017674179866177
+      Codex Image Sep 11, 2026, 11_01_45 AM_7: -3550971658029462988
+      Codex Image Sep 11, 2026, 11_01_45 AM_8: -4338256759696498691
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

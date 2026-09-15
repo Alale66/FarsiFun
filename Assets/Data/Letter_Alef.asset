@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67622f9b8d37db340a703b23254506a1, type: 3}
+  m_Name: Letter_Alef
+  m_EditorClassIdentifier: Assembly-CSharp::LetterData
+  forms:
+  - baseText: "\u0627"
+    markText: " \u064E"
+  - baseText: "\u0627"
+    markText: " \u0650"
+  - baseText: "\u0627"
+    markText: " \u064F"
+  - baseText: "\u0622"
+    markText: 
+  - baseText: "\u0627\u0648"
+    markText: 
+  - baseText: "\u0627\u06CC"
+    markText: 
+  targetLetter: "\u0627"
+  choices:
+  - "\u0627"
+  - "\u0628"
+  - "\u067E"
+  correctLetter: "\u0627"
+  letterName: "\u0627\u0644\u0641"
+  examples:
+  - word: "\u0622\u0628"
+    image: {fileID: 21300000, guid: ba97bf251ad78374f994a97d4aaa0ff0, type: 3}
+    audio: {fileID: 8300000, guid: 6235aaffac9da574bb6486728932987d, type: 3}
+  - word: "\u0622\u062A\u0634"
+    image: {fileID: 21300000, guid: 087313a9a63af2249909d1309f3edb17, type: 3}
+    audio: {fileID: 8300000, guid: 3bce703f1b16dd649824036b41921e0e, type: 3}
+  - word: "\u0627\u0628\u0631"
+    image: {fileID: 21300000, guid: 15609e41a416fc84ebbfdd0ce4a4b674, type: 3}
+    audio: {fileID: 8300000, guid: 455bf9f568a98e040aa8d5d5bb16c613, type: 3}
+  - word: "\u0627\u0646\u0627\u0631"
+    image: {fileID: 21300000, guid: 59f50c8b25ee2414d993b44b658f1c9d, type: 3}
+    audio: {fileID: 8300000, guid: 61b782ee55251e144b18bbbb2ff4c07b, type: 3}
+  - word: "\u0627\u0633\u0628"
+    image: {fileID: 21300000, guid: 2d3c1ad15c7b2cc43967411671270134, type: 3}
+    audio: {fileID: 8300000, guid: 98ef1dfe92492934cb2fc1c3e49184fd, type: 3}
+  - word: "\u0627\u0646\u06AF\u0648\u0631"
+    image: {fileID: 21300000, guid: d49011eac5b21b24e8e5488bb5f1289d, type: 3}
+    audio: {fileID: 8300000, guid: 850739b090fee8146bfa60848a45968f, type: 3}
+  - word: "\u0627\u0631\u062F\u06A9"
+    image: {fileID: 21300000, guid: 0368bc46a099f4b41a371bd98365cb58, type: 3}
+    audio: {fileID: 8300000, guid: f66fdad1bf3fa844e9ec8f4a72f4a20a, type: 3}
+  - word: "\u0622\u062F\u0645"
+    image: {fileID: 21300000, guid: c6fd3a092167af74e8b1f65d9e9c4b7f, type: 3}
+    audio: {fileID: 8300000, guid: 10dbd06ddb244ad48a58c200d91cf82e, type: 3}
+  letterNameAudio: {fileID: 8300000, guid: 73be56c9552df2f41b6b860c8886ca06, type: 3}
+  letterSoundAudio: {fileID: 8300000, guid: 4bbe971181151e84cb7e487066c09ad4, type: 3}
