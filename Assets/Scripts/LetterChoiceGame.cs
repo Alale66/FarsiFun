@@ -23,7 +23,9 @@ public class LetterChoiceGame : MonoBehaviour
     [SerializeField] private TMP_Text feedbackText;
     [SerializeField] private TMP_Text[] choiceTexts;
     [SerializeField] private Button[] choiceButtons;
-    [SerializeField] private GameObject rewardStar;
+    [SerializeField] private GameObject rewardBadge;
+    [SerializeField] private GameObject retryBadge;
+    [SerializeField] private Button nextButton;
 
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
@@ -98,7 +100,13 @@ public class LetterChoiceGame : MonoBehaviour
 
         // Quiz
         feedbackText.text = "";
-        rewardStar.SetActive(false);
+        rewardBadge.SetActive(false);
+        retryBadge.SetActive(false);
+        nextButton.interactable = false;
+        foreach (Button button in choiceButtons)
+        {
+            button.interactable = true;
+        }
 
         List<string> shuffledChoices =
             new List<string>(data.choices);
@@ -117,20 +125,29 @@ public class LetterChoiceGame : MonoBehaviour
             );
         }
     }
-
     private void CheckAnswer(string selectedLetter)
     {
         LetterData data = lesson.letters[currentLetterIndex];
 
         if (selectedLetter == data.correctLetter)
         {
-            feedbackText.text = "آفرین!";
-            rewardStar.SetActive(true);
+            feedbackText.text = "";
+            retryBadge.SetActive(false);
+            rewardBadge.SetActive(true);
+
+            nextButton.interactable = true;
+            foreach (Button button in choiceButtons)
+            {
+                button.interactable = false;
+            }
         }
         else
         {
-            feedbackText.text = "دوباره امتحان کن";
-            rewardStar.SetActive(false);
+            feedbackText.text = "";
+            rewardBadge.SetActive(false);
+            retryBadge.SetActive(true);
+
+            nextButton.interactable = false;
         }
     }
 
