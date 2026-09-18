@@ -133,18 +133,18 @@ public class MatchCardView : MonoBehaviour
     }
 
 
-public void ShowCorrect()
-{
-    isMatched = true;
-    button.interactable = false;
+    public void ShowCorrect()
+    {
+        isMatched = true;
+        button.interactable = false;
 
-    // حاشیه سبز
-    SetOutline(new Color32(79, 157, 94, 255));
+        // حاشیه سبز
+        SetOutline(new Color32(79, 157, 94, 255));
 
-    // نمایش تیک سبز
-    if (checkMark != null)
-        checkMark.gameObject.SetActive(true);
-}
+        // نمایش تیک سبز
+        if (checkMark != null)
+            checkMark.gameObject.SetActive(true);
+    }
 
 
     public void ShowWrong()
