@@ -7,23 +7,54 @@ public class PersianLetterHighlighter : MonoBehaviour
     [SerializeField] private TMP_Text textComponent;
 
     private readonly Color32 targetColor =
-        new Color32(201, 68, 58, 255); // #C9443A
+        new Color32(201, 68, 58, 255);
 
     private Coroutine colorCoroutine;
+    private string currentWord;
 
     public void SetText(string word)
     {
-        textComponent.text = word;
+        currentWord = word;
 
+        if (textComponent == null)
+            return;
+
+        textComponent.text = word;
+        RefreshHighlight();
+    }
+
+    private void OnEnable()
+    {
+        if (currentWord != null)
+            RefreshHighlight();
+    }
+
+    private void OnDisable()
+    {
         if (colorCoroutine != null)
+        {
             StopCoroutine(colorCoroutine);
+            colorCoroutine = null;
+        }
+    }
+
+    private void RefreshHighlight()
+    {
+        if (colorCoroutine != null)
+        {
+            StopCoroutine(colorCoroutine);
+            colorCoroutine = null;
+        }
+
+        if (textComponent == null || !isActiveAndEnabled)
+            return;
 
         colorCoroutine = StartCoroutine(ColorAfterRTLUpdate());
     }
 
     private IEnumerator ColorAfterRTLUpdate()
     {
-        // صبر می‌کنیم RTLTMPro کار شکل‌دهی متن را تمام کند
+        // Wait for RTLTMPro to update the displayed text.
         yield return new WaitForEndOfFrame();
 
         textComponent.ForceMeshUpdate();
@@ -33,7 +64,6 @@ public class PersianLetterHighlighter : MonoBehaviour
         int targetIndex = -1;
         float rightMostX = float.NegativeInfinity;
 
-        // اولین حرف فارسی از نظر بصری راست‌ترین glyph است
         for (int i = 0; i < textInfo.characterCount; i++)
         {
             TMP_CharacterInfo characterInfo =
@@ -50,24 +80,22 @@ public class PersianLetterHighlighter : MonoBehaviour
         }
 
         if (targetIndex == -1)
+        {
+            colorCoroutine = null;
             yield break;
+        }
 
         TMP_CharacterInfo target =
             textInfo.characterInfo[targetIndex];
 
-        int materialIndex =
-            target.materialReferenceIndex;
-
-        int vertexIndex =
-            target.vertexIndex;
+        int materialIndex = target.materialReferenceIndex;
+        int vertexIndex = target.vertexIndex;
 
         Color32[] colors =
             textInfo.meshInfo[materialIndex].colors32;
 
-        colors[vertexIndex + 0] = targetColor;
-        colors[vertexIndex + 1] = targetColor;
-        colors[vertexIndex + 2] = targetColor;
-        colors[vertexIndex + 3] = targetColor;
+        for (int i = 0; i < 4; i++)
+            colors[vertexIndex + i] = targetColor;
 
         textInfo.meshInfo[materialIndex].mesh.colors32 = colors;
 
@@ -75,5 +103,7 @@ public class PersianLetterHighlighter : MonoBehaviour
             textInfo.meshInfo[materialIndex].mesh,
             materialIndex
         );
+
+        colorCoroutine = null;
     }
 }

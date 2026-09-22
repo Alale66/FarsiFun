@@ -149,8 +149,15 @@ public class MemoryMatchGame : MonoBehaviour
         isChecking = false;
 
         // خبر دادن به LetterChoiceGame بعد از تکمیل هر سه جفت
+        // if (matchedCards.Count == cards.Length)
+        // {
+        //     Completed?.Invoke();
+        // }
         if (matchedCards.Count == cards.Length)
         {
+            if (isMatch && audioSource != null && correctSound != null)
+                yield return new WaitForSeconds(correctSound.length);
+
             Completed?.Invoke();
         }
     }

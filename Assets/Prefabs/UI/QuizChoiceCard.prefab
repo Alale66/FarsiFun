@@ -85,7 +85,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4921933354594523962, guid: 7846aefe455a72849b0e24ed4dc97229, type: 3}
       propertyPath: m_fontSize
-      value: 100
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 4921933354594523962, guid: 7846aefe455a72849b0e24ed4dc97229, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 4921933354594523962, guid: 7846aefe455a72849b0e24ed4dc97229, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5357254043712226791, guid: 7846aefe455a72849b0e24ed4dc97229, type: 3}
       propertyPath: m_Type
@@ -187,16 +195,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8152608287297357136, guid: 7846aefe455a72849b0e24ed4dc97229, type: 3}
+      propertyPath: m_Transition
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7903940974705820827, guid: 7846aefe455a72849b0e24ed4dc97229, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8081334985138991096}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7345859697992097111, guid: 7846aefe455a72849b0e24ed4dc97229, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3240198458763301823}
   m_SourcePrefab: {fileID: 100100000, guid: 7846aefe455a72849b0e24ed4dc97229, type: 3}
 --- !u!224 &3754602553847150533 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7903940974705820827, guid: 7846aefe455a72849b0e24ed4dc97229, type: 3}
   m_PrefabInstance: {fileID: 6461389283594580830}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4349011764458221065 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7345859697992097111, guid: 7846aefe455a72849b0e24ed4dc97229, type: 3}
+  m_PrefabInstance: {fileID: 6461389283594580830}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3240198458763301823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4349011764458221065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afeba73808899e24b98ffcb6a3fc28fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QuizChoiceFeedback
+  checkMark: {fileID: 4608341646456257766}
