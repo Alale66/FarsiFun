@@ -58,6 +58,7 @@ public class LetterChoiceGame : MonoBehaviour
     [SerializeField] private AudioClip quizInstructionAudio;
     [SerializeField] private AudioClip miniGameInstructionAudio;
     [SerializeField] private AudioClip letterHuntInstructionAudio;
+    [SerializeField] private AudioClip PictureHuntInstructionAudio;
     [SerializeField] private AudioClip quizCorrectSound;
     [SerializeField] private AudioClip quizWrongSound;
     [SerializeField] private AudioClip completionSound;
@@ -577,6 +578,7 @@ public class LetterChoiceGame : MonoBehaviour
         {
             pictureHuntVisited = true;
             ResetPictureHunt();
+            PlayPictureHuntInstruction();
         }
     }
 
@@ -693,5 +695,14 @@ public class LetterChoiceGame : MonoBehaviour
 
         LoadLetter(nextIndex);
         ShowIntro();
+    }
+
+    public void PlayPictureHuntInstruction()
+    {
+        if (PictureHuntInstructionAudio == null || audioSource == null)
+            return;
+
+        audioSource.clip = PictureHuntInstructionAudio;
+        audioSource.Play();
     }
 }
