@@ -56,6 +56,12 @@ public class SharedGamePanelUI : MonoBehaviour
             rewardBadge.SetActive(completed);
     }
 
+    public void SetRetryInteractable(bool interactable)
+    {
+        if (retryButton != null)
+            retryButton.interactable = interactable;
+    }
+
     private void SetContentActive(GameObject content, bool active)
     {
         if (content != null)

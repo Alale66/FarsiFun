@@ -56,6 +56,8 @@ public class LetterChoiceGame : MonoBehaviour
 
     private LessonStage currentStage;
     private int currentLetterIndex;
+    private readonly List<ExampleData> currentIntroExamples =
+    new List<ExampleData>();
     private bool quizCompleted;
     private bool letterHuntCompleted;
     private bool pictureHuntCompleted;
@@ -132,6 +134,91 @@ public class LetterChoiceGame : MonoBehaviour
             sharedGamePanelUI.SetCompletion(completed);
     }
 
+    private void ShowRandomIntroExamples()
+    {
+        if (lesson == null ||
+            lesson.letters == null ||
+            lesson.letters.Length == 0)
+        {
+            return;
+        }
+
+        LetterData data =
+            lesson.letters[currentLetterIndex];
+
+        if (data.examples == null ||
+            data.examples.Length == 0)
+        {
+            return;
+        }
+
+        List<ExampleData> newExamples =
+            new List<ExampleData>();
+
+        List<ExampleData> previousExamples =
+            new List<ExampleData>();
+
+        foreach (ExampleData example in data.examples)
+        {
+            if (example == null)
+                continue;
+
+            if (currentIntroExamples.Contains(example))
+                previousExamples.Add(example);
+            else
+                newExamples.Add(example);
+        }
+
+        Shuffle(newExamples);
+        Shuffle(previousExamples);
+
+        // New words are shown first.
+        // Previous words are used only if there are not enough new ones.
+        newExamples.AddRange(previousExamples);
+
+        int displayCount = Mathf.Min(
+            exampleTexts.Length,
+            exampleImages.Length,
+            exampleButtons.Length
+        );
+
+        if (newExamples.Count < displayCount)
+        {
+            Debug.LogWarning(
+                "Intro needs at least " +
+                displayCount +
+                " examples for this letter."
+            );
+
+            return;
+        }
+
+        currentIntroExamples.Clear();
+
+        for (int i = 0; i < displayCount; i++)
+        {
+            ExampleData example = newExamples[i];
+
+            currentIntroExamples.Add(example);
+
+            PersianLetterHighlighter highlighter =
+                exampleTexts[i]
+                    .GetComponent<PersianLetterHighlighter>();
+
+            if (highlighter != null)
+                highlighter.SetText(example.word);
+            else
+                exampleTexts[i].text = example.word;
+
+            exampleImages[i].sprite = example.image;
+
+            exampleButtons[i].onClick.RemoveAllListeners();
+            exampleButtons[i].onClick.AddListener(
+                () => PlayExampleAudio(example)
+            );
+        }
+    }
+
     private void LoadLetter(int index)
     {
         if (lesson == null ||
@@ -174,32 +261,8 @@ public class LetterChoiceGame : MonoBehaviour
             }
         }
 
-        List<ExampleData> randomExamples =
-            new List<ExampleData>(data.examples);
-
-        Shuffle(randomExamples);
-
-        for (int i = 0;
-             i < exampleTexts.Length && i < randomExamples.Count;
-             i++)
-        {
-            ExampleData example = randomExamples[i];
-
-            PersianLetterHighlighter highlighter =
-                exampleTexts[i].GetComponent<PersianLetterHighlighter>();
-
-            if (highlighter != null)
-                highlighter.SetText(example.word);
-            else
-                exampleTexts[i].text = example.word;
-
-            exampleImages[i].sprite = example.image;
-
-            exampleButtons[i].onClick.RemoveAllListeners();
-            exampleButtons[i].onClick.AddListener(
-                () => PlayExampleAudio(example)
-            );
-        }
+        currentIntroExamples.Clear();
+        ShowRandomIntroExamples();
 
         letterTitleText.text =
             "یادگیری حرف " +
@@ -434,17 +497,23 @@ public class LetterChoiceGame : MonoBehaviour
         {
             sharedGamePanelUI.SetNavigationVisibility(
                 false,
-                false,
+                true,
                 false
             );
 
             sharedGamePanelUI.SetCompletion(false);
+            sharedGamePanelUI.SetRetryInteractable(true);
         }
     }
 
     public void BackToIntro()
     {
         ShowIntro();
+    }
+
+    public void RefreshIntroExamples()
+    {
+        ShowRandomIntroExamples();
     }
 
     public void PlayLetterName()
@@ -779,6 +848,10 @@ public class LetterChoiceGame : MonoBehaviour
     {
         switch (currentStage)
         {
+            case LessonStage.Intro:
+                RefreshIntroExamples();
+                break;
+
             case LessonStage.Quiz:
                 RetryQuiz();
                 break;
