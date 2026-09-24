@@ -1962,6 +1962,7 @@ GameObject:
   - component: {fileID: 487651522}
   - component: {fileID: 487651521}
   - component: {fileID: 487651520}
+  - component: {fileID: 487651523}
   m_Layer: 0
   m_Name: InstructionSoundButton
   m_TagString: Untagged
@@ -2030,6 +2031,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &487651523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487651519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 069e072ba9d330549b649a190aceb019, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonCursorManager
+  handCursor: {fileID: 2800000, guid: f1a716a6ae0f5364b8fffe532da5ca5a, type: 3}
+  hotspot: {x: 14, y: 5}
 --- !u!114 &487696540 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8025269947251922654, guid: ddb38b0e6ed94d84886d8616244b6922, type: 3}
