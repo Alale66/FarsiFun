@@ -11,6 +11,7 @@ public class MemoryMatchGame : MonoBehaviour
     [SerializeField] private AudioClip correctSound;
     [SerializeField] private AudioClip wrongSound;
     [SerializeField] private AudioSource audioSource;
+    [SerializeField] private GameAudioManager gameAudioManager;
 
     public event Action Completed;
 
@@ -108,7 +109,7 @@ public class MemoryMatchGame : MonoBehaviour
         MatchCardView first = firstSelected;
         MatchCardView second = secondSelected;
 
-        // هر دو کارت لحظه‌ای نارنجی می‌مانند.
+        // هر دو کارت ۰.۲۵ ثانیه نارنجی می‌مانند.
         yield return new WaitForSeconds(0.25f);
 
         bool isMatch =
@@ -120,22 +121,31 @@ public class MemoryMatchGame : MonoBehaviour
             matchedCards.Add(first);
             matchedCards.Add(second);
 
-            // سبز شدن، نمایش تیک و قفل شدن کارت‌ها
             first.ShowCorrect();
             second.ShowCorrect();
 
-            // صدای موفقیت فقط برای جفت درست
-            if (audioSource != null && correctSound != null)
+            if (gameAudioManager != null && correctSound != null)
+            {
+                gameAudioManager.PlayLocked(correctSound);
+            }
+            else if (audioSource != null && correctSound != null)
+            {
                 audioSource.PlayOneShot(correctSound);
+            }
         }
-
         else
         {
             first.ShowWrong();
             second.ShowWrong();
 
-            if (audioSource != null && wrongSound != null)
+            if (gameAudioManager != null && wrongSound != null)
+            {
+                gameAudioManager.PlayLocked(wrongSound);
+            }
+            else if (audioSource != null && wrongSound != null)
+            {
                 audioSource.PlayOneShot(wrongSound);
+            }
 
             yield return new WaitForSeconds(0.6f);
 
@@ -143,20 +153,23 @@ public class MemoryMatchGame : MonoBehaviour
             second.ResetVisual();
         }
 
-
         firstSelected = null;
         secondSelected = null;
         isChecking = false;
 
-        // خبر دادن به LetterChoiceGame بعد از تکمیل هر سه جفت
-        // if (matchedCards.Count == cards.Length)
-        // {
-        //     Completed?.Invoke();
-        // }
         if (matchedCards.Count == cards.Length)
         {
-            if (isMatch && audioSource != null && correctSound != null)
+            // تکمیل بازی باید بعد از تمام‌شدن صدای جفت آخر اتفاق بیفتد.
+            if (isMatch && gameAudioManager != null && correctSound != null)
+            {
+                yield return new WaitWhile(
+                    () => gameAudioManager.IsPlayingLocked
+                );
+            }
+            else if (isMatch && audioSource != null && correctSound != null)
+            {
                 yield return new WaitForSeconds(correctSound.length);
+            }
 
             Completed?.Invoke();
         }

@@ -58,10 +58,12 @@ public class LetterChoiceGame : MonoBehaviour
     [SerializeField] private AudioClip quizInstructionAudio;
     [SerializeField] private AudioClip miniGameInstructionAudio;
     [SerializeField] private AudioClip letterHuntInstructionAudio;
-    [SerializeField] private AudioClip PictureHuntInstructionAudio;
+    [SerializeField] private AudioClip pictureHuntInstructionAudio;
     [SerializeField] private AudioClip quizCorrectSound;
     [SerializeField] private AudioClip quizWrongSound;
     [SerializeField] private AudioClip completionSound;
+    [SerializeField] private UIInputLock inputLock;
+    [SerializeField] private GameAudioManager gameAudioManager;
 
     private int currentLetterIndex;
 
@@ -122,11 +124,7 @@ public class LetterChoiceGame : MonoBehaviour
             miniGamePanel.SetActive(miniGamePanel == targetPanel);
     }
 
-    private void SetCompletionUI(
-        Button next,
-        Button retry,
-        GameObject badge,
-        bool completed)
+    private void SetCompletionUI(Button next, Button retry, GameObject badge, bool completed)
     {
         if (next != null)
             next.interactable = completed;
@@ -337,40 +335,56 @@ public class LetterChoiceGame : MonoBehaviour
 
     private IEnumerator PlayQuizSuccessSequence()
     {
-        if (audioSource != null && quizCorrectSound != null)
+        // Correct-answer sound stays locked.
+        if (gameAudioManager != null && quizCorrectSound != null)
+        {
+            gameAudioManager.PlayLocked(quizCorrectSound);
+
+            yield return new WaitWhile(
+                () => gameAudioManager.IsPlayingLocked
+            );
+        }
+        else if (audioSource != null && quizCorrectSound != null)
         {
             audioSource.PlayOneShot(quizCorrectSound);
             yield return new WaitForSeconds(quizCorrectSound.length);
         }
 
-        // Show the reward when the completion sound starts.
+        // Show the reward and enable buttons when
+        // the completion sound begins.
         rewardBadge.SetActive(true);
         nextButton.interactable = true;
 
         if (quizRetryButton != null)
             quizRetryButton.interactable = true;
 
+        // Completion sound does not lock the UI.
         if (audioSource != null && completionSound != null)
-        {
             audioSource.PlayOneShot(completionSound);
-            yield return new WaitForSeconds(completionSound.length);
-        }
 
         successSoundRoutine = null;
     }
 
     private IEnumerator ShowWrongAnswer(
-        QuizChoiceFeedback selectedFeedback)
+     QuizChoiceFeedback selectedFeedback)
     {
         quizChecking = true;
 
         if (selectedFeedback != null)
             selectedFeedback.ShowWrong();
 
-        if (audioSource != null && quizWrongSound != null)
-            audioSource.PlayOneShot(quizWrongSound);
+        if (gameAudioManager != null && quizWrongSound != null)
+        {
+            gameAudioManager.PlayLocked(quizWrongSound);
 
-        yield return new WaitForSeconds(0.6f);
+            yield return new WaitWhile(
+                () => gameAudioManager.IsPlayingLocked
+            );
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.6f);
+        }
 
         if (selectedFeedback != null)
             selectedFeedback.ResetVisual();
@@ -378,15 +392,21 @@ public class LetterChoiceGame : MonoBehaviour
         quizChecking = false;
         wrongAnswerRoutine = null;
     }
-
     private void StopSuccessSounds()
     {
-        if (successSoundRoutine == null)
-            return;
+        if (successSoundRoutine != null)
+        {
+            StopCoroutine(successSoundRoutine);
+            successSoundRoutine = null;
+        }
 
-        StopCoroutine(successSoundRoutine);
-        successSoundRoutine = null;
+        if (gameAudioManager != null &&
+            gameAudioManager.IsPlayingLocked)
+        {
+            gameAudioManager.StopAudio();
+        }
 
+        // Fallback for audio still using the old AudioSource.
         if (audioSource != null)
             audioSource.Stop();
     }
@@ -427,31 +447,22 @@ public class LetterChoiceGame : MonoBehaviour
     {
         LetterData data = lesson.letters[currentLetterIndex];
 
-        if (audioSource != null && data.letterNameAudio != null)
-        {
-            audioSource.clip = data.letterNameAudio;
-            audioSource.Play();
-        }
+        if (gameAudioManager != null)
+            gameAudioManager.PlayLocked(data.letterNameAudio);
     }
 
     public void PlayLetterSound()
     {
         LetterData data = lesson.letters[currentLetterIndex];
 
-        if (audioSource != null && data.letterSoundAudio != null)
-        {
-            audioSource.clip = data.letterSoundAudio;
-            audioSource.Play();
-        }
+        if (gameAudioManager != null)
+            gameAudioManager.PlayLocked(data.letterSoundAudio);
     }
 
     private void PlayExampleAudio(ExampleData example)
     {
-        if (example.audio == null || audioSource == null)
-            return;
-
-        audioSource.clip = example.audio;
-        audioSource.Play();
+        if (gameAudioManager != null)
+            gameAudioManager.PlayLocked(example.audio);
     }
 
     public void PlayClickSound()
@@ -484,11 +495,8 @@ public class LetterChoiceGame : MonoBehaviour
 
     public void PlayQuizInstruction()
     {
-        if (quizInstructionAudio == null || audioSource == null)
-            return;
-
-        audioSource.clip = quizInstructionAudio;
-        audioSource.Play();
+        if (gameAudioManager != null)
+            gameAudioManager.PlayLocked(quizInstructionAudio);
     }
 
     public void NextQuestion()
@@ -549,11 +557,8 @@ public class LetterChoiceGame : MonoBehaviour
 
     public void PlayLetterHuntInstruction()
     {
-        if (letterHuntInstructionAudio == null || audioSource == null)
-            return;
-
-        audioSource.clip = letterHuntInstructionAudio;
-        audioSource.Play();
+        if (gameAudioManager != null)
+            gameAudioManager.PlayLocked(letterHuntInstructionAudio);
     }
 
     public void ContinueAfterLetterHunt()
@@ -679,11 +684,8 @@ public class LetterChoiceGame : MonoBehaviour
 
     public void PlayMiniGameInstruction()
     {
-        if (miniGameInstructionAudio == null || audioSource == null)
-            return;
-
-        audioSource.clip = miniGameInstructionAudio;
-        audioSource.Play();
+        if (gameAudioManager != null)
+            gameAudioManager.PlayLocked(miniGameInstructionAudio);
     }
 
     public void ContinueAfterMiniGame()
@@ -697,12 +699,34 @@ public class LetterChoiceGame : MonoBehaviour
         ShowIntro();
     }
 
+    // public void PlayPictureHuntInstruction()
+    // {
+    //     if (PictureHuntInstructionAudio == null || audioSource == null)
+    //         return;
+
+    //     audioSource.clip = PictureHuntInstructionAudio;
+    //     audioSource.Play();
+    // }
     public void PlayPictureHuntInstruction()
     {
-        if (PictureHuntInstructionAudio == null || audioSource == null)
-            return;
+        StartCoroutine(PlayPictureHuntInstructionRoutine());
+    }
 
-        audioSource.clip = PictureHuntInstructionAudio;
-        audioSource.Play();
+    private IEnumerator PlayPictureHuntInstructionRoutine()
+    {
+        if (pictureHuntInstructionAudio == null || audioSource == null)
+            yield break;
+
+        if (inputLock != null)
+            inputLock.Lock();
+
+        audioSource.PlayOneShot(pictureHuntInstructionAudio);
+
+        yield return new WaitForSeconds(
+            pictureHuntInstructionAudio.length
+        );
+
+        if (inputLock != null)
+            inputLock.Unlock();
     }
 }

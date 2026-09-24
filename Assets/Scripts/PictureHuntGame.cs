@@ -34,6 +34,8 @@ public class PictureHuntGame : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip correctSound;
     [SerializeField] private AudioClip wrongSound;
+    [SerializeField] private UIInputLock inputLock;
+    [SerializeField] private GameAudioManager gameAudioManager;
 
     public event Action Completed;
 
@@ -127,6 +129,11 @@ public class PictureHuntGame : MonoBehaviour
     {
         checkingAnswer = true;
 
+        bool usingGameAudioManager = gameAudioManager != null;
+
+        if (!usingGameAudioManager && inputLock != null)
+            inputLock.Lock();
+
         bool isCorrect = correctAnswers[index];
         QuizChoiceFeedback feedback = cards[index].feedback;
 
@@ -142,29 +149,43 @@ public class PictureHuntGame : MonoBehaviour
             feedback.ShowWrong();
         }
 
-        // 1. Play correct/wrong sound immediately.
         AudioClip feedbackSound = isCorrect
             ? correctSound
             : wrongSound;
 
-        if (audioSource != null && feedbackSound != null)
+        if (usingGameAudioManager)
         {
-            audioSource.PlayOneShot(feedbackSound);
-            yield return new WaitForSeconds(feedbackSound.length);
+            gameAudioManager.PlayLockedSequence(
+                new AudioClip[]
+                {
+                feedbackSound,
+                wordSound
+                }
+            );
+
+            yield return new WaitWhile(
+                () => gameAudioManager.IsPlayingLocked
+            );
+        }
+        else
+        {
+            // Fallback using the old AudioSource.
+            if (audioSource != null && feedbackSound != null)
+            {
+                audioSource.PlayOneShot(feedbackSound);
+                yield return new WaitForSeconds(feedbackSound.length);
+            }
+
+            if (audioSource != null && wordSound != null)
+            {
+                audioSource.PlayOneShot(wordSound);
+                yield return new WaitForSeconds(wordSound.length);
+            }
         }
 
-        // 2. Say the picture's word.
-        if (audioSource != null && wordSound != null)
-        {
-            audioSource.PlayOneShot(wordSound);
-            yield return new WaitForSeconds(wordSound.length);
-        }
-
-        // Wrong answer: hide the red border.
         if (!isCorrect)
             feedback.ResetVisual();
 
-        // 3. Complete after the second correct answer's word finishes.
         if (isCorrect && foundCorrectAnswers.Count == 2)
         {
             finished = true;
@@ -173,10 +194,17 @@ public class PictureHuntGame : MonoBehaviour
                 card.button.interactable = false;
 
             checkingAnswer = false;
+
+            if (!usingGameAudioManager && inputLock != null)
+                inputLock.Unlock();
+
             Completed?.Invoke();
             yield break;
         }
 
         checkingAnswer = false;
+
+        if (!usingGameAudioManager && inputLock != null)
+            inputLock.Unlock();
     }
 }

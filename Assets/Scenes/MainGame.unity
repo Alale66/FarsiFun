@@ -3301,6 +3301,7 @@ MonoBehaviour:
   audioSource: {fileID: 992397163}
   correctSound: {fileID: 8300000, guid: 0ac3724b21cae9f48b0d8ac2ffd87de0, type: 3}
   wrongSound: {fileID: 8300000, guid: 2836c37468459ba45832c5d28983a4f9, type: 3}
+  gameAudioManager: {fileID: 950646310}
 --- !u!1001 &653632807
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4232,6 +4233,7 @@ MonoBehaviour:
   correctSound: {fileID: 8300000, guid: 0ac3724b21cae9f48b0d8ac2ffd87de0, type: 3}
   wrongSound: {fileID: 8300000, guid: 2836c37468459ba45832c5d28983a4f9, type: 3}
   audioSource: {fileID: 754513728}
+  gameAudioManager: {fileID: 950646310}
 --- !u!82 &754513728
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5239,6 +5241,81 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82b5279d76c86054c93ed60b547dfe4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MatchCardView
+--- !u!1 &918484714
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 918484715}
+  - component: {fileID: 918484717}
+  - component: {fileID: 918484716}
+  m_Layer: 5
+  m_Name: InputBlocker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &918484715
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918484714}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1637137325}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &918484716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918484714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &918484717
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918484714}
+  m_CullTransparentMesh: 1
 --- !u!1001 &920711555
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5561,6 +5638,8 @@ GameObject:
   m_Component:
   - component: {fileID: 950646307}
   - component: {fileID: 950646308}
+  - component: {fileID: 950646309}
+  - component: {fileID: 950646310}
   m_Layer: 5
   m_Name: GameManager
   m_TagString: Untagged
@@ -5659,10 +5738,39 @@ MonoBehaviour:
   quizInstructionAudio: {fileID: 8300000, guid: 7a80a46832c2dc140803d7469ad64e35, type: 3}
   miniGameInstructionAudio: {fileID: 8300000, guid: 1f50c00fdb5630d42a2a29baf37189ec, type: 3}
   letterHuntInstructionAudio: {fileID: 8300000, guid: 9d0a42cc4faff604aa003c7a15c2b100, type: 3}
-  PictureHuntInstructionAudio: {fileID: 8300000, guid: 406f1ad5fabb0d8498213e6bc1ad37ec, type: 3}
+  pictureHuntInstructionAudio: {fileID: 8300000, guid: 406f1ad5fabb0d8498213e6bc1ad37ec, type: 3}
   quizCorrectSound: {fileID: 8300000, guid: 0ac3724b21cae9f48b0d8ac2ffd87de0, type: 3}
   quizWrongSound: {fileID: 8300000, guid: 2836c37468459ba45832c5d28983a4f9, type: 3}
   completionSound: {fileID: 8300000, guid: 074e7b67154104f46a4276e818dd7de6, type: 3}
+  inputLock: {fileID: 950646309}
+  gameAudioManager: {fileID: 950646310}
+--- !u!114 &950646309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950646306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 039a70ec0f0e9c24fa4aaec9a3a00b7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIInputLock
+  inputBlocker: {fileID: 918484714}
+--- !u!114 &950646310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950646306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f2c77f6c1610d4488b8a0009eaba55d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameAudioManager
+  audioSource: {fileID: 992397163}
+  inputLock: {fileID: 950646309}
 --- !u!1 &963456485 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8704866588964569429, guid: ddb38b0e6ed94d84886d8616244b6922, type: 3}
@@ -6238,6 +6346,8 @@ MonoBehaviour:
   audioSource: {fileID: 992397163}
   correctSound: {fileID: 8300000, guid: 0ac3724b21cae9f48b0d8ac2ffd87de0, type: 3}
   wrongSound: {fileID: 8300000, guid: 2836c37468459ba45832c5d28983a4f9, type: 3}
+  inputLock: {fileID: 950646309}
+  gameAudioManager: {fileID: 0}
 --- !u!114 &1019982241 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3731591415376434465, guid: d89c73a6cf1a2b74a810eaa1e54c7bb9, type: 3}
@@ -9499,6 +9609,7 @@ RectTransform:
   - {fileID: 642049602}
   - {fileID: 1016478964}
   - {fileID: 754513724}
+  - {fileID: 918484715}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

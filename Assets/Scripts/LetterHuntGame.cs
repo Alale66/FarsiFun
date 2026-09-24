@@ -14,6 +14,7 @@ public class LetterHuntGame : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip correctSound;
     [SerializeField] private AudioClip wrongSound;
+    [SerializeField] private GameAudioManager gameAudioManager;
 
     private readonly HashSet<LetterCoinView> wrongCoins =
         new HashSet<LetterCoinView>();
