@@ -192,8 +192,8 @@ public class PictureHuntGame : MonoBehaviour
     }
 
     private IEnumerator CheckPicture(
-        int index,
-        AudioClip wordSound)
+    int index,
+    AudioClip wordSound)
     {
         checkingAnswer = true;
 
@@ -204,6 +204,7 @@ public class PictureHuntGame : MonoBehaviour
             inputLock.Lock();
 
         bool isCorrect = correctAnswers[index];
+
         QuizChoiceFeedback feedback =
             cards[index].feedback;
 
@@ -211,51 +212,59 @@ public class PictureHuntGame : MonoBehaviour
         {
             foundCorrectAnswers.Add(index);
             cards[index].button.interactable = false;
-            feedback.ShowCorrect();
-        }
-        else
-        {
-            feedback.ShowWrong();
         }
 
         AudioClip feedbackSound =
             isCorrect ? correctSound : wrongSound;
 
+        // First, play the picture's word.
         if (usingGameAudioManager)
         {
-            gameAudioManager.PlayLockedSequence(
-                new AudioClip[]
-                {
-                    feedbackSound,
-                    wordSound
-                }
-            );
+            if (wordSound != null)
+            {
+                gameAudioManager.PlayLocked(wordSound);
 
-            yield return new WaitWhile(
-                () => gameAudioManager.IsPlayingLocked
+                yield return new WaitWhile(
+                    () => gameAudioManager.IsPlayingLocked
+                );
+            }
+        }
+        else if (audioSource != null &&
+                 wordSound != null)
+        {
+            audioSource.PlayOneShot(wordSound);
+
+            yield return new WaitForSeconds(
+                wordSound.length
             );
         }
+
+        // Show the visual feedback exactly when
+        // the correct/wrong sound begins.
+        if (isCorrect)
+            feedback.ShowCorrect();
         else
+            feedback.ShowWrong();
+
+        if (usingGameAudioManager)
         {
-            if (audioSource != null &&
-                feedbackSound != null)
+            if (feedbackSound != null)
             {
-                audioSource.PlayOneShot(feedbackSound);
+                gameAudioManager.PlayLocked(feedbackSound);
 
-                yield return new WaitForSeconds(
-                    feedbackSound.length
+                yield return new WaitWhile(
+                    () => gameAudioManager.IsPlayingLocked
                 );
             }
+        }
+        else if (audioSource != null &&
+                 feedbackSound != null)
+        {
+            audioSource.PlayOneShot(feedbackSound);
 
-            if (audioSource != null &&
-                wordSound != null)
-            {
-                audioSource.PlayOneShot(wordSound);
-
-                yield return new WaitForSeconds(
-                    wordSound.length
-                );
-            }
+            yield return new WaitForSeconds(
+                feedbackSound.length
+            );
         }
 
         if (!isCorrect)
