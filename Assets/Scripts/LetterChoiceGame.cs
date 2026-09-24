@@ -11,6 +11,7 @@ public class LetterChoiceGame : MonoBehaviour
     [SerializeField] private LessonData lesson;
 
     [Header("Screens")]
+    [SerializeField] private SharedGamePanelUI sharedGamePanelUI;
     [SerializeField] private GameObject introPanel;
     [SerializeField] private GameObject quizPanel;
     [SerializeField] private GameObject letterHuntPanel;
@@ -29,28 +30,16 @@ public class LetterChoiceGame : MonoBehaviour
     [SerializeField] private TMP_Text[] choiceTexts;
     [SerializeField] private Button[] choiceButtons;
     [SerializeField] private QuizChoiceFeedback[] choiceFeedbacks;
-    [SerializeField] private GameObject rewardBadge;
     [SerializeField] private GameObject retryBadge;
-    [SerializeField] private Button nextButton;
-    [SerializeField] private Button quizRetryButton;
 
     [Header("Letter Hunt UI")]
     [SerializeField] private LetterHuntGame letterHuntGame;
-    [SerializeField] private Button letterHuntNextButton;
-    [SerializeField] private Button letterHuntRetryButton;
-    [SerializeField] private GameObject letterHuntRewardBadge;
 
     [Header("Picture Hunt UI")]
     [SerializeField] private PictureHuntGame pictureHuntGame;
-    [SerializeField] private Button pictureHuntNextButton;
-    [SerializeField] private Button pictureHuntRetryButton;
-    [SerializeField] private GameObject pictureHuntRewardBadge;
 
     [Header("Mini Game UI")]
     [SerializeField] private MemoryMatchGame memoryMatchGame;
-    [SerializeField] private Button miniGameNextButton;
-    [SerializeField] private Button miniGameRetryButton;
-    [SerializeField] private GameObject miniGameRewardBadge;
 
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
@@ -65,8 +54,12 @@ public class LetterChoiceGame : MonoBehaviour
     [SerializeField] private UIInputLock inputLock;
     [SerializeField] private GameAudioManager gameAudioManager;
 
+    private LessonStage currentStage;
     private int currentLetterIndex;
-
+    private bool quizCompleted;
+    private bool letterHuntCompleted;
+    private bool pictureHuntCompleted;
+    private bool miniGameCompleted;
     private bool quizVisited;
     private bool letterHuntVisited;
     private bool pictureHuntVisited;
@@ -124,16 +117,19 @@ public class LetterChoiceGame : MonoBehaviour
             miniGamePanel.SetActive(miniGamePanel == targetPanel);
     }
 
-    private void SetCompletionUI(Button next, Button retry, GameObject badge, bool completed)
+    private void ShowStage(LessonStage stage, GameObject targetPanel)
     {
-        if (next != null)
-            next.interactable = completed;
+        currentStage = stage;
 
-        if (retry != null)
-            retry.interactable = completed;
+        if (sharedGamePanelUI != null)
+            sharedGamePanelUI.ShowStage(stage);
 
-        if (badge != null)
-            badge.SetActive(completed);
+        ShowScreen(targetPanel);
+    }
+    private void SetCompletionUI(bool completed)
+    {
+        if (sharedGamePanelUI != null)
+            sharedGamePanelUI.SetCompletion(completed);
     }
 
     private void LoadLetter(int index)
@@ -153,6 +149,11 @@ public class LetterChoiceGame : MonoBehaviour
         letterHuntVisited = false;
         pictureHuntVisited = false;
         miniGameVisited = false;
+
+        quizCompleted = false;
+        letterHuntCompleted = false;
+        pictureHuntCompleted = false;
+        miniGameCompleted = false;
 
         LetterData data = lesson.letters[currentLetterIndex];
 
@@ -213,6 +214,8 @@ public class LetterChoiceGame : MonoBehaviour
     {
         StopSuccessSounds();
 
+        quizCompleted = false;
+
         if (wrongAnswerRoutine != null)
         {
             StopCoroutine(wrongAnswerRoutine);
@@ -224,13 +227,9 @@ public class LetterChoiceGame : MonoBehaviour
         LetterData data = lesson.letters[currentLetterIndex];
 
         feedbackText.text = "";
-        rewardBadge.SetActive(false);
+
         retryBadge.SetActive(false);
-
-        nextButton.interactable = false;
-
-        if (quizRetryButton != null)
-            quizRetryButton.interactable = false;
+        SetCompletionUI(false);
 
         if (choiceFeedbacks != null)
         {
@@ -309,7 +308,7 @@ public class LetterChoiceGame : MonoBehaviour
 
             feedbackText.text = "";
             retryBadge.SetActive(false);
-            rewardBadge.SetActive(false);
+            SetCompletionUI(false);
 
             if (selectedFeedback != null)
                 selectedFeedback.ShowCorrect();
@@ -324,9 +323,8 @@ public class LetterChoiceGame : MonoBehaviour
         else
         {
             feedbackText.text = "";
-            rewardBadge.SetActive(false);
             retryBadge.SetActive(true);
-            nextButton.interactable = false;
+            SetCompletionUI(false);
 
             wrongAnswerRoutine =
                 StartCoroutine(ShowWrongAnswer(selectedFeedback));
@@ -350,13 +348,8 @@ public class LetterChoiceGame : MonoBehaviour
             yield return new WaitForSeconds(quizCorrectSound.length);
         }
 
-        // Show the reward and enable buttons when
-        // the completion sound begins.
-        rewardBadge.SetActive(true);
-        nextButton.interactable = true;
-
-        if (quizRetryButton != null)
-            quizRetryButton.interactable = true;
+        quizCompleted = true;
+        SetCompletionUI(true);
 
         // Completion sound does not lock the UI.
         if (audioSource != null && completionSound != null)
@@ -435,7 +428,18 @@ public class LetterChoiceGame : MonoBehaviour
     // Intro
     public void ShowIntro()
     {
-        ShowScreen(introPanel);
+        ShowStage(LessonStage.Intro, introPanel);
+
+        if (sharedGamePanelUI != null)
+        {
+            sharedGamePanelUI.SetNavigationVisibility(
+                false,
+                false,
+                false
+            );
+
+            sharedGamePanelUI.SetCompletion(false);
+        }
     }
 
     public void BackToIntro()
@@ -474,7 +478,18 @@ public class LetterChoiceGame : MonoBehaviour
     // Quiz
     public void StartQuiz()
     {
-        ShowScreen(quizPanel);
+        ShowStage(LessonStage.Quiz, quizPanel);
+
+        if (sharedGamePanelUI != null)
+        {
+            sharedGamePanelUI.SetNavigationVisibility(
+                true,
+                true,
+                true
+            );
+
+            sharedGamePanelUI.SetCompletion(quizCompleted);
+        }
 
         if (!quizVisited)
         {
@@ -510,7 +525,18 @@ public class LetterChoiceGame : MonoBehaviour
         if (letterHuntPanel == null || letterHuntGame == null)
             return;
 
-        ShowScreen(letterHuntPanel);
+        ShowStage(LessonStage.LetterHunt, letterHuntPanel);
+
+        if (sharedGamePanelUI != null)
+        {
+            sharedGamePanelUI.SetNavigationVisibility(
+                true,
+                true,
+                true
+            );
+
+            sharedGamePanelUI.SetCompletion(letterHuntCompleted);
+        }
 
         if (!letterHuntVisited)
         {
@@ -527,12 +553,9 @@ public class LetterChoiceGame : MonoBehaviour
 
         StopSuccessSounds();
 
-        SetCompletionUI(
-            letterHuntNextButton,
-            letterHuntRetryButton,
-            letterHuntRewardBadge,
-            false
-        );
+        letterHuntCompleted = false;
+
+        SetCompletionUI(false);
 
         LetterData data = lesson.letters[currentLetterIndex];
         letterHuntGame.SetupGame(data);
@@ -540,12 +563,9 @@ public class LetterChoiceGame : MonoBehaviour
 
     private void OnLetterHuntCompleted()
     {
-        SetCompletionUI(
-            letterHuntNextButton,
-            letterHuntRetryButton,
-            letterHuntRewardBadge,
-            true
-        );
+        letterHuntCompleted = true;
+
+        SetCompletionUI(true);
 
         PlayCompletionOnly();
     }
@@ -577,7 +597,18 @@ public class LetterChoiceGame : MonoBehaviour
         if (pictureHuntPanel == null || pictureHuntGame == null)
             return;
 
-        ShowScreen(pictureHuntPanel);
+        ShowStage(LessonStage.PictureHunt, pictureHuntPanel);
+
+        if (sharedGamePanelUI != null)
+        {
+            sharedGamePanelUI.SetNavigationVisibility(
+                true,
+                true,
+                true
+            );
+
+            sharedGamePanelUI.SetCompletion(pictureHuntCompleted);
+        }
 
         if (!pictureHuntVisited)
         {
@@ -594,24 +625,19 @@ public class LetterChoiceGame : MonoBehaviour
 
         StopSuccessSounds();
 
-        SetCompletionUI(
-            pictureHuntNextButton,
-            pictureHuntRetryButton,
-            pictureHuntRewardBadge,
-            false
-        );
+        pictureHuntCompleted = false;
 
-        pictureHuntGame.SetupGame();
+        SetCompletionUI(false);
+
+        LetterData data = lesson.letters[currentLetterIndex];
+        pictureHuntGame.SetupGame(data, lesson.letters);
     }
 
     private void OnPictureHuntCompleted()
     {
-        SetCompletionUI(
-            pictureHuntNextButton,
-            pictureHuntRetryButton,
-            pictureHuntRewardBadge,
-            true
-        );
+        pictureHuntCompleted = true;
+
+        SetCompletionUI(true);
 
         PlayCompletionOnly();
     }
@@ -637,7 +663,19 @@ public class LetterChoiceGame : MonoBehaviour
         if (memoryMatchGame == null || miniGamePanel == null)
             return;
 
-        ShowScreen(miniGamePanel);
+        ShowStage(LessonStage.MemoryMatch, miniGamePanel);
+
+        if (sharedGamePanelUI != null)
+        {
+            sharedGamePanelUI.SetNavigationVisibility(
+                true,
+                true,
+                true
+            );
+
+            sharedGamePanelUI.SetCompletion(miniGameCompleted);
+        }
+
 
         if (!miniGameVisited)
         {
@@ -654,12 +692,9 @@ public class LetterChoiceGame : MonoBehaviour
 
         StopSuccessSounds();
 
-        SetCompletionUI(
-            miniGameNextButton,
-            miniGameRetryButton,
-            miniGameRewardBadge,
-            false
-        );
+        miniGameCompleted = false;
+
+        SetCompletionUI(false);
 
         LetterData data = lesson.letters[currentLetterIndex];
         memoryMatchGame.SetupGame(data);
@@ -667,12 +702,9 @@ public class LetterChoiceGame : MonoBehaviour
 
     private void OnMiniGameCompleted()
     {
-        SetCompletionUI(
-            miniGameNextButton,
-            miniGameRetryButton,
-            miniGameRewardBadge,
-            true
-        );
+        miniGameCompleted = true;
+
+        SetCompletionUI(true);
 
         PlayCompletionOnly();
     }
@@ -699,14 +731,6 @@ public class LetterChoiceGame : MonoBehaviour
         ShowIntro();
     }
 
-    // public void PlayPictureHuntInstruction()
-    // {
-    //     if (PictureHuntInstructionAudio == null || audioSource == null)
-    //         return;
-
-    //     audioSource.clip = PictureHuntInstructionAudio;
-    //     audioSource.Play();
-    // }
     public void PlayPictureHuntInstruction()
     {
         StartCoroutine(PlayPictureHuntInstructionRoutine());
@@ -728,5 +752,70 @@ public class LetterChoiceGame : MonoBehaviour
 
         if (inputLock != null)
             inputLock.Unlock();
+    }
+    public void SharedBack()
+    {
+        switch (currentStage)
+        {
+            case LessonStage.Quiz:
+                BackToIntro();
+                break;
+
+            case LessonStage.LetterHunt:
+                BackToQuiz();
+                break;
+
+            case LessonStage.PictureHunt:
+                BackToLetterHunt();
+                break;
+
+            case LessonStage.MemoryMatch:
+                BackToPictureHunt();
+                break;
+        }
+    }
+
+    public void SharedRetry()
+    {
+        switch (currentStage)
+        {
+            case LessonStage.Quiz:
+                RetryQuiz();
+                break;
+
+            case LessonStage.LetterHunt:
+                RetryLetterHunt();
+                break;
+
+            case LessonStage.PictureHunt:
+                RetryPictureHunt();
+                break;
+
+            case LessonStage.MemoryMatch:
+                RetryMiniGame();
+                break;
+        }
+    }
+
+    public void SharedNext()
+    {
+        switch (currentStage)
+        {
+            case LessonStage.Quiz:
+                NextQuestion();
+                break;
+
+            case LessonStage.LetterHunt:
+                ContinueAfterLetterHunt();
+                break;
+
+            case LessonStage.PictureHunt:
+                ContinueAfterPictureHunt();
+                break;
+
+            case LessonStage.MemoryMatch:
+                ContinueAfterMiniGame();
+                break;
+        }
     }
 }

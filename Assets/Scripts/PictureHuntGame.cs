@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,13 +6,6 @@ using UnityEngine.UI;
 
 public class PictureHuntGame : MonoBehaviour
 {
-    [Serializable]
-    public class PictureItem
-    {
-        public Sprite picture;
-        public AudioClip wordSound;
-    }
-
     [Serializable]
     public class PictureCard
     {
@@ -25,11 +17,6 @@ public class PictureHuntGame : MonoBehaviour
     [Header("Three cards in PictureHuntPanel")]
     [SerializeField] private PictureCard[] cards;
 
-    [Header("Pictures for the current lesson")]
-    [SerializeField] private PictureItem[] alefPictures;
-    [SerializeField] private PictureItem[] aaPictures;
-    [SerializeField] private PictureItem[] wrongPictures;
-
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip correctSound;
@@ -39,23 +26,59 @@ public class PictureHuntGame : MonoBehaviour
 
     public event Action Completed;
 
-    private readonly HashSet<int> foundCorrectAnswers = new HashSet<int>();
+    private readonly HashSet<int> foundCorrectAnswers =
+        new HashSet<int>();
 
     private bool[] correctAnswers;
     private bool finished;
     private bool checkingAnswer;
 
-    public void SetupGame()
+    public void SetupGame(
+        LetterData currentLetter,
+        LetterData[] allLetters)
     {
         StopAllCoroutines();
 
         if (cards == null || cards.Length != 3 ||
-            alefPictures == null || alefPictures.Length == 0 ||
-            aaPictures == null || aaPictures.Length == 0 ||
-            wrongPictures == null || wrongPictures.Length == 0)
+            currentLetter == null ||
+            allLetters == null ||
+            allLetters.Length == 0)
         {
             Debug.LogError(
-                "Picture Hunt: Assign three cards and all picture groups."
+                "Picture Hunt: Cards or lesson data are missing."
+            );
+            return;
+        }
+
+        List<ExampleData> correctCandidates =
+            GetValidExamples(currentLetter);
+
+        List<ExampleData> wrongCandidates =
+            new List<ExampleData>();
+
+        foreach (LetterData letter in allLetters)
+        {
+            if (letter == null || letter == currentLetter)
+                continue;
+
+            List<ExampleData> examples =
+                GetValidExamples(letter);
+
+            wrongCandidates.AddRange(examples);
+        }
+
+        if (correctCandidates.Count < 2)
+        {
+            Debug.LogError(
+                "Picture Hunt: The current letter needs at least two examples."
+            );
+            return;
+        }
+
+        if (wrongCandidates.Count == 0)
+        {
+            Debug.LogError(
+                "Picture Hunt: No wrong-picture candidates were found."
             );
             return;
         }
@@ -64,56 +87,97 @@ public class PictureHuntGame : MonoBehaviour
         checkingAnswer = false;
         foundCorrectAnswers.Clear();
 
-        // One ا picture, one آ picture, and one wrong picture.
-        var selected = new List<(PictureItem item, bool correct)>
+        int firstCorrectIndex =
+            UnityEngine.Random.Range(0, correctCandidates.Count);
+
+        ExampleData firstCorrect =
+            correctCandidates[firstCorrectIndex];
+
+        correctCandidates.RemoveAt(firstCorrectIndex);
+
+        ExampleData secondCorrect =
+            PickRandom(correctCandidates);
+
+        ExampleData wrongExample =
+            PickRandom(wrongCandidates);
+
+        var selected = new List<(ExampleData item, bool correct)>
         {
-            (PickRandom(alefPictures), true),
-            (PickRandom(aaPictures), true),
-            (PickRandom(wrongPictures), false)
+            (firstCorrect, true),
+            (secondCorrect, true),
+            (wrongExample, false)
         };
 
-        // Randomize card positions.
-        for (int i = selected.Count - 1; i > 0; i--)
-        {
-            int j = UnityEngine.Random.Range(0, i + 1);
-
-            (selected[i], selected[j]) =
-                (selected[j], selected[i]);
-        }
+        Shuffle(selected);
 
         correctAnswers = new bool[cards.Length];
 
         for (int i = 0; i < cards.Length; i++)
         {
             int cardIndex = i;
-            PictureItem item = selected[i].item;
+            ExampleData item = selected[i].item;
 
             correctAnswers[i] = selected[i].correct;
 
-            cards[i].image.sprite = item.picture;
+            cards[i].image.sprite = item.image;
             cards[i].image.color = Color.white;
 
-            // Clear the check mark and red border on every card.
             cards[i].feedback.ResetVisual();
 
-            // Keep disabled cards fully visible.
-            cards[i].button.transition = Selectable.Transition.None;
+            cards[i].button.transition =
+                Selectable.Transition.None;
 
             cards[i].button.onClick.RemoveAllListeners();
             cards[i].button.interactable = true;
 
             cards[i].button.onClick.AddListener(
-                () => SelectPicture(cardIndex, item.wordSound)
+                () => SelectPicture(cardIndex, item.audio)
             );
         }
     }
 
-    private PictureItem PickRandom(PictureItem[] items)
+    private List<ExampleData> GetValidExamples(
+        LetterData letter)
     {
-        return items[UnityEngine.Random.Range(0, items.Length)];
+        List<ExampleData> validExamples =
+            new List<ExampleData>();
+
+        if (letter == null || letter.examples == null)
+            return validExamples;
+
+        foreach (ExampleData example in letter.examples)
+        {
+            if (example != null && example.image != null)
+                validExamples.Add(example);
+        }
+
+        return validExamples;
     }
 
-    private void SelectPicture(int index, AudioClip wordSound)
+    private ExampleData PickRandom(
+        List<ExampleData> items)
+    {
+        return items[
+            UnityEngine.Random.Range(0, items.Count)
+        ];
+    }
+
+    private void Shuffle<T>(List<T> items)
+    {
+        for (int i = items.Count - 1; i > 0; i--)
+        {
+            int randomIndex =
+                UnityEngine.Random.Range(0, i + 1);
+
+            T temp = items[i];
+            items[i] = items[randomIndex];
+            items[randomIndex] = temp;
+        }
+    }
+
+    private void SelectPicture(
+        int index,
+        AudioClip wordSound)
     {
         if (finished ||
             checkingAnswer ||
@@ -122,22 +186,27 @@ public class PictureHuntGame : MonoBehaviour
             return;
         }
 
-        StartCoroutine(CheckPicture(index, wordSound));
+        StartCoroutine(
+            CheckPicture(index, wordSound)
+        );
     }
 
-    private IEnumerator CheckPicture(int index, AudioClip wordSound)
+    private IEnumerator CheckPicture(
+        int index,
+        AudioClip wordSound)
     {
         checkingAnswer = true;
 
-        bool usingGameAudioManager = gameAudioManager != null;
+        bool usingGameAudioManager =
+            gameAudioManager != null;
 
         if (!usingGameAudioManager && inputLock != null)
             inputLock.Lock();
 
         bool isCorrect = correctAnswers[index];
-        QuizChoiceFeedback feedback = cards[index].feedback;
+        QuizChoiceFeedback feedback =
+            cards[index].feedback;
 
-        // Show visual feedback immediately.
         if (isCorrect)
         {
             foundCorrectAnswers.Add(index);
@@ -149,17 +218,16 @@ public class PictureHuntGame : MonoBehaviour
             feedback.ShowWrong();
         }
 
-        AudioClip feedbackSound = isCorrect
-            ? correctSound
-            : wrongSound;
+        AudioClip feedbackSound =
+            isCorrect ? correctSound : wrongSound;
 
         if (usingGameAudioManager)
         {
             gameAudioManager.PlayLockedSequence(
                 new AudioClip[]
                 {
-                feedbackSound,
-                wordSound
+                    feedbackSound,
+                    wordSound
                 }
             );
 
@@ -169,24 +237,32 @@ public class PictureHuntGame : MonoBehaviour
         }
         else
         {
-            // Fallback using the old AudioSource.
-            if (audioSource != null && feedbackSound != null)
+            if (audioSource != null &&
+                feedbackSound != null)
             {
                 audioSource.PlayOneShot(feedbackSound);
-                yield return new WaitForSeconds(feedbackSound.length);
+
+                yield return new WaitForSeconds(
+                    feedbackSound.length
+                );
             }
 
-            if (audioSource != null && wordSound != null)
+            if (audioSource != null &&
+                wordSound != null)
             {
                 audioSource.PlayOneShot(wordSound);
-                yield return new WaitForSeconds(wordSound.length);
+
+                yield return new WaitForSeconds(
+                    wordSound.length
+                );
             }
         }
 
         if (!isCorrect)
             feedback.ResetVisual();
 
-        if (isCorrect && foundCorrectAnswers.Count == 2)
+        if (isCorrect &&
+            foundCorrectAnswers.Count == 2)
         {
             finished = true;
 
@@ -195,8 +271,11 @@ public class PictureHuntGame : MonoBehaviour
 
             checkingAnswer = false;
 
-            if (!usingGameAudioManager && inputLock != null)
+            if (!usingGameAudioManager &&
+                inputLock != null)
+            {
                 inputLock.Unlock();
+            }
 
             Completed?.Invoke();
             yield break;
@@ -204,7 +283,10 @@ public class PictureHuntGame : MonoBehaviour
 
         checkingAnswer = false;
 
-        if (!usingGameAudioManager && inputLock != null)
+        if (!usingGameAudioManager &&
+            inputLock != null)
+        {
             inputLock.Unlock();
+        }
     }
 }
