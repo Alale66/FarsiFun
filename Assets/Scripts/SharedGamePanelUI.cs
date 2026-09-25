@@ -7,7 +7,8 @@ public enum LessonStage
     Quiz,
     LetterHunt,
     PictureHunt,
-    MemoryMatch
+    MemoryMatch,
+    LetterCatch
 }
 
 public class SharedGamePanelUI : MonoBehaviour

@@ -17,6 +17,7 @@ public class LetterChoiceGame : MonoBehaviour
     [SerializeField] private GameObject letterHuntPanel;
     [SerializeField] private GameObject miniGamePanel;
     [SerializeField] private GameObject pictureHuntPanel;
+    [SerializeField] private GameObject letterCatchPanel;
 
     [Header("Intro UI")]
     [SerializeField] private TMP_Text[] exampleTexts;
@@ -40,6 +41,9 @@ public class LetterChoiceGame : MonoBehaviour
 
     [Header("Mini Game UI")]
     [SerializeField] private MemoryMatchGame memoryMatchGame;
+
+    [Header("Bonus Game UI")]
+    [SerializeField] private LetterCatchGame letterCatchGame;
 
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
@@ -82,6 +86,9 @@ public class LetterChoiceGame : MonoBehaviour
         if (pictureHuntGame != null)
             pictureHuntGame.Completed += OnPictureHuntCompleted;
 
+        if (letterCatchGame != null)
+            letterCatchGame.Completed += OnLetterCatchCompleted;
+
         LoadLetter(0);
         ShowIntro();
     }
@@ -96,6 +103,9 @@ public class LetterChoiceGame : MonoBehaviour
 
         if (pictureHuntGame != null)
             pictureHuntGame.Completed -= OnPictureHuntCompleted;
+
+        if (letterCatchGame != null)
+            letterCatchGame.Completed -= OnLetterCatchCompleted;
     }
 
     // Screen visibility is managed in one place.
@@ -117,6 +127,11 @@ public class LetterChoiceGame : MonoBehaviour
 
         if (miniGamePanel != null)
             miniGamePanel.SetActive(miniGamePanel == targetPanel);
+
+        if (letterCatchPanel != null)
+            letterCatchPanel.SetActive(
+                letterCatchPanel == targetPanel
+            );
     }
 
     private void ShowStage(LessonStage stage, GameObject targetPanel)
@@ -818,6 +833,30 @@ public class LetterChoiceGame : MonoBehaviour
     }
 
     public void ContinueAfterMiniGame()
+    {
+        StartLetterCatch();
+    }
+
+    public void StartLetterCatch()
+    {
+        if (letterCatchPanel == null ||
+            letterCatchGame == null)
+        {
+            return;
+        }
+
+        ShowStage(
+            LessonStage.LetterCatch,
+            letterCatchPanel
+        );
+
+        LetterData data =
+            lesson.letters[currentLetterIndex];
+
+        letterCatchGame.SetupGame(data);
+    }
+
+    private void OnLetterCatchCompleted()
     {
         int nextIndex = currentLetterIndex + 1;
 
