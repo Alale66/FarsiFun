@@ -12,6 +12,7 @@ public class MemoryMatchGame : MonoBehaviour
     [SerializeField] private AudioClip wrongSound;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private GameAudioManager gameAudioManager;
+    [SerializeField, Min(0f)] private float matchedWordPause = 0.25f;
 
     public event Action Completed;
 
@@ -124,13 +125,56 @@ public class MemoryMatchGame : MonoBehaviour
             first.ShowCorrect();
             second.ShowCorrect();
 
-            if (gameAudioManager != null && correctSound != null)
+            AudioClip matchedWordAudio =
+                first.Example != null
+                    ? first.Example.audio
+                    : null;
+
+            if (gameAudioManager != null)
             {
-                gameAudioManager.PlayLocked(correctSound);
+                AudioClip[] sequence =
+                {
+            correctSound,
+            matchedWordAudio
+        };
+
+                gameAudioManager.PlayLockedSequence(
+                    sequence,
+                    matchedWordPause
+                );
+
+                yield return new WaitWhile(
+                    () => gameAudioManager.IsPlayingLocked
+                );
             }
-            else if (audioSource != null && correctSound != null)
+            else if (audioSource != null)
             {
-                audioSource.PlayOneShot(correctSound);
+                if (correctSound != null)
+                {
+                    audioSource.PlayOneShot(correctSound);
+
+                    yield return new WaitForSeconds(
+                        correctSound.length
+                    );
+                }
+
+                if (correctSound != null &&
+                    matchedWordAudio != null &&
+                    matchedWordPause > 0f)
+                {
+                    yield return new WaitForSeconds(
+                        matchedWordPause
+                    );
+                }
+
+                if (matchedWordAudio != null)
+                {
+                    audioSource.PlayOneShot(matchedWordAudio);
+
+                    yield return new WaitForSeconds(
+                        matchedWordAudio.length
+                    );
+                }
             }
         }
         else
@@ -159,18 +203,6 @@ public class MemoryMatchGame : MonoBehaviour
 
         if (matchedCards.Count == cards.Length)
         {
-            // تکمیل بازی باید بعد از تمام‌شدن صدای جفت آخر اتفاق بیفتد.
-            if (isMatch && gameAudioManager != null && correctSound != null)
-            {
-                yield return new WaitWhile(
-                    () => gameAudioManager.IsPlayingLocked
-                );
-            }
-            else if (isMatch && audioSource != null && correctSound != null)
-            {
-                yield return new WaitForSeconds(correctSound.length);
-            }
-
             Completed?.Invoke();
         }
     }
