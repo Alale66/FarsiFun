@@ -15,6 +15,8 @@ public class AmbientAudioController : MonoBehaviour
     [SerializeField]
     private float volumeChangeSpeed = 0.15f;
 
+    private bool mutedForBonusGame;
+
     private void Awake()
     {
         if (ambientSource == null)
@@ -42,14 +44,43 @@ public class AmbientAudioController : MonoBehaviour
             gameAudioManager != null &&
             gameAudioManager.IsPlayingLocked;
 
-        float targetVolume = shouldDuck
-            ? duckedVolume
-            : normalVolume;
+        float targetVolume;
+
+        if (mutedForBonusGame)
+        {
+            targetVolume = 0f;
+        }
+        else
+        {
+            targetVolume = shouldDuck
+                ? duckedVolume
+                : normalVolume;
+        }
 
         ambientSource.volume = Mathf.MoveTowards(
             ambientSource.volume,
             targetVolume,
             volumeChangeSpeed * Time.unscaledDeltaTime
         );
+    }
+
+    public void SetMutedForBonusGame(bool muted)
+    {
+        mutedForBonusGame = muted;
+
+        if (ambientSource == null)
+            return;
+
+        if (muted)
+        {
+            ambientSource.volume = 0f;
+        }
+        else
+        {
+            if (!ambientSource.isPlaying)
+                ambientSource.Play();
+
+            ambientSource.volume = normalVolume;
+        }
     }
 }

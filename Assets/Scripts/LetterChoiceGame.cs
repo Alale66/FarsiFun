@@ -58,6 +58,7 @@ public class LetterChoiceGame : MonoBehaviour
     [SerializeField] private UIInputLock inputLock;
     [SerializeField] private GameAudioManager gameAudioManager;
     [SerializeField, Min(0f)] private float instructionLetterPause = 0.35f;
+
     private LessonStage currentStage;
     private int currentLetterIndex;
     private readonly List<ExampleData> currentIntroExamples =
