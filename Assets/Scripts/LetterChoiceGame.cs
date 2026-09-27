@@ -25,6 +25,7 @@ public class LetterChoiceGame : MonoBehaviour
     [SerializeField] private Button[] exampleButtons;
     [SerializeField] private TMP_Text letterTitleText;
     [SerializeField] private LetterFormSlot[] letterFormSlots;
+    [SerializeField] private Button[] introButtonsToLock;
 
     [Header("Quiz UI")]
     [SerializeField] private TMP_Text feedbackText;
@@ -75,6 +76,7 @@ public class LetterChoiceGame : MonoBehaviour
 
     private Coroutine wrongAnswerRoutine;
     private Coroutine successSoundRoutine;
+    private Coroutine introAudioRoutine;
 
     private void Start()
     {
@@ -92,6 +94,7 @@ public class LetterChoiceGame : MonoBehaviour
 
         LoadLetter(0);
         ShowIntro();
+        PlayIntroLetterAudio();
     }
 
     private void OnDestroy()
@@ -523,6 +526,78 @@ public class LetterChoiceGame : MonoBehaviour
         }
     }
 
+    private void PlayIntroLetterAudio()
+    {
+        if (introAudioRoutine != null)
+        {
+            StopCoroutine(introAudioRoutine);
+            introAudioRoutine = null;
+        }
+
+        introAudioRoutine = StartCoroutine(
+            PlayIntroLetterAudioSequence()
+        );
+    }
+
+    private IEnumerator PlayIntroLetterAudioSequence()
+    {
+        SetIntroButtonsInteractable(false);
+
+        if (lesson == null ||
+            lesson.letters == null ||
+            currentLetterIndex < 0 ||
+            currentLetterIndex >= lesson.letters.Length ||
+            gameAudioManager == null)
+        {
+            SetIntroButtonsInteractable(true);
+            introAudioRoutine = null;
+            yield break;
+        }
+
+        LetterData data =
+            lesson.letters[currentLetterIndex];
+
+        List<AudioClip> clips =
+            new List<AudioClip>();
+
+        if (data.letterNameAudio != null)
+            clips.Add(data.letterNameAudio);
+
+        if (data.letterSoundAudio != null)
+            clips.Add(data.letterSoundAudio);
+
+        if (clips.Count > 0)
+        {
+            gameAudioManager.PlayLockedSequence(
+                clips.ToArray(),
+                instructionLetterPause
+            );
+
+            yield return null;
+
+            yield return new WaitWhile(
+                () => gameAudioManager != null &&
+                      gameAudioManager.IsPlayingLocked
+            );
+        }
+
+        SetIntroButtonsInteractable(true);
+        introAudioRoutine = null;
+    }
+
+    private void SetIntroButtonsInteractable(
+        bool interactable)
+    {
+        if (introButtonsToLock == null)
+            return;
+
+        foreach (Button button in introButtonsToLock)
+        {
+            if (button != null)
+                button.interactable = interactable;
+        }
+    }
+
     public void BackToIntro()
     {
         ShowIntro();
@@ -866,6 +941,7 @@ public class LetterChoiceGame : MonoBehaviour
 
         LoadLetter(nextIndex);
         ShowIntro();
+        PlayIntroLetterAudio();
     }
 
     public void PlayPictureHuntInstruction()

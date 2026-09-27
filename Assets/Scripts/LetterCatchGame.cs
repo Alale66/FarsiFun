@@ -76,6 +76,23 @@ public class LetterCatchGame : MonoBehaviour
     [SerializeField]
     private AmbientAudioController ambientAudioController;
 
+    [Header("Instruction Screen")]
+    [SerializeField] private GameObject instructionPanel;
+    [SerializeField] private AudioClip instructionVoice;
+
+    [SerializeField, Min(0f)]
+    private float instructionEndPause = 0.25f;
+
+    [Header("Score Fly Effect")]
+    [SerializeField] private ScoreFlyToken scoreFlyTokenPrefab;
+    [SerializeField] private RectTransform scoreFlyLayer;
+    [SerializeField] private RectTransform scoreTarget;
+
+    [Header("Wrong Catch Feedback")]
+    [SerializeField] private WrongCatchFeedback wrongCatchFeedback;
+
+    private int pendingScoreAnimations;
+
     public event Action Completed;
 
     private readonly HashSet<FallingLetter> activeLetters =
@@ -88,10 +105,13 @@ public class LetterCatchGame : MonoBehaviour
     private int caughtTargetCount;
     private bool isRunning;
     private bool isCompleting;
+    private bool isPreparingGame;
+
 
     public void SetupGame(LetterData letterData)
     {
         StopGame();
+        pendingScoreAnimations = 0;
 
         if (resultPanel != null)
             resultPanel.SetActive(false);
@@ -101,6 +121,9 @@ public class LetterCatchGame : MonoBehaviour
 
         if (completePanel != null)
             completePanel.SetActive(false);
+
+        if (instructionPanel != null)
+            instructionPanel.SetActive(false);
 
         if (letterData == null ||
             alphabetData == null ||
@@ -138,6 +161,7 @@ public class LetterCatchGame : MonoBehaviour
         caughtTargetCount = 0;
         isRunning = false;
         isCompleting = false;
+        isPreparingGame = false;
 
         if (ambientAudioController != null)
         {
@@ -178,37 +202,36 @@ public class LetterCatchGame : MonoBehaviour
     public void BeginGame()
     {
         if (isRunning ||
-       isCompleting ||
-       string.IsNullOrWhiteSpace(targetLetter))
+            isCompleting ||
+            isPreparingGame ||
+            string.IsNullOrWhiteSpace(targetLetter))
         {
             return;
         }
+
+        isPreparingGame = true;
 
         StopPanelVoice();
 
         if (startPanel != null)
             startPanel.SetActive(false);
 
-        SetGameplayUIVisible(true);
+        SetGameplayUIVisible(false);
 
-        if (player != null)
-        {
-            player.gameObject.SetActive(true);
-            player.enabled = true;
-            player.ResetPosition();
-        }
+        // حرف هدف هنگام توضیح دیده شود،
+        // ولی شمارنده هنوز مخفی باشد.
+        if (targetDisplay != null)
+            targetDisplay.SetActive(true);
 
-        if (musicSource != null)
-        {
-            musicSource.loop = true;
-            musicSource.time = 0f;
-            musicSource.Play();
-        }
+        if (progressDisplay != null)
+            progressDisplay.SetActive(false);
 
-        isRunning = true;
+        if (instructionPanel != null)
+            instructionPanel.SetActive(true);
 
-        spawnRoutine =
-            StartCoroutine(SpawnLetters());
+        panelVoiceRoutine = StartCoroutine(
+            PlayInstructionThenStart()
+        );
     }
 
     private void SetGameplayUIVisible(bool visible)
@@ -355,34 +378,95 @@ public class LetterCatchGame : MonoBehaviour
 
     private void OnLetterCaught(FallingLetter fallingLetter)
     {
-        if (fallingLetter == null)
+        if (fallingLetter == null ||
+            !isRunning ||
+            isCompleting)
+        {
             return;
+        }
 
         activeLetters.Remove(fallingLetter);
 
-        // بعد از رسیدن به امتیاز نهایی، برخورد دیگری حساب نشود.
-        if (!isRunning || isCompleting)
-            return;
+        string caughtLetter = fallingLetter.LetterValue;
+        Vector3 caughtPosition =
+            fallingLetter.transform.position;
 
-        if (IsTargetLetter(fallingLetter.LetterValue))
+        if (IsTargetLetter(caughtLetter))
         {
-            caughtTargetCount = Mathf.Min(
-                caughtTargetCount + 1,
-                requiredTargetCount
-            );
+            // اجازه نده بیشتر از تعداد لازم امتیاز رزرو شود.
+            if (caughtTargetCount + pendingScoreAnimations >=
+                requiredTargetCount)
+            {
+                return;
+            }
 
-            UpdateProgress();
             PlaySound(correctSound);
 
-            if (caughtTargetCount >= requiredTargetCount)
-            {
-                StartCoroutine(CompleteGame());
-            }
+            StartScoreFly(
+                caughtLetter,
+                caughtPosition
+            );
         }
         else
         {
             PlaySound(wrongSound);
+
+            if (wrongCatchFeedback != null)
+                wrongCatchFeedback.Play();
         }
+    }
+
+    private void StartScoreFly(
+    string letter,
+    Vector3 startPosition)
+    {
+        if (scoreFlyTokenPrefab == null ||
+            scoreFlyLayer == null ||
+            scoreTarget == null)
+        {
+            AddScore();
+            return;
+        }
+
+        pendingScoreAnimations++;
+
+        ScoreFlyToken token = Instantiate(
+            scoreFlyTokenPrefab,
+            scoreFlyLayer
+        );
+
+        token.Play(
+            letter,
+            startPosition,
+            scoreTarget,
+            OnScoreTokenArrived
+        );
+    }
+
+    private void OnScoreTokenArrived()
+    {
+        pendingScoreAnimations = Mathf.Max(
+            0,
+            pendingScoreAnimations - 1
+        );
+
+        if (!isRunning || isCompleting)
+            return;
+
+        AddScore();
+    }
+
+    private void AddScore()
+    {
+        caughtTargetCount = Mathf.Min(
+            caughtTargetCount + 1,
+            requiredTargetCount
+        );
+
+        UpdateProgress();
+
+        if (caughtTargetCount >= requiredTargetCount)
+            StartCoroutine(CompleteGame());
     }
 
     private void OnLetterMissed(
@@ -635,6 +719,7 @@ public class LetterCatchGame : MonoBehaviour
     {
         isRunning = false;
         isCompleting = false;
+        isPreparingGame = false;
 
         if (spawnRoutine != null)
         {
@@ -644,6 +729,7 @@ public class LetterCatchGame : MonoBehaviour
 
         StopAllCoroutines();
         ClearActiveLetters();
+        ClearScoreFlyTokens();
 
         if (startPanel != null)
             startPanel.SetActive(false);
@@ -664,6 +750,9 @@ public class LetterCatchGame : MonoBehaviour
 
         if (resultPanel != null)
             resultPanel.SetActive(false);
+
+        if (instructionPanel != null)
+            instructionPanel.SetActive(false);
 
         if (resultCard != null)
             resultCard.localScale = Vector3.one;
@@ -763,5 +852,77 @@ public class LetterCatchGame : MonoBehaviour
 
         if (continueButton != null)
             continueButton.interactable = true;
+    }
+
+    private IEnumerator PlayInstructionThenStart()
+    {
+        if (instructionVoice != null &&
+            voiceSource != null)
+        {
+            voiceSource.clip = instructionVoice;
+            voiceSource.loop = false;
+            voiceSource.Play();
+
+            while (voiceSource.isPlaying)
+                yield return null;
+        }
+
+        panelVoiceRoutine = null;
+
+        if (instructionPanel != null)
+            instructionPanel.SetActive(false);
+
+        if (instructionEndPause > 0f)
+        {
+            yield return new WaitForSecondsRealtime(
+                instructionEndPause
+            );
+        }
+
+        StartGameplay();
+    }
+
+    private void StartGameplay()
+    {
+        if (!isPreparingGame)
+            return;
+
+        isPreparingGame = false;
+
+        SetGameplayUIVisible(true);
+
+        if (player != null)
+        {
+            player.gameObject.SetActive(true);
+            player.enabled = true;
+            player.ResetPosition();
+        }
+
+        if (musicSource != null)
+        {
+            musicSource.loop = true;
+            musicSource.time = 0f;
+            musicSource.Play();
+        }
+
+        isRunning = true;
+        spawnRoutine = StartCoroutine(SpawnLetters());
+    }
+
+    private void ClearScoreFlyTokens()
+    {
+        pendingScoreAnimations = 0;
+
+        if (scoreFlyLayer == null)
+            return;
+
+        for (int i = scoreFlyLayer.childCount - 1;
+             i >= 0;
+             i--)
+        {
+            Destroy(
+                scoreFlyLayer.GetChild(i).gameObject
+            );
+        }
     }
 }
