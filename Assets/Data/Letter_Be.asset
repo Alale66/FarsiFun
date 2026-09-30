@@ -23,6 +23,9 @@ MonoBehaviour:
   - "\u062A"
   - "\u067E"
   correctLetter: "\u0628"
+  matchForms:
+  - "\u0628\u0640"
+  - "\u0628"
   letterName: "\u0628"
   examples:
   - word: "\u0628\u0627\u062F"

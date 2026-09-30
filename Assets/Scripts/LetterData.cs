@@ -28,6 +28,10 @@ public class LetterData : ScriptableObject
 
     public string correctLetter;
 
+    [Header("Match 3")]
+    [Tooltip("Different displayed forms that count as the same letter family.")]
+    public string[] matchForms;
+
     [Header("Intro")]
     public string letterName;
 
