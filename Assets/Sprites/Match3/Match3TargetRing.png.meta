@@ -5,6 +5,9 @@ TextureImporter:
   - first:
       213: 221308286540541057
     second: Match3TargetRing_0
+  - first:
+      213: -1773038660939989105
+    second: Match3TargetRing_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -118,10 +121,10 @@ TextureImporter:
       name: Match3TargetRing_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1197
-        height: 1250
+        x: 786
+        y: 1227
+        width: 21
+        height: 11
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,6 +135,28 @@ TextureImporter:
       bones: []
       spriteID: 18c691dc6be321300800000000000000
       internalID: 221308286540541057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Match3TargetRing_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 31
+        width: 1191
+        height: 1192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8f33a95bb6e467e0800000000000000
+      internalID: -1773038660939989105
       vertices: []
       indices: 
       edges: []
@@ -151,6 +176,7 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       Match3TargetRing_0: 221308286540541057
+      Match3TargetRing_1: -1773038660939989105
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

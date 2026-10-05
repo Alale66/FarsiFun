@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
-public class Match3Game : MonoBehaviour
+public class Match3Game : BonusGameBase
 {
     private const int RowCount = 6;
     private const int ColumnCount = 6;
@@ -17,7 +17,6 @@ public class Match3Game : MonoBehaviour
 
     [Header("Target Display")]
     [SerializeField] private TMP_Text targetDisplayText;
-    [SerializeField] private Image targetDisplayImage;
     [Header("Target Progress")]
     [SerializeField] private GameObject[] progressMarkers;
     [SerializeField] private GameObject closedChest;
@@ -26,6 +25,16 @@ public class Match3Game : MonoBehaviour
     [SerializeField, Min(1)]
     private int requiredTargetCount = 8;
 
+    [Header("Instructions")]
+    [SerializeField]
+    private AudioClip instructionVoice;
+
+    [SerializeField]
+    private GameAudioManager gameAudioManager;
+
+    [SerializeField, Min(0f)]
+    private float instructionFallbackDuration = 2.5f;
+
     [Header("Match Feedback")]
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip correctSound;
@@ -33,6 +42,10 @@ public class Match3Game : MonoBehaviour
 
     [SerializeField, Min(0f)]
     private float matchFeedbackDuration = 0.55f;
+    [SerializeField, Min(0.05f)]
+    private float matchFadeDuration = 0.25f;
+    [SerializeField, Min(0.05f)]
+    private float tileFallDuration = 0.35f;
 
     [Header("Completion")]
     [SerializeField] private AudioClip completionSound;
@@ -64,6 +77,8 @@ public class Match3Game : MonoBehaviour
     private bool isResolving;
     private int collectedTargetCount;
     private bool gameCompleted;
+    private bool isPreparingGame;
+    private bool isGameplayActive;
 
     private void Start()
     {
@@ -71,7 +86,7 @@ public class Match3Game : MonoBehaviour
             SetupGame(testLesson, testLetterIndex);
     }
 
-    public void SetupGame(
+    public override void SetupGame(
         LessonData lesson,
         int currentLetterIndex)
     {
@@ -121,6 +136,9 @@ public class Match3Game : MonoBehaviour
         familyColors.Clear();
         selectedTile = null;
         gameCompleted = false;
+        isPreparingGame = false;
+        isGameplayActive = false;
+
         if (openChest != null)
             openChest.transform.localScale = Vector3.one;
         collectedTargetCount = 0;
@@ -143,6 +161,11 @@ public class Match3Game : MonoBehaviour
         AssignFamilyColors();
         UpdateTargetDisplay();
         BuildBoard();
+        SetBoardInteractable(false);
+
+        // Keep local Match-3 visuals hidden while the shared
+        // bonus-game start panel is visible.
+        ShowWaitingState();
     }
 
     private void BuildRoundFamilies(
@@ -278,12 +301,6 @@ public class Match3Game : MonoBehaviour
     {
         List<Color> colors = new List<Color>
         {
-        //     new Color32(15, 145, 143, 255),  // Turquoise
-        //     new Color32(48, 133, 194, 255),  // Bright blue
-        //     new Color32(10, 139, 108, 255),  // Emerald green
-        //     new Color32(237, 79, 65, 255),   // Coral red
-        //     new Color32(137, 67, 143, 255),  // Playful purple
-        //     new Color32(244, 166, 24, 255)   // Golden yellow
         new Color32(12, 145, 127, 255),  // Green turquoise
         new Color32(48, 133, 194, 255),  // Blue
         new Color32(237, 79, 65, 255),   // Red coral
@@ -307,12 +324,6 @@ public class Match3Game : MonoBehaviour
         {
             targetDisplayText.text =
                 GetTargetDisplayValue(targetFamily);
-        }
-
-        if (targetDisplayImage != null)
-        {
-            targetDisplayImage.color =
-                familyColors[targetFamily];
         }
     }
 
@@ -393,62 +404,39 @@ public class Match3Game : MonoBehaviour
         return candidates[randomIndex];
     }
 
+    /// <summary>
+    /// Returns a random valid displayed form for a letter family.
+    /// </summary>
     private string GetRandomDisplayedForm(
         LetterData family)
     {
-        List<string> forms = GetValidForms(family);
+        if (family == null)
+            return "؟";
 
-        int randomIndex = Random.Range(
-            0,
-            forms.Count
-        );
+        string displayedForm =
+            family.GetRandomGameForm();
 
-        return forms[randomIndex];
+        return string.IsNullOrWhiteSpace(displayedForm)
+            ? "؟"
+            : displayedForm;
     }
 
+    /// <summary>
+    /// Returns the shared game label for the target
+    /// letter family.
+    /// </summary>
     private string GetTargetDisplayValue(
         LetterData family)
     {
-        List<string> forms = GetValidForms(family);
+        if (family == null)
+            return "؟";
 
-        return string.Join("  ", forms);
-    }
+        string displayValue =
+            family.GetGameDisplayText();
 
-    private List<string> GetValidForms(
-        LetterData family)
-    {
-        List<string> forms = new List<string>();
-
-        if (family.matchForms != null)
-        {
-            for (int i = 0; i < family.matchForms.Length; i++)
-            {
-                string form = family.matchForms[i];
-
-                if (!string.IsNullOrWhiteSpace(form) &&
-                    !forms.Contains(form))
-                {
-                    forms.Add(form);
-                }
-            }
-        }
-
-        if (forms.Count == 0 &&
-            !string.IsNullOrWhiteSpace(family.correctLetter))
-        {
-            forms.Add(family.correctLetter);
-        }
-
-        if (forms.Count == 0 &&
-            !string.IsNullOrWhiteSpace(family.targetLetter))
-        {
-            forms.Add(family.targetLetter);
-        }
-
-        if (forms.Count == 0)
-            forms.Add("؟");
-
-        return forms;
+        return string.IsNullOrWhiteSpace(displayValue)
+            ? "؟"
+            : displayValue;
     }
 
     private string GetFamilyId(LetterData family)
@@ -491,12 +479,15 @@ public class Match3Game : MonoBehaviour
 
     private void OnTileClicked(Match3TileView tile)
     {
-        if (tile == null || isResolving || gameCompleted)
+        if (tile == null ||
+            !isGameplayActive ||
+            isResolving ||
+            gameCompleted)
         {
             return;
         }
 
-        // کلیک دوباره روی همان خانه، انتخاب را لغو می‌کند.
+        // Clicking the selected tile again cancels the selection.
         if (selectedTile == tile)
         {
             selectedTile.SetSelected(false);
@@ -504,7 +495,7 @@ public class Match3Game : MonoBehaviour
             return;
         }
 
-        // اولین خانه انتخاب می‌شود.
+        // Select the first tile.
         if (selectedTile == null)
         {
             selectedTile = tile;
@@ -517,8 +508,8 @@ public class Match3Game : MonoBehaviour
         firstTile.SetSelected(false);
         selectedTile = null;
 
-        // اگر دو خانه همسایه نباشند،
-        // خانه دوم به‌عنوان انتخاب جدید باقی می‌ماند.
+        // If the tiles are not adjacent,
+        // keep the second tile as the new selection.
         if (!AreAdjacent(firstTile, tile))
         {
             selectedTile = tile;
@@ -717,9 +708,7 @@ public class Match3Game : MonoBehaviour
 
             PlaySound(correctSound);
 
-            yield return new WaitForSeconds(
-                matchFeedbackDuration
-            );
+            yield return StartCoroutine(FadeMatchedTiles(matches));
 
             foreach (Match3TileView matchedTile
                      in matches)
@@ -727,10 +716,7 @@ public class Match3Game : MonoBehaviour
                 matchedTile.HideMatchFeedback();
             }
 
-            RefillMatchedTiles(matches);
-
-            // یک فریم صبر می‌کنیم تا Grid به‌روزرسانی شود.
-            yield return null;
+            yield return StartCoroutine(AnimateTileFall(matches));
             if (reachedGoal)
             {
                 gameCompleted = true;
@@ -757,9 +743,243 @@ public class Match3Game : MonoBehaviour
         isResolving = false;
     }
 
-    private void RefillMatchedTiles(
-        HashSet<Match3TileView> matches)
+    private IEnumerator FadeMatchedTiles(
+    HashSet<Match3TileView> matches)
     {
+        float holdDuration = Mathf.Max(
+            0f,
+            matchFeedbackDuration -
+            matchFadeDuration
+        );
+
+        if (holdDuration > 0f)
+        {
+            yield return new WaitForSeconds(
+                holdDuration
+            );
+        }
+
+        float elapsed = 0f;
+
+        while (elapsed < matchFadeDuration)
+        {
+            elapsed += Time.unscaledDeltaTime;
+
+            float progress = Mathf.Clamp01(
+                elapsed / matchFadeDuration
+            );
+
+            float alpha = Mathf.Lerp(
+                1f,
+                0f,
+                progress
+            );
+
+            foreach (Match3TileView matchedTile
+                     in matches)
+            {
+                matchedTile.SetVisualAlpha(alpha);
+            }
+
+            yield return null;
+        }
+
+        foreach (Match3TileView matchedTile
+                 in matches)
+        {
+            matchedTile.SetVisualAlpha(0f);
+        }
+    }
+
+    private IEnumerator AnimateTileFall(
+    HashSet<Match3TileView> matches)
+    {
+        Dictionary<Match3TileView, Vector2>
+            previousPositions =
+                new Dictionary<
+                    Match3TileView,
+                    Vector2
+                >();
+
+        // Store the current tile positions before changing the board.
+        for (int row = 0; row < RowCount; row++)
+        {
+            for (int column = 0;
+                 column < ColumnCount;
+                 column++)
+            {
+                Match3TileView tile =
+                    tiles[row, column];
+
+                RectTransform tileRect =
+                    tile.transform as RectTransform;
+
+                if (tileRect != null)
+                {
+                    previousPositions[tile] =
+                        tileRect.anchoredPosition;
+                }
+            }
+        }
+
+        // Update the board data and generate replacement content.
+        HashSet<Match3TileView> recycledTiles =
+            RefillMatchedTiles(matches);
+
+        GridLayoutGroup boardLayout =
+            boardGrid.GetComponent<GridLayoutGroup>();
+
+        if (boardLayout == null)
+        {
+            yield return null;
+            yield break;
+        }
+
+        Canvas.ForceUpdateCanvases();
+
+        LayoutRebuilder.ForceRebuildLayoutImmediate(
+            boardGrid
+        );
+
+        Dictionary<Match3TileView, Vector2>
+            targetPositions =
+                new Dictionary<
+                    Match3TileView,
+                    Vector2
+                >();
+
+        Dictionary<Match3TileView, Vector2>
+            animationStartPositions =
+                new Dictionary<
+                    Match3TileView,
+                    Vector2
+                >();
+
+        // Capture the final positions calculated by the layout.
+        for (int row = 0; row < RowCount; row++)
+        {
+            for (int column = 0;
+                 column < ColumnCount;
+                 column++)
+            {
+                Match3TileView tile =
+                    tiles[row, column];
+
+                RectTransform tileRect =
+                    tile.transform as RectTransform;
+
+                if (tileRect == null)
+                    continue;
+
+                Vector2 targetPosition =
+                    tileRect.anchoredPosition;
+
+                targetPositions[tile] =
+                    targetPosition;
+
+                Vector2 startPosition;
+
+                if (recycledTiles.Contains(tile))
+                {
+                    // Spawn the new tile above the board.
+                    startPosition =
+                        targetPosition +
+                        Vector2.up *
+                        boardGrid.rect.height;
+                }
+                else if (previousPositions.TryGetValue(
+                             tile,
+                             out Vector2 previousPosition))
+                {
+                    startPosition = previousPosition;
+                }
+                else
+                {
+                    startPosition = targetPosition;
+                }
+
+                animationStartPositions[tile] =
+                    startPosition;
+            }
+        }
+
+        // Temporarily release tile positions from layout control.
+        boardLayout.enabled = false;
+
+        foreach (
+            KeyValuePair<Match3TileView, Vector2>
+            item in animationStartPositions)
+        {
+            RectTransform tileRect =
+                item.Key.transform as RectTransform;
+
+            if (tileRect != null)
+                tileRect.anchoredPosition = item.Value;
+        }
+
+        float elapsed = 0f;
+
+        while (elapsed < tileFallDuration)
+        {
+            elapsed += Time.unscaledDeltaTime;
+
+            float progress = Mathf.Clamp01(
+                elapsed / tileFallDuration
+            );
+
+            float smoothProgress = Mathf.SmoothStep(
+                0f,
+                1f,
+                progress
+            );
+
+            foreach (
+                KeyValuePair<Match3TileView, Vector2>
+                item in targetPositions)
+            {
+                RectTransform tileRect =
+                    item.Key.transform as RectTransform;
+
+                if (tileRect == null)
+                    continue;
+
+                Vector2 startPosition =
+                    animationStartPositions[item.Key];
+
+                tileRect.anchoredPosition =
+                    Vector2.Lerp(
+                        startPosition,
+                        item.Value,
+                        smoothProgress
+                    );
+            }
+
+            yield return null;
+        }
+
+        foreach (
+            KeyValuePair<Match3TileView, Vector2>
+            item in targetPositions)
+        {
+            RectTransform tileRect =
+                item.Key.transform as RectTransform;
+
+            if (tileRect != null)
+                tileRect.anchoredPosition = item.Value;
+        }
+
+        boardLayout.enabled = true;
+
+        LayoutRebuilder.ForceRebuildLayoutImmediate(
+            boardGrid
+        );
+    }
+
+    private HashSet<Match3TileView> RefillMatchedTiles(
+    HashSet<Match3TileView> matches)
+    {
+        HashSet<Match3TileView> allRecycledTiles = new HashSet<Match3TileView>();
+
         for (int column = 0;
              column < ColumnCount;
              column++)
@@ -767,15 +987,18 @@ public class Match3Game : MonoBehaviour
             List<Match3TileView> recycledTiles =
                 new List<Match3TileView>();
 
-            // Tileهای Match‌شده‌ی این ستون نگه داشته شوند
-            // تا دوباره در بالای همان ستون استفاده شوند.
+            // Keep matched tiles from this column so they can
+            // be reused at the top of the same column.
             for (int row = 0; row < RowCount; row++)
             {
                 Match3TileView tile =
                     tiles[row, column];
 
                 if (matches.Contains(tile))
+                {
                     recycledTiles.Add(tile);
+                    allRecycledTiles.Add(tile);
+                }
             }
 
             if (recycledTiles.Count == 0)
@@ -783,7 +1006,7 @@ public class Match3Game : MonoBehaviour
 
             int destinationRow = RowCount - 1;
 
-            // Tileهای باقی‌مانده به پایین ستون منتقل شوند.
+            // Move the remaining tiles down the column.
             for (int row = RowCount - 1;
                  row >= 0;
                  row--)
@@ -806,7 +1029,7 @@ public class Match3Game : MonoBehaviour
 
             int recycledIndex = 0;
 
-            // جای خالی بالای ستون با Tileهای بازیافتی پر شود.
+            // Fill the empty cells at the top with recycled tiles.
             while (destinationRow >= 0)
             {
                 Match3TileView tile =
@@ -843,6 +1066,7 @@ public class Match3Game : MonoBehaviour
         }
 
         RefreshTileOrder();
+        return allRecycledTiles;
     }
 
     private void AddTargetProgress(
@@ -877,7 +1101,7 @@ public class Match3Game : MonoBehaviour
                 if (marker == null)
                     continue;
 
-                // Marker باید همیشه در Layout باقی بماند.
+                // Keep the marker inside the layout at all times.
                 marker.SetActive(true);
 
                 CanvasGroup canvasGroup =
@@ -911,6 +1135,7 @@ public class Match3Game : MonoBehaviour
         if (openChest == null)
         {
             PlaySound(completionSound);
+            FinishGameplay();
             yield break;
         }
 
@@ -968,8 +1193,11 @@ public class Match3Game : MonoBehaviour
         }
 
         openChest.transform.localScale = Vector3.one;
+
+        // Notify the shared bonus-game flow after the chest animation ends.
+        FinishGameplay();
     }
-    
+
     private void PlaySound(AudioClip clip)
     {
         if (audioSource != null &&
@@ -1024,5 +1252,145 @@ public class Match3Game : MonoBehaviour
     private void OnDestroy()
     {
         ClearTemporaryFamilies();
+    }
+
+    /// <summary>
+    /// Displays the Match-3 instructions and starts gameplay after
+    /// the instruction voice or fallback delay finishes.
+    /// </summary>
+    public override void BeginGame()
+    {
+        if (isPreparingGame ||
+            isGameplayActive ||
+            gameCompleted)
+        {
+            return;
+        }
+
+        gameObject.SetActive(true);
+
+        isPreparingGame = true;
+        isGameplayActive = false;
+
+        SetBoardInteractable(false);
+
+        // Show only the target and instruction panel.
+        // The Match-3 board remains hidden until gameplay starts.
+        ShowInstructionState();
+
+        StartCoroutine(PlayInstructionThenStart());
+    }
+
+    /// <summary>
+    /// Stops Match-3 gameplay, animations, and instruction audio.
+    /// </summary>
+    public override void StopGame()
+    {
+        bool wasPreparingGame = isPreparingGame;
+
+        isPreparingGame = false;
+        isGameplayActive = false;
+
+        StopAllCoroutines();
+
+        if (wasPreparingGame &&
+            gameAudioManager != null &&
+            gameAudioManager.IsPlayingLocked)
+        {
+            gameAudioManager.StopAudio();
+        }
+        else if (wasPreparingGame &&
+                 audioSource != null)
+        {
+            audioSource.Stop();
+        }
+
+        // Hide all local Match-3 views when this bonus game stops.
+        HideGameState();
+
+        SetBoardInteractable(false);
+
+        isResolving = false;
+        selectedTile = null;
+    }
+
+    private IEnumerator PlayInstructionThenStart()
+    {
+        if (instructionVoice != null &&
+            gameAudioManager != null)
+        {
+            while (gameAudioManager.IsPlayingLocked &&
+                   isPreparingGame)
+            {
+                yield return null;
+            }
+
+            if (!isPreparingGame)
+                yield break;
+
+            bool voiceCompleted = false;
+
+            gameAudioManager.PlayLocked(
+                instructionVoice,
+                () => voiceCompleted = true
+            );
+
+            while (!voiceCompleted &&
+                   isPreparingGame)
+            {
+                yield return null;
+            }
+        }
+        else if (instructionVoice != null &&
+                 audioSource != null)
+        {
+            audioSource.PlayOneShot(instructionVoice);
+
+            yield return new WaitForSecondsRealtime(
+                instructionVoice.length
+            );
+        }
+        else if (instructionFallbackDuration > 0f)
+        {
+            yield return new WaitForSecondsRealtime(
+                instructionFallbackDuration
+            );
+        }
+
+        if (!isPreparingGame)
+            yield break;
+
+        StartGameplay();
+    }
+
+    private void StartGameplay()
+    {
+        isPreparingGame = false;
+        isGameplayActive = true;
+
+        // Hide the instruction and reveal the complete
+        // Match-3 gameplay view.
+        ShowGameplayState();
+
+        SetBoardInteractable(true);
+    }
+
+    private void SetBoardInteractable(bool interactable)
+    {
+        if (tiles == null)
+            return;
+
+        for (int row = 0; row < RowCount; row++)
+        {
+            for (int column = 0;
+                 column < ColumnCount;
+                 column++)
+            {
+                Match3TileView tile = tiles[row, column];
+
+                if (tile != null)
+                    tile.SetInteractable(interactable);
+            }
+        }
     }
 }

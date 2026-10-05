@@ -44,7 +44,7 @@ public class LetterChoiceGame : MonoBehaviour
     [SerializeField] private MemoryMatchGame memoryMatchGame;
 
     [Header("Bonus Game UI")]
-    [SerializeField] private LetterCatchGame letterCatchGame;
+    [SerializeField] private BonusGameManager bonusGameManager;
 
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
@@ -62,6 +62,10 @@ public class LetterChoiceGame : MonoBehaviour
 
     private LessonStage currentStage;
     private int currentLetterIndex;
+
+    [Header("Editor Testing")]
+    [SerializeField, Min(0)]
+    private int bonusGameTestLetterIndex;
     private readonly List<ExampleData> currentIntroExamples =
     new List<ExampleData>();
     private bool quizCompleted;
@@ -89,8 +93,8 @@ public class LetterChoiceGame : MonoBehaviour
         if (pictureHuntGame != null)
             pictureHuntGame.Completed += OnPictureHuntCompleted;
 
-        if (letterCatchGame != null)
-            letterCatchGame.Completed += OnLetterCatchCompleted;
+        if (bonusGameManager != null)
+            bonusGameManager.Completed += OnBonusGameCompleted;
 
         LoadLetter(0);
         ShowIntro();
@@ -108,8 +112,8 @@ public class LetterChoiceGame : MonoBehaviour
         if (pictureHuntGame != null)
             pictureHuntGame.Completed -= OnPictureHuntCompleted;
 
-        if (letterCatchGame != null)
-            letterCatchGame.Completed -= OnLetterCatchCompleted;
+        if (bonusGameManager != null)
+            bonusGameManager.Completed -= OnBonusGameCompleted;
     }
 
     // Screen visibility is managed in one place.
@@ -910,13 +914,15 @@ public class LetterChoiceGame : MonoBehaviour
 
     public void ContinueAfterMiniGame()
     {
-        StartLetterCatch();
+        StartBonusGame();
     }
 
-    public void StartLetterCatch()
+    public void StartBonusGame()
     {
         if (letterCatchPanel == null ||
-            letterCatchGame == null)
+            bonusGameManager == null ||
+            lesson == null ||
+            lesson.letters == null)
         {
             return;
         }
@@ -926,13 +932,13 @@ public class LetterChoiceGame : MonoBehaviour
             letterCatchPanel
         );
 
-        LetterData data =
-            lesson.letters[currentLetterIndex];
-
-        letterCatchGame.SetupGame(data);
+        bonusGameManager.SetupGame(
+            lesson,
+            currentLetterIndex
+        );
     }
 
-    private void OnLetterCatchCompleted()
+    private void OnBonusGameCompleted()
     {
         int nextIndex = currentLetterIndex + 1;
 
@@ -1023,4 +1029,42 @@ public class LetterChoiceGame : MonoBehaviour
                 break;
         }
     }
+
+#if UNITY_EDITOR
+    /// <summary>
+    /// Opens a random bonus game directly with the
+    /// selected test letter inside the Unity Editor.
+    /// </summary>
+    [ContextMenu("Test Random Bonus Game")]
+    private void TestRandomBonusGame()
+    {
+        if (!Application.isPlaying)
+        {
+            Debug.LogWarning(
+                "Enter Play Mode before testing the bonus game."
+            );
+
+            return;
+        }
+
+        if (lesson == null ||
+            lesson.letters == null ||
+            lesson.letters.Length == 0)
+        {
+            Debug.LogWarning(
+                "Lesson data is missing or has no letters."
+            );
+
+            return;
+        }
+
+        currentLetterIndex = Mathf.Clamp(
+            bonusGameTestLetterIndex,
+            0,
+            lesson.letters.Length - 1
+        );
+
+        StartBonusGame();
+    }
+#endif
 }

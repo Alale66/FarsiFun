@@ -11,6 +11,7 @@ public class Match3TileView : MonoBehaviour
     [SerializeField] private Image targetRing;
     [SerializeField] private Button button;
     [SerializeField] private Outline matchOutline;
+    [SerializeField] private CanvasGroup tileCanvasGroup;
 
     public int Row { get; private set; }
     public int Column { get; private set; }
@@ -33,6 +34,12 @@ public class Match3TileView : MonoBehaviour
 
         if (matchOutline != null)
             matchOutline.enabled = false;
+
+        if (tileCanvasGroup == null)
+            tileCanvasGroup = GetComponent<CanvasGroup>();
+
+        if (tileCanvasGroup != null)
+            tileCanvasGroup.alpha = 1f;
     }
 
     public void Initialize(
@@ -66,6 +73,8 @@ public class Match3TileView : MonoBehaviour
         Color familyColor,
         bool isTargetFamily)
     {
+        SetVisualAlpha(1f);
+
         FamilyId = familyId;
         IsTargetFamily = isTargetFamily;
 
@@ -119,6 +128,14 @@ public class Match3TileView : MonoBehaviour
         transform.localScale = Vector3.one;
     }
 
+    public void SetVisualAlpha(float alpha)
+    {
+        if (tileCanvasGroup != null)
+        {
+            tileCanvasGroup.alpha =
+                Mathf.Clamp01(alpha);
+        }
+    }
     private void HandleClicked()
     {
         clickHandler?.Invoke(this);

@@ -24,7 +24,7 @@ MonoBehaviour:
   - "\u067E"
   correctLetter: "\u0628"
   matchForms:
-  - "\u0628\u0640"
+  - "\uFE91"
   - "\u0628"
   letterName: "\u0628"
   examples:

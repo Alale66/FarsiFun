@@ -3,9 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class LetterCatchGame : MonoBehaviour
+public class LetterCatchGame : BonusGameBase
 {
     [Header("Data")]
     [SerializeField] private AlphabetData alphabetData;
@@ -19,7 +18,6 @@ public class LetterCatchGame : MonoBehaviour
     [Header("UI")]
     [SerializeField] private TMP_Text targetLetterText;
     [SerializeField] private TMP_Text progressText;
-    [SerializeField] private GameObject targetDisplay;
     [SerializeField] private GameObject progressDisplay;
 
     [Header("Game Settings")]
@@ -42,25 +40,6 @@ public class LetterCatchGame : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip correctSound;
     [SerializeField] private AudioClip wrongSound;
-    [SerializeField] private AudioClip completionSound;
-    [SerializeField] private GameAudioManager gameAudioManager;
-
-    [Header("Panel Voices")]
-    [SerializeField] private AudioSource voiceSource;
-    [SerializeField] private AudioClip startPanelVoice;
-    [SerializeField] private AudioClip completePanelVoice;
-    [SerializeField] private Button startButton;
-    [SerializeField] private Button continueButton;
-
-    [Header("Start Screen")]
-    [SerializeField] private GameObject startPanel;
-
-    [Header("Completion Screen")]
-    [SerializeField] private GameObject completePanel;
-
-    [Header("Celebration")]
-    [SerializeField]
-    private PaperCelebrationEffect celebrationEffect;
 
     [Header("Round Result")]
     [SerializeField] private GameObject resultPanel;
@@ -73,15 +52,13 @@ public class LetterCatchGame : MonoBehaviour
     [Header("Music")]
     [SerializeField] private AudioSource musicSource;
 
-    [SerializeField]
-    private AmbientAudioController ambientAudioController;
 
-    [Header("Instruction Screen")]
-    [SerializeField] private GameObject instructionPanel;
+    [Header("Instructions")]
     [SerializeField] private AudioClip instructionVoice;
+    [SerializeField] private GameAudioManager gameAudioManager;
 
     [SerializeField, Min(0f)]
-    private float instructionEndPause = 0.25f;
+    private float instructionFallbackDuration = 2.5f;
 
     [Header("Score Fly Effect")]
     [SerializeField] private ScoreFlyToken scoreFlyTokenPrefab;
@@ -93,22 +70,45 @@ public class LetterCatchGame : MonoBehaviour
 
     private int pendingScoreAnimations;
 
-    public event Action Completed;
-
     private readonly HashSet<FallingLetter> activeLetters =
         new HashSet<FallingLetter>();
 
     private Coroutine spawnRoutine;
-    private Coroutine panelVoiceRoutine;
-
     private string targetLetter;
+    // Stores the complete target family, including all valid forms.
+    private LetterData targetFamily;
     private int caughtTargetCount;
     private bool isRunning;
     private bool isCompleting;
     private bool isPreparingGame;
 
+    /// <summary>
+    /// Prepares the Letter Catch game using the shared bonus-game
+    /// setup contract.
+    /// </summary>
+    public override void SetupGame(
+        LessonData lesson,
+        int currentLetterIndex)
+    {
+        if (lesson == null ||
+            lesson.letters == null ||
+            currentLetterIndex < 0 ||
+            currentLetterIndex >= lesson.letters.Length)
+        {
+            Debug.LogWarning(
+                "LetterCatchGame received invalid lesson data."
+            );
 
-    public void SetupGame(LetterData letterData)
+            return;
+        }
+
+        SetupLetterData(lesson.letters[currentLetterIndex]);
+    }
+
+    /// <summary>
+    /// Prepares Letter Catch with the selected letter data.
+    /// </summary>
+    private void SetupLetterData(LetterData letterData)
     {
         StopGame();
         pendingScoreAnimations = 0;
@@ -118,12 +118,6 @@ public class LetterCatchGame : MonoBehaviour
 
         if (resultCard != null)
             resultCard.localScale = Vector3.one;
-
-        if (completePanel != null)
-            completePanel.SetActive(false);
-
-        if (instructionPanel != null)
-            instructionPanel.SetActive(false);
 
         if (letterData == null ||
             alphabetData == null ||
@@ -140,12 +134,15 @@ public class LetterCatchGame : MonoBehaviour
             return;
         }
 
+        targetFamily = letterData;
+
         targetLetter =
             !string.IsNullOrWhiteSpace(letterData.correctLetter)
                 ? letterData.correctLetter
                 : letterData.targetLetter;
 
-        // منطق داخلی الف بر اساس «ا» انجام می‌شود.
+
+        // Alef uses "ا" as its canonical internal family identifier.
         if (targetLetter == "آ")
             targetLetter = "ا";
 
@@ -163,23 +160,18 @@ public class LetterCatchGame : MonoBehaviour
         isCompleting = false;
         isPreparingGame = false;
 
-        if (ambientAudioController != null)
-        {
-            ambientAudioController.SetMutedForBonusGame(
-                true
-            );
-        }
-
         if (targetLetterText != null)
         {
+            // Display every valid form of the current letter family.
             targetLetterText.text =
-                targetLetter == "ا"
-                    ? "آ  ا"
-                    : targetLetter;
+                letterData.GetGameDisplayText();
         }
 
         UpdateProgress();
-        SetGameplayUIVisible(false);
+
+        // Keep local Letter Catch visuals hidden while the shared
+        // bonus-game start panel is visible.
+        ShowWaitingState();
 
         if (player != null)
         {
@@ -188,18 +180,9 @@ public class LetterCatchGame : MonoBehaviour
             player.gameObject.SetActive(false);
         }
 
-        if (startPanel != null)
-        {
-            startPanel.SetActive(true);
-            PlayPanelVoice(startPanelVoice, startButton);
-        }
-        else
-        {
-            BeginGame();
-        }
     }
 
-    public void BeginGame()
+    public override void BeginGame()
     {
         if (isRunning ||
             isCompleting ||
@@ -211,41 +194,20 @@ public class LetterCatchGame : MonoBehaviour
 
         isPreparingGame = true;
 
-        StopPanelVoice();
+        // Show only the target and instruction panel.
+        // Gameplay objects remain hidden until the voice finishes.
+        ShowInstructionState();
 
-        if (startPanel != null)
-            startPanel.SetActive(false);
-
-        SetGameplayUIVisible(false);
-
-        // حرف هدف هنگام توضیح دیده شود،
-        // ولی شمارنده هنوز مخفی باشد.
-        if (targetDisplay != null)
-            targetDisplay.SetActive(true);
-
-        if (progressDisplay != null)
-            progressDisplay.SetActive(false);
-
-        if (instructionPanel != null)
-            instructionPanel.SetActive(true);
-
-        panelVoiceRoutine = StartCoroutine(
-            PlayInstructionThenStart()
-        );
+        StartCoroutine(PlayInstructionThenStart());
     }
 
+    /// <summary>
+    /// Changes the visibility of the Letter Catch target
+    /// and score display.
+    /// </summary>
     private void SetGameplayUIVisible(bool visible)
     {
-        if (targetDisplay != null)
-        {
-            targetDisplay.SetActive(visible);
-        }
-        else if (targetLetterText != null)
-        {
-            targetLetterText.gameObject.SetActive(
-                visible
-            );
-        }
+        SetTargetContentVisible(visible);
 
         if (progressDisplay != null)
         {
@@ -253,9 +215,7 @@ public class LetterCatchGame : MonoBehaviour
         }
         else if (progressText != null)
         {
-            progressText.gameObject.SetActive(
-                visible
-            );
+            progressText.gameObject.SetActive(visible);
         }
     }
 
@@ -355,25 +315,26 @@ public class LetterCatchGame : MonoBehaviour
         return selectedLetter;
     }
 
+    /// <summary>
+    /// Chooses a random valid form from the current target family.
+    /// </summary>
     private string ChooseTargetForm()
     {
-        if (targetLetter == "ا")
-        {
-            return UnityEngine.Random.Range(0, 2) == 0
-                ? "ا"
-                : "آ";
-        }
+        if (targetFamily != null)
+            return targetFamily.GetRandomGameForm();
 
         return targetLetter;
     }
 
+    /// <summary>
+    /// Checks whether the caught letter belongs to the target family.
+    /// </summary>
     private bool IsTargetLetter(string letter)
     {
-        return letter == targetLetter ||
-               (
-                   targetLetter == "ا" &&
-                   letter == "آ"
-               );
+        if (targetFamily != null)
+            return targetFamily.IsGameForm(letter);
+
+        return letter == targetLetter;
     }
 
     private void OnLetterCaught(FallingLetter fallingLetter)
@@ -393,7 +354,7 @@ public class LetterCatchGame : MonoBehaviour
 
         if (IsTargetLetter(caughtLetter))
         {
-            // اجازه نده بیشتر از تعداد لازم امتیاز رزرو شود.
+            // Do not reserve more score animations than required.
             if (caughtTargetCount + pendingScoreAnimations >=
                 requiredTargetCount)
             {
@@ -485,11 +446,11 @@ public class LetterCatchGame : MonoBehaviour
         isCompleting = true;
         isRunning = false;
 
-        // کشتی فعلاً دیده می‌شود ولی حرکت نمی‌کند.
+        // Keep the ship visible but stop its movement.
         if (player != null)
             player.enabled = false;
 
-        // کودک عدد نهایی شمارنده را می‌بیند.
+        // Give the child time to see the final score.
         yield return new WaitForSeconds(0.45f);
 
         ClearActiveLetters();
@@ -531,26 +492,8 @@ public class LetterCatchGame : MonoBehaviour
         if (musicSource != null)
             musicSource.Stop();
 
-        // دکمه قبل از نمایش پنل غیرفعال شود.
-        if (continueButton != null)
-            continueButton.interactable = false;
-
-
-        if (completePanel != null)
-            completePanel.SetActive(true);
-
-        if (celebrationEffect != null)
-            celebrationEffect.PlayCelebration();
-
-        // ابتدا صدای کوتاه موفقیت پخش می‌شود.
-        yield return StartCoroutine(
-            PlayLockedAndWait(completionSound)
-        );
-
-        PlayPanelVoice(
-            completePanelVoice,
-            continueButton
-        );
+        // Open the shared completion panel immediately.
+        FinishGameplay();
     }
 
     private IEnumerator AnimateResultCard()
@@ -615,26 +558,6 @@ public class LetterCatchGame : MonoBehaviour
         resultCard.localScale = Vector3.one;
     }
 
-    public void ContinueAfterCompletion()
-    {
-        StopPanelVoice();
-
-        if (celebrationEffect != null)
-            celebrationEffect.StopCelebration();
-
-        if (completePanel != null)
-            completePanel.SetActive(false);
-
-        if (ambientAudioController != null)
-        {
-            ambientAudioController.SetMutedForBonusGame(
-                false
-            );
-        }
-
-        Completed?.Invoke();
-    }
-
     private void UpdateProgress()
     {
         if (progressText == null)
@@ -675,50 +598,11 @@ public class LetterCatchGame : MonoBehaviour
         }
     }
 
-    private void PlayVoice(AudioClip clip)
-    {
-        if (clip == null)
-            return;
-
-        if (gameAudioManager != null)
-        {
-            gameAudioManager.PlayLocked(clip);
-        }
-        else if (audioSource != null)
-        {
-            audioSource.PlayOneShot(clip);
-        }
-    }
-
-    private IEnumerator PlayLockedAndWait(
-        AudioClip clip
-    )
-    {
-        if (clip == null)
-            yield break;
-
-        if (gameAudioManager != null)
-        {
-            gameAudioManager.PlayLocked(clip);
-
-            yield return new WaitWhile(
-                () => gameAudioManager.IsPlayingLocked
-            );
-        }
-        else if (audioSource != null)
-        {
-            audioSource.PlayOneShot(clip);
-
-            yield return new WaitForSecondsRealtime(
-                clip.length
-            );
-        }
-    }
-
-    public void StopGame()
+    public override void StopGame()
     {
         isRunning = false;
         isCompleting = false;
+        bool wasPreparingGame = isPreparingGame;
         isPreparingGame = false;
 
         if (spawnRoutine != null)
@@ -728,13 +612,24 @@ public class LetterCatchGame : MonoBehaviour
         }
 
         StopAllCoroutines();
+
+        if (wasPreparingGame &&
+    gameAudioManager != null &&
+    gameAudioManager.IsPlayingLocked)
+        {
+            gameAudioManager.StopAudio();
+        }
+        else if (wasPreparingGame &&
+                 audioSource != null)
+        {
+            audioSource.Stop();
+        }
+
         ClearActiveLetters();
         ClearScoreFlyTokens();
 
-        if (startPanel != null)
-            startPanel.SetActive(false);
-
-        SetGameplayUIVisible(false);
+        // Hide every local Letter Catch view when the game stops.
+        HideGameState();
 
         if (player != null)
         {
@@ -742,31 +637,14 @@ public class LetterCatchGame : MonoBehaviour
             player.gameObject.SetActive(false);
         }
 
-        if (completePanel != null)
-            completePanel.SetActive(false);
-
-        if (celebrationEffect != null)
-            celebrationEffect.StopCelebration();
-
         if (resultPanel != null)
             resultPanel.SetActive(false);
-
-        if (instructionPanel != null)
-            instructionPanel.SetActive(false);
 
         if (resultCard != null)
             resultCard.localScale = Vector3.one;
 
         if (musicSource != null)
             musicSource.Stop();
-
-        if (ambientAudioController != null)
-        {
-            ambientAudioController.SetMutedForBonusGame(
-                false
-            );
-        }
-        StopPanelVoice();
     }
 
     private void ClearActiveLetters()
@@ -792,92 +670,55 @@ public class LetterCatchGame : MonoBehaviour
         StopGame();
     }
 
-    private void PlayPanelVoice(
-    AudioClip clip,
-    Button buttonToUnlock)
-    {
-        StopPanelVoice();
-
-        if (buttonToUnlock != null)
-            buttonToUnlock.interactable = false;
-
-        if (clip == null || voiceSource == null)
-        {
-            if (buttonToUnlock != null)
-                buttonToUnlock.interactable = true;
-
-            return;
-        }
-
-        voiceSource.clip = clip;
-        voiceSource.loop = false;
-        voiceSource.Play();
-
-        panelVoiceRoutine = StartCoroutine(
-            WaitForPanelVoice(buttonToUnlock)
-        );
-    }
-
-    private IEnumerator WaitForPanelVoice(
-        Button buttonToUnlock)
-    {
-        while (voiceSource != null &&
-               voiceSource.isPlaying)
-        {
-            yield return null;
-        }
-
-        panelVoiceRoutine = null;
-
-        if (buttonToUnlock != null)
-            buttonToUnlock.interactable = true;
-    }
-
-    private void StopPanelVoice()
-    {
-        if (panelVoiceRoutine != null)
-        {
-            StopCoroutine(panelVoiceRoutine);
-            panelVoiceRoutine = null;
-        }
-
-        if (voiceSource != null)
-        {
-            voiceSource.Stop();
-            voiceSource.clip = null;
-        }
-
-        if (startButton != null)
-            startButton.interactable = true;
-
-        if (continueButton != null)
-            continueButton.interactable = true;
-    }
-
+    /// <summary>
+    /// Plays the instruction voice and starts gameplay
+    /// after the voice or fallback delay finishes.
+    /// </summary>
     private IEnumerator PlayInstructionThenStart()
     {
         if (instructionVoice != null &&
-            voiceSource != null)
+            gameAudioManager != null)
         {
-            voiceSource.clip = instructionVoice;
-            voiceSource.loop = false;
-            voiceSource.Play();
-
-            while (voiceSource.isPlaying)
+            while (gameAudioManager.IsPlayingLocked &&
+                   isPreparingGame)
+            {
                 yield return null;
+            }
+
+            if (!isPreparingGame)
+                yield break;
+
+            bool voiceCompleted = false;
+
+            gameAudioManager.PlayLocked(
+                instructionVoice,
+                () => voiceCompleted = true
+            );
+
+            while (!voiceCompleted &&
+                   isPreparingGame)
+            {
+                yield return null;
+            }
         }
-
-        panelVoiceRoutine = null;
-
-        if (instructionPanel != null)
-            instructionPanel.SetActive(false);
-
-        if (instructionEndPause > 0f)
+        else if (instructionVoice != null &&
+                 audioSource != null)
         {
+            audioSource.PlayOneShot(instructionVoice);
+
             yield return new WaitForSecondsRealtime(
-                instructionEndPause
+                instructionVoice.length
             );
         }
+        else if (instructionFallbackDuration > 0f)
+        {
+            yield return new WaitForSecondsRealtime(
+                instructionFallbackDuration
+            );
+        }
+
+        if (!isPreparingGame)
+            yield break;
 
         StartGameplay();
     }
@@ -889,6 +730,9 @@ public class LetterCatchGame : MonoBehaviour
 
         isPreparingGame = false;
 
+        // Reveal the shared gameplay phase first, then restore
+        // the Letter Catch HUD elements inside it.
+        ShowGameplayState();
         SetGameplayUIVisible(true);
 
         if (player != null)

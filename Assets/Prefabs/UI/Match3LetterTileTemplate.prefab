@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 144390239890411179}
   - component: {fileID: 1519033725028809159}
   - component: {fileID: 3120468535686981921}
+  - component: {fileID: 4527408525539006736}
   m_Layer: 5
   m_Name: Match3LetterTileTemplate
   m_TagString: Untagged
@@ -140,6 +141,8 @@ MonoBehaviour:
   tileImage: {fileID: 5545223606975124385}
   targetRing: {fileID: 5398550815247163103}
   button: {fileID: 144390239890411179}
+  matchOutline: {fileID: 0}
+  tileCanvasGroup: {fileID: 0}
 --- !u!114 &3120468535686981921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,6 +158,18 @@ MonoBehaviour:
   m_EffectColor: {r: 1, g: 0.9490196, b: 0.65882355, a: 0.5}
   m_EffectDistance: {x: 5, y: -5}
   m_UseGraphicAlpha: 0
+--- !u!225 &4527408525539006736
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337340920115216374}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &3328501312523308000
 GameObject:
   m_ObjectHideFlags: 0
