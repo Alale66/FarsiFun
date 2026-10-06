@@ -35,6 +35,9 @@ public class Match3Game : BonusGameBase
     [SerializeField, Min(0f)]
     private float instructionFallbackDuration = 2.5f;
 
+    [Header("Music")]
+    [SerializeField] private AudioSource musicSource;
+
     [Header("Match Feedback")]
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip correctSound;
@@ -46,6 +49,16 @@ public class Match3Game : BonusGameBase
     private float matchFadeDuration = 0.25f;
     [SerializeField, Min(0.05f)]
     private float tileFallDuration = 0.35f;
+
+    [Header("Board Shuffle")]
+    [SerializeField, Min(1)]
+    private int maximumShuffleAttempts = 100;
+
+    [SerializeField, Min(0.1f)]
+    private float shuffleMoveDuration = 0.65f;
+
+    [SerializeField]
+    private AudioClip shuffleSound;
 
     [Header("Completion")]
     [SerializeField] private AudioClip completionSound;
@@ -161,6 +174,10 @@ public class Match3Game : BonusGameBase
         AssignFamilyColors();
         UpdateTargetDisplay();
         BuildBoard();
+
+        if (!HasAvailableMove())
+            ShuffleBoardUntilPlayable();
+
         SetBoardInteractable(false);
 
         // Keep local Match-3 visuals hidden while the shared
@@ -606,8 +623,315 @@ public class Match3Game : BonusGameBase
         return matches;
     }
 
+    /// <summary>
+    /// Checks whether at least one adjacent swap can create a match.
+    /// </summary>
+    private bool HasAvailableMove()
+    {
+        for (int row = 0; row < RowCount; row++)
+        {
+            for (int column = 0;
+                 column < ColumnCount;
+                 column++)
+            {
+                if (column + 1 < ColumnCount &&
+                    SwapCreatesMatch(
+                        row,
+                        column,
+                        row,
+                        column + 1
+                    ))
+                {
+                    return true;
+                }
+
+                if (row + 1 < RowCount &&
+                    SwapCreatesMatch(
+                        row,
+                        column,
+                        row + 1,
+                        column
+                    ))
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    /// <summary>
+    /// Temporarily swaps two board references and checks
+    /// whether the swap creates a match.
+    /// </summary>
+    private bool SwapCreatesMatch(
+        int firstRow,
+        int firstColumn,
+        int secondRow,
+        int secondColumn)
+    {
+        SwapTileReferences(
+            firstRow,
+            firstColumn,
+            secondRow,
+            secondColumn
+        );
+
+        bool createsMatch =
+            FindAllMatches().Count > 0;
+
+        SwapTileReferences(
+            firstRow,
+            firstColumn,
+            secondRow,
+            secondColumn
+        );
+
+        return createsMatch;
+    }
+
+    private void SwapTileReferences(
+        int firstRow,
+        int firstColumn,
+        int secondRow,
+        int secondColumn)
+    {
+        Match3TileView temporaryTile =
+            tiles[firstRow, firstColumn];
+
+        tiles[firstRow, firstColumn] =
+            tiles[secondRow, secondColumn];
+
+        tiles[secondRow, secondColumn] =
+            temporaryTile;
+    }
+
+    /// <summary>
+    /// Shuffles existing tiles until the board has no automatic
+    /// matches and contains at least one valid move.
+    /// </summary>
+    private bool ShuffleBoardUntilPlayable()
+    {
+        List<Match3TileView> originalOrder =
+            GetTilesInBoardOrder();
+
+        List<Match3TileView> shuffledTiles =
+            new List<Match3TileView>(originalOrder);
+
+        for (int attempt = 0;
+             attempt < maximumShuffleAttempts;
+             attempt++)
+        {
+            Shuffle(shuffledTiles);
+            ApplyTileOrder(shuffledTiles);
+
+            bool hasAutomaticMatch =
+                FindAllMatches().Count > 0;
+
+            if (!hasAutomaticMatch &&
+                HasAvailableMove())
+            {
+                RefreshTileOrder();
+                return true;
+            }
+        }
+
+        ApplyTileOrder(originalOrder);
+        RefreshTileOrder();
+
+        Debug.LogWarning(
+            "Match3Game could not create a playable shuffled board."
+        );
+
+        return false;
+    }
+
+    private List<Match3TileView> GetTilesInBoardOrder()
+    {
+        List<Match3TileView> orderedTiles =
+            new List<Match3TileView>(
+                RowCount * ColumnCount
+            );
+
+        for (int row = 0; row < RowCount; row++)
+        {
+            for (int column = 0;
+                 column < ColumnCount;
+                 column++)
+            {
+                orderedTiles.Add(tiles[row, column]);
+            }
+        }
+
+        return orderedTiles;
+    }
+
+    private void ApplyTileOrder(
+        List<Match3TileView> orderedTiles)
+    {
+        int index = 0;
+
+        for (int row = 0; row < RowCount; row++)
+        {
+            for (int column = 0;
+                 column < ColumnCount;
+                 column++)
+            {
+                Match3TileView tile =
+                    orderedTiles[index++];
+
+                tiles[row, column] = tile;
+                tile.SetCoordinates(row, column);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Moves every tile from its current position to a new
+    /// playable board position without resetting progress.
+    /// </summary>
+    private IEnumerator ShuffleStalledBoard()
+    {
+        SetBoardInteractable(false);
+
+        GridLayoutGroup boardLayout =
+            boardGrid.GetComponent<GridLayoutGroup>();
+
+        if (boardLayout == null)
+        {
+            ShuffleBoardUntilPlayable();
+            yield break;
+        }
+
+        Dictionary<Match3TileView, Vector3>
+            previousPositions =
+                new Dictionary<
+                    Match3TileView,
+                    Vector3
+                >();
+
+        Vector3[,] cellPositions =
+            new Vector3[RowCount, ColumnCount];
+
+        // Store every tile's current world position and
+        // the fixed position of every board cell.
+        for (int row = 0; row < RowCount; row++)
+        {
+            for (int column = 0;
+                 column < ColumnCount;
+                 column++)
+            {
+                Match3TileView tile =
+                    tiles[row, column];
+
+                Vector3 currentPosition =
+                    tile.transform.position;
+
+                previousPositions[tile] =
+                    currentPosition;
+
+                cellPositions[row, column] =
+                    currentPosition;
+            }
+        }
+
+        bool shuffleSucceeded =
+            ShuffleBoardUntilPlayable();
+
+        if (!shuffleSucceeded)
+            yield break;
+
+        Dictionary<Match3TileView, Vector3>
+            targetPositions =
+                new Dictionary<
+                    Match3TileView,
+                    Vector3
+                >();
+
+        // Map each shuffled tile to its new fixed cell position.
+        for (int row = 0; row < RowCount; row++)
+        {
+            for (int column = 0;
+                 column < ColumnCount;
+                 column++)
+            {
+                targetPositions[
+                    tiles[row, column]
+                ] = cellPositions[row, column];
+            }
+        }
+
+        boardLayout.enabled = false;
+
+        // Return every tile to its visible starting position.
+        foreach (
+            KeyValuePair<Match3TileView, Vector3>
+                item in previousPositions)
+        {
+            item.Key.transform.position =
+                item.Value;
+        }
+
+        PlaySound(shuffleSound);
+
+        float elapsed = 0f;
+
+        while (elapsed < shuffleMoveDuration)
+        {
+            elapsed += Time.unscaledDeltaTime;
+
+            float progress = Mathf.Clamp01(
+                elapsed / shuffleMoveDuration
+            );
+
+            float smoothProgress =
+                Mathf.SmoothStep(
+                    0f,
+                    1f,
+                    progress
+                );
+
+            foreach (
+                KeyValuePair<Match3TileView, Vector3>
+                    item in targetPositions)
+            {
+                if (!previousPositions.TryGetValue(
+                        item.Key,
+                        out Vector3 startPosition))
+                {
+                    continue;
+                }
+
+                item.Key.transform.position =
+                    Vector3.Lerp(
+                        startPosition,
+                        item.Value,
+                        smoothProgress
+                    );
+            }
+
+            yield return null;
+        }
+
+        foreach (
+            KeyValuePair<Match3TileView, Vector3>
+                item in targetPositions)
+        {
+            item.Key.transform.position =
+                item.Value;
+        }
+
+        boardLayout.enabled = true;
+
+        LayoutRebuilder.ForceRebuildLayoutImmediate(
+            boardGrid
+        );
+    }
+
+
     private void FindHorizontalMatches(
-        HashSet<Match3TileView> matches)
+            HashSet<Match3TileView> matches)
     {
         for (int row = 0; row < RowCount; row++)
         {
@@ -691,6 +1015,7 @@ public class Match3Game : BonusGameBase
     HashSet<Match3TileView> matches)
     {
         isResolving = true;
+        SetBoardInteractable(false);
 
         int safetyCounter = 0;
 
@@ -739,6 +1064,16 @@ public class Match3Game : BonusGameBase
                 "Match3 cascade stopped by safety limit."
             );
         }
+
+        if (!gameCompleted &&
+    !HasAvailableMove())
+        {
+            yield return StartCoroutine(
+                ShuffleStalledBoard()
+            );
+        }
+
+        SetBoardInteractable(true);
 
         isResolving = false;
     }
@@ -1129,12 +1464,13 @@ public class Match3Game : BonusGameBase
 
     private IEnumerator AnimateChestOpening()
     {
-        if (closedChest != null)
-            closedChest.SetActive(false);
-
         if (openChest == null)
         {
             PlaySound(completionSound);
+
+            if (musicSource != null)
+                musicSource.Stop();
+
             FinishGameplay();
             yield break;
         }
@@ -1193,6 +1529,9 @@ public class Match3Game : BonusGameBase
         }
 
         openChest.transform.localScale = Vector3.one;
+
+        if (musicSource != null)
+            musicSource.Stop();
 
         // Notify the shared bonus-game flow after the chest animation ends.
         FinishGameplay();
@@ -1310,6 +1649,9 @@ public class Match3Game : BonusGameBase
 
         SetBoardInteractable(false);
 
+        if (musicSource != null)
+            musicSource.Stop();
+
         isResolving = false;
         selectedTile = null;
     }
@@ -1372,9 +1714,15 @@ public class Match3Game : BonusGameBase
         // Match-3 gameplay view.
         ShowGameplayState();
 
+        if (musicSource != null)
+        {
+            musicSource.loop = true;
+            musicSource.time = 0f;
+            musicSource.Play();
+        }
+
         SetBoardInteractable(true);
     }
-
     private void SetBoardInteractable(bool interactable)
     {
         if (tiles == null)
