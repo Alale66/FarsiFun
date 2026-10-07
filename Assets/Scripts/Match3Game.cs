@@ -35,6 +35,18 @@ public class Match3Game : BonusGameBase
     [SerializeField, Min(0f)]
     private float instructionFallbackDuration = 2.5f;
 
+    [Header("Drag Hint")]
+    [Tooltip("The animated hand used to demonstrate a valid tile drag.")]
+    [SerializeField] private UIDragHint dragHint;
+
+    [SerializeField, Min(1f)]
+    [Tooltip("Seconds of inactivity before showing another drag hint.")]
+    private float idleHintDelay = 4f;
+
+    [SerializeField, Min(0f)]
+    [Tooltip("Short pause before showing the first gameplay hint.")]
+    private float initialHintDelay = 0.35f;
+
     [Header("Music")]
     [SerializeField] private AudioSource musicSource;
 
@@ -103,6 +115,9 @@ public class Match3Game : BonusGameBase
     private bool gameCompleted;
     private bool isPreparingGame;
     private bool isGameplayActive;
+    private Coroutine dragHintRoutine;
+    private float lastPlayerInteractionTime;
+    private bool isDragHintPlaying;
 
     private void Start()
     {
@@ -383,7 +398,8 @@ public class Match3Game : BonusGameBase
                     OnTileClicked,
                     OnTileDragged,
                     GetNeighborTile,
-                    GetDragMatchTile
+                    GetDragMatchTile,
+                    RegisterPlayerInteraction
                 );
 
                 tile.SetContent(
@@ -506,6 +522,24 @@ public class Match3Game : BonusGameBase
             normalized = "ا";
 
         return normalized;
+    }
+
+    /// <summary>
+    /// Stops the visible hint and restarts the inactivity timer
+    /// whenever the player touches a board tile.
+    /// </summary>
+    private void RegisterPlayerInteraction()
+    {
+        lastPlayerInteractionTime =
+            Time.unscaledTime;
+
+        if (!isDragHintPlaying)
+            return;
+
+        isDragHintPlaying = false;
+
+        if (dragHint != null)
+            dragHint.StopHint();
     }
 
     private void OnTileClicked(Match3TileView tile)
@@ -753,6 +787,91 @@ public class Match3Game : BonusGameBase
         FindVerticalMatches(matches);
 
         return matches;
+    }
+
+    /// <summary>
+    /// Finds a valid board move for the animated drag hint.
+    /// The source is the tile that will join the resulting match.
+    /// </summary>
+    private bool TryFindDragHintMove(
+        out Match3TileView sourceTile,
+        out Match3TileView destinationTile)
+    {
+        sourceTile = null;
+        destinationTile = null;
+
+        if (tiles == null)
+            return false;
+
+        for (int row = 0; row < RowCount; row++)
+        {
+            for (int column = 0;
+                 column < ColumnCount;
+                 column++)
+            {
+                Match3TileView tile =
+                    tiles[row, column];
+
+                if (TryGetDragHintMove(
+                        tile,
+                        Vector2Int.right,
+                        out sourceTile,
+                        out destinationTile))
+                {
+                    return true;
+                }
+
+                if (TryGetDragHintMove(
+                        tile,
+                        Vector2Int.down,
+                        out sourceTile,
+                        out destinationTile))
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    /// <summary>
+    /// Checks one neighboring swap and returns the tile that
+    /// should be dragged to create the resulting match.
+    /// </summary>
+    private bool TryGetDragHintMove(
+        Match3TileView tile,
+        Vector2Int direction,
+        out Match3TileView sourceTile,
+        out Match3TileView destinationTile)
+    {
+        sourceTile = null;
+        destinationTile = null;
+
+        Match3TileView neighbor =
+            GetNeighborTile(tile, direction);
+
+        if (tile == null || neighbor == null)
+            return false;
+
+        Match3TileView matchingTile =
+            GetDragMatchTile(tile, direction);
+
+        if (matchingTile == null)
+            return false;
+
+        if (matchingTile == tile)
+        {
+            sourceTile = tile;
+            destinationTile = neighbor;
+        }
+        else
+        {
+            sourceTile = neighbor;
+            destinationTile = tile;
+        }
+
+        return true;
     }
 
     /// <summary>
@@ -1852,6 +1971,12 @@ public class Match3Game : BonusGameBase
 
         StopAllCoroutines();
 
+        dragHintRoutine = null;
+        isDragHintPlaying = false;
+
+        if (dragHint != null)
+            dragHint.StopHint();
+
         if (wasPreparingGame &&
             gameAudioManager != null &&
             gameAudioManager.IsPlayingLocked)
@@ -1925,13 +2050,15 @@ public class Match3Game : BonusGameBase
         StartGameplay();
     }
 
+    /// <summary>
+    /// Reveals the Match-3 board and starts the drag-hint lifecycle.
+    /// The board remains locked until the first demonstration finishes.
+    /// </summary>
     private void StartGameplay()
     {
         isPreparingGame = false;
         isGameplayActive = true;
 
-        // Hide the instruction and reveal the complete
-        // Match-3 gameplay view.
         ShowGameplayState();
 
         if (musicSource != null)
@@ -1941,8 +2068,135 @@ public class Match3Game : BonusGameBase
             musicSource.Play();
         }
 
-        SetBoardInteractable(true);
+        SetBoardInteractable(false);
+
+        if (dragHintRoutine != null)
+            StopCoroutine(dragHintRoutine);
+
+        dragHintRoutine = StartCoroutine(
+            RunDragHintLifecycle()
+        );
     }
+
+    /// <summary>
+    /// Shows the initial drag demonstration, unlocks the board,
+    /// and displays additional hints after player inactivity.
+    /// </summary>
+    private IEnumerator RunDragHintLifecycle()
+    {
+        // Wait one frame so the board layout can calculate
+        // the final tile positions.
+        yield return null;
+
+        if (initialHintDelay > 0f)
+        {
+            yield return new WaitForSecondsRealtime(
+                initialHintDelay
+            );
+        }
+
+        yield return StartCoroutine(
+            PlayAvailableDragHint()
+        );
+
+        if (!isGameplayActive || gameCompleted)
+        {
+            dragHintRoutine = null;
+            yield break;
+        }
+
+        SetBoardInteractable(true);
+        lastPlayerInteractionTime = Time.unscaledTime;
+
+        while (isGameplayActive && !gameCompleted)
+        {
+            // Do not count cascade, falling, matching, or shuffle
+            // animations as player inactivity.
+            if (isResolving)
+            {
+                lastPlayerInteractionTime =
+                    Time.unscaledTime;
+
+                yield return null;
+                continue;
+            }
+
+            bool canShowHint =
+                !isDragHintPlaying &&
+                Time.unscaledTime -
+                lastPlayerInteractionTime >= idleHintDelay;
+
+            if (canShowHint)
+            {
+                yield return StartCoroutine(
+                    PlayAvailableDragHint()
+                );
+
+                lastPlayerInteractionTime =
+                    Time.unscaledTime;
+            }
+
+            yield return null;
+        }
+
+        dragHintRoutine = null;
+    }
+
+    /// <summary>
+    /// Finds and demonstrates one valid drag move by animating
+    /// both the tutorial hand and the affected board tiles.
+    /// </summary>
+    private IEnumerator PlayAvailableDragHint()
+    {
+        if (dragHint == null ||
+            !isGameplayActive ||
+            gameCompleted ||
+            isResolving)
+        {
+            yield break;
+        }
+
+        if (!TryFindDragHintMove(
+                out Match3TileView sourceTile,
+                out Match3TileView destinationTile))
+        {
+            yield break;
+        }
+
+        if (sourceTile == null ||
+            destinationTile == null)
+        {
+            yield break;
+        }
+
+        isDragHintPlaying = true;
+
+        bool handAnimationFinished = false;
+        bool tileAnimationFinished = false;
+
+        sourceTile.PlayTutorialDragPreview(
+            destinationTile,
+            () => tileAnimationFinished = true
+        );
+
+        dragHint.Play(
+            sourceTile.transform.position,
+            destinationTile.transform.position,
+            () => handAnimationFinished = true
+        );
+
+        while (isDragHintPlaying &&
+        (!handAnimationFinished ||
+         !tileAnimationFinished) &&
+        isGameplayActive &&
+        !gameCompleted)
+        {
+            yield return null;
+        }
+
+        isDragHintPlaying = false;
+    }
+
     private void SetBoardInteractable(bool interactable)
     {
         if (tiles == null)

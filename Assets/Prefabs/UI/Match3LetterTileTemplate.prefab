@@ -145,6 +145,10 @@ MonoBehaviour:
   tileCanvasGroup: {fileID: 0}
   minimumDragDistance: 20
   invalidDragReturnDuration: 0.2
+  tutorialDragDuration: 0.7
+  tutorialReturnDuration: 0.2
+  tutorialRepeatPause: 0.2
+  tutorialRepeatCount: 2
 --- !u!114 &3120468535686981921
 MonoBehaviour:
   m_ObjectHideFlags: 0

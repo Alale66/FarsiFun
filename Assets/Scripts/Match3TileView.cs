@@ -25,6 +25,23 @@ public class Match3TileView : MonoBehaviour,
     [SerializeField, Min(0.05f)]
     private float invalidDragReturnDuration = 0.2f;
 
+    [Header("Tutorial Preview")]
+    [SerializeField, Min(0.1f)]
+    [Tooltip("Duration of the automatic tutorial drag movement.")]
+    private float tutorialDragDuration = 0.7f;
+
+    [SerializeField, Min(0.05f)]
+    [Tooltip("Duration of the automatic return to the original positions.")]
+    private float tutorialReturnDuration = 0.25f;
+
+    [SerializeField, Min(0f)]
+    [Tooltip("Pause between repeated tutorial drag previews.")]
+    private float tutorialRepeatPause = 0.2f;
+
+    [SerializeField, Min(1)]
+    [Tooltip("Number of times the tutorial drag preview is repeated.")]
+    private int tutorialRepeatCount = 2;
+
     private RectTransform tileRect;
     private GridLayoutGroup parentGridLayout;
     private RectTransform gridRect;
@@ -33,15 +50,8 @@ public class Match3TileView : MonoBehaviour,
     private Vector2 dragStartPosition;
     private Vector2 dragStartLocalPosition;
     private bool suppressNextClick;
-
-    public int Row { get; private set; }
-    public int Column { get; private set; }
-
-    public string FamilyId { get; private set; }
-    public bool IsTargetFamily { get; private set; }
-    public string DisplayedLetter { get; private set; }
-
     private Action<Match3TileView> clickHandler;
+    private Action interactionStartedHandler;
 
     private Func<
     Match3TileView,
@@ -59,6 +69,14 @@ public class Match3TileView : MonoBehaviour,
     private RectTransform previewNeighborRect;
     private Vector2 previewNeighborOriginalPosition;
     private bool isReturningFromInvalidDrag;
+    private Coroutine tutorialPreviewRoutine;
+
+    public int Row { get; private set; }
+    public int Column { get; private set; }
+
+    public string FamilyId { get; private set; }
+    public bool IsTargetFamily { get; private set; }
+    public string DisplayedLetter { get; private set; }
 
     private void Awake()
     {
@@ -102,12 +120,15 @@ public class Match3TileView : MonoBehaviour,
             Match3TileView
         > getNeighbor,
         Func<
-        Match3TileView,
-        Vector2Int,
-        Match3TileView
-    > getMatchingTile)
+            Match3TileView,
+            Vector2Int,
+            Match3TileView
+        > getMatchingTile,
+        Action onInteractionStarted)
     {
         matchTileProvider = getMatchingTile;
+        interactionStartedHandler = onInteractionStarted;
+
         Row = row;
         Column = column;
 
@@ -203,6 +224,162 @@ public class Match3TileView : MonoBehaviour,
     }
 
     /// <summary>
+    /// Automatically previews a drag between this tile and a
+    /// neighboring tile without changing the board data.
+    /// </summary>
+    public void PlayTutorialDragPreview(
+        Match3TileView destinationTile,
+        Action onComplete = null)
+    {
+        if (destinationTile == null ||
+            destinationTile == this ||
+            tileRect == null)
+        {
+            onComplete?.Invoke();
+            return;
+        }
+
+        if (tutorialPreviewRoutine != null)
+        {
+            StopCoroutine(tutorialPreviewRoutine);
+            tutorialPreviewRoutine = null;
+        }
+
+        tutorialPreviewRoutine = StartCoroutine(
+            TutorialDragPreviewRoutine(
+                destinationTile,
+                onComplete
+            )
+        );
+    }
+
+    /// <summary>
+    /// Moves both tutorial tiles toward each other's positions,
+    /// highlights the matching tile, and restores the layout.
+    /// </summary>
+    private IEnumerator TutorialDragPreviewRoutine(
+        Match3TileView destinationTile,
+        Action onComplete)
+    {
+        RectTransform destinationRect =
+            destinationTile.transform as RectTransform;
+
+        if (destinationRect == null)
+        {
+            tutorialPreviewRoutine = null;
+            onComplete?.Invoke();
+            yield break;
+        }
+
+        if (parentGridLayout != null)
+            parentGridLayout.enabled = false;
+
+        Vector2 sourcePosition =
+            tileRect.anchoredPosition;
+
+        Vector2 destinationPosition =
+            destinationRect.anchoredPosition;
+
+        for (int repeat = 0;
+             repeat < tutorialRepeatCount;
+             repeat++)
+        {
+            ShowValidSwapHint();
+
+            float elapsed = 0f;
+
+            while (elapsed < tutorialDragDuration)
+            {
+                elapsed += Time.unscaledDeltaTime;
+
+                float progress = Mathf.Clamp01(
+                    elapsed / tutorialDragDuration
+                );
+
+                float smoothProgress = Mathf.SmoothStep(
+                    0f,
+                    1f,
+                    progress
+                );
+
+                tileRect.anchoredPosition = Vector2.Lerp(
+                    sourcePosition,
+                    destinationPosition,
+                    smoothProgress
+                );
+
+                destinationRect.anchoredPosition = Vector2.Lerp(
+                    destinationPosition,
+                    sourcePosition,
+                    smoothProgress
+                );
+
+                yield return null;
+            }
+
+            elapsed = 0f;
+
+            while (elapsed < tutorialReturnDuration)
+            {
+                elapsed += Time.unscaledDeltaTime;
+
+                float progress = Mathf.Clamp01(
+                    elapsed / tutorialReturnDuration
+                );
+
+                float smoothProgress = Mathf.SmoothStep(
+                    0f,
+                    1f,
+                    progress
+                );
+
+                tileRect.anchoredPosition = Vector2.Lerp(
+                    destinationPosition,
+                    sourcePosition,
+                    smoothProgress
+                );
+
+                destinationRect.anchoredPosition = Vector2.Lerp(
+                    sourcePosition,
+                    destinationPosition,
+                    smoothProgress
+                );
+
+                yield return null;
+            }
+
+            tileRect.anchoredPosition = sourcePosition;
+            destinationRect.anchoredPosition =
+                destinationPosition;
+
+            HideValidSwapHint();
+
+            if (repeat < tutorialRepeatCount - 1 &&
+                tutorialRepeatPause > 0f)
+            {
+                yield return new WaitForSecondsRealtime(
+                    tutorialRepeatPause
+                );
+            }
+        }
+
+        if (parentGridLayout != null)
+        {
+            parentGridLayout.enabled = true;
+
+            if (gridRect != null)
+            {
+                LayoutRebuilder.ForceRebuildLayoutImmediate(
+                    gridRect
+                );
+            }
+        }
+
+        tutorialPreviewRoutine = null;
+        onComplete?.Invoke();
+    }
+
+    /// <summary>
     /// Stores the pointer position when the tile is pressed.
     /// </summary>
     public void OnPointerDown(PointerEventData eventData)
@@ -211,6 +388,8 @@ public class Match3TileView : MonoBehaviour,
         {
             return;
         }
+
+        interactionStartedHandler?.Invoke();
 
         if (parentGridLayout != null)
             parentGridLayout.enabled = false;
