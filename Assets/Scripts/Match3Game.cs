@@ -50,6 +50,17 @@ public class Match3Game : BonusGameBase
     [SerializeField, Min(0.05f)]
     private float tileFallDuration = 0.35f;
 
+    [Header("Score Fly Effect")]
+    [Tooltip("The animated token used when a matched target tile flies to the progress tray.")]
+    [SerializeField] private ScoreFlyToken scoreFlyTokenPrefab;
+
+    [Tooltip("The UI layer that displays flying score tokens above the game board.")]
+    [SerializeField] private RectTransform scoreFlyLayer;
+
+    [SerializeField, Min(0f)]
+    [Tooltip("The pause between consecutive target-token animations.")]
+    private float scoreFlyStaggerDelay = 0.08f;
+
     [Header("Board Shuffle")]
     [SerializeField, Min(1)]
     private int maximumShuffleAttempts = 100;
@@ -369,7 +380,10 @@ public class Match3Game : BonusGameBase
                 tile.Initialize(
                     row,
                     column,
-                    OnTileClicked
+                    OnTileClicked,
+                    OnTileDragged,
+                    GetNeighborTile,
+                    GetDragMatchTile
                 );
 
                 tile.SetContent(
@@ -534,21 +548,139 @@ public class Match3Game : BonusGameBase
             return;
         }
 
-        SwapTiles(firstTile, tile);
+        TrySwapTiles(firstTile, tile);
+    }
+
+    /// <summary>
+    /// Attempts a tile swap and returns whether it created a match.
+    /// </summary>
+    private bool TrySwapTiles(
+        Match3TileView firstTile,
+        Match3TileView secondTile)
+    {
+        SwapTiles(firstTile, secondTile);
 
         HashSet<Match3TileView> matches =
             FindAllMatches();
 
         if (matches.Count == 0)
         {
-            SwapTiles(firstTile, tile);
+            SwapTiles(firstTile, secondTile);
             PlaySound(wrongSound);
 
             Debug.Log("No match. Swap reverted.");
-            return;
+            return false;
         }
 
         StartCoroutine(ResolveMatches(matches));
+        return true;
+    }
+
+    /// <summary>
+    /// Attempts to swap a dragged tile with its adjacent tile
+    /// and reports whether the move created a match.
+    /// </summary>
+    private bool OnTileDragged(
+        Match3TileView tile,
+        Vector2Int direction)
+    {
+        if (tile == null ||
+            tiles == null ||
+            !isGameplayActive ||
+            isResolving ||
+            gameCompleted)
+        {
+            return false;
+        }
+
+        Match3TileView targetTile =
+            GetNeighborTile(tile, direction);
+
+        if (targetTile == null)
+            return false;
+
+        if (selectedTile != null)
+        {
+            selectedTile.SetSelected(false);
+            selectedTile = null;
+        }
+
+        return TrySwapTiles(tile, targetTile);
+    }
+
+    /// <summary>
+    /// Returns the adjacent tile in the requested direction,
+    /// or null when the direction points outside the board.
+    /// </summary>
+    private Match3TileView GetNeighborTile(
+        Match3TileView tile,
+        Vector2Int direction)
+    {
+        if (tile == null || tiles == null)
+            return null;
+
+        int targetRow =
+            tile.Row - direction.y;
+
+        int targetColumn =
+            tile.Column + direction.x;
+
+        if (targetRow < 0 ||
+            targetRow >= RowCount ||
+            targetColumn < 0 ||
+            targetColumn >= ColumnCount)
+        {
+            return null;
+        }
+
+        return tiles[targetRow, targetColumn];
+    }
+
+    /// <summary>
+    /// Returns the swapped tile that would become part of a match.
+    /// Returns null when the previewed swap creates no match.
+    /// </summary>
+    private Match3TileView GetDragMatchTile(
+        Match3TileView tile,
+        Vector2Int direction)
+    {
+        Match3TileView neighbor =
+            GetNeighborTile(tile, direction);
+
+        if (tile == null || neighbor == null)
+            return null;
+
+        int firstRow = tile.Row;
+        int firstColumn = tile.Column;
+        int secondRow = neighbor.Row;
+        int secondColumn = neighbor.Column;
+
+        // Temporarily preview the swap in the board data.
+        SwapTileReferences(
+            firstRow,
+            firstColumn,
+            secondRow,
+            secondColumn
+        );
+
+        HashSet<Match3TileView> matches =
+            FindAllMatches();
+
+        // Restore the original board data.
+        SwapTileReferences(
+            firstRow,
+            firstColumn,
+            secondRow,
+            secondColumn
+        );
+
+        if (matches.Contains(tile))
+            return tile;
+
+        if (matches.Contains(neighbor))
+            return neighbor;
+
+        return null;
     }
 
     private bool AreAdjacent(
@@ -1022,18 +1154,26 @@ public class Match3Game : BonusGameBase
         while (matches.Count > 0 &&
                safetyCounter < 20)
         {
-            AddTargetProgress(matches);
-            bool reachedGoal = collectedTargetCount >= requiredTargetCount;
-
             foreach (Match3TileView matchedTile
-                     in matches)
+         in matches)
             {
                 matchedTile.ShowMatchFeedback();
             }
 
             PlaySound(correctSound);
 
-            yield return StartCoroutine(FadeMatchedTiles(matches));
+            // Move each matched target tile into the progress tray
+            // before removing the matched tiles from the board.
+            yield return StartCoroutine(
+                AnimateTargetProgress(matches)
+            );
+
+            bool reachedGoal =
+                collectedTargetCount >= requiredTargetCount;
+
+            yield return StartCoroutine(
+                FadeMatchedTiles(matches)
+            );
 
             foreach (Match3TileView matchedTile
                      in matches)
@@ -1404,22 +1544,102 @@ public class Match3Game : BonusGameBase
         return allRecycledTiles;
     }
 
-    private void AddTargetProgress(
+    /// <summary>
+    /// Animates matched target tiles into the next available
+    /// progress markers and updates the score after each arrival.
+    /// </summary>
+    private IEnumerator AnimateTargetProgress(
         HashSet<Match3TileView> matches)
     {
-        foreach (Match3TileView matchedTile
-                 in matches)
+        List<Match3TileView> targetTiles =
+            new List<Match3TileView>();
+
+        foreach (Match3TileView matchedTile in matches)
         {
-            if (matchedTile.IsTargetFamily)
-                collectedTargetCount++;
+            if (matchedTile != null &&
+                matchedTile.IsTargetFamily)
+            {
+                targetTiles.Add(matchedTile);
+            }
         }
 
-        collectedTargetCount = Mathf.Min(
-            collectedTargetCount,
-            requiredTargetCount
-        );
+        // Keep the animation order predictable.
+        targetTiles.Sort((first, second) =>
+        {
+            int rowComparison =
+                first.Row.CompareTo(second.Row);
 
-        UpdateProgressDisplay();
+            if (rowComparison != 0)
+                return rowComparison;
+
+            return first.Column.CompareTo(second.Column);
+        });
+
+        foreach (Match3TileView targetTile in targetTiles)
+        {
+            if (collectedTargetCount >= requiredTargetCount)
+                yield break;
+
+            RectTransform markerTarget = null;
+
+            if (progressMarkers != null &&
+                collectedTargetCount < progressMarkers.Length &&
+                progressMarkers[collectedTargetCount] != null)
+            {
+                markerTarget =
+                    progressMarkers[collectedTargetCount]
+                        .transform as RectTransform;
+            }
+
+            if (scoreFlyTokenPrefab == null ||
+                scoreFlyLayer == null ||
+                markerTarget == null)
+            {
+                collectedTargetCount++;
+
+                collectedTargetCount = Mathf.Min(
+                    collectedTargetCount,
+                    requiredTargetCount
+                );
+
+                UpdateProgressDisplay();
+                continue;
+            }
+
+            bool tokenArrived = false;
+
+            ScoreFlyToken token = Instantiate(
+                scoreFlyTokenPrefab,
+                scoreFlyLayer
+            );
+
+            token.Play(
+                targetTile.DisplayedLetter,
+                targetTile.transform.position,
+                markerTarget,
+                () => tokenArrived = true
+            );
+
+            yield return new WaitUntil(
+                () => tokenArrived
+            );
+
+            collectedTargetCount++;
+
+            collectedTargetCount = Mathf.Min(
+                collectedTargetCount,
+                requiredTargetCount
+            );
+
+            UpdateProgressDisplay();
+
+            if (scoreFlyStaggerDelay > 0f)
+            {
+                yield return new WaitForSecondsRealtime(
+                    scoreFlyStaggerDelay
+                );
+            }
+        }
     }
 
     private void UpdateProgressDisplay()

@@ -2,8 +2,13 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
+using UnityEngine.EventSystems;
 
-public class Match3TileView : MonoBehaviour
+public class Match3TileView : MonoBehaviour,
+    IPointerDownHandler,
+    IDragHandler,
+    IPointerUpHandler
 {
     [Header("UI")]
     [SerializeField] private TMP_Text letterText;
@@ -13,13 +18,47 @@ public class Match3TileView : MonoBehaviour
     [SerializeField] private Outline matchOutline;
     [SerializeField] private CanvasGroup tileCanvasGroup;
 
+    [Header("Drag")]
+    [SerializeField, Min(5f)]
+    private float minimumDragDistance = 35f;
+
+    [SerializeField, Min(0.05f)]
+    private float invalidDragReturnDuration = 0.2f;
+
+    private RectTransform tileRect;
+    private GridLayoutGroup parentGridLayout;
+    private RectTransform gridRect;
+    private Vector2 originalAnchoredPosition;
+    private Func<Match3TileView, Vector2Int, bool> dragHandler;
+    private Vector2 dragStartPosition;
+    private Vector2 dragStartLocalPosition;
+    private bool suppressNextClick;
+
     public int Row { get; private set; }
     public int Column { get; private set; }
 
     public string FamilyId { get; private set; }
     public bool IsTargetFamily { get; private set; }
+    public string DisplayedLetter { get; private set; }
 
     private Action<Match3TileView> clickHandler;
+
+    private Func<
+    Match3TileView,
+    Vector2Int,
+    Match3TileView
+> neighborProvider;
+
+    private Func<
+        Match3TileView,
+        Vector2Int,
+        Match3TileView
+    > matchTileProvider;
+
+    private Match3TileView previewNeighbor;
+    private RectTransform previewNeighborRect;
+    private Vector2 previewNeighborOriginalPosition;
+    private bool isReturningFromInvalidDrag;
 
     private void Awake()
     {
@@ -40,16 +79,41 @@ public class Match3TileView : MonoBehaviour
 
         if (tileCanvasGroup != null)
             tileCanvasGroup.alpha = 1f;
+
+        tileRect = transform as RectTransform;
+        parentGridLayout =
+    GetComponentInParent<GridLayoutGroup>();
+
+        if (parentGridLayout != null)
+        {
+            gridRect =
+                parentGridLayout.transform as RectTransform;
+        }
     }
 
     public void Initialize(
         int row,
         int column,
-        Action<Match3TileView> onClicked)
+        Action<Match3TileView> onClicked,
+        Func<Match3TileView, Vector2Int, bool> onDragged,
+        Func<
+            Match3TileView,
+            Vector2Int,
+            Match3TileView
+        > getNeighbor,
+        Func<
+        Match3TileView,
+        Vector2Int,
+        Match3TileView
+    > getMatchingTile)
     {
+        matchTileProvider = getMatchingTile;
         Row = row;
         Column = column;
+
         clickHandler = onClicked;
+        dragHandler = onDragged;
+        neighborProvider = getNeighbor;
 
         if (button != null)
         {
@@ -77,6 +141,7 @@ public class Match3TileView : MonoBehaviour
 
         FamilyId = familyId;
         IsTargetFamily = isTargetFamily;
+        DisplayedLetter = displayedLetter;
 
         if (letterText != null)
         {
@@ -136,8 +201,356 @@ public class Match3TileView : MonoBehaviour
                 Mathf.Clamp01(alpha);
         }
     }
+
+    /// <summary>
+    /// Stores the pointer position when the tile is pressed.
+    /// </summary>
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        if ((button != null && !button.interactable) || isReturningFromInvalidDrag)
+        {
+            return;
+        }
+
+        if (parentGridLayout != null)
+            parentGridLayout.enabled = false;
+
+        dragStartPosition = eventData.position;
+        if (gridRect != null)
+        {
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                gridRect,
+                eventData.position,
+                eventData.pressEventCamera,
+                out dragStartLocalPosition
+            );
+        }
+        suppressNextClick = false;
+
+        if (tileRect != null)
+            originalAnchoredPosition = tileRect.anchoredPosition;
+
+        transform.localScale = Vector3.one * 1.08f;
+    }
+
+    /// <summary>
+    /// Previews a possible swap by moving both tiles toward
+    /// each other's positions without changing the board data.
+    /// </summary>
+    public void OnDrag(PointerEventData eventData)
+    {
+        if ((button != null && !button.interactable) ||
+     isReturningFromInvalidDrag)
+        {
+            return;
+        }
+
+        if (tileRect == null ||
+            neighborProvider == null)
+        {
+            return;
+        }
+
+        Vector2 dragDelta =
+            eventData.position - dragStartPosition;
+
+        if (dragDelta.sqrMagnitude <= 0f)
+            return;
+
+        Vector2Int direction;
+
+        if (Mathf.Abs(dragDelta.x) >
+            Mathf.Abs(dragDelta.y))
+        {
+            direction = dragDelta.x > 0f
+                ? Vector2Int.right
+                : Vector2Int.left;
+        }
+        else
+        {
+            direction = dragDelta.y > 0f
+                ? Vector2Int.up
+                : Vector2Int.down;
+        }
+
+        Match3TileView neighbor =
+            neighborProvider(this, direction);
+
+        if (neighbor == null)
+        {
+            ResetDragPreview();
+            transform.localScale = Vector3.one * 1.08f;
+            return;
+        }
+
+        if (previewNeighbor != null)
+            previewNeighbor.HideValidSwapHint();
+
+        if (previewNeighbor != neighbor)
+        {
+            if (previewNeighborRect != null)
+            {
+                previewNeighborRect.anchoredPosition =
+                    previewNeighborOriginalPosition;
+            }
+
+            previewNeighbor = neighbor;
+            previewNeighborRect =
+                neighbor.transform as RectTransform;
+
+            if (previewNeighborRect != null)
+            {
+                previewNeighborOriginalPosition =
+                    previewNeighborRect.anchoredPosition;
+            }
+        }
+
+        if (previewNeighborRect == null)
+            return;
+
+        Match3TileView matchingTile =
+    matchTileProvider != null
+        ? matchTileProvider.Invoke(this, direction)
+        : null;
+
+        // Clear the previous preview highlights first.
+        HideValidSwapHint();
+        previewNeighbor.HideValidSwapHint();
+
+        // Keep the dragged tile visibly raised.
+        transform.localScale = Vector3.one * 1.08f;
+
+        // Highlight only the tile that will join the match.
+        if (matchingTile != null)
+            matchingTile.ShowValidSwapHint();
+
+        float tileDistance = Vector2.Distance(
+            originalAnchoredPosition,
+            previewNeighborOriginalPosition
+        );
+
+        Vector2 currentLocalPosition =
+     dragStartLocalPosition;
+
+        if (gridRect != null)
+        {
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                gridRect,
+                eventData.position,
+                eventData.pressEventCamera,
+                out currentLocalPosition
+            );
+        }
+
+        Vector2 localDragDelta =
+            currentLocalPosition - dragStartLocalPosition;
+
+        float dragDistance =
+            Mathf.Abs(direction.x) > 0
+                ? Mathf.Abs(localDragDelta.x)
+                : Mathf.Abs(localDragDelta.y);
+
+        float progress = Mathf.Clamp01(
+            dragDistance / Mathf.Max(tileDistance, 1f)
+        );
+
+        tileRect.anchoredPosition = Vector2.Lerp(
+            originalAnchoredPosition,
+            previewNeighborOriginalPosition,
+            progress
+        );
+
+        previewNeighborRect.anchoredPosition = Vector2.Lerp(
+            previewNeighborOriginalPosition,
+            originalAnchoredPosition,
+            progress
+        );
+    }
+
+    /// <summary>
+    /// Completes a valid swap or smoothly restores an invalid
+    /// drag preview to its original positions.
+    /// </summary>
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        if ((button != null && !button.interactable) ||
+            isReturningFromInvalidDrag)
+        {
+            return;
+        }
+
+        Vector2 dragDelta =
+            eventData.position - dragStartPosition;
+
+        if (dragDelta.magnitude < minimumDragDistance)
+        {
+            ResetDragPreview();
+            return;
+        }
+
+        Vector2Int direction;
+
+        if (Mathf.Abs(dragDelta.x) >
+            Mathf.Abs(dragDelta.y))
+        {
+            direction = dragDelta.x > 0f
+                ? Vector2Int.right
+                : Vector2Int.left;
+        }
+        else
+        {
+            direction = dragDelta.y > 0f
+                ? Vector2Int.up
+                : Vector2Int.down;
+        }
+
+        suppressNextClick = true;
+
+        Match3TileView matchingTile =
+    matchTileProvider != null
+        ? matchTileProvider.Invoke(this, direction)
+        : null;
+
+        bool previewedAsValid =
+            matchingTile != null;
+
+        // Clear the drag hint before Match feedback is applied.
+        if (previewedAsValid)
+            ResetDragPreview();
+
+        bool swapAccepted =
+            dragHandler != null &&
+            dragHandler.Invoke(this, direction);
+
+        if (!swapAccepted)
+        {
+            if (!previewedAsValid)
+            {
+                StartCoroutine(
+                    AnimateInvalidDragReturn()
+                );
+            }
+        }
+        else if (!previewedAsValid)
+        {
+            ResetDragPreview();
+        }
+
+        StartCoroutine(ResetClickSuppression());
+    }
+
+    /// <summary>
+    /// Smoothly returns both preview tiles after an invalid swap.
+    /// </summary>
+    private IEnumerator AnimateInvalidDragReturn()
+    {
+        isReturningFromInvalidDrag = true;
+
+        Vector2 tileStartPosition =
+            tileRect != null
+                ? tileRect.anchoredPosition
+                : originalAnchoredPosition;
+
+        RectTransform neighborRect =
+            previewNeighborRect;
+
+        Vector2 neighborStartPosition =
+            neighborRect != null
+                ? neighborRect.anchoredPosition
+                : previewNeighborOriginalPosition;
+
+        float elapsed = 0f;
+
+        while (elapsed < invalidDragReturnDuration)
+        {
+            elapsed += Time.unscaledDeltaTime;
+
+            float progress = Mathf.Clamp01(
+                elapsed / invalidDragReturnDuration
+            );
+
+            float smoothProgress = Mathf.SmoothStep(
+                0f,
+                1f,
+                progress
+            );
+
+            if (tileRect != null)
+            {
+                tileRect.anchoredPosition = Vector2.Lerp(
+                    tileStartPosition,
+                    originalAnchoredPosition,
+                    smoothProgress
+                );
+            }
+
+            if (neighborRect != null)
+            {
+                neighborRect.anchoredPosition = Vector2.Lerp(
+                    neighborStartPosition,
+                    previewNeighborOriginalPosition,
+                    smoothProgress
+                );
+            }
+
+            yield return null;
+        }
+
+        ResetDragPreview();
+        isReturningFromInvalidDrag = false;
+    }
+
+    /// <summary>
+    /// Restores both tiles after a drag preview ends.
+    /// </summary>
+    private void ResetDragPreview()
+    {
+        if (tileRect != null)
+        {
+            tileRect.anchoredPosition =
+                originalAnchoredPosition;
+        }
+
+        if (previewNeighborRect != null)
+        {
+            previewNeighborRect.anchoredPosition = previewNeighborOriginalPosition;
+        }
+
+        HideValidSwapHint();
+
+        if (previewNeighbor != null)
+            previewNeighbor.HideValidSwapHint();
+
+        previewNeighbor = null;
+        previewNeighborRect = null;
+        transform.localScale = Vector3.one;
+        if (parentGridLayout != null)
+        {
+            parentGridLayout.enabled = true;
+
+            if (gridRect != null)
+            {
+                LayoutRebuilder.ForceRebuildLayoutImmediate(
+                    gridRect
+                );
+            }
+        }
+    }
+
+    /// <summary>
+    /// Prevents the Button click event from firing after a drag.
+    /// </summary>
+    private IEnumerator ResetClickSuppression()
+    {
+        yield return null;
+        suppressNextClick = false;
+    }
+
     private void HandleClicked()
     {
+        if (suppressNextClick)
+            return;
+
         clickHandler?.Invoke(this);
     }
 
@@ -145,5 +558,27 @@ public class Match3TileView : MonoBehaviour
     {
         if (button != null)
             button.onClick.RemoveListener(HandleClicked);
+    }
+
+    /// <summary>
+    /// Highlights a neighboring tile that can create a valid match.
+    /// </summary>
+    public void ShowValidSwapHint()
+    {
+        transform.localScale = Vector3.one * 1.15f;
+
+        if (matchOutline != null)
+            matchOutline.enabled = true;
+    }
+
+    /// <summary>
+    /// Removes the valid-swap preview from this tile.
+    /// </summary>
+    public void HideValidSwapHint()
+    {
+        transform.localScale = Vector3.one;
+
+        if (matchOutline != null)
+            matchOutline.enabled = false;
     }
 }
