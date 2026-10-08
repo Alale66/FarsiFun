@@ -16,7 +16,6 @@ public class LetterCatchGame : BonusGameBase
     [SerializeField] private LetterCatchPlayer player;
 
     [Header("UI")]
-    [SerializeField] private TMP_Text targetLetterText;
     [SerializeField] private TMP_Text progressText;
     [SerializeField] private GameObject progressDisplay;
 
@@ -160,13 +159,6 @@ public class LetterCatchGame : BonusGameBase
         isCompleting = false;
         isPreparingGame = false;
 
-        if (targetLetterText != null)
-        {
-            // Display every valid form of the current letter family.
-            targetLetterText.text =
-                letterData.GetGameDisplayText();
-        }
-
         UpdateProgress();
 
         // Keep local Letter Catch visuals hidden while the shared
@@ -202,13 +194,10 @@ public class LetterCatchGame : BonusGameBase
     }
 
     /// <summary>
-    /// Changes the visibility of the Letter Catch target
-    /// and score display.
+    /// Changes the visibility of the Letter Catch score display.
     /// </summary>
     private void SetGameplayUIVisible(bool visible)
     {
-        SetTargetContentVisible(visible);
-
         if (progressDisplay != null)
         {
             progressDisplay.SetActive(visible);
@@ -492,8 +481,8 @@ public class LetterCatchGame : BonusGameBase
         if (musicSource != null)
             musicSource.Stop();
 
-        // Open the shared completion panel immediately.
-        FinishGameplay();
+        // Notify the shared bonus-game flow after the result sequence ends.
+        NotifyGameplayCompleted();
     }
 
     private IEnumerator AnimateResultCard()

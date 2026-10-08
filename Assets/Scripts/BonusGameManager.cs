@@ -41,6 +41,11 @@ public class BonusGameManager : MonoBehaviour
     [SerializeField]
     private Button continueButton;
 
+    [Header("Shared Target")]
+    [Tooltip("Displays the current target letter for every bonus game.")]
+    [SerializeField]
+    private BonusGameTargetDisplay targetDisplay;
+
     [Header("Shared Audio")]
     [SerializeField]
     private GameAudioManager gameAudioManager;
@@ -66,6 +71,7 @@ public class BonusGameManager : MonoBehaviour
 
     private BonusGameBase activeGame;
     private GameObject activeContentRoot;
+    private LetterData currentLetterData;
     private Coroutine panelVoiceRoutine;
     private bool ownsLockedAudio;
 
@@ -80,6 +86,11 @@ public class BonusGameManager : MonoBehaviour
         StopCurrentGame();
         SetAllGameContentActive(false);
 
+        currentLetterData = null;
+
+        if (targetDisplay != null)
+            targetDisplay.Hide();
+
         if (lesson == null ||
             lesson.letters == null ||
             currentLetterIndex < 0 ||
@@ -91,6 +102,8 @@ public class BonusGameManager : MonoBehaviour
 
             return;
         }
+
+        currentLetterData = lesson.letters[currentLetterIndex];
 
         int selectedIndex = ChooseRandomGameIndex();
 
@@ -146,6 +159,9 @@ public class BonusGameManager : MonoBehaviour
 
         StopPanelVoice();
         SetPanelActive(bonusGameStartPanel, false);
+
+        if (targetDisplay != null)
+            targetDisplay.Show(currentLetterData);
 
         activeGame.BeginGame();
     }
@@ -241,8 +257,14 @@ public class BonusGameManager : MonoBehaviour
 
     private void HandleGameplayCompleted()
     {
+        if (targetDisplay != null)
+            targetDisplay.Hide();
+
         if (continueButton != null)
             continueButton.interactable = false;
+
+        if (activeGame != null)
+            activeGame.ShowCompletionState();
 
         SetPanelActive(bonusGameCompletePanel, true);
 
@@ -266,6 +288,10 @@ public class BonusGameManager : MonoBehaviour
 
         activeGame = null;
         activeContentRoot = null;
+        currentLetterData = null;
+
+        if (targetDisplay != null)
+            targetDisplay.Hide();
     }
 
     private void SetAllGameContentActive(bool active)

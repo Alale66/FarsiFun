@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
@@ -15,8 +14,6 @@ public class Match3Game : BonusGameBase
     [SerializeField] private Match3TileView tilePrefab;
     [SerializeField] private AlphabetData alphabetData;
 
-    [Header("Target Display")]
-    [SerializeField] private TMP_Text targetDisplayText;
     [Header("Target Progress")]
     [SerializeField] private GameObject[] progressMarkers;
     [SerializeField] private GameObject closedChest;
@@ -198,7 +195,6 @@ public class Match3Game : BonusGameBase
         }
 
         AssignFamilyColors();
-        UpdateTargetDisplay();
         BuildBoard();
 
         if (!HasAvailableMove())
@@ -361,15 +357,6 @@ public class Match3Game : BonusGameBase
         }
     }
 
-    private void UpdateTargetDisplay()
-    {
-        if (targetDisplayText != null)
-        {
-            targetDisplayText.text =
-                GetTargetDisplayValue(targetFamily);
-        }
-    }
-
     private void BuildBoard()
     {
         tiles = new Match3TileView[
@@ -466,24 +453,6 @@ public class Match3Game : BonusGameBase
         return string.IsNullOrWhiteSpace(displayedForm)
             ? "؟"
             : displayedForm;
-    }
-
-    /// <summary>
-    /// Returns the shared game label for the target
-    /// letter family.
-    /// </summary>
-    private string GetTargetDisplayValue(
-        LetterData family)
-    {
-        if (family == null)
-            return "؟";
-
-        string displayValue =
-            family.GetGameDisplayText();
-
-        return string.IsNullOrWhiteSpace(displayValue)
-            ? "؟"
-            : displayValue;
     }
 
     private string GetFamilyId(LetterData family)
@@ -1810,7 +1779,7 @@ public class Match3Game : BonusGameBase
             if (musicSource != null)
                 musicSource.Stop();
 
-            FinishGameplay();
+            NotifyGameplayCompleted();
             yield break;
         }
 
@@ -1873,7 +1842,7 @@ public class Match3Game : BonusGameBase
             musicSource.Stop();
 
         // Notify the shared bonus-game flow after the chest animation ends.
-        FinishGameplay();
+        NotifyGameplayCompleted();
     }
 
     private void PlaySound(AudioClip clip)

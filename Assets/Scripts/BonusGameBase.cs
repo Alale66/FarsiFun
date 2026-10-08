@@ -3,10 +3,7 @@ using UnityEngine;
 
 public abstract class BonusGameBase : MonoBehaviour
 {
-    [Header("Shared View States")]
-    [Tooltip("The target display shown during instruction and gameplay.")]
-    [SerializeField] private GameObject targetContent;
-
+    [Header("Local View States")]
     [Tooltip("The instruction panel shown before gameplay begins.")]
     [SerializeField] private GameObject instructionContent;
 
@@ -30,29 +27,36 @@ public abstract class BonusGameBase : MonoBehaviour
     /// </summary>
     protected void ShowWaitingState()
     {
-        SetActive(targetContent, false);
         SetActive(instructionContent, false);
         SetActive(gameplayContent, false);
     }
 
     /// <summary>
-    /// Shows the target and instruction while keeping gameplay hidden.
+    /// Shows the local instruction panel while gameplay remains hidden.
     /// </summary>
     protected void ShowInstructionState()
     {
-        SetActive(targetContent, true);
         SetActive(instructionContent, true);
         SetActive(gameplayContent, false);
     }
 
     /// <summary>
-    /// Shows the target and gameplay after the instruction finishes.
+    /// Hides the instruction and reveals the local gameplay content.
     /// </summary>
     protected void ShowGameplayState()
     {
-        SetActive(targetContent, true);
         SetActive(instructionContent, false);
         SetActive(gameplayContent, true);
+    }
+
+    /// <summary>
+    /// Hides the local instruction and gameplay views before
+    /// the shared completion panel is displayed.
+    /// </summary>
+    public void ShowCompletionState()
+    {
+        SetActive(instructionContent, false);
+        SetActive(gameplayContent, false);
     }
 
     /// <summary>
@@ -60,30 +64,16 @@ public abstract class BonusGameBase : MonoBehaviour
     /// </summary>
     protected void HideGameState()
     {
-        SetActive(targetContent, false);
         SetActive(instructionContent, false);
         SetActive(gameplayContent, false);
     }
 
-    /// <summary>
-    /// Hides the local game view and notifies the shared
-    /// bonus-game flow that gameplay has finished.
-    /// </summary>
-    protected void FinishGameplay()
+    protected void NotifyGameplayCompleted()
     {
-        HideGameState();
         GameplayCompleted?.Invoke();
     }
 
-    /// <summary>
-    /// Changes the visibility of the shared target display.
-    /// </summary>
-    protected void SetTargetContentVisible(bool visible)
-    {
-        SetActive(targetContent, visible);
-    }
-
-    private void SetActive(
+    private static void SetActive(
         GameObject target,
         bool active)
     {

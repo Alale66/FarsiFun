@@ -21,8 +21,8 @@ public class LetterHuntGame : MonoBehaviour
 
     public event Action Completed;
 
-    private readonly List<Vector3> startPositions = new List<Vector3>();
-
+    private readonly List<Vector2> startAnchoredPositions =
+        new List<Vector2>();
     private int collected;
     private int targetCount;
     private string targetLetter;
@@ -60,12 +60,21 @@ public class LetterHuntGame : MonoBehaviour
                 coinImage.color = Color.white;
         }
 
-        if (startPositions.Count != coins.Length)
+        if (startAnchoredPositions.Count != coins.Length)
         {
-            startPositions.Clear();
+            startAnchoredPositions.Clear();
 
             foreach (LetterCoinView coin in coins)
-                startPositions.Add(coin.transform.position);
+            {
+                RectTransform coinRect =
+                    coin.transform as RectTransform;
+
+                startAnchoredPositions.Add(
+                    coinRect != null
+                        ? coinRect.anchoredPosition
+                        : Vector2.zero
+                );
+            }
         }
 
         targetLetter = data.correctLetter;
@@ -140,7 +149,14 @@ public class LetterHuntGame : MonoBehaviour
         for (int i = 0; i < coins.Length; i++)
         {
             coins[i].gameObject.SetActive(true);
-            coins[i].transform.position = startPositions[i];
+            RectTransform coinRect =
+                coins[i].transform as RectTransform;
+
+            if (coinRect != null)
+            {
+                coinRect.anchoredPosition =
+                    startAnchoredPositions[i];
+            }
             coins[i].Setup(letters[i], OnCoinSelected);
         }
 
