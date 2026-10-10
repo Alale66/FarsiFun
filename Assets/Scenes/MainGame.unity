@@ -8897,6 +8897,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LetterCannonGame
   instructionContent: {fileID: 1944473623}
   gameplayContent: {fileID: 1294975876}
+  backgroundMusicSource: {fileID: 190548141}
   requiredCorrectHits: 5
   targets:
   - {fileID: 114754296}
@@ -8927,7 +8928,6 @@ MonoBehaviour:
   correctBurstDuration: 0.45
   wrongShakeDuration: 0.35
   instructionFallbackDelay: 1.5
-  musicSource: {fileID: 190548141}
   gameAudioManager: {fileID: 950646310}
   effectsAudioSource: {fileID: 964747993}
   instructionVoice: {fileID: 0}
@@ -10385,6 +10385,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Match3Game
   instructionContent: {fileID: 1158051720}
   gameplayContent: {fileID: 1000341072}
+  backgroundMusicSource: {fileID: 1595170656}
   boardGrid: {fileID: 1514884360}
   tilePrefab: {fileID: 1519033725028809159, guid: 0907228154216ec49bcf9c0d9d2b32e9, type: 3}
   alphabetData: {fileID: 11400000, guid: d7b505b9a61d56546acf0135c7050e24, type: 2}
@@ -10406,7 +10407,6 @@ MonoBehaviour:
   dragHint: {fileID: 184135763}
   idleHintDelay: 5
   initialHintDelay: 0.35
-  musicSource: {fileID: 1595170656}
   audioSource: {fileID: 1086946290}
   correctSound: {fileID: 8300000, guid: 0ac3724b21cae9f48b0d8ac2ffd87de0, type: 3}
   wrongSound: {fileID: 8300000, guid: 2836c37468459ba45832c5d28983a4f9, type: 3}
@@ -12488,6 +12488,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LetterCatchGame
   instructionContent: {fileID: 870268511}
   gameplayContent: {fileID: 1522746825}
+  backgroundMusicSource: {fileID: 1590545474}
   alphabetData: {fileID: 11400000, guid: d7b505b9a61d56546acf0135c7050e24, type: 2}
   fallingLetterPrefab: {fileID: 5702547207318988948, guid: af6c1a9a78fe3d7499fec72de9d0f927, type: 3}
   playArea: {fileID: 1941562243}
@@ -12507,7 +12508,6 @@ MonoBehaviour:
   resultCard: {fileID: 118668544}
   resultCountText: {fileID: 764618913}
   resultHoldDuration: 2
-  musicSource: {fileID: 1590545474}
   instructionVoice: {fileID: 8300000, guid: f54c3762146de324590bcc77d58e3d83, type: 3}
   gameAudioManager: {fileID: 950646310}
   instructionFallbackDuration: 2.5
@@ -15655,7 +15655,7 @@ GameObject:
   - component: {fileID: 1590545476}
   - component: {fileID: 1590545474}
   m_Layer: 5
-  m_Name: LetterCatchMusicSource
+  m_Name: MusicSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15796,7 +15796,7 @@ GameObject:
   - component: {fileID: 1595170655}
   - component: {fileID: 1595170656}
   m_Layer: 5
-  m_Name: Match3MusicSource
+  m_Name: MusicSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

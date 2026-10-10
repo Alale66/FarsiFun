@@ -44,9 +44,6 @@ public class Match3Game : BonusGameBase
     [Tooltip("Short pause before showing the first gameplay hint.")]
     private float initialHintDelay = 0.35f;
 
-    [Header("Music")]
-    [SerializeField] private AudioSource musicSource;
-
     [Header("Match Feedback")]
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip correctSound;
@@ -1776,9 +1773,6 @@ public class Match3Game : BonusGameBase
         {
             PlaySound(completionSound);
 
-            if (musicSource != null)
-                musicSource.Stop();
-
             NotifyGameplayCompleted();
             yield break;
         }
@@ -1837,9 +1831,6 @@ public class Match3Game : BonusGameBase
         }
 
         openChest.transform.localScale = Vector3.one;
-
-        if (musicSource != null)
-            musicSource.Stop();
 
         // Notify the shared bonus-game flow after the chest animation ends.
         NotifyGameplayCompleted();
@@ -1963,9 +1954,6 @@ public class Match3Game : BonusGameBase
 
         SetBoardInteractable(false);
 
-        if (musicSource != null)
-            musicSource.Stop();
-
         isResolving = false;
         selectedTile = null;
     }
@@ -2029,13 +2017,6 @@ public class Match3Game : BonusGameBase
         isGameplayActive = true;
 
         ShowGameplayState();
-
-        if (musicSource != null)
-        {
-            musicSource.loop = true;
-            musicSource.time = 0f;
-            musicSource.Play();
-        }
 
         SetBoardInteractable(false);
 

@@ -48,10 +48,6 @@ public class LetterCatchGame : BonusGameBase
     [SerializeField, Min(0f)]
     private float resultHoldDuration = 2f;
 
-    [Header("Music")]
-    [SerializeField] private AudioSource musicSource;
-
-
     [Header("Instructions")]
     [SerializeField] private AudioClip instructionVoice;
     [SerializeField] private GameAudioManager gameAudioManager;
@@ -478,9 +474,6 @@ public class LetterCatchGame : BonusGameBase
         if (player != null)
             player.gameObject.SetActive(false);
 
-        if (musicSource != null)
-            musicSource.Stop();
-
         // Notify the shared bonus-game flow after the result sequence ends.
         NotifyGameplayCompleted();
     }
@@ -632,8 +625,6 @@ public class LetterCatchGame : BonusGameBase
         if (resultCard != null)
             resultCard.localScale = Vector3.one;
 
-        if (musicSource != null)
-            musicSource.Stop();
     }
 
     private void ClearActiveLetters()
@@ -729,13 +720,6 @@ public class LetterCatchGame : BonusGameBase
             player.gameObject.SetActive(true);
             player.enabled = true;
             player.ResetPosition();
-        }
-
-        if (musicSource != null)
-        {
-            musicSource.loop = true;
-            musicSource.time = 0f;
-            musicSource.Play();
         }
 
         isRunning = true;

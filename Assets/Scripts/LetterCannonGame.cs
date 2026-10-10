@@ -94,9 +94,6 @@ new Vector2(-65f, -130f);
     [SerializeField, Min(0f)]
     private float instructionFallbackDelay = 1.5f;
 
-    [Header("Music")]
-    [SerializeField] private AudioSource musicSource;
-
     [Header("Audio")]
     [SerializeField] private GameAudioManager gameAudioManager;
     [SerializeField] private AudioSource effectsAudioSource;
@@ -223,9 +220,6 @@ new Vector2(-65f, -130f);
         StopFuseSpark();
         SetEffectVisible(muzzleFlashImage, false);
 
-        if (musicSource != null)
-            musicSource.Stop();
-
         isRunning = false;
         isResolving = false;
         gameCompleted = false;
@@ -278,13 +272,6 @@ new Vector2(-65f, -130f);
             yield break;
 
         ShowGameplayState();
-
-        if (musicSource != null)
-        {
-            musicSource.loop = true;
-            musicSource.time = 0f;
-            musicSource.Play();
-        }
 
         correctHitCount = 0;
         isRunning = true;
@@ -608,9 +595,6 @@ new Vector2(-65f, -130f);
                 isRunning = false;
                 isResolving = false;
                 gameRoutine = null;
-
-                if (musicSource != null)
-                    musicSource.Stop();
 
                 NotifyGameplayCompleted();
                 yield break;
