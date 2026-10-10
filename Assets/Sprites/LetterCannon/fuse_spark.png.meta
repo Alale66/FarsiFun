@@ -1,0 +1,834 @@
+fileFormatVersion: 2
+guid: b3874632952157d4d9ee62e7ba88e698
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -850019366686311304
+    second: fuse_spark_0
+  - first:
+      213: -4183094167428294466
+    second: fuse_spark_1
+  - first:
+      213: 6946200485719489063
+    second: fuse_spark_2
+  - first:
+      213: 6487964152932157753
+    second: fuse_spark_3
+  - first:
+      213: -8009903964673010937
+    second: fuse_spark_4
+  - first:
+      213: 2981197715032309545
+    second: fuse_spark_5
+  - first:
+      213: 6297031182932803753
+    second: fuse_spark_6
+  - first:
+      213: 8585383598950669738
+    second: fuse_spark_7
+  - first:
+      213: 3924101591362222723
+    second: fuse_spark_8
+  - first:
+      213: 7450077653231320855
+    second: fuse_spark_9
+  - first:
+      213: 8791375821423175612
+    second: fuse_spark_10
+  - first:
+      213: -6401443959405979454
+    second: fuse_spark_11
+  - first:
+      213: 7774746701642576655
+    second: fuse_spark_12
+  - first:
+      213: -8300236588441420208
+    second: fuse_spark_13
+  - first:
+      213: -5599636212481834196
+    second: fuse_spark_14
+  - first:
+      213: 7147027809391475789
+    second: fuse_spark_15
+  - first:
+      213: 7765259853251386680
+    second: fuse_spark_16
+  - first:
+      213: 7231605464848369139
+    second: fuse_spark_17
+  - first:
+      213: -186285279109201233
+    second: fuse_spark_18
+  - first:
+      213: -5182560687899473725
+    second: fuse_spark_19
+  - first:
+      213: 8460980078547690768
+    second: fuse_spark_20
+  - first:
+      213: -7481106712957657006
+    second: fuse_spark_21
+  - first:
+      213: 3137709868475071476
+    second: fuse_spark_22
+  - first:
+      213: -7850544944468486464
+    second: fuse_spark_23
+  - first:
+      213: 7395514925000881502
+    second: fuse_spark_24
+  - first:
+      213: 4101453232887784366
+    second: fuse_spark_25
+  - first:
+      213: 1665281915909814963
+    second: fuse_spark_26
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: fuse_spark_0
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 688
+        width: 327
+        height: 433
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87cb57cb3ef1434f0800000000000000
+      internalID: -850019366686311304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fuse_spark_1
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 0
+        width: 879
+        height: 888
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb89d68840aa2f5c0800000000000000
+      internalID: -4183094167428294466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fuse_spark_2
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 915
+        width: 76
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72ab4f90a8cd56060800000000000000
+      internalID: 6946200485719489063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fuse_spark_3
+      rect:
+        serializedVersion: 2
+        x: 562
+        y: 907
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9394dfab501e90a50800000000000000
+      internalID: 6487964152932157753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fuse_spark_4
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 931
+        width: 53
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7031cac48ca17d090800000000000000
+      internalID: -8009903964673010937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fuse_spark_5
+      rect:
+        serializedVersion: 2
+        x: 691
+        y: 824
+        width: 158
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92ff4b9d6875f5920800000000000000
+      internalID: 2981197715032309545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fuse_spark_6
+      rect:
+        serializedVersion: 2
+        x: 777
+        y: 995
+        width: 44
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a0844e6f7c836750800000000000000
+      internalID: 6297031182932803753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fuse_spark_7
+      rect:
+        serializedVersion: 2
+        x: 779
+        y: 996
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aad5beb55e8652770800000000000000
+      internalID: 8585383598950669738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fuse_spark_8
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 941
+        width: 101
+        height: 137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38ab0b74b95357630800000000000000
+      internalID: 3924101591362222723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fuse_spark_9
+      rect:
+        serializedVersion: 2
+        x: 874
+        y: 978
+        width: 9
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71fbde5472ef36760800000000000000
+      internalID: 7450077653231320855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fuse_spark_10
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 978
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb7e2ea1bbd310a70800000000000000
+      internalID: 8791375821423175612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fuse_spark_11
+      rect:
+        serializedVersion: 2
+        x: 932
+        y: 1038
+        width: 82
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c8590e92a08927a0800000000000000
+      internalID: -6401443959405979454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fuse_spark_12
+      rect:
+        serializedVersion: 2
+        x: 1012
+        y: 1004
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f03bb0acee275eb60800000000000000
+      internalID: 7774746701642576655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fuse_spark_13
+      rect:
+        serializedVersion: 2
+        x: 1020
+        y: 728
+        width: 299
+        height: 405
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05ebf32acc2afcc80800000000000000
+      internalID: -8300236588441420208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fuse_spark_14
+      rect:
+        serializedVersion: 2
+        x: 1127
+        y: 861
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c234b9b68881a42b0800000000000000
+      internalID: -5599636212481834196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fuse_spark_15
+      rect:
+        serializedVersion: 2
+        x: 1292
+        y: 734
+        width: 47
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4cfd921de75f2360800000000000000
+      internalID: 7147027809391475789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fuse_spark_16
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 429
+        width: 184
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83d96a5c1beb3cb60800000000000000
+      internalID: 7765259853251386680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fuse_spark_17
+      rect:
+        serializedVersion: 2
+        x: 1051
+        y: 656
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f58f080bd2db5460800000000000000
+      internalID: 7231605464848369139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fuse_spark_18
+      rect:
+        serializedVersion: 2
+        x: 1061
+        y: 556
+        width: 93
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa2cfcf868e2a6df0800000000000000
+      internalID: -186285279109201233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fuse_spark_19
+      rect:
+        serializedVersion: 2
+        x: 1316
+        y: 649
+        width: 15
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c809d24388d318b0800000000000000
+      internalID: -5182560687899473725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fuse_spark_20
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 40
+        width: 212
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 015ed71ad807b6570800000000000000
+      internalID: 8460980078547690768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fuse_spark_21
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 130
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2506e57c415cd2890800000000000000
+      internalID: -7481106712957657006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fuse_spark_22
+      rect:
+        serializedVersion: 2
+        x: 1047
+        y: 240
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fbb1b640826b8b20800000000000000
+      internalID: 3137709868475071476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fuse_spark_23
+      rect:
+        serializedVersion: 2
+        x: 1179
+        y: 137
+        width: 168
+        height: 368
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c697bb87f24d0390800000000000000
+      internalID: -7850544944468486464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fuse_spark_24
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 97
+        width: 9
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e55f6c324a522a660800000000000000
+      internalID: 7395514925000881502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fuse_spark_25
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 31
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea367212cf94be830800000000000000
+      internalID: 4101453232887784366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fuse_spark_26
+      rect:
+        serializedVersion: 2
+        x: 1237
+        y: 33
+        width: 62
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3babfa854154c1710800000000000000
+      internalID: 1665281915909814963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      fuse_spark_0: -850019366686311304
+      fuse_spark_1: -4183094167428294466
+      fuse_spark_10: 8791375821423175612
+      fuse_spark_11: -6401443959405979454
+      fuse_spark_12: 7774746701642576655
+      fuse_spark_13: -8300236588441420208
+      fuse_spark_14: -5599636212481834196
+      fuse_spark_15: 7147027809391475789
+      fuse_spark_16: 7765259853251386680
+      fuse_spark_17: 7231605464848369139
+      fuse_spark_18: -186285279109201233
+      fuse_spark_19: -5182560687899473725
+      fuse_spark_2: 6946200485719489063
+      fuse_spark_20: 8460980078547690768
+      fuse_spark_21: -7481106712957657006
+      fuse_spark_22: 3137709868475071476
+      fuse_spark_23: -7850544944468486464
+      fuse_spark_24: 7395514925000881502
+      fuse_spark_25: 4101453232887784366
+      fuse_spark_26: 1665281915909814963
+      fuse_spark_3: 6487964152932157753
+      fuse_spark_4: -8009903964673010937
+      fuse_spark_5: 2981197715032309545
+      fuse_spark_6: 6297031182932803753
+      fuse_spark_7: 8585383598950669738
+      fuse_spark_8: 3924101591362222723
+      fuse_spark_9: 7450077653231320855
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

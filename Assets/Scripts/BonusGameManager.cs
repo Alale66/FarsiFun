@@ -25,6 +25,15 @@ public class BonusGameManager : MonoBehaviour
     [SerializeField]
     private BonusGameEntry[] bonusGames;
 
+    [Header("Testing")]
+    [Tooltip("Forces one bonus game during development instead of choosing randomly.")]
+    [SerializeField]
+    private bool forceGameForTesting;
+
+    [Tooltip("The Bonus Games array index used while forced testing is enabled.")]
+    [SerializeField, Min(0)]
+    private int forcedGameIndex;
+
     [Header("Shared Panels")]
     [SerializeField]
     [FormerlySerializedAs("recessStartPanel")]
@@ -219,6 +228,14 @@ public class BonusGameManager : MonoBehaviour
         {
             return -1;
         }
+
+        if (forceGameForTesting &&
+            forcedGameIndex >= 0 &&
+            forcedGameIndex < bonusGames.Length &&
+            IsValidEntry(bonusGames[forcedGameIndex]))
+                {
+                    return forcedGameIndex;
+                }
 
         int validGameCount = 0;
 
