@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ProfileSelectionController : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class ProfileSelectionController : MonoBehaviour
     [SerializeField] private Button closeButton;
     [SerializeField] private Button confirmButton;
     [SerializeField] private Button manageProfilesButton;
+    [SerializeField] private Button continueButton;
 
     [Header("Avatar Selection")]
     [SerializeField] private AvatarOptionView[] avatarOptions;
@@ -73,6 +75,13 @@ public class ProfileSelectionController : MonoBehaviour
         {
             confirmDeleteButton.onClick.AddListener(
                 ConfirmDeleteProfile
+            );
+        }
+
+        if (continueButton != null)
+        {
+            continueButton.onClick.AddListener(
+                ContinueToGame
             );
         }
     }
@@ -208,6 +217,14 @@ public class ProfileSelectionController : MonoBehaviour
                 HandleDeleteRequested
             );
 
+            PlayerProfileData selectedProfile =
+                PlayerProfileManager.Instance.SelectedProfile;
+
+            card.SetSelected(
+                selectedProfile != null &&
+                selectedProfile.id == profile.id
+            );
+
             card.SetManagementMode(isManagingProfiles);
 
             if (addProfileCardRoot != null)
@@ -229,18 +246,20 @@ public class ProfileSelectionController : MonoBehaviour
     }
 
     private void HandleProfileSelected(
-        PlayerProfileData profile)
+    PlayerProfileData profile)
     {
         PlayerProfileManager.Instance.SelectProfile(
             profile.id
         );
+
+        RefreshProfileCards();
 
         Debug.Log(
             "Selected profile: " +
             profile.displayName
         );
     }
-
+    
     private void ToggleManagementMode()
     {
         isManagingProfiles = !isManagingProfiles;
@@ -324,6 +343,28 @@ public class ProfileSelectionController : MonoBehaviour
             .Replace('9', '۹');
     }
 
+    private void ContinueToGame()
+    {
+        if (PlayerProfileManager.Instance == null ||
+            PlayerProfileManager.Instance.SelectedProfile == null)
+        {
+            Debug.LogWarning("No profile selected.");
+            return;
+        }
+
+        PlayerProfileData selectedProfile =
+            PlayerProfileManager.Instance.SelectedProfile;
+
+        Debug.Log(
+            "Loading MainGame with profile: " +
+            selectedProfile.displayName +
+            " | Coins: " +
+            selectedProfile.coins
+        );
+
+        SceneManager.LoadScene("MainGame");
+    }
+
     private void OnDestroy()
     {
         if (addProfileButton != null)
@@ -359,6 +400,13 @@ public class ProfileSelectionController : MonoBehaviour
         {
             confirmDeleteButton.onClick.RemoveListener(
                 ConfirmDeleteProfile
+            );
+        }
+
+        if (continueButton != null)
+        {
+            continueButton.onClick.RemoveListener(
+                ContinueToGame
             );
         }
     }

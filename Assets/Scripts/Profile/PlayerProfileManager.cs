@@ -7,6 +7,7 @@ public class PlayerProfileManager : MonoBehaviour
 {
     public static PlayerProfileManager Instance { get; private set; }
     public const int MaximumProfiles = 4;
+    public event Action<int> CoinsChanged;
 
     private const int StartingCoins = 20;
     private const string SaveFileName = "player_profiles.json";
@@ -116,6 +117,7 @@ public class PlayerProfileManager : MonoBehaviour
         );
 
         Save();
+        CoinsChanged?.Invoke(profile.coins);
     }
 
     private PlayerProfileData FindProfile(string profileId)

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ProfileCardView : MonoBehaviour
 {
+    [SerializeField] private Image selectionGlow;
     [SerializeField] private Button button;
     [SerializeField] private Image avatarImage;
     [SerializeField] private TMP_Text profileNameText;
@@ -33,6 +34,9 @@ public class ProfileCardView : MonoBehaviour
 
             deleteButton.gameObject.SetActive(false);
         }
+
+        if (selectionGlow != null)
+            selectionGlow.gameObject.SetActive(false);
     }
 
     public void Setup(
@@ -103,5 +107,11 @@ public class ProfileCardView : MonoBehaviour
                 HandleDeleteClicked
             );
         }
+    }
+
+    public void SetSelected(bool selected)
+    {
+        if (selectionGlow != null)
+            selectionGlow.gameObject.SetActive(selected);
     }
 }
