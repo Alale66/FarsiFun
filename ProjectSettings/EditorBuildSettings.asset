@@ -12,6 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/ProfileSelection.unity
     guid: c21eadafc62da924297f728c6cbaeb45
   - enabled: 1
+    path: Assets/Scenes/WorldMap.unity
+    guid: 0edfa5d12e0ba6b408d183f1c5fa518e
+  - enabled: 1
+    path: Assets/Scenes/IslandView.unity
+    guid: 459cd926a35cb1c4197f97ab58a8e1f7
+  - enabled: 1
     path: Assets/Scenes/MainGame.unity
     guid: 1d2c6e801b9ef7a4eaf72cb055603c86
   m_configObjects:

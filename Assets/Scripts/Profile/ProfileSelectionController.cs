@@ -357,13 +357,13 @@ public class ProfileSelectionController : MonoBehaviour
             PlayerProfileManager.Instance.SelectedProfile;
 
         Debug.Log(
-            "Loading MainGame with profile: " +
+            "Loading WorldMap with profile: " +
             selectedProfile.displayName +
             " | Coins: " +
             selectedProfile.coins
         );
 
-        SceneManager.LoadScene("MainGame");
+        SceneManager.LoadScene("WorldMap");
     }
 
     private void OnDestroy()
