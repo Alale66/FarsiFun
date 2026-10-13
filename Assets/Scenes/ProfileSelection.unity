@@ -207,6 +207,7 @@ GameObject:
   - component: {fileID: 43768585}
   - component: {fileID: 43768584}
   - component: {fileID: 43768587}
+  - component: {fileID: 43768588}
   m_Layer: 0
   m_Name: ContinueButton
   m_TagString: Untagged
@@ -329,7 +330,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ContinueButtonWiggle
   angle: 2
   scaleAmount: 0.035
-  cyclesPerSecond: 1.2
+  cyclesPerSecond: 0.8
+--- !u!225 &43768588
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43768582}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &44464897
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,6 +428,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 50264273}
+  - component: {fileID: 50264274}
   m_Layer: 5
   m_Name: DeleteProfileModal
   m_TagString: Untagged
@@ -444,6 +458,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &50264274
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 50264272}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &58507634
 GameObject:
   m_ObjectHideFlags: 0
@@ -1353,6 +1379,7 @@ GameObject:
   m_Component:
   - component: {fileID: 403171445}
   - component: {fileID: 403171446}
+  - component: {fileID: 403171447}
   m_Layer: 5
   m_Name: ProfileSystem
   m_TagString: Untagged
@@ -1392,6 +1419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProfileSelectionController
   createProfileModal: {fileID: 1117792811}
+  profileTransition: {fileID: 403171447}
   nameInputField: {fileID: 269188006}
   addProfileButton: {fileID: 1250789531}
   closeButton: {fileID: 1045937825}
@@ -1426,6 +1454,30 @@ MonoBehaviour:
   deleteProfileCoinText: {fileID: 1075667125}
   cancelDeleteButton: {fileID: 1132945002}
   confirmDeleteButton: {fileID: 1735468203}
+--- !u!114 &403171447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403171444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1605691b593c097418a483d52e3eed8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ProfileSelectionTransition
+  titleBoard: {fileID: 718478038}
+  profileCardsContainer: {fileID: 1692515612}
+  settingsButton: {fileID: 1927963239}
+  continueButton: {fileID: 43768588}
+  createProfileModal: {fileID: 1117792813}
+  modalTitleBoard: {fileID: 1160361204}
+  duration: 0.45
+  titleMoveUp: 220
+  cardsMoveLeft: 1200
+  settingsMoveUp: 280
+  continueMoveDown: 280
+  modalTitleMoveDown: 220
 --- !u!1 &428587640
 GameObject:
   m_ObjectHideFlags: 0
@@ -2448,6 +2500,7 @@ GameObject:
   - component: {fileID: 718478035}
   - component: {fileID: 718478037}
   - component: {fileID: 718478036}
+  - component: {fileID: 718478038}
   m_Layer: 5
   m_Name: TitleBoard
   m_TagString: Untagged
@@ -2513,6 +2566,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 718478034}
   m_CullTransparentMesh: 1
+--- !u!225 &718478038
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718478034}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &722485448
 GameObject:
   m_ObjectHideFlags: 0
@@ -4380,6 +4445,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1117792812}
+  - component: {fileID: 1117792813}
   m_Layer: 5
   m_Name: CreateProfileModal
   m_TagString: Untagged
@@ -4409,6 +4475,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &1117792813
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117792811}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1132945000
 GameObject:
   m_ObjectHideFlags: 0
@@ -6597,6 +6675,7 @@ GameObject:
   - component: {fileID: 1692515609}
   - component: {fileID: 1692515610}
   - component: {fileID: 1692515611}
+  - component: {fileID: 1692515612}
   m_Layer: 5
   m_Name: ProfileCardsContainer
   m_TagString: Untagged
@@ -6678,6 +6757,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ResponsiveUIWidthScaler
   horizontalMargin: 80
   minimumScale: 0.75
+--- !u!225 &1692515612
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692515607}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1692744502
 GameObject:
   m_ObjectHideFlags: 0
@@ -7394,6 +7485,7 @@ GameObject:
   - component: {fileID: 1927963238}
   - component: {fileID: 1927963237}
   - component: {fileID: 1927963236}
+  - component: {fileID: 1927963239}
   m_Layer: 0
   m_Name: SettingsButton
   m_TagString: Untagged
@@ -7502,6 +7594,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1927963234}
   m_CullTransparentMesh: 1
+--- !u!225 &1927963239
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927963234}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1975696572
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ public class ProfileSelectionController : MonoBehaviour
 {
     [Header("Create Profile Modal")]
     [SerializeField] private GameObject createProfileModal;
+    [SerializeField] private ProfileSelectionTransition profileTransition;
     [SerializeField] private TMP_InputField nameInputField;
 
     [Header("Buttons")]
@@ -104,7 +105,7 @@ public class ProfileSelectionController : MonoBehaviour
 
     private void OpenCreateModal()
     {
-        createProfileModal.SetActive(true);
+        profileTransition.OpenCreateModal();
 
         nameInputField.text = string.Empty;
         nameInputField.ActivateInputField();
@@ -118,7 +119,7 @@ public class ProfileSelectionController : MonoBehaviour
 
     private void CloseCreateModal()
     {
-        createProfileModal.SetActive(false);
+        profileTransition.CloseCreateModal();
     }
 
     private void HandleAvatarSelected(
@@ -259,7 +260,7 @@ public class ProfileSelectionController : MonoBehaviour
             profile.displayName
         );
     }
-    
+
     private void ToggleManagementMode()
     {
         isManagingProfiles = !isManagingProfiles;
@@ -298,13 +299,13 @@ public class ProfileSelectionController : MonoBehaviour
                 avatarSprites[profile.avatarIndex];
         }
 
-        deleteProfileModal.SetActive(true);
+        profileTransition.OpenDeleteModal();
     }
 
     private void CloseDeleteModal()
     {
         if (deleteProfileModal != null)
-            deleteProfileModal.SetActive(false);
+            profileTransition.CloseDeleteModal();
 
         pendingDeleteProfile = null;
     }
