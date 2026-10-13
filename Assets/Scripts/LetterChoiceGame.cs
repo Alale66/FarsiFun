@@ -236,9 +236,11 @@ public class LetterChoiceGame : MonoBehaviour
 
             exampleImages[i].sprite = example.image;
 
-            exampleButtons[i].onClick.RemoveAllListeners();
-            exampleButtons[i].onClick.AddListener(
-                () => PlayExampleAudio(example)
+            Button exampleButton = exampleButtons[i];
+
+            exampleButton.onClick.RemoveAllListeners();
+            exampleButton.onClick.AddListener(
+                () => PlayExampleAudio(example, exampleButton)
             );
         }
     }
@@ -393,6 +395,10 @@ public class LetterChoiceGame : MonoBehaviour
         {
             quizChecking = true;
 
+            PlayerRewardSystem.ReportCorrectAnswer(
+                choiceButtons[choiceIndex].transform as RectTransform
+            );
+
             feedbackText.text = "";
             retryBadge.SetActive(false);
             SetCompletionUI(false);
@@ -409,6 +415,9 @@ public class LetterChoiceGame : MonoBehaviour
         }
         else
         {
+            PlayerRewardSystem.ReportWrongAnswer(
+                choiceButtons[choiceIndex].transform as RectTransform
+            );
             feedbackText.text = "";
             retryBadge.SetActive(true);
             SetCompletionUI(false);
@@ -628,8 +637,17 @@ public class LetterChoiceGame : MonoBehaviour
             gameAudioManager.PlayLocked(data.letterSoundAudio);
     }
 
-    private void PlayExampleAudio(ExampleData example)
+    private void PlayExampleAudio(
+     ExampleData example,
+     Button exampleButton)
     {
+        if (example == null)
+            return;
+
+        PlayerRewardSystem.ReportLearningCardTap(
+            exampleButton.transform as RectTransform
+        );
+
         if (gameAudioManager != null)
             gameAudioManager.PlayLocked(example.audio);
     }

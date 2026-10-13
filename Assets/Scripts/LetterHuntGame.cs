@@ -174,12 +174,20 @@ public class LetterHuntGame : MonoBehaviour
 
         if (!isCorrect)
         {
+            PlayerRewardSystem.ReportWrongAnswer(
+                coin.transform as RectTransform
+);
+
             if (audioSource != null && wrongSound != null)
                 audioSource.PlayOneShot(wrongSound);
 
             StartCoroutine(FlashWrongCoin(coin));
             return;
         }
+
+        PlayerRewardSystem.ReportCorrectAnswer(
+            coin.transform as RectTransform
+);
 
         if (audioSource != null && correctSound != null)
             audioSource.PlayOneShot(correctSound);

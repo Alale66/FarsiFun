@@ -239,12 +239,19 @@ public class PictureHuntGame : MonoBehaviour
             );
         }
 
-        // Show the visual feedback exactly when
-        // the correct/wrong sound begins.
+        // Update coins when the answer feedback appears.
         if (isCorrect)
-            feedback.ShowCorrect();
+        {
+            PlayerRewardSystem.ReportCorrectAnswer(
+                cards[index].button.transform as RectTransform
+            );
+        }
         else
-            feedback.ShowWrong();
+        {
+            PlayerRewardSystem.ReportWrongAnswer(
+                cards[index].button.transform as RectTransform
+            );
+        }
 
         if (usingGameAudioManager)
         {

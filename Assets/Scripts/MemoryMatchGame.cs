@@ -122,6 +122,16 @@ public class MemoryMatchGame : MonoBehaviour
             matchedCards.Add(first);
             matchedCards.Add(second);
 
+            matchedCards.Add(first);
+            matchedCards.Add(second);
+
+            PlayerRewardSystem.ReportCorrectAnswer(
+                second.transform as RectTransform
+            );
+
+            first.ShowCorrect();
+            second.ShowCorrect();
+
             first.ShowCorrect();
             second.ShowCorrect();
 
@@ -179,6 +189,10 @@ public class MemoryMatchGame : MonoBehaviour
         }
         else
         {
+            PlayerRewardSystem.ReportWrongAnswer(
+                second.transform as RectTransform
+            );
+
             first.ShowWrong();
             second.ShowWrong();
 
