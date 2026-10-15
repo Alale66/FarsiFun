@@ -24,7 +24,8 @@ public class QuizChoiceFeedback : MonoBehaviour
 
     public void ShowCorrect()
     {
-        outline.enabled = false;
+        outline.effectColor = new Color32(76, 175, 80, 255);
+        outline.enabled = true;
 
         if (checkMark != null)
             checkMark.gameObject.SetActive(true);

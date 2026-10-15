@@ -239,7 +239,12 @@ public class PictureHuntGame : MonoBehaviour
             );
         }
 
-        // Update coins when the answer feedback appears.
+
+        if (isCorrect)
+            feedback.ShowCorrect();
+        else
+            feedback.ShowWrong();
+
         if (isCorrect)
         {
             PlayerRewardSystem.ReportCorrectAnswer(

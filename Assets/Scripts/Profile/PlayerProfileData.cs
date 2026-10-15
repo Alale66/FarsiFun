@@ -7,6 +7,8 @@ public class PlayerProfileData
     public string displayName;
     public int avatarIndex;
     public int coins;
+    public int highestUnlockedLetterIndex = 0;
+    public int[] completedLetterIndices = new int[0];
     public string createdAt;
 
     public PlayerProfileData(

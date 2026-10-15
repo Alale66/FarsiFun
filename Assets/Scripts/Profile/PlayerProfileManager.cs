@@ -104,6 +104,43 @@ public class PlayerProfileManager : MonoBehaviour
         return true;
     }
 
+    public void MarkLetterCompleted(int letterIndex, int totalLetters)
+    {
+        PlayerProfileData profile = SelectedProfile;
+
+        if (profile == null ||
+            totalLetters <= 0 ||
+            letterIndex < 0 ||
+            letterIndex >= totalLetters)
+        {
+            return;
+        }
+
+        List<int> completed = new List<int>(
+            profile.completedLetterIndices ?? new int[0]
+        );
+
+        if (!completed.Contains(letterIndex))
+        {
+            completed.Add(letterIndex);
+            completed.Sort();
+        }
+
+        profile.completedLetterIndices = completed.ToArray();
+
+        int nextLetterIndex = Mathf.Min(
+            letterIndex + 1,
+            totalLetters - 1
+        );
+
+        profile.highestUnlockedLetterIndex = Mathf.Max(
+            profile.highestUnlockedLetterIndex,
+            nextLetterIndex
+        );
+
+        Save();
+    }
+
     public void ChangeCoins(int amount)
     {
         PlayerProfileData profile = SelectedProfile;

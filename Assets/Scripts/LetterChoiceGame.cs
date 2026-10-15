@@ -96,7 +96,20 @@ public class LetterChoiceGame : MonoBehaviour
         if (bonusGameManager != null)
             bonusGameManager.Completed += OnBonusGameCompleted;
 
-        LoadLetter(0);
+        if (lesson == null || lesson.letters == null ||
+    lesson.letters.Length == 0)
+        {
+            Debug.LogError("Lesson data is missing or empty.");
+            return;
+        }
+
+        int selectedIndex = Mathf.Clamp(
+            SceneNavigator.SelectedLetterIndex,
+            0,
+            lesson.letters.Length - 1
+        );
+
+        LoadLetter(selectedIndex);
         ShowIntro();
         PlayIntroLetterAudio();
     }
@@ -958,14 +971,17 @@ public class LetterChoiceGame : MonoBehaviour
 
     private void OnBonusGameCompleted()
     {
-        int nextIndex = currentLetterIndex + 1;
+        if (PlayerProfileManager.Instance != null)
+        {
+            PlayerProfileManager.Instance.MarkLetterCompleted(
+                currentLetterIndex,
+                lesson.letters.Length
+            );
+        }
 
-        if (nextIndex >= lesson.letters.Length)
-            nextIndex = 0;
-
-        LoadLetter(nextIndex);
-        ShowIntro();
-        PlayIntroLetterAudio();
+        UnityEngine.SceneManagement.SceneManager.LoadScene(
+            "IslandView"
+        );
     }
 
     public void PlayPictureHuntInstruction()
