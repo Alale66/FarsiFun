@@ -1,12 +1,13 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Button), typeof(Image))]
 public class IslandLetterButton : MonoBehaviour
 {
-    [SerializeField, Range(0, 3)] private int letterIndex;
+    [SerializeField, Range(0, 4)]
+    private int letterIndex;
+
     [SerializeField] private LessonData lesson;
     [SerializeField] private Sprite unlockedSprite;
     [SerializeField] private Sprite lockedSprite;
@@ -18,16 +19,20 @@ public class IslandLetterButton : MonoBehaviour
     {
         Button button = GetComponent<Button>();
         Image image = GetComponent<Image>();
-        TMP_Text label = GetComponentInChildren<TMP_Text>(true);
+
+        TMP_Text label =
+            GetComponentInChildren<TMP_Text>(true);
 
         actualLetterIndex =
-            SceneNavigator.SelectedIslandIndex * 4 + letterIndex;
+            SceneNavigator.SelectedIslandIndex * 5 +
+            letterIndex;
 
         bool hasLetter =
             lesson != null &&
             lesson.letters != null &&
-            actualLetterIndex < lesson.letters.Length &&
-            lesson.letters[actualLetterIndex] != null;
+            letterIndex >= 0 &&
+            letterIndex < lesson.letters.Length &&
+            lesson.letters[letterIndex] != null;
 
         if (!hasLetter)
         {
@@ -36,13 +41,19 @@ public class IslandLetterButton : MonoBehaviour
             return;
         }
 
-        LetterData letter = lesson.letters[actualLetterIndex];
+        LetterData letter = lesson.letters[letterIndex];
 
         if (label != null)
         {
-            label.text = !string.IsNullOrWhiteSpace(letter.targetLetter)
-                ? letter.targetLetter
-                : letter.correctLetter;
+            string displayText =
+                !string.IsNullOrWhiteSpace(letter.targetLetter)
+                    ? letter.targetLetter
+                    : (letter.correctLetter ?? string.Empty);
+
+            label.richText = true;
+
+            label.text =
+                PersianLetterDisplay.GetText(displayText);
         }
 
         PlayerProfileData profile =
@@ -55,10 +66,12 @@ public class IslandLetterButton : MonoBehaviour
                 ? profile.highestUnlockedLetterIndex
                 : 0;
 
-        unlocked = actualLetterIndex <= highestUnlockedIndex;
+        unlocked =
+            actualLetterIndex <= highestUnlockedIndex;
 
         button.transition = Selectable.Transition.None;
         button.interactable = unlocked;
+
         image.color = Color.white;
 
         Sprite sprite =
@@ -77,8 +90,14 @@ public class IslandLetterButton : MonoBehaviour
             FindAnyObjectByType<SceneNavigator>();
 
         if (navigator != null)
+        {
             navigator.GoToLetter(actualLetterIndex);
+        }
         else
-            Debug.LogError("IslandView: SceneNavigator is missing.");
+        {
+            Debug.LogError(
+                "IslandView: SceneNavigator is missing."
+            );
+        }
     }
 }

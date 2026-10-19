@@ -34,43 +34,118 @@ public class PictureHuntGame : MonoBehaviour
     private bool checkingAnswer;
 
     public void SetupGame(
-        LetterData currentLetter,
-        LetterData[] allLetters)
+     LetterData currentLetter,
+     LetterData[] allLetters)
     {
         StopAllCoroutines();
 
-        if (cards == null || cards.Length != 3 ||
-            currentLetter == null ||
-            allLetters == null ||
-            allLetters.Length == 0)
+        finished = true;
+        checkingAnswer = false;
+        foundCorrectAnswers.Clear();
+
+        if (cards != null)
+        {
+            foreach (PictureCard card in cards)
+            {
+                if (card != null && card.button != null)
+                    card.button.interactable = false;
+            }
+        }
+
+        if (cards == null ||
+            cards.Length != 3 ||
+            currentLetter == null)
         {
             Debug.LogError(
-                "Picture Hunt: Cards or lesson data are missing."
+                "Picture Hunt: Cards or current letter are missing."
             );
             return;
         }
 
+        foreach (PictureCard card in cards)
+        {
+            if (card == null ||
+                card.button == null ||
+                card.image == null ||
+                card.feedback == null)
+            {
+                Debug.LogError(
+                    "Picture Hunt: A card reference is missing."
+                );
+                return;
+            }
+        }
+
+        bool containsMode =
+            currentLetter.pictureHuntMode ==
+            PictureHuntMode.ContainsTargetSound;
+
         List<ExampleData> correctCandidates =
-            GetValidExamples(currentLetter);
+            new List<ExampleData>();
 
         List<ExampleData> wrongCandidates =
             new List<ExampleData>();
 
-        foreach (LetterData letter in allLetters)
+        foreach (ExampleData example in GetValidExamples(currentLetter))
         {
-            if (letter == null || letter == currentLetter)
-                continue;
+            bool isCorrect = containsMode
+                ? example.containsTargetSound
+                : example.startsWithTarget;
 
-            List<ExampleData> examples =
-                GetValidExamples(letter);
-
-            wrongCandidates.AddRange(examples);
+            if (isCorrect)
+                correctCandidates.Add(example);
+            else
+                wrongCandidates.Add(example);
         }
+
+        // These examples are used only as incorrect pictures.
+        if (currentLetter.pictureHuntDistractors != null)
+        {
+            foreach (ExampleData example in
+                     currentLetter.pictureHuntDistractors)
+            {
+                if (example != null && example.image != null)
+                    wrongCandidates.Add(example);
+            }
+        }
+
+        wrongCandidates.RemoveAll(wrong =>
+            correctCandidates.Exists(correct =>
+                correct.image == wrong.image ||
+                string.Equals(
+                    correct.word?.Trim(),
+                    wrong.word?.Trim(),
+                    StringComparison.Ordinal
+                )
+            )
+        );
 
         if (correctCandidates.Count < 2)
         {
             Debug.LogError(
-                "Picture Hunt: The current letter needs at least two examples."
+                "Picture Hunt: At least two correct examples are needed."
+            );
+            return;
+        }
+
+        Shuffle(correctCandidates);
+
+        ExampleData firstCorrect = correctCandidates[0];
+
+        // Do not display the same word or image twice.
+        correctCandidates.RemoveAll(example =>
+            example.image == firstCorrect.image ||
+            string.Equals(
+                example.word?.Trim(),
+                firstCorrect.word?.Trim(),
+                StringComparison.Ordinal
+            )
+        );
+
+        if (correctCandidates.Count == 0)
+        {
+            Debug.LogError(
+                "Picture Hunt: Two different correct pictures are needed."
             );
             return;
         }
@@ -78,35 +153,20 @@ public class PictureHuntGame : MonoBehaviour
         if (wrongCandidates.Count == 0)
         {
             Debug.LogError(
-                "Picture Hunt: No wrong-picture candidates were found."
+                "Picture Hunt: Add an incorrect picture to Picture Hunt Distractors."
             );
             return;
         }
 
-        finished = false;
-        checkingAnswer = false;
-        foundCorrectAnswers.Clear();
-
-        int firstCorrectIndex =
-            UnityEngine.Random.Range(0, correctCandidates.Count);
-
-        ExampleData firstCorrect =
-            correctCandidates[firstCorrectIndex];
-
-        correctCandidates.RemoveAt(firstCorrectIndex);
-
-        ExampleData secondCorrect =
-            PickRandom(correctCandidates);
-
-        ExampleData wrongExample =
-            PickRandom(wrongCandidates);
+        ExampleData secondCorrect = PickRandom(correctCandidates);
+        ExampleData wrongExample = PickRandom(wrongCandidates);
 
         var selected = new List<(ExampleData item, bool correct)>
-        {
-            (firstCorrect, true),
-            (secondCorrect, true),
-            (wrongExample, false)
-        };
+    {
+        (firstCorrect, true),
+        (secondCorrect, true),
+        (wrongExample, false)
+    };
 
         Shuffle(selected);
 
@@ -120,6 +180,7 @@ public class PictureHuntGame : MonoBehaviour
             correctAnswers[i] = selected[i].correct;
 
             cards[i].image.sprite = item.image;
+            cards[i].image.preserveAspect = true;
             cards[i].image.color = Color.white;
 
             cards[i].feedback.ResetVisual();
@@ -128,12 +189,15 @@ public class PictureHuntGame : MonoBehaviour
                 Selectable.Transition.None;
 
             cards[i].button.onClick.RemoveAllListeners();
-            cards[i].button.interactable = true;
 
             cards[i].button.onClick.AddListener(
                 () => SelectPicture(cardIndex, item.audio)
             );
+
+            cards[i].button.interactable = true;
         }
+
+        finished = false;
     }
 
     private List<ExampleData> GetValidExamples(

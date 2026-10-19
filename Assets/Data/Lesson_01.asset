@@ -16,3 +16,6 @@ MonoBehaviour:
   letters:
   - {fileID: 11400000, guid: d655143533f49c44380d39f1549729f2, type: 2}
   - {fileID: 11400000, guid: ebd1a7fd4d873d44d8831efd0007b216, type: 2}
+  - {fileID: 11400000, guid: 9b003596b06f7e94fa0a338f607694f0, type: 2}
+  - {fileID: 11400000, guid: 1f81bfc12810f1d42a3a0c288182d8b8, type: 2}
+  - {fileID: 11400000, guid: ad87e1a8a2855fa4da71936acd81979c, type: 2}

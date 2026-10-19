@@ -277,7 +277,6 @@ public class Match3Game : BonusGameBase
             temporaryFamily.name =
                 "Match3 Filler " + displayedLetter;
 
-            temporaryFamily.correctLetter = familyId;
             temporaryFamily.targetLetter = displayedLetter;
 
             if (familyId == "ا")
@@ -454,24 +453,33 @@ public class Match3Game : BonusGameBase
 
     private string GetFamilyId(LetterData family)
     {
-        string familyId = null;
+        if (family == null)
+            return string.Empty;
 
-        if (!string.IsNullOrWhiteSpace(
-            family.correctLetter))
+        string[] forms = family.GetGameForms();
+        string familyId = string.Empty;
+
+        foreach (string form in forms)
         {
-            familyId = family.correctLetter;
-        }
-        else if (!string.IsNullOrWhiteSpace(
-            family.targetLetter))
-        {
-            familyId = family.targetLetter;
-        }
-        else
-        {
-            familyId = family.name;
+            string normalized = NormalizeFamilyId(form)
+                .Replace("\u0640", string.Empty);
+
+            if (string.IsNullOrWhiteSpace(normalized))
+                continue;
+
+            // Choose a stable identifier regardless of form order.
+            if (string.IsNullOrEmpty(familyId) ||
+                normalized.Length < familyId.Length ||
+                (normalized.Length == familyId.Length &&
+                 string.CompareOrdinal(normalized, familyId) < 0))
+            {
+                familyId = normalized;
+            }
         }
 
-        return NormalizeFamilyId(familyId);
+        return string.IsNullOrEmpty(familyId)
+            ? family.name
+            : familyId;
     }
 
     private string NormalizeFamilyId(string familyId)

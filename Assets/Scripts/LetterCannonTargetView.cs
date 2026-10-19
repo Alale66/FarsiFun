@@ -61,15 +61,15 @@ public class LetterCannonTargetView : MonoBehaviour
         SetInteractable(true);
     }
 
-    /// <summary>
-    /// Updates the letter displayed inside the target.
-    /// </summary>
     public void SetLetter(string letter)
     {
         DisplayedLetter = letter ?? string.Empty;
 
         if (letterText != null)
-            letterText.text = DisplayedLetter;
+        {
+            letterText.text =
+                PersianLetterDisplay.GetText(DisplayedLetter);
+        }
 
         ShowWrongOutline(false);
     }

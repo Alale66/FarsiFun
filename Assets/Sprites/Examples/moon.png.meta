@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b7ce7bfde41a2d94c8ba7e5cad2dc9dd
+guid: 21f7531681924a840a678b7adea411cd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5473431306525424121
-    second: island_01_start_closeup_bg_0
+      213: 9083969447635318612
+    second: moon_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -48,7 +48,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 1
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -77,7 +77,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -115,13 +115,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: island_01_start_closeup_bg_0
+      name: moon_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 1672
-        height: 941
+        y: 31
+        width: 1278
+        height: 1154
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,8 +130,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9f933f716c885fb40800000000000000
-      internalID: 5473431306525424121
+      spriteID: 457fdcc651eb01e70800000000000000
+      internalID: 9083969447635318612
       vertices: []
       indices: 
       edges: []
@@ -150,7 +150,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      island_01_start_closeup_bg_0: 5473431306525424121
+      moon_0: 9083969447635318612
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

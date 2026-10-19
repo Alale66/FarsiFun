@@ -21,7 +21,7 @@ public class FallingLetter : MonoBehaviour
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
-        
+
         if (letterText != null)
             letterText.raycastTarget = false;
     }
@@ -44,7 +44,7 @@ public class FallingLetter : MonoBehaviour
         isResolved = false;
 
         if (letterText != null)
-            letterText.text = letter;
+            letterText.text = PersianLetterDisplay.GetText(letter);
     }
 
     private void Update()

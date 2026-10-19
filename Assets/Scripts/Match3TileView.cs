@@ -153,20 +153,23 @@ public class Match3TileView : MonoBehaviour,
     }
 
     public void SetContent(
-        string familyId,
-        string displayedLetter,
-        Color familyColor,
-        bool isTargetFamily)
+     string familyId,
+     string displayedLetter,
+     Color familyColor,
+     bool isTargetFamily)
     {
         SetVisualAlpha(1f);
 
         FamilyId = familyId;
         IsTargetFamily = isTargetFamily;
+
+        // Keep the original form for game logic.
         DisplayedLetter = displayedLetter;
 
         if (letterText != null)
         {
-            letterText.text = displayedLetter;
+            letterText.text =
+                PersianLetterDisplay.GetText(displayedLetter);
 
             letterText.fontStyle = isTargetFamily
                 ? FontStyles.Bold

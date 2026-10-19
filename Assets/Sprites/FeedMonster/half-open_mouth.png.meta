@@ -1,0 +1,548 @@
+fileFormatVersion: 2
+guid: afb0d78072dc9e54f90308dfe10d50be
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3119755812215772227
+    second: half-open_mouth_0
+  - first:
+      213: -2377467222763395433
+    second: half-open_mouth_1
+  - first:
+      213: -9137088984036495243
+    second: half-open_mouth_2
+  - first:
+      213: -1928461186658887632
+    second: half-open_mouth_3
+  - first:
+      213: -6202261875949141665
+    second: half-open_mouth_4
+  - first:
+      213: -3395594021406148222
+    second: half-open_mouth_5
+  - first:
+      213: 2579544717341914590
+    second: half-open_mouth_6
+  - first:
+      213: 2296984448786589394
+    second: half-open_mouth_7
+  - first:
+      213: 2010435040459324980
+    second: half-open_mouth_8
+  - first:
+      213: 4928015476010863462
+    second: half-open_mouth_9
+  - first:
+      213: 229737887052903806
+    second: half-open_mouth_10
+  - first:
+      213: 8249631288347514189
+    second: half-open_mouth_11
+  - first:
+      213: -1456484555835093981
+    second: half-open_mouth_12
+  - first:
+      213: 9188351974917214364
+    second: half-open_mouth_13
+  - first:
+      213: -6300553291281288892
+    second: half-open_mouth_14
+  - first:
+      213: 1551072724966288294
+    second: half-open_mouth_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: half-open_mouth_0
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 21
+        width: 1902
+        height: 748
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbb2be23e9664b4d0800000000000000
+      internalID: -3119755812215772227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: half-open_mouth_1
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 687
+        width: 47
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 796ad02482a810fd0800000000000000
+      internalID: -2377467222763395433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: half-open_mouth_2
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 671
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 570be59baf9823180800000000000000
+      internalID: -9137088984036495243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: half-open_mouth_3
+      rect:
+        serializedVersion: 2
+        x: 902
+        y: 670
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0389116a4cabc35e0800000000000000
+      internalID: -1928461186658887632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: half-open_mouth_4
+      rect:
+        serializedVersion: 2
+        x: 1070
+        y: 614
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f518a105fa32de9a0800000000000000
+      internalID: -6202261875949141665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: half-open_mouth_5
+      rect:
+        serializedVersion: 2
+        x: 1132
+        y: 598
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28975a86a3d60e0d0800000000000000
+      internalID: -3395594021406148222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: half-open_mouth_6
+      rect:
+        serializedVersion: 2
+        x: 1159
+        y: 616
+        width: 17
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed5766fd0426cc320800000000000000
+      internalID: 2579544717341914590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: half-open_mouth_7
+      rect:
+        serializedVersion: 2
+        x: 814
+        y: 598
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d6658caf2780ef10800000000000000
+      internalID: 2296984448786589394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: half-open_mouth_8
+      rect:
+        serializedVersion: 2
+        x: 1126
+        y: 606
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43e739e740086eb10800000000000000
+      internalID: 2010435040459324980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: half-open_mouth_9
+      rect:
+        serializedVersion: 2
+        x: 830
+        y: 584
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66b414737f3d36440800000000000000
+      internalID: 4928015476010863462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: half-open_mouth_10
+      rect:
+        serializedVersion: 2
+        x: 999
+        y: 584
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e75bc3d1461303300800000000000000
+      internalID: 229737887052903806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: half-open_mouth_11
+      rect:
+        serializedVersion: 2
+        x: 1002
+        y: 584
+        width: 13
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d45d6e5c2f39c7270800000000000000
+      internalID: 8249631288347514189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: half-open_mouth_12
+      rect:
+        serializedVersion: 2
+        x: 1014
+        y: 582
+        width: 21
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32c4b94630789cbe0800000000000000
+      internalID: -1456484555835093981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: half-open_mouth_13
+      rect:
+        serializedVersion: 2
+        x: 1578
+        y: 584
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9013307075938f70800000000000000
+      internalID: 9188351974917214364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: half-open_mouth_14
+      rect:
+        serializedVersion: 2
+        x: 459
+        y: 23
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 441b2c0d920ff88a0800000000000000
+      internalID: -6300553291281288892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: half-open_mouth_15
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 0
+        width: 29
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6aba968ec64868510800000000000000
+      internalID: 1551072724966288294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      half-open_mouth_0: -3119755812215772227
+      half-open_mouth_1: -2377467222763395433
+      half-open_mouth_10: 229737887052903806
+      half-open_mouth_11: 8249631288347514189
+      half-open_mouth_12: -1456484555835093981
+      half-open_mouth_13: 9188351974917214364
+      half-open_mouth_14: -6300553291281288892
+      half-open_mouth_15: 1551072724966288294
+      half-open_mouth_2: -9137088984036495243
+      half-open_mouth_3: -1928461186658887632
+      half-open_mouth_4: -6202261875949141665
+      half-open_mouth_5: -3395594021406148222
+      half-open_mouth_6: 2579544717341914590
+      half-open_mouth_7: 2296984448786589394
+      half-open_mouth_8: 2010435040459324980
+      half-open_mouth_9: 4928015476010863462
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

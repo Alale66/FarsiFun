@@ -7,6 +7,12 @@ public class ExampleData
     public string word;
     public Sprite image;
     public AudioClip audio;
+
+    [Tooltip("Does this word start with this lesson's target sound or letter?")]
+    public bool startsWithTarget;
+
+    [Tooltip("Does this word contain this lesson's target sound?")]
+    public bool containsTargetSound;
 }
 
 [System.Serializable]
@@ -16,6 +22,12 @@ public class LetterFormData
     public string markText;
 }
 
+public enum PictureHuntMode
+{
+    StartsWithTarget = 0,
+    ContainsTargetSound = 1
+}
+
 [CreateAssetMenu(
     fileName = "NewLetterData",
     menuName = "FarsiFun/Letter Data"
@@ -23,6 +35,7 @@ public class LetterFormData
 public class LetterData : ScriptableObject
 {
     public LetterFormData[] forms;
+
     public string targetLetter;
 
     public string[] choices = new string[3];
@@ -39,12 +52,25 @@ public class LetterData : ScriptableObject
     [Header("Examples")]
     public ExampleData[] examples;
 
+    [Header("Picture Hunt")]
+    public PictureHuntMode pictureHuntMode =
+        PictureHuntMode.StartsWithTarget;
+
+    [Tooltip("Extra incorrect examples for Picture Hunt only.")]
+    public ExampleData[] pictureHuntDistractors;
+
+    [TextArea(2, 3)]
+    public string pictureHuntInstructionText;
+
+    [Tooltip("Full instruction sentence for this lesson.")]
+    public AudioClip pictureHuntInstructionAudio;
+
     [Header("Audio")]
     public AudioClip letterNameAudio;
     public AudioClip letterSoundAudio;
 
     /// <summary>
-    /// Returns the valid letter forms used across all
+    /// Returns the valid letter forms used across
     /// letter-focused games.
     /// </summary>
     public string[] GetGameForms()
@@ -87,8 +113,8 @@ public class LetterData : ScriptableObject
     }
 
     /// <summary>
-    /// Checks whether a displayed value belongs to this
-    /// letter family.
+    /// Checks whether a displayed value belongs
+    /// to this letter family.
     /// </summary>
     public bool IsGameForm(string value)
     {
@@ -106,17 +132,22 @@ public class LetterData : ScriptableObject
         return false;
     }
 
-    /// <summary>
-    /// Builds the shared target label shown by the games.
-    /// </summary>
     public string GetGameDisplayText()
     {
-        return string.Join("  ", GetGameForms());
+        string[] gameForms = GetGameForms();
+
+        for (int i = 0; i < gameForms.Length; i++)
+        {
+            gameForms[i] =
+                PersianLetterDisplay.GetText(gameForms[i]);
+        }
+
+        return string.Join("  ", gameForms);
     }
 
     private static void AddUniqueForm(
-    List<string> formsList,
-    string value)
+        List<string> formsList,
+        string value)
     {
         if (string.IsNullOrWhiteSpace(value) ||
             formsList.Contains(value))

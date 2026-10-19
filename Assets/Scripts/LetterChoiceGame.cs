@@ -10,6 +10,10 @@ public class LetterChoiceGame : MonoBehaviour
     [Header("Lesson Data")]
     [SerializeField] private LessonData lesson;
 
+    [SerializeField]
+    private LessonData[] islandLessons =
+    new LessonData[8];
+
     [Header("Screens")]
     [SerializeField] private SharedGamePanelUI sharedGamePanelUI;
     [SerializeField] private GameObject introPanel;
@@ -39,6 +43,8 @@ public class LetterChoiceGame : MonoBehaviour
 
     [Header("Picture Hunt UI")]
     [SerializeField] private PictureHuntGame pictureHuntGame;
+    [SerializeField]
+    private TMP_Text pictureHuntInstructionLabel;
 
     [Header("Mini Game UI")]
     [SerializeField] private MemoryMatchGame memoryMatchGame;
@@ -96,6 +102,19 @@ public class LetterChoiceGame : MonoBehaviour
         if (bonusGameManager != null)
             bonusGameManager.Completed += OnBonusGameCompleted;
 
+        int islandIndex = SceneNavigator.SelectedIslandIndex;
+
+        if (islandLessons == null ||
+            islandIndex < 0 ||
+            islandIndex >= islandLessons.Length ||
+            islandLessons[islandIndex] == null)
+        {
+            Debug.LogError("Lesson for the selected island is missing.");
+            return;
+        }
+
+        lesson = islandLessons[islandIndex];
+
         if (lesson == null || lesson.letters == null ||
     lesson.letters.Length == 0)
         {
@@ -103,11 +122,15 @@ public class LetterChoiceGame : MonoBehaviour
             return;
         }
 
-        int selectedIndex = Mathf.Clamp(
-            SceneNavigator.SelectedLetterIndex,
-            0,
-            lesson.letters.Length - 1
-        );
+        int selectedIndex =
+     SceneNavigator.SelectedLetterIndex - islandIndex * 5;
+
+        if (selectedIndex < 0 ||
+            selectedIndex >= lesson.letters.Length)
+        {
+            Debug.LogError("Selected letter is outside this island's lesson.");
+            return;
+        }
 
         LoadLetter(selectedIndex);
         ShowIntro();
@@ -243,9 +266,16 @@ public class LetterChoiceGame : MonoBehaviour
                     .GetComponent<PersianLetterHighlighter>();
 
             if (highlighter != null)
-                highlighter.SetText(example.word);
+                highlighter.SetText(example.word, data.GetGameForms());
             else
                 exampleTexts[i].text = example.word;
+
+            Debug.Log(
+                $"Intro slot {i} | " +
+                $"Word: {example.word} | " +
+                $"Sprite: {(example.image != null ? example.image.name : "NULL")} | " +
+                $"UI Image: {(exampleImages[i] != null ? exampleImages[i].name : "NULL")}"
+            );
 
             exampleImages[i].sprite = example.image;
 
@@ -342,30 +372,54 @@ public class LetterChoiceGame : MonoBehaviour
             }
         }
 
-        List<string> shuffledChoices =
-            new List<string>(data.choices);
+        // Choose one valid form of the current letter.
+        string correctForm = data.GetRandomGameForm();
 
-        // For Alef, show either ا or آ as the correct choice.
-        if (data.correctLetter == "ا")
+        // Collect unique wrong choices.
+        List<string> wrongChoices = new List<string>();
+
+        if (data.choices != null)
         {
-            string selectedAlefForm =
-                Random.Range(0, 2) == 0 ? "ا" : "آ";
-
-            int correctChoiceIndex =
-                shuffledChoices.IndexOf(data.correctLetter);
-
-            if (correctChoiceIndex >= 0)
+            foreach (string choice in data.choices)
             {
-                shuffledChoices[correctChoiceIndex] =
-                    selectedAlefForm;
-            }
-            else
-            {
-                Debug.LogWarning(
-                    "Quiz choices do not contain the correct letter."
-                );
+                if (string.IsNullOrWhiteSpace(choice) ||
+                    data.IsGameForm(choice) ||
+                    wrongChoices.Contains(choice))
+                {
+                    continue;
+                }
+
+                wrongChoices.Add(choice);
             }
         }
+
+        int requiredWrongCount = choiceTexts.Length - 1;
+
+        if (string.IsNullOrWhiteSpace(correctForm) ||
+            requiredWrongCount < 0 ||
+            wrongChoices.Count < requiredWrongCount)
+        {
+            foreach (Button button in choiceButtons)
+            {
+                if (button != null)
+                    button.interactable = false;
+            }
+
+            Debug.LogError(
+                "Quiz needs valid Match Forms and enough distinct wrong Choices."
+            );
+            return;
+        }
+
+        Shuffle(wrongChoices);
+
+        List<string> shuffledChoices = new List<string>
+{
+    correctForm
+};
+
+        for (int i = 0; i < requiredWrongCount; i++)
+            shuffledChoices.Add(wrongChoices[i]);
 
         Shuffle(shuffledChoices);
 
@@ -374,7 +428,7 @@ public class LetterChoiceGame : MonoBehaviour
             string choice = shuffledChoices[i];
             int choiceIndex = i;
 
-            choiceTexts[i].text = choice;
+            choiceTexts[i].text = PersianLetterDisplay.GetText(choice);
             choiceButtons[i].interactable = true;
 
             choiceButtons[i].onClick.RemoveAllListeners();
@@ -400,9 +454,7 @@ public class LetterChoiceGame : MonoBehaviour
             selectedFeedback = choiceFeedbacks[choiceIndex];
         }
 
-        bool isCorrect =
-            selectedLetter == data.correctLetter ||
-            (data.correctLetter == "ا" && selectedLetter == "آ");
+        bool isCorrect = data.IsGameForm(selectedLetter);
 
         if (isCorrect)
         {
@@ -822,6 +874,8 @@ public class LetterChoiceGame : MonoBehaviour
 
         ShowStage(LessonStage.PictureHunt, pictureHuntPanel);
 
+        UpdatePictureHuntInstructionText();
+
         if (sharedGamePanelUI != null)
         {
             sharedGamePanelUI.SetNavigationVisibility(
@@ -971,13 +1025,26 @@ public class LetterChoiceGame : MonoBehaviour
 
     private void OnBonusGameCompleted()
     {
+        const int lettersPerIsland = 5;
+        const int totalIslands = 8;
+
+        int globalLetterIndex =
+            SceneNavigator.SelectedIslandIndex * lettersPerIsland
+            + currentLetterIndex;
+
         if (PlayerProfileManager.Instance != null)
         {
             PlayerProfileManager.Instance.MarkLetterCompleted(
-                currentLetterIndex,
-                lesson.letters.Length
+                globalLetterIndex,
+                lettersPerIsland * totalIslands
             );
         }
+
+        Debug.Log(
+            $"Island={SceneNavigator.SelectedIslandIndex}, " +
+            $"LocalLetter={currentLetterIndex}, " +
+            $"Unlocked={PlayerProfileManager.Instance?.SelectedProfile?.highestUnlockedLetterIndex}"
+        );
 
         UnityEngine.SceneManagement.SceneManager.LoadScene(
             "IslandView"
@@ -987,6 +1054,34 @@ public class LetterChoiceGame : MonoBehaviour
     public void PlayPictureHuntInstruction()
     {
         LetterData data = lesson.letters[currentLetterIndex];
+
+        if (data == null)
+            return;
+
+        UpdatePictureHuntInstructionText();
+
+        if (data.pictureHuntInstructionAudio != null)
+        {
+            // This clip already contains the full question.
+            PlayInstructionThenLetter(
+                data.pictureHuntInstructionAudio,
+                null
+            );
+
+            return;
+        }
+
+        if (data.pictureHuntMode ==
+            PictureHuntMode.ContainsTargetSound)
+        {
+            // Do not play the "starts with" instruction here.
+            PlayInstructionThenLetter(
+                null,
+                data.letterSoundAudio
+            );
+
+            return;
+        }
 
         PlayInstructionThenLetter(
             pictureHuntInstructionAudio,
@@ -1062,6 +1157,27 @@ public class LetterChoiceGame : MonoBehaviour
                 ContinueAfterMiniGame();
                 break;
         }
+    }
+
+    private void UpdatePictureHuntInstructionText()
+    {
+        LetterData data = lesson.letters[currentLetterIndex];
+
+        if (pictureHuntInstructionLabel == null || data == null)
+            return;
+
+        string instruction = data.pictureHuntInstructionText;
+
+        if (string.IsNullOrWhiteSpace(instruction))
+        {
+            instruction =
+                data.pictureHuntMode ==
+                PictureHuntMode.ContainsTargetSound
+                    ? "کدوم کلمه‌ها این صدا رو دارن؟"
+                    : "کدوم کلمه‌ها با این حرف شروع می‌شن؟";
+        }
+
+        pictureHuntInstructionLabel.text = instruction;
     }
 
 #if UNITY_EDITOR

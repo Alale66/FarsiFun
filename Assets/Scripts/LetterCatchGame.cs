@@ -130,21 +130,15 @@ public class LetterCatchGame : BonusGameBase
         }
 
         targetFamily = letterData;
-
-        targetLetter =
-            !string.IsNullOrWhiteSpace(letterData.correctLetter)
-                ? letterData.correctLetter
-                : letterData.targetLetter;
-
-
-        // Alef uses "ا" as its canonical internal family identifier.
-        if (targetLetter == "آ")
-            targetLetter = "ا";
+        targetLetter = targetFamily.GetRandomGameForm();
 
         if (string.IsNullOrWhiteSpace(targetLetter))
         {
+            targetFamily = null;
+            targetLetter = string.Empty;
+
             Debug.LogWarning(
-                "LetterCatchGame does not have a target letter."
+                "Letter Catch needs valid Match Forms."
             );
 
             return;

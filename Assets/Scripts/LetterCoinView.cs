@@ -13,20 +13,30 @@ public class LetterCoinView : MonoBehaviour
 
     public string Letter => letter;
 
-    public void Setup(string newLetter, Action<LetterCoinView> callback)
+    public void Setup(
+        string newLetter,
+        Action<LetterCoinView> callback)
     {
-        letter = newLetter;
+        // Keep the original value for answer checking.
+        letter = newLetter ?? string.Empty;
         onSelected = callback;
 
-        letterText.text = letter;
+        letterText.text =
+            PersianLetterDisplay.GetText(letter);
+
         button.interactable = true;
 
         button.onClick.RemoveAllListeners();
-        button.onClick.AddListener(() => onSelected?.Invoke(this));
+        button.onClick.AddListener(HandleSelected);
     }
 
     public void SetInteractable(bool value)
     {
         button.interactable = value;
+    }
+
+    private void HandleSelected()
+    {
+        onSelected?.Invoke(this);
     }
 }

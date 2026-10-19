@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67622f9b8d37db340a703b23254506a1, type: 3}
+  m_Name: Letter_Ee
+  m_EditorClassIdentifier: Assembly-CSharp::LetterData
+  forms:
+  - baseText: 
+    markText: 
+  - baseText: 
+    markText: 
+  - baseText: 
+    markText: 
+  - baseText: 
+    markText: 
+  targetLetter: 
+  choices:
+  - 
+  - 
+  - 
+  correctLetter: 
+  matchForms: []
+  letterName: 
+  examples: []
+  pictureHuntMode: 0
+  pictureHuntDistractors: []
+  letterNameAudio: {fileID: 0}
+  letterSoundAudio: {fileID: 0}

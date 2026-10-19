@@ -302,10 +302,15 @@ new Vector2(-65f, -130f);
             currentLetter.GetRandomGameForm();
 
         if (string.IsNullOrWhiteSpace(correctForm))
-            correctForm = currentLetter.correctLetter;
+        {
+            Debug.LogError(
+                "Letter Cannon needs valid Match Forms."
+            );
 
-        if (string.IsNullOrWhiteSpace(correctForm))
-            correctForm = currentLetter.targetLetter;
+            isRunning = false;
+            SetTargetsInteractable(false);
+            return;
+        }
 
         AddUniqueValue(options, correctForm);
         Shuffle(distractors);

@@ -73,6 +73,8 @@ public class MatchCardView : MonoBehaviour
 
         exampleImage.sprite = data.image;
 
+        exampleImage.preserveAspect = true;
+
         ResetForNewRound();
     }
 
@@ -90,7 +92,11 @@ public class MatchCardView : MonoBehaviour
         if (highlighter != null)
             highlighter.SetText(data.word);
         else
-            exampleText.text = data.word;
+        {
+            exampleText.richText = true;
+            exampleText.text =
+                PersianLetterDisplay.GetWordText(data.word);
+        }
 
         ResetForNewRound();
     }

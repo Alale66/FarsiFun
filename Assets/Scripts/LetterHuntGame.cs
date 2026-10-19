@@ -25,7 +25,7 @@ public class LetterHuntGame : MonoBehaviour
         new List<Vector2>();
     private int collected;
     private int targetCount;
-    private string targetLetter;
+    private LetterData currentLetter;
     private bool gameFinished;
 
     public void SetupGame(LetterData data)
@@ -49,8 +49,47 @@ public class LetterHuntGame : MonoBehaviour
             }
         }
 
+        string[] validForms = data.GetGameForms();
+
+        if (validForms.Length == 0)
+        {
+            Debug.LogWarning("Letter Hunt needs valid Match Forms.");
+            return;
+        }
+
+        int correctCoinCount = Mathf.Min(5, coins.Length);
+
+        List<string> distractors = new List<string>();
+
+        if (data.choices != null)
+        {
+            foreach (string choice in data.choices)
+            {
+                if (string.IsNullOrWhiteSpace(choice) ||
+                    data.IsGameForm(choice) ||
+                    distractors.Contains(choice))
+                {
+                    continue;
+                }
+
+                distractors.Add(choice);
+            }
+        }
+
+        if (correctCoinCount < coins.Length &&
+            distractors.Count == 0)
+        {
+            Debug.LogWarning("Letter Hunt needs distractor letters.");
+            return;
+        }
+
         StopAllCoroutines();
         wrongCoins.Clear();
+
+        currentLetter = data;
+        collected = 0;
+        targetCount = correctCoinCount;
+        gameFinished = false;
 
         foreach (LetterCoinView coin in coins)
         {
@@ -77,60 +116,20 @@ public class LetterHuntGame : MonoBehaviour
             }
         }
 
-        targetLetter = data.correctLetter;
-        collected = 0;
-        gameFinished = false;
+        List<string> shuffledForms =
+            new List<string>(validForms);
 
-        targetCount = Mathf.Min(5, coins.Length);
+        Shuffle(shuffledForms);
 
         List<string> letters = new List<string>();
 
-        // For Alef: 3 coins with ا and 2 coins with آ.
-        // Both forms count as correct.
-        if (targetLetter == "ا")
+        for (int i = 0; i < targetCount; i++)
         {
-            int plainAlefCount = Mathf.Min(3, targetCount);
-
-            for (int i = 0; i < targetCount; i++)
-            {
-                letters.Add(i < plainAlefCount ? "ا" : "آ");
-            }
-        }
-        else
-        {
-            for (int i = 0; i < targetCount; i++)
-                letters.Add(targetLetter);
+            letters.Add(
+                shuffledForms[i % shuffledForms.Count]
+            );
         }
 
-        List<string> distractors = new List<string>();
-
-        if (data.choices != null)
-        {
-            foreach (string choice in data.choices)
-            {
-                if (string.IsNullOrEmpty(choice))
-                    continue;
-
-                if (choice == targetLetter)
-                    continue;
-
-                // آ is also correct when the target is ا.
-                if (targetLetter == "ا" && choice == "آ")
-                    continue;
-
-                if (!distractors.Contains(choice))
-                    distractors.Add(choice);
-            }
-        }
-
-        if (letters.Count < coins.Length && distractors.Count == 0)
-        {
-            Debug.LogWarning("Letter Hunt needs distractor letters.");
-            return;
-        }
-
-        // Shuffle distractors so, when possible, the two wrong
-        // coins show different letters.
         Shuffle(distractors);
 
         int distractorIndex = 0;
@@ -149,6 +148,7 @@ public class LetterHuntGame : MonoBehaviour
         for (int i = 0; i < coins.Length; i++)
         {
             coins[i].gameObject.SetActive(true);
+
             RectTransform coinRect =
                 coins[i].transform as RectTransform;
 
@@ -157,6 +157,7 @@ public class LetterHuntGame : MonoBehaviour
                 coinRect.anchoredPosition =
                     startAnchoredPositions[i];
             }
+
             coins[i].Setup(letters[i], OnCoinSelected);
         }
 
@@ -169,8 +170,8 @@ public class LetterHuntGame : MonoBehaviour
             return;
 
         bool isCorrect =
-            coin.Letter == targetLetter ||
-            (targetLetter == "ا" && coin.Letter == "آ");
+            currentLetter != null &&
+            currentLetter.IsGameForm(coin.Letter);
 
         if (!isCorrect)
         {

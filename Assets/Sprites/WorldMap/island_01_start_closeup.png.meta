@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d7cca49a13bffc24c878e772fc431380
+guid: b7ce7bfde41a2d94c8ba7e5cad2dc9dd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6487562469334023716
-    second: island_01_start_closeup_0
+      213: 5473431306525424121
+    second: island_01_start_closeup_bg_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -115,12 +115,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: island_01_start_closeup_0
+      name: island_01_start_closeup_bg_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1672
+        width: 1671
         height: 941
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -130,8 +130,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 42e7fca71b3780a50800000000000000
-      internalID: 6487562469334023716
+      spriteID: 9f933f716c885fb40800000000000000
+      internalID: 5473431306525424121
       vertices: []
       indices: 
       edges: []
@@ -150,7 +150,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      island_01_start_closeup_0: 6487562469334023716
+      island_01_start_closeup_bg_0: 5473431306525424121
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
