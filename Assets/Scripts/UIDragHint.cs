@@ -146,4 +146,57 @@ public class UIDragHint : MonoBehaviour
     {
         StopHint();
     }
+
+    public void PlayTap(
+    Vector3 position,
+    Action onComplete = null)
+    {
+        StopHint();
+
+        gameObject.SetActive(true);
+
+        animationRoutine = StartCoroutine(
+            PlayTapRoutine(position, onComplete)
+        );
+    }
+
+    private IEnumerator PlayTapRoutine(
+        Vector3 position,
+        Action onComplete)
+    {
+        Vector3 originalScale = handRect.localScale;
+
+        handRect.position = position;
+
+        if (canvasGroup != null)
+            canvasGroup.alpha = 1f;
+
+        for (int repeat = 0; repeat < 2; repeat++)
+        {
+            float elapsed = 0f;
+            const float duration = 0.45f;
+
+            while (elapsed < duration)
+            {
+                elapsed += Time.unscaledDeltaTime;
+
+                float t = Mathf.Clamp01(elapsed / duration);
+                float scale = 1f - Mathf.Sin(t * Mathf.PI) * 0.15f;
+
+                handRect.localScale = originalScale * scale;
+
+                yield return null;
+            }
+
+            handRect.localScale = originalScale;
+
+            yield return new WaitForSecondsRealtime(0.15f);
+        }
+
+        if (canvasGroup != null)
+            canvasGroup.alpha = 0f;
+
+        animationRoutine = null;
+        onComplete?.Invoke();
+    }
 }

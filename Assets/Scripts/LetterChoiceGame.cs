@@ -30,6 +30,7 @@ public class LetterChoiceGame : MonoBehaviour
     [SerializeField] private TMP_Text letterTitleText;
     [SerializeField] private LetterFormSlot[] letterFormSlots;
     [SerializeField] private Button[] introButtonsToLock;
+    [SerializeField] private Button letterNameButton;
 
     [Header("Quiz UI")]
     [SerializeField] private TMP_Text feedbackText;
@@ -312,6 +313,8 @@ public class LetterChoiceGame : MonoBehaviour
         miniGameCompleted = false;
 
         LetterData data = lesson.letters[currentLetterIndex];
+        if (letterNameButton != null)
+            letterNameButton.gameObject.SetActive(!data.IsVowel);
 
         for (int i = 0; i < letterFormSlots.Length; i++)
         {
@@ -333,10 +336,15 @@ public class LetterChoiceGame : MonoBehaviour
         currentIntroExamples.Clear();
         ShowRandomIntroExamples();
 
+        string displayName =
+     PersianLetterDisplay.GetText(data.letterName);
+
+        letterTitleText.richText = true;
+
         letterTitleText.text =
-            "یادگیری حرف " +
+            (data.IsVowel ? "یادگیری صدای " : "یادگیری حرف ") +
             "<color=#C9443A>" +
-            data.letterName +
+            displayName +
             "</color>";
 
         ResetQuiz();
@@ -638,7 +646,7 @@ public class LetterChoiceGame : MonoBehaviour
         List<AudioClip> clips =
             new List<AudioClip>();
 
-        if (data.letterNameAudio != null)
+        if (!data.IsVowel && data.letterNameAudio != null)
             clips.Add(data.letterNameAudio);
 
         if (data.letterSoundAudio != null)
@@ -689,6 +697,9 @@ public class LetterChoiceGame : MonoBehaviour
     public void PlayLetterName()
     {
         LetterData data = lesson.letters[currentLetterIndex];
+
+        if (data.IsVowel)
+            return;
 
         if (gameAudioManager != null)
             gameAudioManager.PlayLocked(data.letterNameAudio);
@@ -781,13 +792,18 @@ public class LetterChoiceGame : MonoBehaviour
 
         PlayInstructionThenLetter(
             quizInstructionAudio,
-            data.letterNameAudio
+            data.IsVowel ? data.letterSoundAudio : data.letterNameAudio
         );
     }
 
     public void NextQuestion()
     {
-        StartLetterHunt();
+        LetterData data = lesson.letters[currentLetterIndex];
+
+        if (data.IsVowel)
+            StartPictureHunt();
+        else
+            StartLetterHunt();
     }
 
     // Letter Hunt
@@ -863,7 +879,12 @@ public class LetterChoiceGame : MonoBehaviour
 
     public void BackToLetterHunt()
     {
-        StartLetterHunt();
+        LetterData data = lesson.letters[currentLetterIndex];
+
+        if (data.IsVowel)
+            BackToQuiz();
+        else
+            StartLetterHunt();
     }
 
     // Picture Hunt

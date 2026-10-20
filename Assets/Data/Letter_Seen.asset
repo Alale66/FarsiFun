@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67622f9b8d37db340a703b23254506a1, type: 3}
   m_Name: Letter_Seen
   m_EditorClassIdentifier: Assembly-CSharp::LetterData
+  lessonType: 0
   forms:
   - baseText: "\u0633\u0640"
     markText: 
@@ -32,33 +33,45 @@ MonoBehaviour:
     image: {fileID: 21300000, guid: 1d178648db1946e4982486a3a1752a02, type: 3}
     audio: {fileID: 0}
     startsWithTarget: 1
+    containsTargetSound: 0
   - word: "\u0633\u064E\u0628\u064E\u062F"
     image: {fileID: 21300000, guid: 3b4781ca765c27945855880425d449f4, type: 3}
     audio: {fileID: 0}
     startsWithTarget: 1
+    containsTargetSound: 0
   - word: "\u0633\u064E\u06AF"
     image: {fileID: 21300000, guid: c359d07d243678440a05e21ed6cdc37c, type: 3}
     audio: {fileID: 0}
     startsWithTarget: 1
+    containsTargetSound: 1
   - word: "\u0627\u064E\u0633\u0628"
     image: {fileID: 21300000, guid: 2d3c1ad15c7b2cc43967411671270134, type: 3}
     audio: {fileID: 0}
     startsWithTarget: 0
+    containsTargetSound: 1
   - word: "\u0633\u0627\u0639\u064E\u062A"
     image: {fileID: 21300000, guid: 1879f308f713ae341a6a8ad7dc8fc678, type: 3}
     audio: {fileID: 0}
     startsWithTarget: 1
+    containsTargetSound: 1
   - word: "\u0633\u064E\u0646\u06AF"
     image: {fileID: 21300000, guid: e0f2dbe537ea9c44290e44d941232b0a, type: 3}
     audio: {fileID: 0}
     startsWithTarget: 1
+    containsTargetSound: 1
   - word: "\u06CC\u0627\u0633"
     image: {fileID: 21300000, guid: d32f15bdb1bdb0245acc78a8f391f1f8, type: 3}
     audio: {fileID: 0}
     startsWithTarget: 0
+    containsTargetSound: 1
   - word: "\u06AF\u06CC\u0644\u0627\u0633"
     image: {fileID: 21300000, guid: f09935e1b873c8946a3094a570e2bf1d, type: 3}
     audio: {fileID: 0}
     startsWithTarget: 0
+    containsTargetSound: 1
+  pictureHuntMode: 0
+  pictureHuntDistractors: []
+  pictureHuntInstructionText: 
+  pictureHuntInstructionAudio: {fileID: 0}
   letterNameAudio: {fileID: 0}
   letterSoundAudio: {fileID: 0}

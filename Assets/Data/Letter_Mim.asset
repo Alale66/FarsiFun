@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67622f9b8d37db340a703b23254506a1, type: 3}
   m_Name: Letter_Mim
   m_EditorClassIdentifier: Assembly-CSharp::LetterData
+  lessonType: 0
   forms:
   - baseText: "\u0645"
     markText: 
@@ -25,40 +26,52 @@ MonoBehaviour:
   correctLetter: "\u0645"
   matchForms:
   - "\u0645\u0640"
-  - "\u0645\u0640"
+  - "\u0645"
   letterName: "\u0645\u06CC\u0645"
   examples:
   - word: "\u0645\u0627\u062F\u064E\u0631"
     image: {fileID: 21300000, guid: 52b3f2bc43a449b4b8cb8c6d992e381f, type: 3}
     audio: {fileID: 0}
     startsWithTarget: 1
+    containsTargetSound: 0
   - word: "\u0645\u0627\u0647"
     image: {fileID: 21300000, guid: 21f7531681924a840a678b7adea411cd, type: 3}
     audio: {fileID: 0}
     startsWithTarget: 1
+    containsTargetSound: 0
   - word: "\u0645\u0627\u0647\u06CC"
     image: {fileID: 21300000, guid: 456254102edc90e478a8b045e50d8725, type: 3}
     audio: {fileID: 0}
     startsWithTarget: 1
+    containsTargetSound: 0
   - word: "\u0645\u0650\u062F\u0627\u062F"
     image: {fileID: 21300000, guid: 71b5b83054aee8148834cc0b3b6a919b, type: 3}
     audio: {fileID: 0}
     startsWithTarget: 1
+    containsTargetSound: 0
   - word: "\u0645\u06CC\u0632"
     image: {fileID: 21300000, guid: 0fd47e53a727cec4aa9ae865720cbf93, type: 3}
     audio: {fileID: 0}
     startsWithTarget: 1
+    containsTargetSound: 1
   - word: "\u0628\u0627\u062F\u0627\u0645"
     image: {fileID: 21300000, guid: 77230b25a407c7e4b966eefb021bd26f, type: 3}
     audio: {fileID: 0}
-    startsWithTarget: 0
+    startsWithTarget: 1
+    containsTargetSound: 0
   - word: "\u0622\u062F\u064E\u0645"
     image: {fileID: 21300000, guid: c6fd3a092167af74e8b1f65d9e9c4b7f, type: 3}
     audio: {fileID: 0}
     startsWithTarget: 0
+    containsTargetSound: 1
   - word: "\u067E\u064E\u0631\u0686\u064E\u0645"
     image: {fileID: 21300000, guid: 6edcdb9f5ef74014a919a651590ac0c7, type: 3}
     audio: {fileID: 0}
     startsWithTarget: 0
+    containsTargetSound: 1
+  pictureHuntMode: 0
+  pictureHuntDistractors: []
+  pictureHuntInstructionText: 
+  pictureHuntInstructionAudio: {fileID: 0}
   letterNameAudio: {fileID: 0}
   letterSoundAudio: {fileID: 0}

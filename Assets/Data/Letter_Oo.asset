@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67622f9b8d37db340a703b23254506a1, type: 3}
   m_Name: Letter_Oo
   m_EditorClassIdentifier: Assembly-CSharp::LetterData
+  lessonType: 1
   forms:
   - baseText: "\u0627\u0648"
     markText: 
@@ -75,7 +76,17 @@ MonoBehaviour:
     audio: {fileID: 0}
     startsWithTarget: 0
     containsTargetSound: 0
+  - word: "\u0633\u064E\u06AF"
+    image: {fileID: 21300000, guid: c359d07d243678440a05e21ed6cdc37c, type: 3}
+    audio: {fileID: 0}
+    startsWithTarget: 0
+    containsTargetSound: 0
+  - word: "\u0633\u064E\u0646\u06AF"
+    image: {fileID: 21300000, guid: e0f2dbe537ea9c44290e44d941232b0a, type: 3}
+    audio: {fileID: 0}
+    startsWithTarget: 0
+    containsTargetSound: 0
   pictureHuntInstructionText: 
   pictureHuntInstructionAudio: {fileID: 0}
   letterNameAudio: {fileID: 0}
-  letterSoundAudio: {fileID: 0}
+  letterSoundAudio: {fileID: 8300000, guid: 4cc64dd9f3f65ea4096d3620efbdf033, type: 3}

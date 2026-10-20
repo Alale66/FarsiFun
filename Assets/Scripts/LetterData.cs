@@ -22,6 +22,12 @@ public class LetterFormData
     public string markText;
 }
 
+public enum LessonType
+{
+    Letter = 0,
+    Vowel = 1
+}
+
 public enum PictureHuntMode
 {
     StartsWithTarget = 0,
@@ -34,6 +40,10 @@ public enum PictureHuntMode
 )]
 public class LetterData : ScriptableObject
 {
+    [Header("Lesson Type")]
+    public LessonType lessonType = LessonType.Letter;
+
+    public bool IsVowel => lessonType == LessonType.Vowel;
     public LetterFormData[] forms;
 
     public string targetLetter;

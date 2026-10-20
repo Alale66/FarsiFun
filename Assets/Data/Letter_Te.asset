@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67622f9b8d37db340a703b23254506a1, type: 3}
   m_Name: Letter_Te
   m_EditorClassIdentifier: Assembly-CSharp::LetterData
+  lessonType: 0
   forms:
   - baseText: "\u062A\u0640"
     markText: 
@@ -32,32 +33,32 @@ MonoBehaviour:
     image: {fileID: 21300000, guid: 9f30e2d6aabf7c4458777400450fa048, type: 3}
     audio: {fileID: 0}
     startsWithTarget: 1
-    containsTargetSound: 0
+    containsTargetSound: 1
   - word: "\u062A\u0648\u062A"
     image: {fileID: 21300000, guid: 99d8123c301b2364fa08b639a4b604bd, type: 3}
     audio: {fileID: 0}
     startsWithTarget: 1
-    containsTargetSound: 0
+    containsTargetSound: 1
   - word: "\u062A\u0627\u0628"
     image: {fileID: 21300000, guid: 62bfb105bbeb1cb46bc4b0d3c1748bf5, type: 3}
     audio: {fileID: 0}
     startsWithTarget: 1
-    containsTargetSound: 0
+    containsTargetSound: 1
   - word: "\u062A\u0627\u062C"
     image: {fileID: 21300000, guid: 4bf73659fd75efe4db19ea50fdee73af, type: 3}
     audio: {fileID: 0}
     startsWithTarget: 1
-    containsTargetSound: 0
+    containsTargetSound: 1
   - word: "\u062A\u0650\u0631\u0627\u06A9\u062A\u0648\u0631"
     image: {fileID: 21300000, guid: da3b93cba737e974a800147a646697d3, type: 3}
     audio: {fileID: 0}
     startsWithTarget: 1
-    containsTargetSound: 0
+    containsTargetSound: 1
   - word: "\u062F\u064E\u0633\u062A"
     image: {fileID: 21300000, guid: ab68a9647ed0ff94286c3c4e05834944, type: 3}
     audio: {fileID: 0}
     startsWithTarget: 0
-    containsTargetSound: 0
+    containsTargetSound: 1
   - word: "\u062F\u0650\u0631\u064E\u062E\u062A"
     image: {fileID: 21300000, guid: a1c60d06590a1af409c1388d8f57c1aa, type: 3}
     audio: {fileID: 0}
@@ -67,7 +68,7 @@ MonoBehaviour:
     image: {fileID: 21300000, guid: ac991339774874c49be1a85eb1e32742, type: 3}
     audio: {fileID: 0}
     startsWithTarget: 0
-    containsTargetSound: 0
+    containsTargetSound: 1
   pictureHuntMode: 0
   pictureHuntDistractors: []
   pictureHuntInstructionText: 

@@ -29,6 +29,9 @@ public class BonusGameManager : MonoBehaviour
     [Tooltip("Forces one bonus game during development instead of choosing randomly.")]
     [SerializeField]
     private bool forceGameForTesting;
+    [SerializeField] private bool overrideLessonForTesting;
+    [SerializeField] private LessonData testLesson;
+    [SerializeField, Min(0)] private int testLetterIndex;
 
     [Tooltip("The Bonus Games array index used while forced testing is enabled.")]
     [SerializeField, Min(0)]
@@ -91,6 +94,14 @@ public class BonusGameManager : MonoBehaviour
     LessonData lesson,
     int currentLetterIndex)
     {
+#if UNITY_EDITOR
+        if (overrideLessonForTesting)
+        {
+            lesson = testLesson;
+            currentLetterIndex = testLetterIndex;
+        }
+#endif
+
         StopPanelVoice();
         StopCurrentGame();
         SetAllGameContentActive(false);
@@ -233,9 +244,9 @@ public class BonusGameManager : MonoBehaviour
             forcedGameIndex >= 0 &&
             forcedGameIndex < bonusGames.Length &&
             IsValidEntry(bonusGames[forcedGameIndex]))
-                {
-                    return forcedGameIndex;
-                }
+        {
+            return forcedGameIndex;
+        }
 
         int validGameCount = 0;
 
@@ -267,9 +278,21 @@ public class BonusGameManager : MonoBehaviour
 
     private bool IsValidEntry(BonusGameEntry entry)
     {
-        return entry != null &&
-               entry.Game != null &&
-               entry.ContentRoot != null;
+        if (entry == null ||
+            entry.Game == null ||
+            entry.ContentRoot == null ||
+            currentLetterData == null)
+        {
+            return false;
+        }
+
+        bool isMonsterGame =
+            entry.Game is FeedMonsterGame;
+
+        if (currentLetterData.IsVowel)
+            return isMonsterGame;
+
+        return !isMonsterGame;
     }
 
     private void HandleGameplayCompleted()

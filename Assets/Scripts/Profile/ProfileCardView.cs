@@ -58,8 +58,8 @@ public class ProfileCardView : MonoBehaviour
         if (coinText != null)
         {
             coinText.text =
-                ToPersianNumber(profile.coins) +
-                " سکه";
+                ToPersianNumber(profile.coins);
+
         }
     }
 

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67622f9b8d37db340a703b23254506a1, type: 3}
   m_Name: Letter_Alef
   m_EditorClassIdentifier: Assembly-CSharp::LetterData
+  lessonType: 0
   forms:
   - baseText: "\u0622"
     markText: 
@@ -32,42 +33,42 @@ MonoBehaviour:
     image: {fileID: 21300000, guid: ba97bf251ad78374f994a97d4aaa0ff0, type: 3}
     audio: {fileID: 8300000, guid: 6235aaffac9da574bb6486728932987d, type: 3}
     startsWithTarget: 1
-    containsTargetSound: 0
+    containsTargetSound: 1
   - word: "\u0622\u062A\u0634"
     image: {fileID: 21300000, guid: 087313a9a63af2249909d1309f3edb17, type: 3}
     audio: {fileID: 8300000, guid: 3bce703f1b16dd649824036b41921e0e, type: 3}
     startsWithTarget: 1
-    containsTargetSound: 0
+    containsTargetSound: 1
   - word: "\u0622\u062F\u0645"
     image: {fileID: 21300000, guid: c6fd3a092167af74e8b1f65d9e9c4b7f, type: 3}
     audio: {fileID: 8300000, guid: 10dbd06ddb244ad48a58c200d91cf82e, type: 3}
     startsWithTarget: 1
-    containsTargetSound: 0
+    containsTargetSound: 1
   - word: "\u0628\u0627\u0628\u0627"
     image: {fileID: 21300000, guid: e4e2083e8e4104448a631ca724330732, type: 3}
     audio: {fileID: 8300000, guid: 96ebce59e886400429f8837b285e758b, type: 3}
     startsWithTarget: 0
-    containsTargetSound: 0
+    containsTargetSound: 1
   - word: "\u0628\u0627\u062F"
     image: {fileID: 21300000, guid: 59a8d287f8e0b16438c179e2b0d1c2b8, type: 3}
     audio: {fileID: 8300000, guid: a2605a9668d549f4db1a4071d3c98719, type: 3}
     startsWithTarget: 0
-    containsTargetSound: 0
+    containsTargetSound: 1
   - word: "\u0628\u0627\u0631\u0627\u0646"
     image: {fileID: 21300000, guid: fe95230a1f7bf4049a2f1cf77444e942, type: 3}
     audio: {fileID: 8300000, guid: bbd38329985b7ce45b5d83499e17806b, type: 3}
     startsWithTarget: 0
-    containsTargetSound: 0
+    containsTargetSound: 1
   - word: "\u0628\u0627\u062F\u0627\u0645"
     image: {fileID: 21300000, guid: 77230b25a407c7e4b966eefb021bd26f, type: 3}
     audio: {fileID: 0}
     startsWithTarget: 0
-    containsTargetSound: 0
+    containsTargetSound: 1
   - word: "\u0622\u0647\u0648"
     image: {fileID: 21300000, guid: 7b78d40140654cb47a954519fb5e4533, type: 3}
     audio: {fileID: 0}
     startsWithTarget: 1
-    containsTargetSound: 0
+    containsTargetSound: 1
   pictureHuntMode: 0
   pictureHuntDistractors: []
   pictureHuntInstructionText: 

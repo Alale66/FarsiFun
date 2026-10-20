@@ -1,0 +1,730 @@
+fileFormatVersion: 2
+guid: 1ec124a5552acf144b647d4c270ccaea
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1627478250087694473
+    second: mouth_Ooo_0
+  - first:
+      213: 4665741225904572798
+    second: mouth_Ooo_1
+  - first:
+      213: 8674385275307428378
+    second: mouth_Ooo_2
+  - first:
+      213: -9021634978609288555
+    second: mouth_Ooo_3
+  - first:
+      213: 3579704898099838771
+    second: mouth_Ooo_4
+  - first:
+      213: -535247569933237160
+    second: mouth_Ooo_5
+  - first:
+      213: -5385046422464988398
+    second: mouth_Ooo_6
+  - first:
+      213: -6435902724942101714
+    second: mouth_Ooo_7
+  - first:
+      213: -3028946632701022823
+    second: mouth_Ooo_8
+  - first:
+      213: 7797251961675994148
+    second: mouth_Ooo_9
+  - first:
+      213: -4500333508898767706
+    second: mouth_Ooo_10
+  - first:
+      213: 7948226304008889757
+    second: mouth_Ooo_11
+  - first:
+      213: 1928027774396624585
+    second: mouth_Ooo_12
+  - first:
+      213: -3976454127794688247
+    second: mouth_Ooo_13
+  - first:
+      213: -1066831624119482201
+    second: mouth_Ooo_14
+  - first:
+      213: -309636091448315827
+    second: mouth_Ooo_15
+  - first:
+      213: 7955486904646962812
+    second: mouth_Ooo_16
+  - first:
+      213: 8084709098906416734
+    second: mouth_Ooo_17
+  - first:
+      213: -6898818931812118428
+    second: mouth_Ooo_18
+  - first:
+      213: 3497760583623844479
+    second: mouth_Ooo_19
+  - first:
+      213: -3581185419657130306
+    second: mouth_Ooo_20
+  - first:
+      213: 375555901361019964
+    second: mouth_Ooo_21
+  - first:
+      213: 6405096894016929901
+    second: mouth_Ooo_22
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: mouth_Ooo_0
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 854
+        width: 731
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77f39df77290a69e0800000000000000
+      internalID: -1627478250087694473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouth_Ooo_1
+      rect:
+        serializedVersion: 2
+        x: 809
+        y: 1113
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7900ffbcea00c040800000000000000
+      internalID: 4665741225904572798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouth_Ooo_2
+      rect:
+        serializedVersion: 2
+        x: 817
+        y: 958
+        width: 529
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1a0493f27b916870800000000000000
+      internalID: 8674385275307428378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouth_Ooo_3
+      rect:
+        serializedVersion: 2
+        x: 863
+        y: 1018
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59a21ce19c6bcc280800000000000000
+      internalID: -9021634978609288555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouth_Ooo_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1176
+        height: 961
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33f77f383aaada130800000000000000
+      internalID: 3579704898099838771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouth_Ooo_5
+      rect:
+        serializedVersion: 2
+        x: 1148
+        y: 917
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8540d37cb2b6298f0800000000000000
+      internalID: -535247569933237160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouth_Ooo_6
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 362
+        width: 183
+        height: 381
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21b7cf95fc87445b0800000000000000
+      internalID: -5385046422464988398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouth_Ooo_7
+      rect:
+        serializedVersion: 2
+        x: 1140
+        y: 700
+        width: 90
+        height: 212
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e238bde02941fa6a0800000000000000
+      internalID: -6435902724942101714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouth_Ooo_8
+      rect:
+        serializedVersion: 2
+        x: 1221
+        y: 684
+        width: 28
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99d6d3ae51507f5d0800000000000000
+      internalID: -3028946632701022823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouth_Ooo_9
+      rect:
+        serializedVersion: 2
+        x: 1235
+        y: 653
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4245ae7f857653c60800000000000000
+      internalID: 7797251961675994148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouth_Ooo_10
+      rect:
+        serializedVersion: 2
+        x: 1237
+        y: 658
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ac3d47748a9b81c0800000000000000
+      internalID: -4500333508898767706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouth_Ooo_11
+      rect:
+        serializedVersion: 2
+        x: 1171
+        y: 635
+        width: 78
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d95add446b5cd4e60800000000000000
+      internalID: 7948226304008889757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouth_Ooo_12
+      rect:
+        serializedVersion: 2
+        x: 1246
+        y: 603
+        width: 35
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ce6ff1bb0bb1ca10800000000000000
+      internalID: 1928027774396624585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouth_Ooo_13
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 481
+        width: 20
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90f6927f90cc0d8c0800000000000000
+      internalID: -3976454127794688247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouth_Ooo_14
+      rect:
+        serializedVersion: 2
+        x: 1181
+        y: 458
+        width: 60
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a884394a4ad131f0800000000000000
+      internalID: -1066831624119482201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouth_Ooo_15
+      rect:
+        serializedVersion: 2
+        x: 1187
+        y: 241
+        width: 159
+        height: 253
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4035978d93f3bbf0800000000000000
+      internalID: -309636091448315827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouth_Ooo_16
+      rect:
+        serializedVersion: 2
+        x: 1238
+        y: 563
+        width: 11
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7e01c69031976e60800000000000000
+      internalID: 7955486904646962812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouth_Ooo_17
+      rect:
+        serializedVersion: 2
+        x: 1241
+        y: 488
+        width: 8
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e567fa04718a23070800000000000000
+      internalID: 8084709098906416734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouth_Ooo_18
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 432
+        width: 22
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4605997abb87240a0800000000000000
+      internalID: -6898818931812118428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouth_Ooo_19
+      rect:
+        serializedVersion: 2
+        x: 1246
+        y: 233
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f72234808ba8a8030800000000000000
+      internalID: 3497760583623844479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouth_Ooo_20
+      rect:
+        serializedVersion: 2
+        x: 1051
+        y: 86
+        width: 24
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebe4782b5d21d4ec0800000000000000
+      internalID: -3581185419657130306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouth_Ooo_21
+      rect:
+        serializedVersion: 2
+        x: 1229
+        y: 39
+        width: 111
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3cdced3a1e363500800000000000000
+      internalID: 375555901361019964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouth_Ooo_22
+      rect:
+        serializedVersion: 2
+        x: 954
+        y: 25
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6046df70b973e850800000000000000
+      internalID: 6405096894016929901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      mouth_Ooo_0: -1627478250087694473
+      mouth_Ooo_1: 4665741225904572798
+      mouth_Ooo_10: -4500333508898767706
+      mouth_Ooo_11: 7948226304008889757
+      mouth_Ooo_12: 1928027774396624585
+      mouth_Ooo_13: -3976454127794688247
+      mouth_Ooo_14: -1066831624119482201
+      mouth_Ooo_15: -309636091448315827
+      mouth_Ooo_16: 7955486904646962812
+      mouth_Ooo_17: 8084709098906416734
+      mouth_Ooo_18: -6898818931812118428
+      mouth_Ooo_19: 3497760583623844479
+      mouth_Ooo_2: 8674385275307428378
+      mouth_Ooo_20: -3581185419657130306
+      mouth_Ooo_21: 375555901361019964
+      mouth_Ooo_22: 6405096894016929901
+      mouth_Ooo_3: -9021634978609288555
+      mouth_Ooo_4: 3579704898099838771
+      mouth_Ooo_5: -535247569933237160
+      mouth_Ooo_6: -5385046422464988398
+      mouth_Ooo_7: -6435902724942101714
+      mouth_Ooo_8: -3028946632701022823
+      mouth_Ooo_9: 7797251961675994148
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67622f9b8d37db340a703b23254506a1, type: 3}
   m_Name: Letter_Ee
   m_EditorClassIdentifier: Assembly-CSharp::LetterData
+  lessonType: 0
   forms:
   - baseText: 
     markText: 
@@ -32,5 +33,7 @@ MonoBehaviour:
   examples: []
   pictureHuntMode: 0
   pictureHuntDistractors: []
+  pictureHuntInstructionText: 
+  pictureHuntInstructionAudio: {fileID: 0}
   letterNameAudio: {fileID: 0}
-  letterSoundAudio: {fileID: 0}
+  letterSoundAudio: {fileID: 8300000, guid: 27a58975d51e96c4fb09409da4ddddd4, type: 3}

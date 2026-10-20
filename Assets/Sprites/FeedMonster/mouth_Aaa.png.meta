@@ -1,0 +1,652 @@
+fileFormatVersion: 2
+guid: 7ce37921198ba8e4392eda8926e87037
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3875992942175196829
+    second: mouth_Aaa_0
+  - first:
+      213: -8198814770700726375
+    second: mouth_Aaa_1
+  - first:
+      213: 4490321518972332028
+    second: mouth_Aaa_2
+  - first:
+      213: -955335265289182412
+    second: mouth_Aaa_3
+  - first:
+      213: 5131540728209598801
+    second: mouth_Aaa_4
+  - first:
+      213: 2807291465938829015
+    second: mouth_Aaa_5
+  - first:
+      213: 4881628221881119730
+    second: mouth_Aaa_6
+  - first:
+      213: -4121538684385398156
+    second: mouth_Aaa_7
+  - first:
+      213: -6268332807312767606
+    second: mouth_Aaa_8
+  - first:
+      213: 3181928331913239283
+    second: mouth_Aaa_9
+  - first:
+      213: -6831161954908408280
+    second: mouth_Aaa_10
+  - first:
+      213: 7690739918492394628
+    second: mouth_Aaa_11
+  - first:
+      213: -8672613122484755892
+    second: mouth_Aaa_12
+  - first:
+      213: 5539309214551263516
+    second: mouth_Aaa_13
+  - first:
+      213: 4549788307821041346
+    second: mouth_Aaa_14
+  - first:
+      213: 4916062164743237089
+    second: mouth_Aaa_15
+  - first:
+      213: 512787888446370338
+    second: mouth_Aaa_16
+  - first:
+      213: -5843767344776122261
+    second: mouth_Aaa_17
+  - first:
+      213: -7294537829356115780
+    second: mouth_Aaa_18
+  - first:
+      213: -4158083614501957692
+    second: mouth_Aaa_19
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: mouth_Aaa_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1310
+        height: 1158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9616468b0b4ac530800000000000000
+      internalID: 3875992942175196829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouth_Aaa_1
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 1132
+        width: 33
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99f482db765f73e80800000000000000
+      internalID: -8198814770700726375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouth_Aaa_2
+      rect:
+        serializedVersion: 2
+        x: 575
+        y: 1134
+        width: 9
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf763a971a3d05e30800000000000000
+      internalID: 4490321518972332028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouth_Aaa_3
+      rect:
+        serializedVersion: 2
+        x: 641
+        y: 1148
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 433e80743a7fdb2f0800000000000000
+      internalID: -955335265289182412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouth_Aaa_4
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 1135
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 159e16faa15e63740800000000000000
+      internalID: 5131540728209598801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouth_Aaa_5
+      rect:
+        serializedVersion: 2
+        x: 694
+        y: 1136
+        width: 89
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7def440f6b085f620800000000000000
+      internalID: 2807291465938829015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouth_Aaa_6
+      rect:
+        serializedVersion: 2
+        x: 649
+        y: 1132
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f3febaf0070fb340800000000000000
+      internalID: 4881628221881119730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouth_Aaa_7
+      rect:
+        serializedVersion: 2
+        x: 649
+        y: 1115
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4727d25476a5dc6c0800000000000000
+      internalID: -4121538684385398156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouth_Aaa_8
+      rect:
+        serializedVersion: 2
+        x: 802
+        y: 1106
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a850236d5886209a0800000000000000
+      internalID: -6268332807312767606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouth_Aaa_9
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 1088
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fa907495fa782c20800000000000000
+      internalID: 3181928331913239283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouth_Aaa_10
+      rect:
+        serializedVersion: 2
+        x: 669
+        y: 1099
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82675822566d231a0800000000000000
+      internalID: -6831161954908408280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouth_Aaa_11
+      rect:
+        serializedVersion: 2
+        x: 593
+        y: 1066
+        width: 15
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 484e7a5653ffaba60800000000000000
+      internalID: 7690739918492394628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouth_Aaa_12
+      rect:
+        serializedVersion: 2
+        x: 631
+        y: 1070
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c42a7e78050b4a780800000000000000
+      internalID: -8672613122484755892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouth_Aaa_13
+      rect:
+        serializedVersion: 2
+        x: 665
+        y: 1068
+        width: 26
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c194062d1649fdc40800000000000000
+      internalID: 5539309214551263516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouth_Aaa_14
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 1062
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c616e23c58142f30800000000000000
+      internalID: 4549788307821041346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouth_Aaa_15
+      rect:
+        serializedVersion: 2
+        x: 593
+        y: 1035
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ed224f0e7c593440800000000000000
+      internalID: 4916062164743237089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouth_Aaa_16
+      rect:
+        serializedVersion: 2
+        x: 1293
+        y: 387
+        width: 17
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 222f7ff1ed9cd1700800000000000000
+      internalID: 512787888446370338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouth_Aaa_17
+      rect:
+        serializedVersion: 2
+        x: 1074
+        y: 169
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b607790cf84c6eea0800000000000000
+      internalID: -5843767344776122261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouth_Aaa_18
+      rect:
+        serializedVersion: 2
+        x: 1080
+        y: 161
+        width: 34
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb864980e7894ca90800000000000000
+      internalID: -7294537829356115780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouth_Aaa_19
+      rect:
+        serializedVersion: 2
+        x: 521
+        y: 15
+        width: 23
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4cf0d3babf48b46c0800000000000000
+      internalID: -4158083614501957692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      mouth_Aaa_0: 3875992942175196829
+      mouth_Aaa_1: -8198814770700726375
+      mouth_Aaa_10: -6831161954908408280
+      mouth_Aaa_11: 7690739918492394628
+      mouth_Aaa_12: -8672613122484755892
+      mouth_Aaa_13: 5539309214551263516
+      mouth_Aaa_14: 4549788307821041346
+      mouth_Aaa_15: 4916062164743237089
+      mouth_Aaa_16: 512787888446370338
+      mouth_Aaa_17: -5843767344776122261
+      mouth_Aaa_18: -7294537829356115780
+      mouth_Aaa_19: -4158083614501957692
+      mouth_Aaa_2: 4490321518972332028
+      mouth_Aaa_3: -955335265289182412
+      mouth_Aaa_4: 5131540728209598801
+      mouth_Aaa_5: 2807291465938829015
+      mouth_Aaa_6: 4881628221881119730
+      mouth_Aaa_7: -4121538684385398156
+      mouth_Aaa_8: -6268332807312767606
+      mouth_Aaa_9: 3181928331913239283
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

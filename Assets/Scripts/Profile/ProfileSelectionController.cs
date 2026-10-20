@@ -287,8 +287,7 @@ public class ProfileSelectionController : MonoBehaviour
         if (deleteProfileCoinText != null)
         {
             deleteProfileCoinText.text =
-                ToPersianNumber(profile.coins) +
-                " سکه";
+                ToPersianNumber(profile.coins);
         }
 
         if (deleteAvatarPreview != null &&

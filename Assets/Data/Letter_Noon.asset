@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67622f9b8d37db340a703b23254506a1, type: 3}
   m_Name: Letter_Noon
   m_EditorClassIdentifier: Assembly-CSharp::LetterData
+  lessonType: 0
   forms:
   - baseText: "\u0646\u0640"
     markText: 
@@ -32,7 +33,7 @@ MonoBehaviour:
     image: {fileID: 0}
     audio: {fileID: 0}
     startsWithTarget: 0
-    containsTargetSound: 0
+    containsTargetSound: 1
   - word: 
     image: {fileID: 0}
     audio: {fileID: 0}
@@ -70,5 +71,7 @@ MonoBehaviour:
     containsTargetSound: 0
   pictureHuntMode: 0
   pictureHuntDistractors: []
+  pictureHuntInstructionText: 
+  pictureHuntInstructionAudio: {fileID: 0}
   letterNameAudio: {fileID: 0}
   letterSoundAudio: {fileID: 0}
