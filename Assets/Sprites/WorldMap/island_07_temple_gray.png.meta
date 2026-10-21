@@ -5,27 +5,6 @@ TextureImporter:
   - first:
       213: -798146278705272977
     second: island_07_temple_gray_0
-  - first:
-      213: -142052901479973232
-    second: island_07_temple_gray_1
-  - first:
-      213: 7212460122685245308
-    second: island_07_temple_gray_2
-  - first:
-      213: -8215438718250089745
-    second: island_07_temple_gray_3
-  - first:
-      213: 4103388717953081307
-    second: island_07_temple_gray_4
-  - first:
-      213: 5481225006723733627
-    second: island_07_temple_gray_5
-  - first:
-      213: -3276444562578869711
-    second: island_07_temple_gray_6
-  - first:
-      213: 6255960358016786447
-    second: island_07_temple_gray_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -67,9 +46,9 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -98,7 +77,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -139,10 +118,10 @@ TextureImporter:
       name: island_07_temple_gray_0
       rect:
         serializedVersion: 2
-        x: 28
-        y: 21
-        width: 1479
-        height: 963
+        x: 7
+        y: 13
+        width: 1529
+        height: 969
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -157,165 +136,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: island_07_temple_gray_1
-      rect:
-        serializedVersion: 2
-        x: 672
-        y: 47
-        width: 15
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 09ef8f383a3570ef0800000000000000
-      internalID: -142052901479973232
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: island_07_temple_gray_2
-      rect:
-        serializedVersion: 2
-        x: 688
-        y: 33
-        width: 12
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c770351b44ec71460800000000000000
-      internalID: 7212460122685245308
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: island_07_temple_gray_3
-      rect:
-        serializedVersion: 2
-        x: 696
-        y: 35
-        width: 11
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fe286b45306ecfd80800000000000000
-      internalID: -8215438718250089745
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: island_07_temple_gray_4
-      rect:
-        serializedVersion: 2
-        x: 864
-        y: 19
-        width: 17
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: bdf50fc5c4a22f830800000000000000
-      internalID: 4103388717953081307
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: island_07_temple_gray_5
-      rect:
-        serializedVersion: 2
-        x: 867
-        y: 33
-        width: 6
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b7891c35a19311c40800000000000000
-      internalID: 5481225006723733627
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: island_07_temple_gray_6
-      rect:
-        serializedVersion: 2
-        x: 947
-        y: 25
-        width: 13
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 132f939970bb782d0800000000000000
-      internalID: -3276444562578869711
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: island_07_temple_gray_7
-      rect:
-        serializedVersion: 2
-        x: 948
-        y: 44
-        width: 11
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f002484dcc2a1d650800000000000000
-      internalID: 6255960358016786447
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -326,13 +151,6 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       island_07_temple_gray_0: -798146278705272977
-      island_07_temple_gray_1: -142052901479973232
-      island_07_temple_gray_2: 7212460122685245308
-      island_07_temple_gray_3: -8215438718250089745
-      island_07_temple_gray_4: 4103388717953081307
-      island_07_temple_gray_5: 5481225006723733627
-      island_07_temple_gray_6: -3276444562578869711
-      island_07_temple_gray_7: 6255960358016786447
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

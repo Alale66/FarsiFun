@@ -26,9 +26,6 @@ TextureImporter:
   - first:
       213: -8937350549222593009
     second: island_02_stone_arch_7
-  - first:
-      213: -3003643322654185987
-    second: island_02_stone_arch_8
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -143,9 +140,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 1531
-        height: 1010
+        y: 19
+        width: 1509
+        height: 998
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -164,10 +161,10 @@ TextureImporter:
       name: island_02_stone_arch_1
       rect:
         serializedVersion: 2
-        x: 768
+        x: 918
         y: 991
-        width: 33
-        height: 17
+        width: 9
+        height: 13
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -186,10 +183,10 @@ TextureImporter:
       name: island_02_stone_arch_2
       rect:
         serializedVersion: 2
-        x: 884
-        y: 962
-        width: 43
-        height: 56
+        x: 1251
+        y: 991
+        width: 24
+        height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,10 +205,10 @@ TextureImporter:
       name: island_02_stone_arch_3
       rect:
         serializedVersion: 2
-        x: 1207
-        y: 911
-        width: 76
-        height: 106
+        x: 1392
+        y: 983
+        width: 29
+        height: 35
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -230,10 +227,10 @@ TextureImporter:
       name: island_02_stone_arch_4
       rect:
         serializedVersion: 2
-        x: 1345
-        y: 997
-        width: 8
-        height: 9
+        x: 920
+        y: 975
+        width: 7
+        height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -252,10 +249,10 @@ TextureImporter:
       name: island_02_stone_arch_5
       rect:
         serializedVersion: 2
-        x: 1368
-        y: 983
+        x: 1326
+        y: 975
         width: 7
-        height: 9
+        height: 7
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -274,10 +271,10 @@ TextureImporter:
       name: island_02_stone_arch_6
       rect:
         serializedVersion: 2
-        x: 904
-        y: 951
-        width: 7
-        height: 11
+        x: 1502
+        y: 755
+        width: 13
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -296,10 +293,10 @@ TextureImporter:
       name: island_02_stone_arch_7
       rect:
         serializedVersion: 2
-        x: 918
-        y: 921
-        width: 11
-        height: 17
+        x: 1508
+        y: 703
+        width: 17
+        height: 31
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -310,28 +307,6 @@ TextureImporter:
       bones: []
       spriteID: f0ee170170728f380800000000000000
       internalID: -8937350549222593009
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: island_02_stone_arch_8
-      rect:
-        serializedVersion: 2
-        x: 1486
-        y: 622
-        width: 17
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: df52931ef4ae056d0800000000000000
-      internalID: -3003643322654185987
       vertices: []
       indices: 
       edges: []
@@ -358,7 +333,6 @@ TextureImporter:
       island_02_stone_arch_5: 7299451399206839396
       island_02_stone_arch_6: 1453152039398175944
       island_02_stone_arch_7: -8937350549222593009
-      island_02_stone_arch_8: -3003643322654185987
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

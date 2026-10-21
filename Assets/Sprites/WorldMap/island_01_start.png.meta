@@ -17,60 +17,6 @@ TextureImporter:
   - first:
       213: 6484240422022811202
     second: island_01_start_4
-  - first:
-      213: -8083021137739045583
-    second: island_01_start_5
-  - first:
-      213: -3368800154031129671
-    second: island_01_start_6
-  - first:
-      213: -2312562914451795924
-    second: island_01_start_7
-  - first:
-      213: 6095209170640252884
-    second: island_01_start_8
-  - first:
-      213: 8165927028965638740
-    second: island_01_start_9
-  - first:
-      213: -393172023502963850
-    second: island_01_start_10
-  - first:
-      213: 2065047039826610245
-    second: island_01_start_11
-  - first:
-      213: 3705801101373564571
-    second: island_01_start_12
-  - first:
-      213: 8479901650425004238
-    second: island_01_start_13
-  - first:
-      213: 7469802067409742148
-    second: island_01_start_14
-  - first:
-      213: 1514498213016983140
-    second: island_01_start_15
-  - first:
-      213: -9064273063556313661
-    second: island_01_start_16
-  - first:
-      213: -4648179207036032869
-    second: island_01_start_17
-  - first:
-      213: 3750916465258912679
-    second: island_01_start_18
-  - first:
-      213: -3479341472746655391
-    second: island_01_start_19
-  - first:
-      213: -2917484357088035904
-    second: island_01_start_20
-  - first:
-      213: -8257688355427387152
-    second: island_01_start_21
-  - first:
-      213: -4859087398710885522
-    second: island_01_start_22
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -184,10 +130,10 @@ TextureImporter:
       name: island_01_start_0
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
-        width: 1483
-        height: 1002
+        x: 0
+        y: 63
+        width: 1536
+        height: 932
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -206,10 +152,10 @@ TextureImporter:
       name: island_01_start_1
       rect:
         serializedVersion: 2
-        x: 320
-        y: 981
-        width: 25
-        height: 13
+        x: 894
+        y: 989
+        width: 27
+        height: 19
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -228,10 +174,10 @@ TextureImporter:
       name: island_01_start_2
       rect:
         serializedVersion: 2
-        x: 616
-        y: 967
-        width: 131
-        height: 49
+        x: 1054
+        y: 983
+        width: 19
+        height: 11
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,10 +196,10 @@ TextureImporter:
       name: island_01_start_3
       rect:
         serializedVersion: 2
-        x: 742
-        y: 951
-        width: 7
-        height: 9
+        x: 1094
+        y: 983
+        width: 25
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -272,10 +218,10 @@ TextureImporter:
       name: island_01_start_4
       rect:
         serializedVersion: 2
-        x: 1108
-        y: 949
-        width: 7
-        height: 7
+        x: 1006
+        y: 959
+        width: 17
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -286,402 +232,6 @@ TextureImporter:
       bones: []
       spriteID: 24e06e01f46acf950800000000000000
       internalID: 6484240422022811202
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: island_01_start_5
-      rect:
-        serializedVersion: 2
-        x: 784
-        y: 928
-        width: 9
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1352715d91753df80800000000000000
-      internalID: -8083021137739045583
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: island_01_start_6
-      rect:
-        serializedVersion: 2
-        x: 807
-        y: 919
-        width: 10
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9bb71bbcb1e9f31d0800000000000000
-      internalID: -3368800154031129671
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: island_01_start_7
-      rect:
-        serializedVersion: 2
-        x: 886
-        y: 877
-        width: 71
-        height: 65
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c20db53284028efd0800000000000000
-      internalID: -2312562914451795924
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: island_01_start_8
-      rect:
-        serializedVersion: 2
-        x: 949
-        y: 897
-        width: 20
-        height: 31
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4df27b76278869450800000000000000
-      internalID: 6095209170640252884
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: island_01_start_9
-      rect:
-        serializedVersion: 2
-        x: 880
-        y: 907
-        width: 7
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 452024f2e53335170800000000000000
-      internalID: 8165927028965638740
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: island_01_start_10
-      rect:
-        serializedVersion: 2
-        x: 984
-        y: 911
-        width: 7
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 67bfb73b02c2b8af0800000000000000
-      internalID: -393172023502963850
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: island_01_start_11
-      rect:
-        serializedVersion: 2
-        x: 1012
-        y: 913
-        width: 11
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5484655775588ac10800000000000000
-      internalID: 2065047039826610245
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: island_01_start_12
-      rect:
-        serializedVersion: 2
-        x: 1022
-        y: 907
-        width: 7
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b966f9fa776ad6330800000000000000
-      internalID: 3705801101373564571
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: island_01_start_13
-      rect:
-        serializedVersion: 2
-        x: 1025
-        y: 878
-        width: 62
-        height: 42
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ec0c4d36f99aea570800000000000000
-      internalID: 8479901650425004238
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: island_01_start_14
-      rect:
-        serializedVersion: 2
-        x: 1153
-        y: 913
-        width: 6
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 449af6257611aa760800000000000000
-      internalID: 7469802067409742148
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: island_01_start_15
-      rect:
-        serializedVersion: 2
-        x: 78
-        y: 897
-        width: 13
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 46657dfb914940510800000000000000
-      internalID: 1514498213016983140
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: island_01_start_16
-      rect:
-        serializedVersion: 2
-        x: 824
-        y: 888
-        width: 7
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3cd859b5cab353280800000000000000
-      internalID: -9064273063556313661
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: island_01_start_17
-      rect:
-        serializedVersion: 2
-        x: 850
-        y: 889
-        width: 17
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b98a24863a95e7fb0800000000000000
-      internalID: -4648179207036032869
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: island_01_start_18
-      rect:
-        serializedVersion: 2
-        x: 968
-        y: 887
-        width: 7
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7abdbe5e6aeed0430800000000000000
-      internalID: 3750916465258912679
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: island_01_start_19
-      rect:
-        serializedVersion: 2
-        x: 1016
-        y: 897
-        width: 9
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 161b6a86d55e6bfc0800000000000000
-      internalID: -3479341472746655391
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: island_01_start_20
-      rect:
-        serializedVersion: 2
-        x: 1094
-        y: 894
-        width: 9
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0cb320a4f630387d0800000000000000
-      internalID: -2917484357088035904
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: island_01_start_21
-      rect:
-        serializedVersion: 2
-        x: 246
-        y: 22
-        width: 21
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0f8fedc113cc66d80800000000000000
-      internalID: -8257688355427387152
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: island_01_start_22
-      rect:
-        serializedVersion: 2
-        x: 272
-        y: 22
-        width: 9
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e63c24361cd019cb0800000000000000
-      internalID: -4859087398710885522
       vertices: []
       indices: 
       edges: []
@@ -702,27 +252,9 @@ TextureImporter:
     nameFileIdTable:
       island_01_start_0: -6176432570011485308
       island_01_start_1: 2294095060035340221
-      island_01_start_10: -393172023502963850
-      island_01_start_11: 2065047039826610245
-      island_01_start_12: 3705801101373564571
-      island_01_start_13: 8479901650425004238
-      island_01_start_14: 7469802067409742148
-      island_01_start_15: 1514498213016983140
-      island_01_start_16: -9064273063556313661
-      island_01_start_17: -4648179207036032869
-      island_01_start_18: 3750916465258912679
-      island_01_start_19: -3479341472746655391
       island_01_start_2: -4983604542168104842
-      island_01_start_20: -2917484357088035904
-      island_01_start_21: -8257688355427387152
-      island_01_start_22: -4859087398710885522
       island_01_start_3: 5659425809048714711
       island_01_start_4: 6484240422022811202
-      island_01_start_5: -8083021137739045583
-      island_01_start_6: -3368800154031129671
-      island_01_start_7: -2312562914451795924
-      island_01_start_8: 6095209170640252884
-      island_01_start_9: 8165927028965638740
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -5,15 +5,6 @@ TextureImporter:
   - first:
       213: 5517856376549305184
     second: island_08_volcano_gray_0
-  - first:
-      213: -7231610089268365273
-    second: island_08_volcano_gray_1
-  - first:
-      213: 2151128834042144160
-    second: island_08_volcano_gray_2
-  - first:
-      213: 7091342741364536755
-    second: island_08_volcano_gray_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -55,9 +46,9 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -86,7 +77,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -127,10 +118,10 @@ TextureImporter:
       name: island_08_volcano_gray_0
       rect:
         serializedVersion: 2
-        x: 38
+        x: 0
         y: 0
-        width: 1465
-        height: 993
+        width: 1536
+        height: 996
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,77 +136,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: island_08_volcano_gray_1
-      rect:
-        serializedVersion: 2
-        x: 896
-        y: 11
-        width: 21
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 728370340f824ab90800000000000000
-      internalID: -7231610089268365273
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: island_08_volcano_gray_2
-      rect:
-        serializedVersion: 2
-        x: 944
-        y: 15
-        width: 7
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0a5ae2307485add10800000000000000
-      internalID: 2151128834042144160
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: island_08_volcano_gray_3
-      rect:
-        serializedVersion: 2
-        x: 998
-        y: 15
-        width: 11
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3b5f397d6a2896260800000000000000
-      internalID: 7091342741364536755
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -226,9 +151,6 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       island_08_volcano_gray_0: 5517856376549305184
-      island_08_volcano_gray_1: -7231610089268365273
-      island_08_volcano_gray_2: 2151128834042144160
-      island_08_volcano_gray_3: 7091342741364536755
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

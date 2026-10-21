@@ -8,6 +8,12 @@ TextureImporter:
   - first:
       213: 2123670683570367289
     second: world_map_lock_1
+  - first:
+      213: -7043946974452949552
+    second: world_map_lock_2
+  - first:
+      213: -1721962232603604571
+    second: world_map_lock_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -121,10 +127,10 @@ TextureImporter:
       name: world_map_lock_0
       rect:
         serializedVersion: 2
-        x: 52
-        y: 31
-        width: 1093
-        height: 1176
+        x: 0
+        y: 45
+        width: 1248
+        height: 1164
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,10 +149,10 @@ TextureImporter:
       name: world_map_lock_1
       rect:
         serializedVersion: 2
-        x: 1107
-        y: 185
-        width: 8
-        height: 7
+        x: 1115
+        y: 252
+        width: 10
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -157,6 +163,50 @@ TextureImporter:
       bones: []
       spriteID: 93b6f1a2c3bc87d10800000000000000
       internalID: 2123670683570367289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_map_lock_2
+      rect:
+        serializedVersion: 2
+        x: 1121
+        y: 229
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0dd5b031c8fde3e90800000000000000
+      internalID: -7043946974452949552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_map_lock_3
+      rect:
+        serializedVersion: 2
+        x: 1146
+        y: 226
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a90609097c5a18e0800000000000000
+      internalID: -1721962232603604571
       vertices: []
       indices: 
       edges: []
@@ -177,6 +227,8 @@ TextureImporter:
     nameFileIdTable:
       world_map_lock_0: -3311834113701407563
       world_map_lock_1: 2123670683570367289
+      world_map_lock_2: -7043946974452949552
+      world_map_lock_3: -1721962232603604571
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

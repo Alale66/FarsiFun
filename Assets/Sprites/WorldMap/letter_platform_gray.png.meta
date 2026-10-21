@@ -11,6 +11,9 @@ TextureImporter:
   - first:
       213: 6071175870764528068
     second: letter_platform_gray_2
+  - first:
+      213: -4994645218551077369
+    second: letter_platform_gray_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -124,10 +127,10 @@ TextureImporter:
       name: letter_platform_gray_0
       rect:
         serializedVersion: 2
-        x: 48
-        y: 0
-        width: 1532
-        height: 892
+        x: 0
+        y: 76
+        width: 1651
+        height: 838
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -146,10 +149,10 @@ TextureImporter:
       name: letter_platform_gray_1
       rect:
         serializedVersion: 2
-        x: 1624
-        y: 281
-        width: 17
-        height: 13
+        x: 207
+        y: 907
+        width: 19
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,10 +171,10 @@ TextureImporter:
       name: letter_platform_gray_2
       rect:
         serializedVersion: 2
-        x: 1573
-        y: 206
-        width: 20
-        height: 27
+        x: 1509
+        y: 828
+        width: 17
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -182,6 +185,28 @@ TextureImporter:
       bones: []
       spriteID: 4c1b7d9b946214450800000000000000
       internalID: 6071175870764528068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: letter_platform_gray_3
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 64
+        width: 13
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 706e821f2a47faab0800000000000000
+      internalID: -4994645218551077369
       vertices: []
       indices: 
       edges: []
@@ -203,6 +228,7 @@ TextureImporter:
       letter_platform_gray_0: -2133190676209691618
       letter_platform_gray_1: 5818941093760203990
       letter_platform_gray_2: 6071175870764528068
+      letter_platform_gray_3: -4994645218551077369
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

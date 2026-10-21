@@ -5,9 +5,6 @@ TextureImporter:
   - first:
       213: -7707836892812310704
     second: island_03_lighthouse_gray_0
-  - first:
-      213: -1347511601535379937
-    second: island_03_lighthouse_gray_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,9 +46,9 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -80,7 +77,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -121,10 +118,10 @@ TextureImporter:
       name: island_03_lighthouse_gray_0
       rect:
         serializedVersion: 2
-        x: 58
-        y: 15
-        width: 1402
-        height: 902
+        x: 0
+        y: 12
+        width: 1536
+        height: 1002
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -139,33 +136,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: island_03_lighthouse_gray_1
-      rect:
-        serializedVersion: 2
-        x: 262
-        y: 19
-        width: 11
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f1614cb765dac4de0800000000000000
-      internalID: -1347511601535379937
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -176,7 +151,6 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       island_03_lighthouse_gray_0: -7707836892812310704
-      island_03_lighthouse_gray_1: -1347511601535379937
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

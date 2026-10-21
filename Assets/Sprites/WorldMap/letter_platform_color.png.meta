@@ -5,24 +5,6 @@ TextureImporter:
   - first:
       213: 2241152288622925082
     second: letter_platform_color_0
-  - first:
-      213: -190941138934491148
-    second: letter_platform_color_1
-  - first:
-      213: -6422003373058928093
-    second: letter_platform_color_2
-  - first:
-      213: 2808043645145761846
-    second: letter_platform_color_3
-  - first:
-      213: -5677652491248138182
-    second: letter_platform_color_4
-  - first:
-      213: -51076418070232553
-    second: letter_platform_color_5
-  - first:
-      213: -7217230049095354185
-    second: letter_platform_color_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -136,10 +118,10 @@ TextureImporter:
       name: letter_platform_color_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 23
         y: 0
-        width: 1631
-        height: 933
+        width: 1596
+        height: 941
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,138 +132,6 @@ TextureImporter:
       bones: []
       spriteID: a155ce2e12c2a1f10800000000000000
       internalID: 2241152288622925082
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: letter_platform_color_1
-      rect:
-        serializedVersion: 2
-        x: 1572
-        y: 120
-        width: 7
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4f71dc8bb04a95df0800000000000000
-      internalID: -190941138934491148
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: letter_platform_color_2
-      rect:
-        serializedVersion: 2
-        x: 231
-        y: 52
-        width: 21
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 322567a15f570e6a0800000000000000
-      internalID: -6422003373058928093
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: letter_platform_color_3
-      rect:
-        serializedVersion: 2
-        x: 249
-        y: 48
-        width: 9
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 638c4be41dc28f620800000000000000
-      internalID: 2808043645145761846
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: letter_platform_color_4
-      rect:
-        serializedVersion: 2
-        x: 1397
-        y: 56
-        width: 9
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a380b05042de431b0800000000000000
-      internalID: -5677652491248138182
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: letter_platform_color_5
-      rect:
-        serializedVersion: 2
-        x: 267
-        y: 34
-        width: 9
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7124684b44a8a4ff0800000000000000
-      internalID: -51076418070232553
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: letter_platform_color_6
-      rect:
-        serializedVersion: 2
-        x: 313
-        y: 25
-        width: 8
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7b87565428f37db90800000000000000
-      internalID: -7217230049095354185
       vertices: []
       indices: 
       edges: []
@@ -301,12 +151,6 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       letter_platform_color_0: 2241152288622925082
-      letter_platform_color_1: -190941138934491148
-      letter_platform_color_2: -6422003373058928093
-      letter_platform_color_3: 2808043645145761846
-      letter_platform_color_4: -5677652491248138182
-      letter_platform_color_5: -51076418070232553
-      letter_platform_color_6: -7217230049095354185
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

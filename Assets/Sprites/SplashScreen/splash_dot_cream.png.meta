@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: aa5336c063dbb6c4882c969e00982e7f
+guid: 646a72af8444b3448a0d4ea3e8604ced
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4364034832326165938
-    second: bg_0
+      213: -5833458070247985265
+    second: splash_dot_cream_0
+  - first:
+      213: 3102261820212374005
+    second: splash_dot_cream_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -115,13 +118,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bg_0
+      name: splash_dot_cream_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1672
-        height: 941
+        x: 32
+        y: 43
+        width: 1273
+        height: 1099
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,8 +133,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e4a74cf0175df63c0800000000000000
-      internalID: -4364034832326165938
+      spriteID: f8fabb6cac46b0fa0800000000000000
+      internalID: -5833458070247985265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_dot_cream_1
+      rect:
+        serializedVersion: 2
+        x: 1130
+        y: 847
+        width: 187
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f9e30260b27d0b20800000000000000
+      internalID: 3102261820212374005
       vertices: []
       indices: 
       edges: []
@@ -150,7 +175,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      bg_0: -4364034832326165938
+      splash_dot_cream_0: -5833458070247985265
+      splash_dot_cream_1: 3102261820212374005
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

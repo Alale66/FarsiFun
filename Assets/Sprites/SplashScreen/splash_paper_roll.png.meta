@@ -1,0 +1,1562 @@
+fileFormatVersion: 2
+guid: af1a089d2f4b1fd4a93968bf102603ae
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -355907363252658804
+    second: splash_paper_roll_0
+  - first:
+      213: 680401550481006142
+    second: splash_paper_roll_1
+  - first:
+      213: 2242701709774701631
+    second: splash_paper_roll_2
+  - first:
+      213: 6202651346744152424
+    second: splash_paper_roll_3
+  - first:
+      213: 6049926983408332426
+    second: splash_paper_roll_4
+  - first:
+      213: -5630753969341205193
+    second: splash_paper_roll_5
+  - first:
+      213: -7993206701672450784
+    second: splash_paper_roll_6
+  - first:
+      213: -4856630390164232947
+    second: splash_paper_roll_7
+  - first:
+      213: 3367146456915837221
+    second: splash_paper_roll_8
+  - first:
+      213: -1093884088057413276
+    second: splash_paper_roll_9
+  - first:
+      213: -4966208306981953129
+    second: splash_paper_roll_10
+  - first:
+      213: 6294678154501767386
+    second: splash_paper_roll_11
+  - first:
+      213: -398584731519523816
+    second: splash_paper_roll_12
+  - first:
+      213: 3869470035649080737
+    second: splash_paper_roll_13
+  - first:
+      213: 1621488670264596193
+    second: splash_paper_roll_14
+  - first:
+      213: 3092490723344941813
+    second: splash_paper_roll_15
+  - first:
+      213: -3879867212844243098
+    second: splash_paper_roll_16
+  - first:
+      213: 5050274619881015663
+    second: splash_paper_roll_17
+  - first:
+      213: 6808822314456487255
+    second: splash_paper_roll_18
+  - first:
+      213: -6936271721618825125
+    second: splash_paper_roll_19
+  - first:
+      213: -1032414526209190773
+    second: splash_paper_roll_20
+  - first:
+      213: -3524396299821270293
+    second: splash_paper_roll_21
+  - first:
+      213: -6412360759447338160
+    second: splash_paper_roll_22
+  - first:
+      213: 1084169474184712593
+    second: splash_paper_roll_23
+  - first:
+      213: 1321607249197098173
+    second: splash_paper_roll_24
+  - first:
+      213: -541798835710628830
+    second: splash_paper_roll_25
+  - first:
+      213: 3072578817770470753
+    second: splash_paper_roll_26
+  - first:
+      213: 4755629894205380017
+    second: splash_paper_roll_27
+  - first:
+      213: 4752649363871146435
+    second: splash_paper_roll_28
+  - first:
+      213: -4833557548683182586
+    second: splash_paper_roll_29
+  - first:
+      213: -6835723119503026611
+    second: splash_paper_roll_30
+  - first:
+      213: -2330635076342167082
+    second: splash_paper_roll_31
+  - first:
+      213: 8688888230554369246
+    second: splash_paper_roll_32
+  - first:
+      213: -9005634007882052472
+    second: splash_paper_roll_33
+  - first:
+      213: -7395842923723491558
+    second: splash_paper_roll_34
+  - first:
+      213: 8064722159971328732
+    second: splash_paper_roll_35
+  - first:
+      213: -186089527445356961
+    second: splash_paper_roll_36
+  - first:
+      213: 8951469455831837654
+    second: splash_paper_roll_37
+  - first:
+      213: 136459394025718213
+    second: splash_paper_roll_38
+  - first:
+      213: 1834268231531786544
+    second: splash_paper_roll_39
+  - first:
+      213: 4517510480806337531
+    second: splash_paper_roll_40
+  - first:
+      213: -2694875812951334867
+    second: splash_paper_roll_41
+  - first:
+      213: 1619924632875955174
+    second: splash_paper_roll_42
+  - first:
+      213: -8509050738253742108
+    second: splash_paper_roll_43
+  - first:
+      213: -9099151371201756756
+    second: splash_paper_roll_44
+  - first:
+      213: 850887540501949778
+    second: splash_paper_roll_45
+  - first:
+      213: 7869997855138094223
+    second: splash_paper_roll_46
+  - first:
+      213: 4257984791898391886
+    second: splash_paper_roll_47
+  - first:
+      213: 9179530700674981761
+    second: splash_paper_roll_48
+  - first:
+      213: -894050418559417865
+    second: splash_paper_roll_49
+  - first:
+      213: 512193073855681890
+    second: splash_paper_roll_50
+  - first:
+      213: -6441907861569110139
+    second: splash_paper_roll_51
+  - first:
+      213: -2134995780959564270
+    second: splash_paper_roll_52
+  - first:
+      213: -3412159924962075902
+    second: splash_paper_roll_53
+  - first:
+      213: -3081297699609462300
+    second: splash_paper_roll_54
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: splash_paper_roll_0
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 625
+        width: 87
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8d116883209f0bf0800000000000000
+      internalID: -355907363252658804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_1
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 561
+        width: 125
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3e9b01fa95417900800000000000000
+      internalID: 680401550481006142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_2
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 599
+        width: 47
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f34484c925daf1f10800000000000000
+      internalID: 2242701709774701631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_3
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 623
+        width: 11
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 861984c698e341650800000000000000
+      internalID: 6202651346744152424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_4
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 623
+        width: 23
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8eaa1b9988a5f350800000000000000
+      internalID: 6049926983408332426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_5
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 591
+        width: 53
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 735fbcf091b8bd1b0800000000000000
+      internalID: -5630753969341205193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_6
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 563
+        width: 93
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 025ba8acadc621190800000000000000
+      internalID: -7993206701672450784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_7
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 529
+        width: 105
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d05e4e44468c99cb0800000000000000
+      internalID: -4856630390164232947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_8
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 592
+        width: 15
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5210f27dcd18abe20800000000000000
+      internalID: 3367146456915837221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_9
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 567
+        width: 53
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 461c2e1b73eb1d0f0800000000000000
+      internalID: -1093884088057413276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_10
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 568
+        width: 75
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7912fbd5bdb741bb0800000000000000
+      internalID: -4966208306981953129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_11
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 591
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad04d7e4e603b5750800000000000000
+      internalID: 6294678154501767386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_12
+      rect:
+        serializedVersion: 2
+        x: 758
+        y: 605
+        width: 33
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81462e86c41f77af0800000000000000
+      internalID: -398584731519523816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_13
+      rect:
+        serializedVersion: 2
+        x: 760
+        y: 596
+        width: 9
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ada1effe7e13b530800000000000000
+      internalID: 3869470035649080737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_14
+      rect:
+        serializedVersion: 2
+        x: 789
+        y: 610
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e61176ca5fa08610800000000000000
+      internalID: 1621488670264596193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_15
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 599
+        width: 31
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f28a2c9debbaea20800000000000000
+      internalID: 3092490723344941813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_16
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 573
+        width: 61
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 667ebba8351f72ac0800000000000000
+      internalID: -3879867212844243098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_17
+      rect:
+        serializedVersion: 2
+        x: 824
+        y: 607
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f69cd20620e261640800000000000000
+      internalID: 5050274619881015663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_18
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 605
+        width: 33
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7559eeff1dbcd7e50800000000000000
+      internalID: 6808822314456487255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_19
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 555
+        width: 53
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b50a25f7e996dbf90800000000000000
+      internalID: -6936271721618825125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_20
+      rect:
+        serializedVersion: 2
+        x: 940
+        y: 527
+        width: 93
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b84195855702ca1f0800000000000000
+      internalID: -1032414526209190773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_21
+      rect:
+        serializedVersion: 2
+        x: 1016
+        y: 575
+        width: 71
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: beab3750d34d61fc0800000000000000
+      internalID: -3524396299821270293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_22
+      rect:
+        serializedVersion: 2
+        x: 1100
+        y: 573
+        width: 67
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 053cc790dd7b207a0800000000000000
+      internalID: -6412360759447338160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_23
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 559
+        width: 29
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1911a11846ebb0f00800000000000000
+      internalID: 1084169474184712593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_24
+      rect:
+        serializedVersion: 2
+        x: 1238
+        y: 581
+        width: 55
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db469fc7aca475210800000000000000
+      internalID: 1321607249197098173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_25
+      rect:
+        serializedVersion: 2
+        x: 1358
+        y: 557
+        width: 59
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22c6fb954d42b78f0800000000000000
+      internalID: -541798835710628830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_26
+      rect:
+        serializedVersion: 2
+        x: 1418
+        y: 545
+        width: 37
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16d3991d72ef3aa20800000000000000
+      internalID: 3072578817770470753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_27
+      rect:
+        serializedVersion: 2
+        x: 1496
+        y: 520
+        width: 123
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b5175f31346ff140800000000000000
+      internalID: 4755629894205380017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_28
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 585
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c1a6837a6dc4f140800000000000000
+      internalID: 4752649363871146435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_29
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 578
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60eb45dc401cbecb0800000000000000
+      internalID: -4833557548683182586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_30
+      rect:
+        serializedVersion: 2
+        x: 774
+        y: 581
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d46d81f3a02a221a0800000000000000
+      internalID: -6835723119503026611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_31
+      rect:
+        serializedVersion: 2
+        x: 790
+        y: 557
+        width: 33
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d94f8d0fbbe7afd0800000000000000
+      internalID: -2330635076342167082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_32
+      rect:
+        serializedVersion: 2
+        x: 918
+        y: 557
+        width: 25
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edcf34b5fc1259870800000000000000
+      internalID: 8688888230554369246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_33
+      rect:
+        serializedVersion: 2
+        x: 1048
+        y: 577
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88c430f659f850380800000000000000
+      internalID: -9005634007882052472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_34
+      rect:
+        serializedVersion: 2
+        x: 1156
+        y: 561
+        width: 15
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a17ffd4bb00bc5990800000000000000
+      internalID: -7395842923723491558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_35
+      rect:
+        serializedVersion: 2
+        x: 1462
+        y: 563
+        width: 27
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd2ef456316abef60800000000000000
+      internalID: 8064722159971328732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_36
+      rect:
+        serializedVersion: 2
+        x: 1628
+        y: 542
+        width: 75
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5ef23c8f80ea6df0800000000000000
+      internalID: -186089527445356961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_37
+      rect:
+        serializedVersion: 2
+        x: 1784
+        y: 567
+        width: 41
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6dbad9c0b020a3c70800000000000000
+      internalID: 8951469455831837654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_38
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 547
+        width: 41
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c10b2b881dc4e100800000000000000
+      internalID: 136459394025718213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_39
+      rect:
+        serializedVersion: 2
+        x: 472
+        y: 567
+        width: 7
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0317c3bfc31a47910800000000000000
+      internalID: 1834268231531786544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_40
+      rect:
+        serializedVersion: 2
+        x: 873
+        y: 574
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bfbd095f8db61be30800000000000000
+      internalID: 4517510480806337531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_41
+      rect:
+        serializedVersion: 2
+        x: 1108
+        y: 543
+        width: 37
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d206e37e9b0e99ad0800000000000000
+      internalID: -2694875812951334867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_42
+      rect:
+        serializedVersion: 2
+        x: 1192
+        y: 545
+        width: 84
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e3f971fed02b7610800000000000000
+      internalID: 1619924632875955174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_43
+      rect:
+        serializedVersion: 2
+        x: 1278
+        y: 511
+        width: 83
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ef3c9abf67c9e980800000000000000
+      internalID: -8509050738253742108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_44
+      rect:
+        serializedVersion: 2
+        x: 1358
+        y: 565
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca1c20a890259b180800000000000000
+      internalID: -9099151371201756756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_45
+      rect:
+        serializedVersion: 2
+        x: 1368
+        y: 561
+        width: 19
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25dac6bb5b5fecb00800000000000000
+      internalID: 850887540501949778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_46
+      rect:
+        serializedVersion: 2
+        x: 1424
+        y: 562
+        width: 9
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8c979a2a59d73d60800000000000000
+      internalID: 7869997855138094223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_47
+      rect:
+        serializedVersion: 2
+        x: 1714
+        y: 519
+        width: 71
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e458e14cb96671b30800000000000000
+      internalID: 4257984791898391886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_48
+      rect:
+        serializedVersion: 2
+        x: 1830
+        y: 543
+        width: 83
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18f568a798e346f70800000000000000
+      internalID: 9179530700674981761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_49
+      rect:
+        serializedVersion: 2
+        x: 886
+        y: 559
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f10a7691e1b793f0800000000000000
+      internalID: -894050418559417865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_50
+      rect:
+        serializedVersion: 2
+        x: 1142
+        y: 555
+        width: 15
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 265559f03ecab1700800000000000000
+      internalID: 512193073855681890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_51
+      rect:
+        serializedVersion: 2
+        x: 1804
+        y: 523
+        width: 35
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58f706b3eeeb996a0800000000000000
+      internalID: -6441907861569110139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_52
+      rect:
+        serializedVersion: 2
+        x: 878
+        y: 519
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21e82fe16a8fe52e0800000000000000
+      internalID: -2134995780959564270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_53
+      rect:
+        serializedVersion: 2
+        x: 890
+        y: 519
+        width: 19
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20bdfcb60a295a0d0800000000000000
+      internalID: -3412159924962075902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_paper_roll_54
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 15
+        width: 2017
+        height: 483
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e9bc8f41180d35d0800000000000000
+      internalID: -3081297699609462300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      splash_paper_roll_0: -355907363252658804
+      splash_paper_roll_1: 680401550481006142
+      splash_paper_roll_10: -4966208306981953129
+      splash_paper_roll_11: 6294678154501767386
+      splash_paper_roll_12: -398584731519523816
+      splash_paper_roll_13: 3869470035649080737
+      splash_paper_roll_14: 1621488670264596193
+      splash_paper_roll_15: 3092490723344941813
+      splash_paper_roll_16: -3879867212844243098
+      splash_paper_roll_17: 5050274619881015663
+      splash_paper_roll_18: 6808822314456487255
+      splash_paper_roll_19: -6936271721618825125
+      splash_paper_roll_2: 2242701709774701631
+      splash_paper_roll_20: -1032414526209190773
+      splash_paper_roll_21: -3524396299821270293
+      splash_paper_roll_22: -6412360759447338160
+      splash_paper_roll_23: 1084169474184712593
+      splash_paper_roll_24: 1321607249197098173
+      splash_paper_roll_25: -541798835710628830
+      splash_paper_roll_26: 3072578817770470753
+      splash_paper_roll_27: 4755629894205380017
+      splash_paper_roll_28: 4752649363871146435
+      splash_paper_roll_29: -4833557548683182586
+      splash_paper_roll_3: 6202651346744152424
+      splash_paper_roll_30: -6835723119503026611
+      splash_paper_roll_31: -2330635076342167082
+      splash_paper_roll_32: 8688888230554369246
+      splash_paper_roll_33: -9005634007882052472
+      splash_paper_roll_34: -7395842923723491558
+      splash_paper_roll_35: 8064722159971328732
+      splash_paper_roll_36: -186089527445356961
+      splash_paper_roll_37: 8951469455831837654
+      splash_paper_roll_38: 136459394025718213
+      splash_paper_roll_39: 1834268231531786544
+      splash_paper_roll_4: 6049926983408332426
+      splash_paper_roll_40: 4517510480806337531
+      splash_paper_roll_41: -2694875812951334867
+      splash_paper_roll_42: 1619924632875955174
+      splash_paper_roll_43: -8509050738253742108
+      splash_paper_roll_44: -9099151371201756756
+      splash_paper_roll_45: 850887540501949778
+      splash_paper_roll_46: 7869997855138094223
+      splash_paper_roll_47: 4257984791898391886
+      splash_paper_roll_48: 9179530700674981761
+      splash_paper_roll_49: -894050418559417865
+      splash_paper_roll_5: -5630753969341205193
+      splash_paper_roll_50: 512193073855681890
+      splash_paper_roll_51: -6441907861569110139
+      splash_paper_roll_52: -2134995780959564270
+      splash_paper_roll_53: -3412159924962075902
+      splash_paper_roll_54: -3081297699609462300
+      splash_paper_roll_6: -7993206701672450784
+      splash_paper_roll_7: -4856630390164232947
+      splash_paper_roll_8: 3367146456915837221
+      splash_paper_roll_9: -1093884088057413276
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

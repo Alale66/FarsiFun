@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 8ab2a8dbbe2c32f4da1c72cf84249319
+guid: 8008bd6b72312d4479a4bda573a14b9d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7858421272257103641
-    second: Match3IslandBackground_0
+      213: -5487182328383787496
+    second: splash_logo_noon_0
+  - first:
+      213: -1650667994044916005
+    second: splash_logo_noon_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -77,7 +80,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -115,13 +118,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Match3IslandBackground_0
+      name: splash_logo_noon_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 48
         y: 0
-        width: 1672
-        height: 941
+        width: 1137
+        height: 1232
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,8 +133,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7e8fdb31d7741f290800000000000000
-      internalID: -7858421272257103641
+      spriteID: 81e22e2aebc99d3b0800000000000000
+      internalID: -5487182328383787496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_logo_noon_1
+      rect:
+        serializedVersion: 2
+        x: 488
+        y: 621
+        width: 301
+        height: 313
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bde98dc7436a719e0800000000000000
+      internalID: -1650667994044916005
       vertices: []
       indices: 
       edges: []
@@ -150,7 +175,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Match3IslandBackground_0: -7858421272257103641
+      splash_logo_noon_0: -5487182328383787496
+      splash_logo_noon_1: -1650667994044916005
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

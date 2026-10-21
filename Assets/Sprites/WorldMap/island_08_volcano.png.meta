@@ -118,10 +118,10 @@ TextureImporter:
       name: island_08_volcano_0
       rect:
         serializedVersion: 2
-        x: 40
-        y: 15
-        width: 1433
-        height: 937
+        x: 0
+        y: 0
+        width: 1536
+        height: 997
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

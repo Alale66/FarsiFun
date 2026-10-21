@@ -57,7 +57,7 @@ MonoBehaviour:
   - word: "\u0628\u0627\u062F\u0627\u0645"
     image: {fileID: 21300000, guid: 77230b25a407c7e4b966eefb021bd26f, type: 3}
     audio: {fileID: 0}
-    startsWithTarget: 1
+    startsWithTarget: 0
     containsTargetSound: 0
   - word: "\u0622\u062F\u064E\u0645"
     image: {fileID: 21300000, guid: c6fd3a092167af74e8b1f65d9e9c4b7f, type: 3}

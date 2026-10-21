@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b05d658674243f446a5e16eafb04a724
+guid: 2e6c690ded507d2468bdee2f2424f581
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2415061292254414237
-    second: GoldenLetterToken 1_0
+      213: 1686804722155855927
+    second: paper_right_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -48,7 +48,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 1
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -77,7 +77,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -115,7 +115,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GoldenLetterToken 1_0
+      name: paper_right_0
       rect:
         serializedVersion: 2
         x: 0
@@ -130,8 +130,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d95ce932375048120800000000000000
-      internalID: 2415061292254414237
+      spriteID: 7302d8d25fbb86710800000000000000
+      internalID: 1686804722155855927
       vertices: []
       indices: 
       edges: []
@@ -150,7 +150,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      GoldenLetterToken 1_0: 2415061292254414237
+      paper_right_0: 1686804722155855927
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

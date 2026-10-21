@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: e9073e1feed9efb429b7ef64c87aa47f
+guid: 2678fcbf6b5fb9149bb85abd416dfe7a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3956099858963539605
-    second: world_map_background_0
+      213: 1890257751334467592
+    second: splash_stroke_coral_0
+  - first:
+      213: -119969691249169961
+    second: splash_stroke_coral_1
+  - first:
+      213: -9042804664145939443
+    second: splash_stroke_coral_2
+  - first:
+      213: 3993980131115951549
+    second: splash_stroke_coral_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -115,13 +124,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: world_map_background_0
+      name: splash_stroke_coral_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 1672
-        height: 941
+        y: 39
+        width: 1483
+        height: 963
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,8 +139,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 596ae758cd3e6e630800000000000000
-      internalID: 3956099858963539605
+      spriteID: 808383ae86b8b3a10800000000000000
+      internalID: 1890257751334467592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_stroke_coral_1
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 95
+        width: 9
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d9a7419338c55ef0800000000000000
+      internalID: -119969691249169961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_stroke_coral_2
+      rect:
+        serializedVersion: 2
+        x: 542
+        y: 15
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d04f55c9111818280800000000000000
+      internalID: -9042804664145939443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: splash_stroke_coral_3
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 17
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db5622ba4c77d6730800000000000000
+      internalID: 3993980131115951549
       vertices: []
       indices: 
       edges: []
@@ -150,7 +225,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      world_map_background_0: 3956099858963539605
+      splash_stroke_coral_0: 1890257751334467592
+      splash_stroke_coral_1: -119969691249169961
+      splash_stroke_coral_2: -9042804664145939443
+      splash_stroke_coral_3: 3993980131115951549
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

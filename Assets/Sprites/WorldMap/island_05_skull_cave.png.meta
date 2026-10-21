@@ -5,12 +5,6 @@ TextureImporter:
   - first:
       213: -480658285749969631
     second: island_05_skull_cave_0
-  - first:
-      213: -3379583614070847625
-    second: island_05_skull_cave_1
-  - first:
-      213: 8696045708925354658
-    second: island_05_skull_cave_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,8 +120,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1527
-        height: 1003
+        width: 1536
+        height: 1011
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -138,50 +132,6 @@ TextureImporter:
       bones: []
       spriteID: 12d5683f5db5459f0800000000000000
       internalID: -480658285749969631
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: island_05_skull_cave_1
-      rect:
-        serializedVersion: 2
-        x: 1050
-        y: 995
-        width: 13
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 777839adb9e4911d0800000000000000
-      internalID: -3379583614070847625
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: island_05_skull_cave_2
-      rect:
-        serializedVersion: 2
-        x: 1278
-        y: 999
-        width: 13
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2a24e07af7f8ea870800000000000000
-      internalID: 8696045708925354658
       vertices: []
       indices: 
       edges: []
@@ -201,8 +151,6 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       island_05_skull_cave_0: -480658285749969631
-      island_05_skull_cave_1: -3379583614070847625
-      island_05_skull_cave_2: 8696045708925354658
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

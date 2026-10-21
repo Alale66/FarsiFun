@@ -508,7 +508,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -7707836892812310704, guid: 1f03787cf8e958c478927c505b31524d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 268954e0c0b33d14fa03246cff7591fa, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -540,7 +540,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WorldMapIslandButton
   islandIndex: 2
   unlockedSprite: {fileID: 21300000, guid: 268954e0c0b33d14fa03246cff7591fa, type: 3}
-  lockedSprite: {fileID: -7707836892812310704, guid: 1f03787cf8e958c478927c505b31524d, type: 3}
+  lockedSprite: {fileID: 21300000, guid: 1f03787cf8e958c478927c505b31524d, type: 3}
   lockIcon: {fileID: 2110458160}
 --- !u!1 &399513237
 GameObject:
@@ -658,7 +658,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4090881245236755427, guid: 5d5c9a3ed6827e041b8c65264d43c54d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: de001cde91a5fd74e8f8485a72df2cc3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -690,7 +690,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WorldMapIslandButton
   islandIndex: 3
   unlockedSprite: {fileID: 21300000, guid: de001cde91a5fd74e8f8485a72df2cc3, type: 3}
-  lockedSprite: {fileID: -4090881245236755427, guid: 5d5c9a3ed6827e041b8c65264d43c54d, type: 3}
+  lockedSprite: {fileID: 21300000, guid: 5d5c9a3ed6827e041b8c65264d43c54d, type: 3}
   lockIcon: {fileID: 1257918856}
 --- !u!1 &420206694
 GameObject:
@@ -808,7 +808,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -9177441072075042249, guid: f1ee22b528034b64887a0d1c4017cf8f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d6824429df2bb6c4ab9e05bd269e26ca, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -840,7 +840,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WorldMapIslandButton
   islandIndex: 1
   unlockedSprite: {fileID: 21300000, guid: d6824429df2bb6c4ab9e05bd269e26ca, type: 3}
-  lockedSprite: {fileID: -9177441072075042249, guid: f1ee22b528034b64887a0d1c4017cf8f, type: 3}
+  lockedSprite: {fileID: 21300000, guid: f1ee22b528034b64887a0d1c4017cf8f, type: 3}
   lockIcon: {fileID: 242746242}
 --- !u!1 &430557596
 GameObject:
@@ -1274,7 +1274,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -919873231834706540, guid: 19aa8585d6819b34a8f7d78728036557, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 37644cd51a8a772418f72528258b14b6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1306,7 +1306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WorldMapIslandButton
   islandIndex: 5
   unlockedSprite: {fileID: 21300000, guid: 37644cd51a8a772418f72528258b14b6, type: 3}
-  lockedSprite: {fileID: -919873231834706540, guid: 19aa8585d6819b34a8f7d78728036557, type: 3}
+  lockedSprite: {fileID: 21300000, guid: 19aa8585d6819b34a8f7d78728036557, type: 3}
   lockIcon: {fileID: 1610430072}
 --- !u!1 &555221409
 GameObject:
@@ -1793,7 +1793,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -798146278705272977, guid: 4be982bf5e615604e8e086f165f9ef3e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0807171b73dd6d14d88829667c523462, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1825,7 +1825,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WorldMapIslandButton
   islandIndex: 6
   unlockedSprite: {fileID: 21300000, guid: 0807171b73dd6d14d88829667c523462, type: 3}
-  lockedSprite: {fileID: -798146278705272977, guid: 4be982bf5e615604e8e086f165f9ef3e, type: 3}
+  lockedSprite: {fileID: 21300000, guid: 4be982bf5e615604e8e086f165f9ef3e, type: 3}
   lockIcon: {fileID: 1932790142}
 --- !u!1 &925332659
 GameObject:
@@ -2920,7 +2920,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e9073e1feed9efb429b7ef64c87aa47f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6efc32f3ad3ce5542bc004d000140e6d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3687,7 +3687,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 5517856376549305184, guid: a06c012ad88b8124cbffb350ab21d004, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4c91e001552841744bf0100f828ae862, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3719,7 +3719,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WorldMapIslandButton
   islandIndex: 7
   unlockedSprite: {fileID: 21300000, guid: 4c91e001552841744bf0100f828ae862, type: 3}
-  lockedSprite: {fileID: 5517856376549305184, guid: a06c012ad88b8124cbffb350ab21d004, type: 3}
+  lockedSprite: {fileID: 21300000, guid: a06c012ad88b8124cbffb350ab21d004, type: 3}
   lockIcon: {fileID: 1547054279}
 --- !u!1 &2080568966
 GameObject:
@@ -3837,7 +3837,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -6625140653002246100, guid: c9f57598a32dc02479eaaf1ede931bef, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 04d1e7644a6b86a49b36bbd76ffb6e37, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3869,7 +3869,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WorldMapIslandButton
   islandIndex: 4
   unlockedSprite: {fileID: 21300000, guid: 04d1e7644a6b86a49b36bbd76ffb6e37, type: 3}
-  lockedSprite: {fileID: -6625140653002246100, guid: c9f57598a32dc02479eaaf1ede931bef, type: 3}
+  lockedSprite: {fileID: 21300000, guid: c9f57598a32dc02479eaaf1ede931bef, type: 3}
   lockIcon: {fileID: 1305797795}
 --- !u!1 &2110458160
 GameObject:

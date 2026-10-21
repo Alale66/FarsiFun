@@ -5,12 +5,6 @@ TextureImporter:
   - first:
       213: 6146190352190577113
     second: island_03_lighthouse_0
-  - first:
-      213: -8516554897033963898
-    second: island_03_lighthouse_1
-  - first:
-      213: -3052505614629598304
-    second: island_03_lighthouse_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -125,9 +119,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 17
-        width: 1519
-        height: 981
+        y: 12
+        width: 1536
+        height: 1004
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -138,50 +132,6 @@ TextureImporter:
       bones: []
       spriteID: 9d99048bf87ab4550800000000000000
       internalID: 6146190352190577113
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: island_03_lighthouse_1
-      rect:
-        serializedVersion: 2
-        x: 656
-        y: 969
-        width: 7
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6865d2c917e1fc980800000000000000
-      internalID: -8516554897033963898
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: island_03_lighthouse_2
-      rect:
-        serializedVersion: 2
-        x: 1486
-        y: 686
-        width: 7
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0ab0e1df05253a5d0800000000000000
-      internalID: -3052505614629598304
       vertices: []
       indices: 
       edges: []
@@ -201,8 +151,6 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       island_03_lighthouse_0: 6146190352190577113
-      island_03_lighthouse_1: -8516554897033963898
-      island_03_lighthouse_2: -3052505614629598304
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
