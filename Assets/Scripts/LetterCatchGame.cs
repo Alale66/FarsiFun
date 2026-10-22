@@ -76,6 +76,8 @@ public class LetterCatchGame : BonusGameBase
     private bool isRunning;
     private bool isCompleting;
     private bool isPreparingGame;
+    private readonly List<string> wrongLetterForms =
+    new List<string>();
 
     /// <summary>
     /// Prepares the Letter Catch game using the shared bonus-game
@@ -130,7 +132,7 @@ public class LetterCatchGame : BonusGameBase
         }
 
         targetFamily = letterData;
-        targetLetter = targetFamily.GetRandomGameForm();
+        targetLetter = targetFamily.GetRandomBonusGameForm();
 
         if (string.IsNullOrWhiteSpace(targetLetter))
         {
@@ -142,6 +144,22 @@ public class LetterCatchGame : BonusGameBase
             );
 
             return;
+        }
+
+        wrongLetterForms.Clear();
+
+        foreach (string value in alphabetData.letters)
+        {
+            string form = LetterData.GetBonusGameForm(value);
+
+            if (string.IsNullOrWhiteSpace(form) ||
+                IsTargetLetter(form) ||
+                wrongLetterForms.Contains(form))
+            {
+                continue;
+            }
+
+            wrongLetterForms.Add(form);
         }
 
         caughtTargetCount = 0;
@@ -267,31 +285,18 @@ public class LetterCatchGame : BonusGameBase
 
     private string ChooseLetter()
     {
-        bool shouldSpawnTarget =
-            UnityEngine.Random.value <
-            targetSpawnChance;
-
-        if (shouldSpawnTarget)
-            return ChooseTargetForm();
-
-        string selectedLetter = targetLetter;
-
-        for (int i = 0; i < 20; i++)
+        if (wrongLetterForms.Count == 0 ||
+            UnityEngine.Random.value < targetSpawnChance)
         {
-            int randomIndex =
-                UnityEngine.Random.Range(
-                    0,
-                    alphabetData.letters.Length
-                );
-
-            selectedLetter =
-                alphabetData.letters[randomIndex];
-
-            if (!IsTargetLetter(selectedLetter))
-                return selectedLetter;
+            return ChooseTargetForm();
         }
 
-        return selectedLetter;
+        int randomIndex = UnityEngine.Random.Range(
+            0,
+            wrongLetterForms.Count
+        );
+
+        return wrongLetterForms[randomIndex];
     }
 
     /// <summary>
@@ -300,7 +305,7 @@ public class LetterCatchGame : BonusGameBase
     private string ChooseTargetForm()
     {
         if (targetFamily != null)
-            return targetFamily.GetRandomGameForm();
+            return targetFamily.GetRandomBonusGameForm();
 
         return targetLetter;
     }

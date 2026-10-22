@@ -12,6 +12,7 @@ public class PictureHuntGame : MonoBehaviour
         public Button button;
         public Image image;
         public QuizChoiceFeedback feedback;
+        public Button soundButton;
     }
 
     [Header("Three cards in PictureHuntPanel")]
@@ -195,6 +196,21 @@ public class PictureHuntGame : MonoBehaviour
             );
 
             cards[i].button.interactable = true;
+
+            Button soundButton = cards[i].soundButton;
+            AudioClip wordClip = item.audio;
+
+            if (soundButton != null)
+            {
+                soundButton.onClick.RemoveAllListeners();
+
+                soundButton.interactable =
+                    wordClip != null && gameAudioManager != null;
+
+                soundButton.onClick.AddListener(
+                    () => PlayPictureWord(cardIndex, wordClip)
+                );
+            }
         }
 
         finished = false;
@@ -240,12 +256,14 @@ public class PictureHuntGame : MonoBehaviour
     }
 
     private void SelectPicture(
-        int index,
-        AudioClip wordSound)
+    int index,
+    AudioClip wordSound)
     {
         if (finished ||
             checkingAnswer ||
-            foundCorrectAnswers.Contains(index))
+            foundCorrectAnswers.Contains(index) ||
+            (gameAudioManager != null &&
+             gameAudioManager.IsPlayingLocked))
         {
             return;
         }
@@ -373,5 +391,29 @@ public class PictureHuntGame : MonoBehaviour
         {
             inputLock.Unlock();
         }
+    }
+
+    private void PlayPictureWord(
+    int index,
+    AudioClip wordSound)
+    {
+        if (!isActiveAndEnabled ||
+            finished ||
+            checkingAnswer ||
+            wordSound == null ||
+            gameAudioManager == null ||
+            gameAudioManager.IsPlayingLocked ||
+            cards == null ||
+            index < 0 ||
+            index >= cards.Length)
+        {
+            return;
+        }
+
+        if (!cards[index].button.interactable)
+            return;
+
+        // Only play the word; do not check the answer.
+        gameAudioManager.PlayLocked(wordSound);
     }
 }

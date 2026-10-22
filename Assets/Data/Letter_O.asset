@@ -13,15 +13,21 @@ MonoBehaviour:
   m_Name: Letter_O
   m_EditorClassIdentifier: Assembly-CSharp::LetterData
   lessonType: 0
-  forms: []
-  targetLetter: 
+  forms:
+  - baseText: "\u0627"
+    markText: "\u064F"
+  - baseText: 
+    markText: "\u064F"
+  targetLetter: "\u0627\u064F "
   choices:
   - 
   - 
   - 
-  correctLetter: 
-  matchForms: []
-  letterName: 
+  correctLetter: "\u0627\u064F"
+  matchForms:
+  - "\u0627\u064F"
+  - "\u064F"
+  letterName: " \u0627\u064F  \u064F"
   examples: []
   pictureHuntMode: 0
   pictureHuntDistractors: []

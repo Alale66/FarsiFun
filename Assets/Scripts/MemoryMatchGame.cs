@@ -22,6 +22,32 @@ public class MemoryMatchGame : MonoBehaviour
     private readonly HashSet<MatchCardView> matchedCards =
         new HashSet<MatchCardView>();
 
+    public bool HasWordAudioPlayer =>
+        gameAudioManager != null;
+
+    public void PlayCardWord(MatchCardView card)
+    {
+        if (!isActiveAndEnabled ||
+            isChecking ||
+            card == null ||
+            !card.isActiveAndEnabled ||
+            !card.IsImageCard ||
+            card.IsMatched ||
+            card.Example == null ||
+            card.Example.audio == null ||
+            gameAudioManager == null ||
+            gameAudioManager.IsPlayingLocked ||
+            cards == null ||
+            Array.IndexOf(cards, card) < 0)
+        {
+            return;
+        }
+
+        // Listening does not select a card or change rewards.
+        gameAudioManager.PlayLocked(
+            card.Example.audio
+        );
+    }
     private bool isChecking;
 
     public void SetupGame(LetterData letterData)
@@ -81,6 +107,8 @@ public class MemoryMatchGame : MonoBehaviour
     public void SelectCard(MatchCardView card)
     {
         if (isChecking ||
+            (gameAudioManager != null &&
+            gameAudioManager.IsPlayingLocked) ||
             card == null ||
             card.IsMatched ||
             matchedCards.Contains(card))
@@ -122,15 +150,9 @@ public class MemoryMatchGame : MonoBehaviour
             matchedCards.Add(first);
             matchedCards.Add(second);
 
-            matchedCards.Add(first);
-            matchedCards.Add(second);
-
             PlayerRewardSystem.ReportCorrectAnswer(
                 second.transform as RectTransform
             );
-
-            first.ShowCorrect();
-            second.ShowCorrect();
 
             first.ShowCorrect();
             second.ShowCorrect();

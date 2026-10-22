@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class WorldMapTravelController : MonoBehaviour
 {
+    private const int LettersPerIsland = 5;
+
     [SerializeField] private WorldMapAvatarMover marker;
     [SerializeField] private SceneNavigator navigator;
 
@@ -14,11 +16,45 @@ public class WorldMapTravelController : MonoBehaviour
     private int currentIslandIndex;
     private bool travelling;
     private bool previousInteraction;
+    private string parkingSaveKey;
 
     private void Start()
     {
+        if (islands == null || islands.Length == 0)
+            return;
+
+        PlayerProfileData profile =
+            PlayerProfileManager.Instance != null
+                ? PlayerProfileManager.Instance.SelectedProfile
+                : null;
+
+        int highestUnlockedIsland = 0;
+
+        if (profile != null)
+        {
+            highestUnlockedIsland = Mathf.Clamp(
+                profile.highestUnlockedLetterIndex / LettersPerIsland,
+                0,
+                islands.Length - 1
+            );
+
+            parkingSaveKey =
+                "WorldMapShipIsland_" + profile.id;
+        }
+
+        // Existing profiles start at their furthest unlocked island.
+        // Later visits restore the ship's saved parking position.
+        int savedIsland = string.IsNullOrEmpty(parkingSaveKey)
+            ? highestUnlockedIsland
+            : PlayerPrefs.GetInt(
+                parkingSaveKey,
+                highestUnlockedIsland
+            );
+
         currentIslandIndex = Mathf.Clamp(
-            SceneNavigator.SelectedIslandIndex, 0, 7
+            savedIsland,
+            0,
+            highestUnlockedIsland
         );
 
         foreach (WorldMapIslandButton island in islands)
@@ -27,42 +63,51 @@ public class WorldMapTravelController : MonoBehaviour
                 island.IslandSelected += SelectIsland;
         }
 
-        // Restore the marker beside the last visited island.
-        if (currentIslandIndex > 0 &&
-            marker != null &&
-            paths != null &&
-            currentIslandIndex - 1 < paths.Length &&
-            paths[currentIslandIndex - 1] != null)
+        RestoreMarkerPosition();
+        SaveParkingPosition();
+    }
+
+    private void RestoreMarkerPosition()
+    {
+        if (marker == null || currentIslandIndex == 0)
+            return;
+
+        int pathIndex = currentIslandIndex - 1;
+
+        if (paths != null &&
+            pathIndex < paths.Length &&
+            paths[pathIndex] != null)
         {
             marker.transform.position =
-                paths[currentIslandIndex - 1].GetWorldPoint(1f);
+                paths[pathIndex].GetWorldPoint(1f);
         }
     }
 
     private void SelectIsland(int targetIndex)
     {
-        if (travelling || marker == null || navigator == null)
+        if (travelling || navigator == null)
             return;
 
-        if (targetIndex < 0 || targetIndex >= islands.Length)
+        if (islands == null ||
+            targetIndex < 0 ||
+            targetIndex >= islands.Length ||
+            islands[targetIndex] == null)
+        {
             return;
+        }
 
-        if (currentIslandIndex == targetIndex)
+        // Visiting an earlier island never moves the ship backward.
+        if (targetIndex <= currentIslandIndex)
         {
             navigator.GoToIsland(targetIndex);
             return;
         }
 
-        int firstPath = Mathf.Min(
-            currentIslandIndex, targetIndex
-        );
+        if (marker == null)
+            return;
 
-        int lastPath = Mathf.Max(
-            currentIslandIndex, targetIndex
-        );
-
-        // Check every required route before moving.
-        for (int i = firstPath; i < lastPath; i++)
+        // Validate all forward routes before starting.
+        for (int i = currentIslandIndex; i < targetIndex; i++)
         {
             if (paths == null ||
                 i >= paths.Length ||
@@ -71,6 +116,7 @@ public class WorldMapTravelController : MonoBehaviour
                 Debug.LogError(
                     "WorldMap: Missing route at index " + i
                 );
+
                 return;
             }
         }
@@ -88,24 +134,35 @@ public class WorldMapTravelController : MonoBehaviour
             mapInteraction.interactable = false;
         }
 
-        while (currentIslandIndex != targetIndex)
+        while (currentIslandIndex < targetIndex)
         {
-            bool reverse = targetIndex < currentIslandIndex;
-
-            int pathIndex = reverse
-                ? currentIslandIndex - 1
-                : currentIslandIndex;
-
-            marker.TravelPath(paths[pathIndex], reverse);
+            marker.TravelPath(
+                paths[currentIslandIndex],
+                false
+            );
 
             while (marker.IsMoving)
                 yield return null;
 
-            currentIslandIndex += reverse ? -1 : 1;
+            currentIslandIndex++;
+            SaveParkingPosition();
         }
 
         RestoreInteraction();
         navigator.GoToIsland(targetIndex);
+    }
+
+    private void SaveParkingPosition()
+    {
+        if (string.IsNullOrEmpty(parkingSaveKey))
+            return;
+
+        PlayerPrefs.SetInt(
+            parkingSaveKey,
+            currentIslandIndex
+        );
+
+        PlayerPrefs.Save();
     }
 
     private void RestoreInteraction()

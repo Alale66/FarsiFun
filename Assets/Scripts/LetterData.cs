@@ -167,4 +167,73 @@ public class LetterData : ScriptableObject
 
         formsList.Add(value);
     }
+
+    // Converts standalone vowel marks into their complete forms.
+    // Examples: ـَ → اَ, ـِ → اِ, ـُ → اُ
+    public static string GetBonusGameForm(string value)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+            return string.Empty;
+
+        string normalized = value.Trim().Normalize(
+            System.Text.NormalizationForm.FormKC
+        );
+
+        // Preserve complete letters and connected letter forms.
+        foreach (char character in normalized)
+        {
+            if (char.IsLetter(character) &&
+                character != '\u0640')
+            {
+                return value.Trim();
+            }
+        }
+
+        bool hasFatha = normalized.Contains("\u064E");
+        bool hasKasra = normalized.Contains("\u0650");
+        bool hasDamma = normalized.Contains("\u064F");
+
+        int markCount =
+            (hasFatha ? 1 : 0) +
+            (hasKasra ? 1 : 0) +
+            (hasDamma ? 1 : 0);
+
+        if (markCount != 1)
+            return string.Empty;
+
+        if (hasFatha)
+            return "ا\u064E";
+
+        if (hasKasra)
+            return "ا\u0650";
+
+        return "ا\u064F";
+    }
+
+    public string[] GetBonusGameForms()
+    {
+        List<string> result = new List<string>();
+
+        foreach (string form in GetGameForms())
+        {
+            AddUniqueForm(
+                result,
+                GetBonusGameForm(form)
+            );
+        }
+
+        return result.ToArray();
+    }
+
+    public string GetRandomBonusGameForm()
+    {
+        string[] availableForms = GetBonusGameForms();
+
+        if (availableForms.Length == 0)
+            return string.Empty;
+
+        return availableForms[
+            Random.Range(0, availableForms.Length)
+        ];
+    }
 }

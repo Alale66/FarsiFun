@@ -303,10 +303,16 @@ public class ProfileSelectionController : MonoBehaviour
 
     private void CloseDeleteModal()
     {
-        if (deleteProfileModal != null)
-            profileTransition.CloseDeleteModal();
-
+        // Return the profile cards to their normal state.
+        isManagingProfiles = false;
         pendingDeleteProfile = null;
+
+        RefreshProfileCards();
+
+        if (profileTransition != null)
+            profileTransition.CloseDeleteModal();
+        else if (deleteProfileModal != null)
+            deleteProfileModal.SetActive(false);
     }
 
     private void ConfirmDeleteProfile()
@@ -317,15 +323,11 @@ public class ProfileSelectionController : MonoBehaviour
             return;
         }
 
-        bool wasDeleted =
-            PlayerProfileManager.Instance.DeleteProfile(
-                pendingDeleteProfile.id
-            );
+        PlayerProfileManager.Instance.DeleteProfile(
+            pendingDeleteProfile.id
+        );
 
         CloseDeleteModal();
-
-        if (wasDeleted)
-            RefreshProfileCards();
     }
 
     private static string ToPersianNumber(int number)

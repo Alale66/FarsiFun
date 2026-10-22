@@ -36,8 +36,8 @@ public class LetterChoiceGame : MonoBehaviour
     [SerializeField] private TMP_Text feedbackText;
     [SerializeField] private TMP_Text[] choiceTexts;
     [SerializeField] private Button[] choiceButtons;
+    [SerializeField] private Button[] choiceSoundButtons;
     [SerializeField] private QuizChoiceFeedback[] choiceFeedbacks;
-    [SerializeField] private GameObject retryBadge;
 
     [Header("Letter Hunt UI")]
     [SerializeField] private LetterHuntGame letterHuntGame;
@@ -337,12 +337,12 @@ public class LetterChoiceGame : MonoBehaviour
         ShowRandomIntroExamples();
 
         string displayName =
-     PersianLetterDisplay.GetText(data.letterName);
+            PersianLetterDisplay.GetText(data.letterName);
 
         letterTitleText.richText = true;
 
         letterTitleText.text =
-            (data.IsVowel ? "یادگیری صدای " : "یادگیری حرف ") +
+            "یادگیری " +
             "<color=#C9443A>" +
             displayName +
             "</color>";
@@ -368,7 +368,6 @@ public class LetterChoiceGame : MonoBehaviour
 
         feedbackText.text = "";
 
-        retryBadge.SetActive(false);
         SetCompletionUI(false);
 
         if (choiceFeedbacks != null)
@@ -436,20 +435,30 @@ public class LetterChoiceGame : MonoBehaviour
             string choice = shuffledChoices[i];
             int choiceIndex = i;
 
-            choiceTexts[i].text = PersianLetterDisplay.GetText(choice);
+            choiceTexts[i].text =
+                PersianLetterDisplay.GetText(choice);
+
             choiceButtons[i].interactable = true;
 
             choiceButtons[i].onClick.RemoveAllListeners();
+
             choiceButtons[i].onClick.AddListener(
                 () => CheckAnswer(choice, choiceIndex)
             );
+
+            SetupQuizChoiceSound(i, choice);
         }
     }
 
     private void CheckAnswer(string selectedLetter, int choiceIndex)
     {
-        if (quizChecking)
-            return;
+        if (quizChecking ||
+            quizCompleted ||
+            (gameAudioManager != null &&
+            gameAudioManager.IsPlayingLocked))
+                {
+                    return;
+                }
 
         LetterData data = lesson.letters[currentLetterIndex];
 
@@ -473,7 +482,6 @@ public class LetterChoiceGame : MonoBehaviour
             );
 
             feedbackText.text = "";
-            retryBadge.SetActive(false);
             SetCompletionUI(false);
 
             if (selectedFeedback != null)
@@ -492,7 +500,6 @@ public class LetterChoiceGame : MonoBehaviour
                 choiceButtons[choiceIndex].transform as RectTransform
             );
             feedbackText.text = "";
-            retryBadge.SetActive(true);
             SetCompletionUI(false);
 
             wrongAnswerRoutine =
@@ -602,7 +609,7 @@ public class LetterChoiceGame : MonoBehaviour
         if (sharedGamePanelUI != null)
         {
             sharedGamePanelUI.SetNavigationVisibility(
-                false,
+                true,
                 true,
                 false
             );
@@ -792,7 +799,7 @@ public class LetterChoiceGame : MonoBehaviour
 
         PlayInstructionThenLetter(
             quizInstructionAudio,
-            data.IsVowel ? data.letterSoundAudio : data.letterNameAudio
+            data.letterSoundAudio
         );
     }
 
@@ -1114,6 +1121,18 @@ public class LetterChoiceGame : MonoBehaviour
     {
         switch (currentStage)
         {
+            case LessonStage.Intro:
+                StopAllCoroutines();
+                StopSuccessSounds();
+
+                if (gameAudioManager != null)
+                    gameAudioManager.StopAudio();
+
+                UnityEngine.SceneManagement.SceneManager.LoadScene(
+                    "IslandView"
+                );
+                break;
+
             case LessonStage.Quiz:
                 BackToIntro();
                 break;
@@ -1238,4 +1257,117 @@ public class LetterChoiceGame : MonoBehaviour
         StartBonusGame();
     }
 #endif
+
+    private AudioClip GetQuizChoiceAudio(string choice)
+    {
+        LetterData currentData =
+            lesson.letters[currentLetterIndex];
+
+        // Prefer the current lesson for its own valid forms.
+        if (currentData.IsGameForm(choice))
+            return currentData.letterSoundAudio;
+
+        AudioClip clip = FindChoiceAudioInLesson(
+            lesson,
+            choice
+        );
+
+        if (clip != null)
+            return clip;
+
+        if (islandLessons != null)
+        {
+            foreach (LessonData islandLesson in islandLessons)
+            {
+                if (islandLesson == lesson)
+                    continue;
+
+                clip = FindChoiceAudioInLesson(
+                    islandLesson,
+                    choice
+                );
+
+                if (clip != null)
+                    return clip;
+            }
+        }
+
+        return null;
+    }
+
+    private AudioClip FindChoiceAudioInLesson(
+        LessonData lessonData,
+        string choice)
+    {
+        if (lessonData == null ||
+            lessonData.letters == null)
+        {
+            return null;
+        }
+
+        foreach (LetterData letter in lessonData.letters)
+        {
+            if (letter != null &&
+                letter.IsGameForm(choice) &&
+                letter.letterSoundAudio != null)
+            {
+                return letter.letterSoundAudio;
+            }
+        }
+
+        return null;
+    }
+
+    private void SetupQuizChoiceSound(
+        int index,
+        string choice)
+    {
+        if (choiceSoundButtons == null ||
+            index >= choiceSoundButtons.Length)
+        {
+            return;
+        }
+
+        Button soundButton = choiceSoundButtons[index];
+
+        if (soundButton == null)
+            return;
+
+        AudioClip clip = GetQuizChoiceAudio(choice);
+
+        soundButton.onClick.RemoveAllListeners();
+
+        soundButton.interactable =
+            clip != null && gameAudioManager != null;
+
+        soundButton.onClick.AddListener(
+            () => PlayQuizChoiceSound(index, clip)
+        );
+    }
+
+    private void PlayQuizChoiceSound(
+        int index,
+        AudioClip clip)
+    {
+        if (currentStage != LessonStage.Quiz ||
+            quizCompleted ||
+            quizChecking ||
+            clip == null ||
+            gameAudioManager == null ||
+            gameAudioManager.IsPlayingLocked)
+        {
+            return;
+        }
+
+        if (choiceButtons == null ||
+            index < 0 ||
+            index >= choiceButtons.Length ||
+            choiceButtons[index] == null ||
+            !choiceButtons[index].interactable)
+        {
+            return;
+        }
+
+        gameAudioManager.PlayLocked(clip);
+    }
 }

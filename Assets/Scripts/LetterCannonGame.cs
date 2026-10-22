@@ -299,7 +299,7 @@ new Vector2(-65f, -130f);
         List<string> distractors = BuildDistractorList();
 
         string correctForm =
-            currentLetter.GetRandomGameForm();
+            currentLetter.GetRandomBonusGameForm();
 
         if (string.IsNullOrWhiteSpace(correctForm))
         {
@@ -382,7 +382,7 @@ new Vector2(-65f, -130f);
                 }
 
                 string[] forms =
-                    letter.GetGameForms();
+                    letter.GetBonusGameForms();
 
                 for (int formIndex = 0;
                      formIndex < forms.Length;
@@ -400,17 +400,19 @@ new Vector2(-65f, -130f);
     }
 
     private void AddDistractor(
-        List<string> distractors,
-        string value)
+     List<string> distractors,
+     string value)
     {
-        if (string.IsNullOrWhiteSpace(value) ||
-            currentLetter.IsGameForm(value) ||
-            distractors.Contains(value))
+        string form = LetterData.GetBonusGameForm(value);
+
+        if (string.IsNullOrWhiteSpace(form) ||
+            currentLetter.IsGameForm(form) ||
+            distractors.Contains(form))
         {
             return;
         }
 
-        distractors.Add(value);
+        distractors.Add(form);
     }
 
     private void Update()

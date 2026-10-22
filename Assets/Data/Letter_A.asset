@@ -16,7 +16,7 @@ MonoBehaviour:
   forms:
   - baseText: "\u0627"
     markText: "\u064E"
-  - baseText: "\u0640"
+  - baseText: 
     markText: "\u064E"
   targetLetter: "\u0627\u064E"
   choices:
@@ -26,8 +26,8 @@ MonoBehaviour:
   correctLetter: "\u0627\u064E"
   matchForms:
   - "\u0627\u064E"
-  - "\u0640\u064E"
-  letterName: "\u0627\u064E   \u0640\u064E "
+  - "\u064E"
+  letterName: "\u0627\u064E   \u064E"
   examples:
   - word: "\u0627\u064E\u0628\u0631"
     image: {fileID: 21300000, guid: 15609e41a416fc84ebbfdd0ce4a4b674, type: 3}

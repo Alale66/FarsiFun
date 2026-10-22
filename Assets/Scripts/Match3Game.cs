@@ -247,11 +247,16 @@ public class Match3Game : BonusGameBase
             new List<string>();
 
         for (int i = 0; i < alphabetData.letters.Length; i++)
-        {
-            string letter = alphabetData.letters[i];
+                {
+                    string letter = LetterData.GetBonusGameForm(
+            alphabetData.letters[i]
+        );
 
-            if (!string.IsNullOrWhiteSpace(letter))
-                availableLetters.Add(letter.Trim());
+            if (!string.IsNullOrWhiteSpace(letter) &&
+                !availableLetters.Contains(letter))
+            {
+                availableLetters.Add(letter);
+            }
         }
 
         Shuffle(availableLetters);
@@ -444,7 +449,7 @@ public class Match3Game : BonusGameBase
             return "؟";
 
         string displayedForm =
-            family.GetRandomGameForm();
+            family.GetRandomBonusGameForm();
 
         return string.IsNullOrWhiteSpace(displayedForm)
             ? "؟"

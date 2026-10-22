@@ -9,6 +9,8 @@ public class MatchCardView : MonoBehaviour
     [SerializeField] private Button button;
     [SerializeField] private Image cardImage;
     [SerializeField] private Image checkMark;
+    [SerializeField] private Button soundButton;
+    [SerializeField] private GameObject baseline;
 
     private ExampleData example;
     private bool isImageCard;
@@ -61,6 +63,17 @@ public class MatchCardView : MonoBehaviour
             if (game != null && !isMatched)
                 game.SelectCard(this);
         });
+
+        if (soundButton != null)
+        {
+            soundButton.onClick.RemoveListener(
+                HandlePlayWord
+            );
+
+            soundButton.onClick.AddListener(
+                HandlePlayWord
+            );
+        }
     }
 
     public void SetupAsImage(ExampleData data)
@@ -76,6 +89,9 @@ public class MatchCardView : MonoBehaviour
         exampleImage.preserveAspect = true;
 
         ResetForNewRound();
+
+        if (baseline != null)
+            baseline.SetActive(false);
     }
 
     public void SetupAsWord(ExampleData data)
@@ -99,6 +115,9 @@ public class MatchCardView : MonoBehaviour
         }
 
         ResetForNewRound();
+
+        if (baseline != null)
+            baseline.SetActive(true);
     }
 
     private void ResetForNewRound()
@@ -109,15 +128,30 @@ public class MatchCardView : MonoBehaviour
 
         if (checkMark != null)
             checkMark.gameObject.SetActive(false);
+
+        RefreshSoundButton();
     }
 
     public void SetInteractable(bool value)
     {
-        // کارت مچ‌شده هرگز در همان دور دوباره فعال نشود.
         if (isMatched && value)
             return;
 
         button.interactable = value;
+        RefreshSoundButton();
+    }
+
+    public void ShowCorrect()
+    {
+        isMatched = true;
+        button.interactable = false;
+
+        SetOutline(new Color32(79, 157, 94, 255));
+
+        if (checkMark != null)
+            checkMark.gameObject.SetActive(true);
+
+        RefreshSoundButton();
     }
 
     private void SetOutline(Color color)
@@ -138,21 +172,6 @@ public class MatchCardView : MonoBehaviour
         SetOutline(new Color32(232, 156, 56, 255));
     }
 
-
-    public void ShowCorrect()
-    {
-        isMatched = true;
-        button.interactable = false;
-
-        // حاشیه سبز
-        SetOutline(new Color32(79, 157, 94, 255));
-
-        // نمایش تیک سبز
-        if (checkMark != null)
-            checkMark.gameObject.SetActive(true);
-    }
-
-
     public void ShowWrong()
     {
         if (isMatched)
@@ -171,5 +190,35 @@ public class MatchCardView : MonoBehaviour
 
         if (highlightOutline != null)
             highlightOutline.enabled = false;
+    }
+
+    private void HandlePlayWord()
+    {
+        if (game != null &&
+            isImageCard &&
+            !isMatched &&
+            button != null &&
+            button.interactable)
+        {
+            game.PlayCardWord(this);
+        }
+    }
+
+    private void RefreshSoundButton()
+    {
+        if (soundButton == null)
+            return;
+
+        soundButton.gameObject.SetActive(isImageCard);
+
+        soundButton.interactable =
+            isImageCard &&
+            !isMatched &&
+            button != null &&
+            button.interactable &&
+            example != null &&
+            example.audio != null &&
+            game != null &&
+            game.HasWordAudioPlayer;
     }
 }

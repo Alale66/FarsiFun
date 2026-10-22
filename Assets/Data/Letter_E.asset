@@ -14,22 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LetterData
   lessonType: 0
   forms:
+  - baseText: "\u0627"
+    markText: "\u0650"
   - baseText: 
-    markText: 
-  - baseText: 
-    markText: 
-  - baseText: 
-    markText: 
-  - baseText: 
-    markText: 
-  targetLetter: 
+    markText: "\u0650"
+  targetLetter: "\u0627\u0650"
   choices:
   - 
   - 
   - 
-  correctLetter: 
-  matchForms: []
-  letterName: 
+  correctLetter: "\u0627\u0650"
+  matchForms:
+  - "\u0627\u0650"
+  - "\u0650"
+  letterName: "\u0627\u0650  \u0650 "
   examples: []
   pictureHuntMode: 0
   pictureHuntDistractors: []

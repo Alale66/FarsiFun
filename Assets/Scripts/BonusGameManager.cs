@@ -79,6 +79,9 @@ public class BonusGameManager : MonoBehaviour
     [SerializeField]
     private AmbientAudioController ambientAudioController;
 
+    [Header("Wallet")]
+    [SerializeField] private GameObject playerWallet;
+
     public event Action Completed;
 
     private BonusGameBase activeGame;
@@ -152,6 +155,7 @@ public class BonusGameManager : MonoBehaviour
             currentLetterIndex
         );
 
+        SetPanelActive(playerWallet, false);
         SetPanelActive(bonusGameCompletePanel, false);
 
         if (celebrationEffect != null)
@@ -208,6 +212,7 @@ public class BonusGameManager : MonoBehaviour
         }
 
         Completed?.Invoke();
+        SetPanelActive(playerWallet, true);
     }
 
     /// <summary>
@@ -230,6 +235,7 @@ public class BonusGameManager : MonoBehaviour
                 false
             );
         }
+        SetPanelActive(playerWallet, true);
     }
 
     private int ChooseRandomGameIndex()
