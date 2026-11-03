@@ -1598,7 +1598,7 @@ MonoBehaviour:
   audioSource: {fileID: 1939825425}
   tearSound: {fileID: 8300000, guid: 7ea86c414a7375547a6c3a5fa57112f5, type: 3}
   goToProfileWhenFinished: 1
-  nextScene: ProfileSelection
+  nextScene: StoryIntro
 --- !u!82 &1939825425
 AudioSource:
   m_ObjectHideFlags: 0
