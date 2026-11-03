@@ -1,0 +1,808 @@
+fileFormatVersion: 2
+guid: 7b3ddf19f9bc9384a82e1cc2a1f5efc5
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -543065302414226958
+    second: tangerine_0
+  - first:
+      213: -4540459080662885516
+    second: tangerine_1
+  - first:
+      213: 4892146238413483191
+    second: tangerine_2
+  - first:
+      213: -5440038523216972210
+    second: tangerine_3
+  - first:
+      213: 8344889199158432722
+    second: tangerine_4
+  - first:
+      213: 3240700375334251766
+    second: tangerine_5
+  - first:
+      213: 2730427918256057830
+    second: tangerine_6
+  - first:
+      213: 8031678081840528334
+    second: tangerine_7
+  - first:
+      213: 6828796176049974651
+    second: tangerine_8
+  - first:
+      213: -2390467473457242026
+    second: tangerine_9
+  - first:
+      213: -310095254592928340
+    second: tangerine_10
+  - first:
+      213: -2471029468033501663
+    second: tangerine_11
+  - first:
+      213: 8079111833458228815
+    second: tangerine_12
+  - first:
+      213: -6561607730076117714
+    second: tangerine_13
+  - first:
+      213: -4253765737518650979
+    second: tangerine_14
+  - first:
+      213: 2436524658650967016
+    second: tangerine_15
+  - first:
+      213: -5188558272206118168
+    second: tangerine_16
+  - first:
+      213: 5399521035773173394
+    second: tangerine_17
+  - first:
+      213: 6985549377747275308
+    second: tangerine_18
+  - first:
+      213: 6399551027887779473
+    second: tangerine_19
+  - first:
+      213: -1697091565348344947
+    second: tangerine_20
+  - first:
+      213: 2045691513344794432
+    second: tangerine_21
+  - first:
+      213: -4472022775377579674
+    second: tangerine_22
+  - first:
+      213: -8964972382977648535
+    second: tangerine_23
+  - first:
+      213: 1039631163992142125
+    second: tangerine_24
+  - first:
+      213: 4927347205344879647
+    second: tangerine_25
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: tangerine_0
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 13
+        width: 1287
+        height: 995
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f982c71cf4a678f0800000000000000
+      internalID: -543065302414226958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tangerine_1
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 993
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47b54e3c58c0df0c0800000000000000
+      internalID: -4540459080662885516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tangerine_2
+      rect:
+        serializedVersion: 2
+        x: 1018
+        y: 991
+        width: 21
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7bc26e9851564e340800000000000000
+      internalID: 4892146238413483191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tangerine_3
+      rect:
+        serializedVersion: 2
+        x: 1071
+        y: 991
+        width: 36
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e46363329c91184b0800000000000000
+      internalID: -5440038523216972210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tangerine_4
+      rect:
+        serializedVersion: 2
+        x: 1100
+        y: 981
+        width: 26
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d315d573800fc370800000000000000
+      internalID: 8344889199158432722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tangerine_5
+      rect:
+        serializedVersion: 2
+        x: 1128
+        y: 993
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fce54742d749fc20800000000000000
+      internalID: 3240700375334251766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tangerine_6
+      rect:
+        serializedVersion: 2
+        x: 1137
+        y: 985
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ed2678a9bd64e520800000000000000
+      internalID: 2730427918256057830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tangerine_7
+      rect:
+        serializedVersion: 2
+        x: 1138
+        y: 957
+        width: 29
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ecb356a69a0467f60800000000000000
+      internalID: 8031678081840528334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tangerine_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 647
+        width: 211
+        height: 345
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7d210d01f1c4ce50800000000000000
+      internalID: 6828796176049974651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tangerine_9
+      rect:
+        serializedVersion: 2
+        x: 983
+        y: 975
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 650a4758f7a53ded0800000000000000
+      internalID: -2390467473457242026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tangerine_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3
+        width: 195
+        height: 590
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca54477420252bbf0800000000000000
+      internalID: -310095254592928340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tangerine_11
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 699
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12637587ac325bdd0800000000000000
+      internalID: -2471029468033501663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tangerine_12
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 813
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4ebee55865ce1070800000000000000
+      internalID: 8079111833458228815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tangerine_13
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 803
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e251b5dc88c70f4a0800000000000000
+      internalID: -6561607730076117714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tangerine_14
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 629
+        width: 15
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d992971699697f4c0800000000000000
+      internalID: -4253765737518650979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tangerine_15
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 801
+        width: 19
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ebee5d844640d120800000000000000
+      internalID: 2436524658650967016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tangerine_16
+      rect:
+        serializedVersion: 2
+        x: 1310
+        y: 775
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e26db8ddb98ef7b0800000000000000
+      internalID: -5188558272206118168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tangerine_17
+      rect:
+        serializedVersion: 2
+        x: 1390
+        y: 631
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29e528e26c3feea40800000000000000
+      internalID: 5399521035773173394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tangerine_18
+      rect:
+        serializedVersion: 2
+        x: 1398
+        y: 559
+        width: 121
+        height: 413
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2ec395e528a1f060800000000000000
+      internalID: 6985549377747275308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tangerine_19
+      rect:
+        serializedVersion: 2
+        x: 1318
+        y: 524
+        width: 9
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19eac3be0c5cfc850800000000000000
+      internalID: 6399551027887779473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tangerine_20
+      rect:
+        serializedVersion: 2
+        x: 1472
+        y: 415
+        width: 17
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8ba9108638b278e0800000000000000
+      internalID: -1697091565348344947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tangerine_21
+      rect:
+        serializedVersion: 2
+        x: 1400
+        y: 169
+        width: 7
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04f92f4c791c36c10800000000000000
+      internalID: 2045691513344794432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tangerine_22
+      rect:
+        serializedVersion: 2
+        x: 1376
+        y: 143
+        width: 7
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 661b926cafe20f1c0800000000000000
+      internalID: -4472022775377579674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tangerine_23
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 86
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9681e6bbd15069380800000000000000
+      internalID: -8964972382977648535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tangerine_24
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 79
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d217d2319038d6e00800000000000000
+      internalID: 1039631163992142125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tangerine_25
+      rect:
+        serializedVersion: 2
+        x: 1442
+        y: 63
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1468935d24716440800000000000000
+      internalID: 4927347205344879647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      tangerine_0: -543065302414226958
+      tangerine_1: -4540459080662885516
+      tangerine_10: -310095254592928340
+      tangerine_11: -2471029468033501663
+      tangerine_12: 8079111833458228815
+      tangerine_13: -6561607730076117714
+      tangerine_14: -4253765737518650979
+      tangerine_15: 2436524658650967016
+      tangerine_16: -5188558272206118168
+      tangerine_17: 5399521035773173394
+      tangerine_18: 6985549377747275308
+      tangerine_19: 6399551027887779473
+      tangerine_2: 4892146238413483191
+      tangerine_20: -1697091565348344947
+      tangerine_21: 2045691513344794432
+      tangerine_22: -4472022775377579674
+      tangerine_23: -8964972382977648535
+      tangerine_24: 1039631163992142125
+      tangerine_25: 4927347205344879647
+      tangerine_3: -5440038523216972210
+      tangerine_4: 8344889199158432722
+      tangerine_5: 3240700375334251766
+      tangerine_6: 2730427918256057830
+      tangerine_7: 8031678081840528334
+      tangerine_8: 6828796176049974651
+      tangerine_9: -2390467473457242026
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

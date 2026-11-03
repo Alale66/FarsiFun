@@ -208,6 +208,7 @@ GameObject:
   - component: {fileID: 43768584}
   - component: {fileID: 43768587}
   - component: {fileID: 43768588}
+  - component: {fileID: 43768589}
   m_Layer: 0
   m_Name: ContinueButton
   m_TagString: Untagged
@@ -343,6 +344,19 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &43768589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43768582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abf68e9089309f64aa502600060321a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NavigationButtonSound
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
 --- !u!1 &44464897
 GameObject:
   m_ObjectHideFlags: 0
@@ -3867,6 +3881,7 @@ GameObject:
   - component: {fileID: 1045937827}
   - component: {fileID: 1045937826}
   - component: {fileID: 1045937825}
+  - component: {fileID: 1045937828}
   m_Layer: 0
   m_Name: CloseButton
   m_TagString: Untagged
@@ -3975,6 +3990,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1045937823}
   m_CullTransparentMesh: 1
+--- !u!114 &1045937828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1045937823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abf68e9089309f64aa502600060321a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NavigationButtonSound
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
 --- !u!1 &1048609723
 GameObject:
   m_ObjectHideFlags: 0
@@ -4501,6 +4529,7 @@ GameObject:
   - component: {fileID: 1132945004}
   - component: {fileID: 1132945003}
   - component: {fileID: 1132945002}
+  - component: {fileID: 1132945005}
   m_Layer: 0
   m_Name: CancelDeleteButton
   m_TagString: Untagged
@@ -4609,6 +4638,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1132945000}
   m_CullTransparentMesh: 1
+--- !u!114 &1132945005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132945000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abf68e9089309f64aa502600060321a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NavigationButtonSound
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
 --- !u!1 &1143196235
 GameObject:
   m_ObjectHideFlags: 0
@@ -4914,6 +4956,7 @@ GameObject:
   - component: {fileID: 1250789533}
   - component: {fileID: 1250789532}
   - component: {fileID: 1250789531}
+  - component: {fileID: 1250789534}
   m_Layer: 0
   m_Name: AddProfileButton
   m_TagString: Untagged
@@ -5022,6 +5065,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1250789529}
   m_CullTransparentMesh: 1
+--- !u!114 &1250789534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1250789529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abf68e9089309f64aa502600060321a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NavigationButtonSound
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
 --- !u!1 &1255265897
 GameObject:
   m_ObjectHideFlags: 0
@@ -6453,6 +6509,7 @@ GameObject:
   - component: {fileID: 1650672502}
   - component: {fileID: 1650672501}
   - component: {fileID: 1650672500}
+  - component: {fileID: 1650672503}
   m_Layer: 5
   m_Name: ConfirmButton
   m_TagString: Untagged
@@ -6561,6 +6618,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1650672498}
   m_CullTransparentMesh: 1
+--- !u!114 &1650672503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1650672498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abf68e9089309f64aa502600060321a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NavigationButtonSound
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
 --- !u!1 &1660050631
 GameObject:
   m_ObjectHideFlags: 0
@@ -6904,6 +6974,7 @@ GameObject:
   - component: {fileID: 1735468205}
   - component: {fileID: 1735468204}
   - component: {fileID: 1735468203}
+  - component: {fileID: 1735468206}
   m_Layer: 5
   m_Name: ConfirmDeleteButton
   m_TagString: Untagged
@@ -7012,6 +7083,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1735468201}
   m_CullTransparentMesh: 1
+--- !u!114 &1735468206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735468201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abf68e9089309f64aa502600060321a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NavigationButtonSound
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
 --- !u!1 &1755631732
 GameObject:
   m_ObjectHideFlags: 0
@@ -7534,6 +7618,7 @@ GameObject:
   - component: {fileID: 1927963237}
   - component: {fileID: 1927963236}
   - component: {fileID: 1927963239}
+  - component: {fileID: 1927963240}
   m_Layer: 0
   m_Name: SettingsButton
   m_TagString: Untagged
@@ -7654,6 +7739,19 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1927963240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927963234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abf68e9089309f64aa502600060321a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NavigationButtonSound
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
 --- !u!1 &1975696572
 GameObject:
   m_ObjectHideFlags: 0

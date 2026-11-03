@@ -188,9 +188,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IslandLetterButton
   letterIndex: 2
-  lesson: {fileID: 11400000, guid: 7c91fde93b9bb604aa1eec81dfb2729c, type: 2}
+  lesson: {fileID: 0}
   unlockedSprite: {fileID: 21300000, guid: d7b4f7d1db3e5f5499fddbdf557d3994, type: 3}
   lockedSprite: {fileID: 21300000, guid: 88f112fc046cef54f84be7c0dd782f49, type: 3}
+  islandNote: 
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
+  unlockSound: {fileID: 8300000, guid: 6b762c4029fcb2c4da106ca2b9dd05d4, type: 3}
+  hasCachedLetterData: 1
+  cachedHasLetter: 1
+  cachedDisplayText: "\u0637"
 --- !u!114 &41557408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -590,9 +596,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IslandLetterButton
   letterIndex: 2
-  lesson: {fileID: 11400000, guid: 7c91fde93b9bb604aa1eec81dfb2729c, type: 2}
+  lesson: {fileID: 0}
   unlockedSprite: {fileID: 21300000, guid: d7b4f7d1db3e5f5499fddbdf557d3994, type: 3}
   lockedSprite: {fileID: 21300000, guid: 88f112fc046cef54f84be7c0dd782f49, type: 3}
+  islandNote: 
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
+  unlockSound: {fileID: 8300000, guid: 6b762c4029fcb2c4da106ca2b9dd05d4, type: 3}
+  hasCachedLetterData: 1
+  cachedHasLetter: 1
+  cachedDisplayText: "\u0642"
 --- !u!114 &70275236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -741,9 +753,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IslandLetterButton
   letterIndex: 3
-  lesson: {fileID: 11400000, guid: 7c91fde93b9bb604aa1eec81dfb2729c, type: 2}
+  lesson: {fileID: 0}
   unlockedSprite: {fileID: 21300000, guid: d7b4f7d1db3e5f5499fddbdf557d3994, type: 3}
   lockedSprite: {fileID: 21300000, guid: 88f112fc046cef54f84be7c0dd782f49, type: 3}
+  islandNote: 
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
+  unlockSound: {fileID: 8300000, guid: 6b762c4029fcb2c4da106ca2b9dd05d4, type: 3}
+  hasCachedLetterData: 1
+  cachedHasLetter: 1
+  cachedDisplayText: "\u062F"
 --- !u!114 &81058022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -922,9 +940,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IslandLetterButton
   letterIndex: 2
-  lesson: {fileID: 11400000, guid: 7c91fde93b9bb604aa1eec81dfb2729c, type: 2}
+  lesson: {fileID: 0}
   unlockedSprite: {fileID: 21300000, guid: d7b4f7d1db3e5f5499fddbdf557d3994, type: 3}
   lockedSprite: {fileID: 21300000, guid: 88f112fc046cef54f84be7c0dd782f49, type: 3}
+  islandNote: 
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
+  unlockSound: {fileID: 8300000, guid: 6b762c4029fcb2c4da106ca2b9dd05d4, type: 3}
+  hasCachedLetterData: 1
+  cachedHasLetter: 1
+  cachedDisplayText: "\u0630"
 --- !u!114 &96965915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1088,9 +1112,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IslandLetterButton
   letterIndex: 4
-  lesson: {fileID: 11400000, guid: 7c91fde93b9bb604aa1eec81dfb2729c, type: 2}
+  lesson: {fileID: 0}
   unlockedSprite: {fileID: 21300000, guid: d7b4f7d1db3e5f5499fddbdf557d3994, type: 3}
   lockedSprite: {fileID: 21300000, guid: 88f112fc046cef54f84be7c0dd782f49, type: 3}
+  islandNote: "(\u0646\u0627\u062E\u0648\u0627\u0646\u0627)"
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
+  unlockSound: {fileID: 8300000, guid: 6b762c4029fcb2c4da106ca2b9dd05d4, type: 3}
+  hasCachedLetterData: 1
+  cachedHasLetter: 1
+  cachedDisplayText: "\u0648"
 --- !u!114 &99799216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1254,9 +1284,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IslandLetterButton
   letterIndex: 4
-  lesson: {fileID: 11400000, guid: 7c91fde93b9bb604aa1eec81dfb2729c, type: 2}
+  lesson: {fileID: 0}
   unlockedSprite: {fileID: 21300000, guid: d7b4f7d1db3e5f5499fddbdf557d3994, type: 3}
   lockedSprite: {fileID: 21300000, guid: 88f112fc046cef54f84be7c0dd782f49, type: 3}
+  islandNote: 
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
+  unlockSound: {fileID: 8300000, guid: 6b762c4029fcb2c4da106ca2b9dd05d4, type: 3}
+  hasCachedLetterData: 1
+  cachedHasLetter: 1
+  cachedDisplayText: "\u062C"
 --- !u!114 &120019730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1445,9 +1481,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IslandLetterButton
   letterIndex: 0
-  lesson: {fileID: 11400000, guid: e7af87c6ab1250346a9e920a1362c45a, type: 2}
+  lesson: {fileID: 0}
   unlockedSprite: {fileID: 21300000, guid: d7b4f7d1db3e5f5499fddbdf557d3994, type: 3}
   lockedSprite: {fileID: 21300000, guid: 88f112fc046cef54f84be7c0dd782f49, type: 3}
+  islandNote: 
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
+  unlockSound: {fileID: 8300000, guid: 6b762c4029fcb2c4da106ca2b9dd05d4, type: 3}
+  hasCachedLetterData: 1
+  cachedHasLetter: 1
+  cachedDisplayText: "\u0633"
 --- !u!114 &139524418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1626,9 +1668,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IslandLetterButton
   letterIndex: 0
-  lesson: {fileID: 11400000, guid: 7c91fde93b9bb604aa1eec81dfb2729c, type: 2}
+  lesson: {fileID: 0}
   unlockedSprite: {fileID: 21300000, guid: d7b4f7d1db3e5f5499fddbdf557d3994, type: 3}
   lockedSprite: {fileID: 21300000, guid: 88f112fc046cef54f84be7c0dd782f49, type: 3}
+  islandNote: 
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
+  unlockSound: {fileID: 8300000, guid: 6b762c4029fcb2c4da106ca2b9dd05d4, type: 3}
+  hasCachedLetterData: 1
+  cachedHasLetter: 1
+  cachedDisplayText: "\u0627\u064F "
 --- !u!114 &154816751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1792,9 +1840,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IslandLetterButton
   letterIndex: 4
-  lesson: {fileID: 11400000, guid: 7c91fde93b9bb604aa1eec81dfb2729c, type: 2}
+  lesson: {fileID: 0}
   unlockedSprite: {fileID: 21300000, guid: d7b4f7d1db3e5f5499fddbdf557d3994, type: 3}
   lockedSprite: {fileID: 21300000, guid: 88f112fc046cef54f84be7c0dd782f49, type: 3}
+  islandNote: 
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
+  unlockSound: {fileID: 8300000, guid: 6b762c4029fcb2c4da106ca2b9dd05d4, type: 3}
+  hasCachedLetterData: 1
+  cachedHasLetter: 1
+  cachedDisplayText: "\u062B"
 --- !u!114 &169368992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1958,9 +2012,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IslandLetterButton
   letterIndex: 0
-  lesson: {fileID: 11400000, guid: 7c91fde93b9bb604aa1eec81dfb2729c, type: 2}
+  lesson: {fileID: 0}
   unlockedSprite: {fileID: 21300000, guid: d7b4f7d1db3e5f5499fddbdf557d3994, type: 3}
   lockedSprite: {fileID: 21300000, guid: 88f112fc046cef54f84be7c0dd782f49, type: 3}
+  islandNote: 
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
+  unlockSound: {fileID: 8300000, guid: 6b762c4029fcb2c4da106ca2b9dd05d4, type: 3}
+  hasCachedLetterData: 1
+  cachedHasLetter: 1
+  cachedDisplayText: "\u0651"
 --- !u!114 &177146390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2423,9 +2483,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IslandLetterButton
   letterIndex: 2
-  lesson: {fileID: 11400000, guid: 7c91fde93b9bb604aa1eec81dfb2729c, type: 2}
+  lesson: {fileID: 0}
   unlockedSprite: {fileID: 21300000, guid: d7b4f7d1db3e5f5499fddbdf557d3994, type: 3}
   lockedSprite: {fileID: 21300000, guid: 88f112fc046cef54f84be7c0dd782f49, type: 3}
+  islandNote: 
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
+  unlockSound: {fileID: 8300000, guid: 6b762c4029fcb2c4da106ca2b9dd05d4, type: 3}
+  hasCachedLetterData: 1
+  cachedHasLetter: 1
+  cachedDisplayText: "\u0627\u064E"
 --- !u!114 &279689779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2604,9 +2670,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IslandLetterButton
   letterIndex: 1
-  lesson: {fileID: 11400000, guid: 7c91fde93b9bb604aa1eec81dfb2729c, type: 2}
+  lesson: {fileID: 0}
   unlockedSprite: {fileID: 21300000, guid: d7b4f7d1db3e5f5499fddbdf557d3994, type: 3}
   lockedSprite: {fileID: 21300000, guid: 88f112fc046cef54f84be7c0dd782f49, type: 3}
+  islandNote: 
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
+  unlockSound: {fileID: 8300000, guid: 6b762c4029fcb2c4da106ca2b9dd05d4, type: 3}
+  hasCachedLetterData: 1
+  cachedHasLetter: 1
+  cachedDisplayText: "\u0647"
 --- !u!114 &290970323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2810,9 +2882,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IslandLetterButton
   letterIndex: 3
-  lesson: {fileID: 11400000, guid: 7c91fde93b9bb604aa1eec81dfb2729c, type: 2}
+  lesson: {fileID: 0}
   unlockedSprite: {fileID: 21300000, guid: d7b4f7d1db3e5f5499fddbdf557d3994, type: 3}
   lockedSprite: {fileID: 21300000, guid: 88f112fc046cef54f84be7c0dd782f49, type: 3}
+  islandNote: 
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
+  unlockSound: {fileID: 8300000, guid: 6b762c4029fcb2c4da106ca2b9dd05d4, type: 3}
+  hasCachedLetterData: 1
+  cachedHasLetter: 1
+  cachedDisplayText: "\u0639"
 --- !u!114 &383074332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2976,9 +3054,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IslandLetterButton
   letterIndex: 3
-  lesson: {fileID: 11400000, guid: 7c91fde93b9bb604aa1eec81dfb2729c, type: 2}
+  lesson: {fileID: 0}
   unlockedSprite: {fileID: 21300000, guid: d7b4f7d1db3e5f5499fddbdf557d3994, type: 3}
   lockedSprite: {fileID: 21300000, guid: 88f112fc046cef54f84be7c0dd782f49, type: 3}
+  islandNote: 
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
+  unlockSound: {fileID: 8300000, guid: 6b762c4029fcb2c4da106ca2b9dd05d4, type: 3}
+  hasCachedLetterData: 1
+  cachedHasLetter: 1
+  cachedDisplayText: "\u063A"
 --- !u!114 &426385355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3699,9 +3783,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IslandLetterButton
   letterIndex: 1
-  lesson: {fileID: 11400000, guid: 7c91fde93b9bb604aa1eec81dfb2729c, type: 2}
+  lesson: {fileID: 0}
   unlockedSprite: {fileID: 21300000, guid: d7b4f7d1db3e5f5499fddbdf557d3994, type: 3}
   lockedSprite: {fileID: 21300000, guid: 88f112fc046cef54f84be7c0dd782f49, type: 3}
+  islandNote: 
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
+  unlockSound: {fileID: 8300000, guid: 6b762c4029fcb2c4da106ca2b9dd05d4, type: 3}
+  hasCachedLetterData: 1
+  cachedHasLetter: 1
+  cachedDisplayText: "\u0635"
 --- !u!114 &547197000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3850,9 +3940,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IslandLetterButton
   letterIndex: 4
-  lesson: {fileID: 11400000, guid: 7c91fde93b9bb604aa1eec81dfb2729c, type: 2}
+  lesson: {fileID: 0}
   unlockedSprite: {fileID: 21300000, guid: d7b4f7d1db3e5f5499fddbdf557d3994, type: 3}
   lockedSprite: {fileID: 21300000, guid: 88f112fc046cef54f84be7c0dd782f49, type: 3}
+  islandNote: 
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
+  unlockSound: {fileID: 8300000, guid: 6b762c4029fcb2c4da106ca2b9dd05d4, type: 3}
+  hasCachedLetterData: 1
+  cachedHasLetter: 1
+  cachedDisplayText: "\u0645"
 --- !u!114 &548908858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4031,9 +4127,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IslandLetterButton
   letterIndex: 0
-  lesson: {fileID: 11400000, guid: 7c91fde93b9bb604aa1eec81dfb2729c, type: 2}
+  lesson: {fileID: 0}
   unlockedSprite: {fileID: 21300000, guid: d7b4f7d1db3e5f5499fddbdf557d3994, type: 3}
   lockedSprite: {fileID: 21300000, guid: 88f112fc046cef54f84be7c0dd782f49, type: 3}
+  islandNote: "(\u0627\u0633\u062A\u062B\u0646\u0627)"
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
+  unlockSound: {fileID: 8300000, guid: 6b762c4029fcb2c4da106ca2b9dd05d4, type: 3}
+  hasCachedLetterData: 1
+  cachedHasLetter: 1
+  cachedDisplayText: "\u0648"
 --- !u!114 &613975431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4182,9 +4284,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IslandLetterButton
   letterIndex: 2
-  lesson: {fileID: 11400000, guid: e7af87c6ab1250346a9e920a1362c45a, type: 2}
+  lesson: {fileID: 0}
   unlockedSprite: {fileID: 21300000, guid: d7b4f7d1db3e5f5499fddbdf557d3994, type: 3}
   lockedSprite: {fileID: 21300000, guid: 88f112fc046cef54f84be7c0dd782f49, type: 3}
+  islandNote: 
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
+  unlockSound: {fileID: 8300000, guid: 6b762c4029fcb2c4da106ca2b9dd05d4, type: 3}
+  hasCachedLetterData: 1
+  cachedHasLetter: 1
+  cachedDisplayText: "\u062A"
 --- !u!114 &626884864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4348,9 +4456,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IslandLetterButton
   letterIndex: 4
-  lesson: {fileID: 11400000, guid: e7af87c6ab1250346a9e920a1362c45a, type: 2}
+  lesson: {fileID: 0}
   unlockedSprite: {fileID: 21300000, guid: d7b4f7d1db3e5f5499fddbdf557d3994, type: 3}
   lockedSprite: {fileID: 21300000, guid: 88f112fc046cef54f84be7c0dd782f49, type: 3}
+  islandNote: 
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
+  unlockSound: {fileID: 8300000, guid: 6b762c4029fcb2c4da106ca2b9dd05d4, type: 3}
+  hasCachedLetterData: 1
+  cachedHasLetter: 1
+  cachedDisplayText: "\u0646"
 --- !u!114 &641033796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4985,9 +5099,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IslandLetterButton
   letterIndex: 1
-  lesson: {fileID: 11400000, guid: 7c91fde93b9bb604aa1eec81dfb2729c, type: 2}
+  lesson: {fileID: 0}
   unlockedSprite: {fileID: 21300000, guid: d7b4f7d1db3e5f5499fddbdf557d3994, type: 3}
   lockedSprite: {fileID: 21300000, guid: 88f112fc046cef54f84be7c0dd782f49, type: 3}
+  islandNote: 
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
+  unlockSound: {fileID: 8300000, guid: 6b762c4029fcb2c4da106ca2b9dd05d4, type: 3}
+  hasCachedLetterData: 1
+  cachedHasLetter: 1
+  cachedDisplayText: "\u0628"
 --- !u!114 &689510840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5426,6 +5546,7 @@ GameObject:
   - component: {fileID: 801187051}
   - component: {fileID: 801187050}
   - component: {fileID: 801187055}
+  - component: {fileID: 801187056}
   m_Layer: 0
   m_Name: ContinueButton
   m_TagString: Untagged
@@ -5585,8 +5706,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eec996470057054ea4e2e7746efb038, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IslandContinueButton
-  lesson: {fileID: 11400000, guid: 7c91fde93b9bb604aa1eec81dfb2729c, type: 2}
+  lesson: {fileID: 0}
   navigator: {fileID: 1219817931}
+  hasCachedLessonData: 1
+  cachedLetterCount: 5
+  cachedAllLettersValid: 1
+--- !u!114 &801187056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 801187048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abf68e9089309f64aa502600060321a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NavigationButtonSound
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
 --- !u!1 &803658132
 GameObject:
   m_ObjectHideFlags: 0
@@ -6324,9 +6461,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IslandLetterButton
   letterIndex: 1
-  lesson: {fileID: 11400000, guid: 7c91fde93b9bb604aa1eec81dfb2729c, type: 2}
+  lesson: {fileID: 0}
   unlockedSprite: {fileID: 21300000, guid: d7b4f7d1db3e5f5499fddbdf557d3994, type: 3}
   lockedSprite: {fileID: 21300000, guid: 88f112fc046cef54f84be7c0dd782f49, type: 3}
+  islandNote: 
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
+  unlockSound: {fileID: 8300000, guid: 6b762c4029fcb2c4da106ca2b9dd05d4, type: 3}
+  hasCachedLetterData: 1
+  cachedHasLetter: 1
+  cachedDisplayText: "\u0632"
 --- !u!114 &862046188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6433,6 +6576,7 @@ GameObject:
   - component: {fileID: 880273028}
   - component: {fileID: 880273027}
   - component: {fileID: 880273026}
+  - component: {fileID: 880273029}
   m_Layer: 0
   m_Name: BackButton
   m_TagString: Untagged
@@ -6553,6 +6697,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 880273024}
   m_CullTransparentMesh: 1
+--- !u!114 &880273029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880273024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abf68e9089309f64aa502600060321a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NavigationButtonSound
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
 --- !u!1 &905324231
 GameObject:
   m_ObjectHideFlags: 0
@@ -6622,9 +6779,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IslandLetterButton
   letterIndex: 2
-  lesson: {fileID: 11400000, guid: 7c91fde93b9bb604aa1eec81dfb2729c, type: 2}
+  lesson: {fileID: 0}
   unlockedSprite: {fileID: 21300000, guid: d7b4f7d1db3e5f5499fddbdf557d3994, type: 3}
   lockedSprite: {fileID: 21300000, guid: 88f112fc046cef54f84be7c0dd782f49, type: 3}
+  islandNote: 
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
+  unlockSound: {fileID: 8300000, guid: 6b762c4029fcb2c4da106ca2b9dd05d4, type: 3}
+  hasCachedLetterData: 1
+  cachedHasLetter: 1
+  cachedDisplayText: "\u0686"
 --- !u!114 &905324235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7416,9 +7579,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IslandLetterButton
   letterIndex: 4
-  lesson: {fileID: 11400000, guid: 7c91fde93b9bb604aa1eec81dfb2729c, type: 2}
+  lesson: {fileID: 0}
   unlockedSprite: {fileID: 21300000, guid: d7b4f7d1db3e5f5499fddbdf557d3994, type: 3}
   lockedSprite: {fileID: 21300000, guid: 88f112fc046cef54f84be7c0dd782f49, type: 3}
+  islandNote: 
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
+  unlockSound: {fileID: 8300000, guid: 6b762c4029fcb2c4da106ca2b9dd05d4, type: 3}
+  hasCachedLetterData: 1
+  cachedHasLetter: 1
+  cachedDisplayText: "\u0638"
 --- !u!114 &1102120016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8866,9 +9035,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IslandLetterButton
   letterIndex: 1
-  lesson: {fileID: 11400000, guid: 7c91fde93b9bb604aa1eec81dfb2729c, type: 2}
+  lesson: {fileID: 0}
   unlockedSprite: {fileID: 21300000, guid: d7b4f7d1db3e5f5499fddbdf557d3994, type: 3}
   lockedSprite: {fileID: 21300000, guid: 88f112fc046cef54f84be7c0dd782f49, type: 3}
+  islandNote: 
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
+  unlockSound: {fileID: 8300000, guid: 6b762c4029fcb2c4da106ca2b9dd05d4, type: 3}
+  hasCachedLetterData: 1
+  cachedHasLetter: 1
+  cachedDisplayText: "\u06A9"
 --- !u!114 &1362733106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9032,9 +9207,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IslandLetterButton
   letterIndex: 0
-  lesson: {fileID: 11400000, guid: 7c91fde93b9bb604aa1eec81dfb2729c, type: 2}
+  lesson: {fileID: 0}
   unlockedSprite: {fileID: 21300000, guid: d7b4f7d1db3e5f5499fddbdf557d3994, type: 3}
   lockedSprite: {fileID: 21300000, guid: 88f112fc046cef54f84be7c0dd782f49, type: 3}
+  islandNote: 
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
+  unlockSound: {fileID: 8300000, guid: 6b762c4029fcb2c4da106ca2b9dd05d4, type: 3}
+  hasCachedLetterData: 1
+  cachedHasLetter: 1
+  cachedDisplayText: "\u0641"
 --- !u!114 &1373595368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9198,9 +9379,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IslandLetterButton
   letterIndex: 4
-  lesson: {fileID: 11400000, guid: 7c91fde93b9bb604aa1eec81dfb2729c, type: 2}
+  lesson: {fileID: 0}
   unlockedSprite: {fileID: 21300000, guid: d7b4f7d1db3e5f5499fddbdf557d3994, type: 3}
   lockedSprite: {fileID: 21300000, guid: 88f112fc046cef54f84be7c0dd782f49, type: 3}
+  islandNote: 
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
+  unlockSound: {fileID: 8300000, guid: 6b762c4029fcb2c4da106ca2b9dd05d4, type: 3}
+  hasCachedLetterData: 1
+  cachedHasLetter: 1
+  cachedDisplayText: "\u06AF"
 --- !u!114 &1381964669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9364,9 +9551,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IslandLetterButton
   letterIndex: 3
-  lesson: {fileID: 11400000, guid: 7c91fde93b9bb604aa1eec81dfb2729c, type: 2}
+  lesson: {fileID: 0}
   unlockedSprite: {fileID: 21300000, guid: d7b4f7d1db3e5f5499fddbdf557d3994, type: 3}
   lockedSprite: {fileID: 21300000, guid: 88f112fc046cef54f84be7c0dd782f49, type: 3}
+  islandNote: 
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
+  unlockSound: {fileID: 8300000, guid: 6b762c4029fcb2c4da106ca2b9dd05d4, type: 3}
+  hasCachedLetterData: 1
+  cachedHasLetter: 1
+  cachedDisplayText: "\u0634"
 --- !u!114 &1391032116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9570,9 +9763,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IslandLetterButton
   letterIndex: 3
-  lesson: {fileID: 11400000, guid: 7c91fde93b9bb604aa1eec81dfb2729c, type: 2}
+  lesson: {fileID: 0}
   unlockedSprite: {fileID: 21300000, guid: d7b4f7d1db3e5f5499fddbdf557d3994, type: 3}
   lockedSprite: {fileID: 21300000, guid: 88f112fc046cef54f84be7c0dd782f49, type: 3}
+  islandNote: 
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
+  unlockSound: {fileID: 8300000, guid: 6b762c4029fcb2c4da106ca2b9dd05d4, type: 3}
+  hasCachedLetterData: 1
+  cachedHasLetter: 1
+  cachedDisplayText: "\u067E"
 --- !u!114 &1449002980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9721,9 +9920,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IslandLetterButton
   letterIndex: 1
-  lesson: {fileID: 11400000, guid: e7af87c6ab1250346a9e920a1362c45a, type: 2}
+  lesson: {fileID: 0}
   unlockedSprite: {fileID: 21300000, guid: d7b4f7d1db3e5f5499fddbdf557d3994, type: 3}
   lockedSprite: {fileID: 21300000, guid: 88f112fc046cef54f84be7c0dd782f49, type: 3}
+  islandNote: 
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
+  unlockSound: {fileID: 8300000, guid: 6b762c4029fcb2c4da106ca2b9dd05d4, type: 3}
+  hasCachedLetterData: 1
+  cachedHasLetter: 1
+  cachedDisplayText: "\u0627\u0648"
 --- !u!114 &1457865917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10213,9 +10418,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IslandLetterButton
   letterIndex: 3
-  lesson: {fileID: 11400000, guid: 7c91fde93b9bb604aa1eec81dfb2729c, type: 2}
+  lesson: {fileID: 0}
   unlockedSprite: {fileID: 21300000, guid: d7b4f7d1db3e5f5499fddbdf557d3994, type: 3}
   lockedSprite: {fileID: 21300000, guid: 88f112fc046cef54f84be7c0dd782f49, type: 3}
+  islandNote: 
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
+  unlockSound: {fileID: 8300000, guid: 6b762c4029fcb2c4da106ca2b9dd05d4, type: 3}
+  hasCachedLetterData: 1
+  cachedHasLetter: 1
+  cachedDisplayText: "\u0698"
 --- !u!114 &1532921097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10379,9 +10590,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IslandLetterButton
   letterIndex: 2
-  lesson: {fileID: 11400000, guid: 7c91fde93b9bb604aa1eec81dfb2729c, type: 2}
+  lesson: {fileID: 0}
   unlockedSprite: {fileID: 21300000, guid: d7b4f7d1db3e5f5499fddbdf557d3994, type: 3}
   lockedSprite: {fileID: 21300000, guid: 88f112fc046cef54f84be7c0dd782f49, type: 3}
+  islandNote: 
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
+  unlockSound: {fileID: 8300000, guid: 6b762c4029fcb2c4da106ca2b9dd05d4, type: 3}
+  hasCachedLetterData: 1
+  cachedHasLetter: 1
+  cachedDisplayText: "\u0627\u0650"
 --- !u!114 &1539133236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10545,9 +10762,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IslandLetterButton
   letterIndex: 4
-  lesson: {fileID: 11400000, guid: 7c91fde93b9bb604aa1eec81dfb2729c, type: 2}
+  lesson: {fileID: 0}
   unlockedSprite: {fileID: 21300000, guid: d7b4f7d1db3e5f5499fddbdf557d3994, type: 3}
   lockedSprite: {fileID: 21300000, guid: 88f112fc046cef54f84be7c0dd782f49, type: 3}
+  islandNote: 
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
+  unlockSound: {fileID: 8300000, guid: 6b762c4029fcb2c4da106ca2b9dd05d4, type: 3}
+  hasCachedLetterData: 1
+  cachedHasLetter: 1
+  cachedDisplayText: "\u06CC"
 --- !u!114 &1541809462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11496,9 +11719,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IslandLetterButton
   letterIndex: 2
-  lesson: {fileID: 11400000, guid: 7c91fde93b9bb604aa1eec81dfb2729c, type: 2}
+  lesson: {fileID: 0}
   unlockedSprite: {fileID: 21300000, guid: d7b4f7d1db3e5f5499fddbdf557d3994, type: 3}
   lockedSprite: {fileID: 21300000, guid: 88f112fc046cef54f84be7c0dd782f49, type: 3}
+  islandNote: 
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
+  unlockSound: {fileID: 8300000, guid: 6b762c4029fcb2c4da106ca2b9dd05d4, type: 3}
+  hasCachedLetterData: 1
+  cachedHasLetter: 1
+  cachedDisplayText: "\u0648"
 --- !u!114 &1644860108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11741,9 +11970,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IslandLetterButton
   letterIndex: 0
-  lesson: {fileID: 11400000, guid: 7c91fde93b9bb604aa1eec81dfb2729c, type: 2}
+  lesson: {fileID: 0}
   unlockedSprite: {fileID: 21300000, guid: d7b4f7d1db3e5f5499fddbdf557d3994, type: 3}
   lockedSprite: {fileID: 21300000, guid: 88f112fc046cef54f84be7c0dd782f49, type: 3}
+  islandNote: 
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
+  unlockSound: {fileID: 8300000, guid: 6b762c4029fcb2c4da106ca2b9dd05d4, type: 3}
+  hasCachedLetterData: 1
+  cachedHasLetter: 1
+  cachedDisplayText: "\u0622"
 --- !u!114 &1653579142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11828,9 +12063,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IslandLetterButton
   letterIndex: 1
-  lesson: {fileID: 11400000, guid: 7c91fde93b9bb604aa1eec81dfb2729c, type: 2}
+  lesson: {fileID: 0}
   unlockedSprite: {fileID: 21300000, guid: d7b4f7d1db3e5f5499fddbdf557d3994, type: 3}
   lockedSprite: {fileID: 21300000, guid: 88f112fc046cef54f84be7c0dd782f49, type: 3}
+  islandNote: 
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
+  unlockSound: {fileID: 8300000, guid: 6b762c4029fcb2c4da106ca2b9dd05d4, type: 3}
+  hasCachedLetterData: 1
+  cachedHasLetter: 1
+  cachedDisplayText: "\u0636"
 --- !u!114 &1692256589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11994,9 +12235,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IslandLetterButton
   letterIndex: 3
-  lesson: {fileID: 11400000, guid: 7c91fde93b9bb604aa1eec81dfb2729c, type: 2}
+  lesson: {fileID: 0}
   unlockedSprite: {fileID: 21300000, guid: d7b4f7d1db3e5f5499fddbdf557d3994, type: 3}
   lockedSprite: {fileID: 21300000, guid: 88f112fc046cef54f84be7c0dd782f49, type: 3}
+  islandNote: 
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
+  unlockSound: {fileID: 8300000, guid: 6b762c4029fcb2c4da106ca2b9dd05d4, type: 3}
+  hasCachedLetterData: 1
+  cachedHasLetter: 1
+  cachedDisplayText: "\u0644"
 --- !u!114 &1702690570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12302,9 +12549,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IslandLetterButton
   letterIndex: 3
-  lesson: {fileID: 11400000, guid: e7af87c6ab1250346a9e920a1362c45a, type: 2}
+  lesson: {fileID: 0}
   unlockedSprite: {fileID: 21300000, guid: d7b4f7d1db3e5f5499fddbdf557d3994, type: 3}
   lockedSprite: {fileID: 21300000, guid: 88f112fc046cef54f84be7c0dd782f49, type: 3}
+  islandNote: 
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
+  unlockSound: {fileID: 8300000, guid: 6b762c4029fcb2c4da106ca2b9dd05d4, type: 3}
+  hasCachedLetterData: 1
+  cachedHasLetter: 1
+  cachedDisplayText: "\u0631"
 --- !u!114 &1749530470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12469,7 +12722,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1808229334
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12760,9 +13013,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IslandLetterButton
   letterIndex: 0
-  lesson: {fileID: 11400000, guid: 7c91fde93b9bb604aa1eec81dfb2729c, type: 2}
+  lesson: {fileID: 0}
   unlockedSprite: {fileID: 21300000, guid: d7b4f7d1db3e5f5499fddbdf557d3994, type: 3}
   lockedSprite: {fileID: 21300000, guid: 88f112fc046cef54f84be7c0dd782f49, type: 3}
+  islandNote: 
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
+  unlockSound: {fileID: 8300000, guid: 6b762c4029fcb2c4da106ca2b9dd05d4, type: 3}
+  hasCachedLetterData: 1
+  cachedHasLetter: 1
+  cachedDisplayText: "\u0627\u06CC"
 --- !u!114 &1927300370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13847,9 +14106,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IslandLetterButton
   letterIndex: 1
-  lesson: {fileID: 11400000, guid: 7c91fde93b9bb604aa1eec81dfb2729c, type: 2}
+  lesson: {fileID: 0}
   unlockedSprite: {fileID: 21300000, guid: d7b4f7d1db3e5f5499fddbdf557d3994, type: 3}
   lockedSprite: {fileID: 21300000, guid: 88f112fc046cef54f84be7c0dd782f49, type: 3}
+  islandNote: 
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
+  unlockSound: {fileID: 8300000, guid: 6b762c4029fcb2c4da106ca2b9dd05d4, type: 3}
+  hasCachedLetterData: 1
+  cachedHasLetter: 1
+  cachedDisplayText: "\u062E"
 --- !u!114 &2049876688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14013,9 +14278,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IslandLetterButton
   letterIndex: 0
-  lesson: {fileID: 11400000, guid: 7c91fde93b9bb604aa1eec81dfb2729c, type: 2}
+  lesson: {fileID: 0}
   unlockedSprite: {fileID: 21300000, guid: d7b4f7d1db3e5f5499fddbdf557d3994, type: 3}
   lockedSprite: {fileID: 21300000, guid: 88f112fc046cef54f84be7c0dd782f49, type: 3}
+  islandNote: 
+  clickSound: {fileID: 8300000, guid: cd9bb409af185b240ba90484d8807ef8, type: 3}
+  unlockSound: {fileID: 8300000, guid: 6b762c4029fcb2c4da106ca2b9dd05d4, type: 3}
+  hasCachedLetterData: 1
+  cachedHasLetter: 1
+  cachedDisplayText: "\u062D"
 --- !u!114 &2053895705
 MonoBehaviour:
   m_ObjectHideFlags: 0

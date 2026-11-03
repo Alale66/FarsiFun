@@ -22,6 +22,37 @@ public class SceneNavigator : MonoBehaviour
     public void GoToIsland(int islandIndex)
     {
         SelectedIslandIndex = Mathf.Clamp(islandIndex, 0, 7);
+
+        PlayerProfileData profile =
+            PlayerProfileManager.Instance != null
+                ? PlayerProfileManager.Instance.SelectedProfile
+                : null;
+
+        if (profile != null)
+        {
+            string parkingKey = "WorldMapShipIsland_" + profile.id;
+
+            int highestUnlockedIsland = Mathf.Clamp(
+                profile.highestUnlockedLetterIndex / 5,
+                0,
+                7
+            );
+
+            int savedIsland = PlayerPrefs.GetInt(
+                parkingKey,
+                highestUnlockedIsland
+            );
+
+            int parkingIsland = Mathf.Clamp(
+                Mathf.Max(savedIsland, SelectedIslandIndex),
+                0,
+                highestUnlockedIsland
+            );
+
+            PlayerPrefs.SetInt(parkingKey, parkingIsland);
+            PlayerPrefs.Save();
+        }
+
         SceneManager.LoadScene("IslandView");
     }
 

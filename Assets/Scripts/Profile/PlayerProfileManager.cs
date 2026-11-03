@@ -133,12 +133,24 @@ public class PlayerProfileManager : MonoBehaviour
             totalLetters - 1
         );
 
+        int previousUnlockedIndex = profile.highestUnlockedLetterIndex;
+
         profile.highestUnlockedLetterIndex = Mathf.Max(
             profile.highestUnlockedLetterIndex,
             nextLetterIndex
         );
 
         Save();
+
+        if (profile.highestUnlockedLetterIndex > previousUnlockedIndex)
+        {
+            PlayerPrefs.SetInt(
+                "PendingLetterUnlock_" + profile.id,
+                profile.highestUnlockedLetterIndex
+            );
+
+            PlayerPrefs.Save();
+        }
     }
 
     public void ChangeCoins(int amount)

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LessonData
   lessonName: 
   letters:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: e72be441b5fd421499713ed85b9dba25, type: 2}
+  - {fileID: 11400000, guid: 5990cf7a5ffbe2d4caa7dfe430336209, type: 2}
+  - {fileID: 11400000, guid: ef217dfe12ee2d3438a727eb8972bb31, type: 2}
+  - {fileID: 11400000, guid: f5e0c0e65eab01e458567a82ea72603a, type: 2}
+  - {fileID: 11400000, guid: f5a51f6e539f0e74f9681859ff7a9fe3, type: 2}

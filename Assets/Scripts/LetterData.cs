@@ -25,7 +25,10 @@ public class LetterFormData
 public enum LessonType
 {
     Letter = 0,
-    Vowel = 1
+    Vowel = 1,
+    Tashdid = 2,
+    SilentWaw = 3,
+    WawException = 4
 }
 
 public enum PictureHuntMode
@@ -44,6 +47,17 @@ public class LetterData : ScriptableObject
     public LessonType lessonType = LessonType.Letter;
 
     public bool IsVowel => lessonType == LessonType.Vowel;
+    public bool IsTashdid =>
+    lessonType == LessonType.Tashdid;
+
+    public bool IsSilentWaw =>
+        lessonType == LessonType.SilentWaw;
+
+    public bool IsWawException =>
+        lessonType == LessonType.WawException;
+
+    public bool UsesWordCompleteGame =>
+        IsTashdid || IsSilentWaw || IsWawException;
     public LetterFormData[] forms;
 
     public string targetLetter;

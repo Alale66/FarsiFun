@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67622f9b8d37db340a703b23254506a1, type: 3}
+  m_Name: Letter_O_Exception
+  m_EditorClassIdentifier: Assembly-CSharp::LetterData
+  lessonType: 4
+  forms:
+  - baseText: "\u0648"
+    markText: 
+  targetLetter: "\u0648"
+  choices:
+  - "\u0648"
+  - "\u0622"
+  - "\u062F"
+  correctLetter: "\u0648"
+  matchForms:
+  - "\u0648"
+  - 
+  letterName: "\u0648 (\u0627\u0633\u062A\u062B\u0646\u0627)"
+  examples:
+  - word: "\u062E\u0648\u0631\u0634\u06CC\u062F"
+    image: {fileID: 21300000, guid: 1bd5161d0f00c1e4d88249628d52d0fa, type: 3}
+    audio: {fileID: 0}
+    startsWithTarget: 0
+    containsTargetSound: 1
+  - word: "\u062F\u0648"
+    image: {fileID: 21300000, guid: da1dcf39438427f43a82b0e1e51def6b, type: 3}
+    audio: {fileID: 0}
+    startsWithTarget: 0
+    containsTargetSound: 1
+  - word: "\u062E\u0648\u062F"
+    image: {fileID: 21300000, guid: 1305285755256f5418876f62f9152511, type: 3}
+    audio: {fileID: 0}
+    startsWithTarget: 0
+    containsTargetSound: 1
+  - word: "\u062E\u0648\u0634\u062D\u0627\u0644"
+    image: {fileID: 21300000, guid: 7a48c9f8e56717d459a828248eb07436, type: 3}
+    audio: {fileID: 0}
+    startsWithTarget: 0
+    containsTargetSound: 1
+  - word: "\u062E\u0648\u0634\u200C\u0645\u0632\u0647"
+    image: {fileID: 21300000, guid: 37da043be5b49134eb96f0c7b9ac3426, type: 3}
+    audio: {fileID: 0}
+    startsWithTarget: 0
+    containsTargetSound: 1
+  - word: "\u062E\u0648\u0631\u0627\u06A9"
+    image: {fileID: 21300000, guid: a9b76eb4fc00f0441b1f06a40ac2a4a2, type: 3}
+    audio: {fileID: 0}
+    startsWithTarget: 0
+    containsTargetSound: 1
+  - word: "\u062E\u0648\u0631\u062F\u0646"
+    image: {fileID: 21300000, guid: 8c0fe8d4dc37c664582d6d85539ba304, type: 3}
+    audio: {fileID: 0}
+    startsWithTarget: 0
+    containsTargetSound: 1
+  - word: "\u0646\u0648"
+    image: {fileID: 21300000, guid: 65bbd2291404f724fa0a5a7cee626541, type: 3}
+    audio: {fileID: 0}
+    startsWithTarget: 0
+    containsTargetSound: 1
+  pictureHuntMode: 1
+  pictureHuntDistractors:
+  - word: "\u06AF\u0644 "
+    image: {fileID: 21300000, guid: 2cf27ecffdb5c0e41a2d5b06d9e01970, type: 3}
+    audio: {fileID: 0}
+    startsWithTarget: 0
+    containsTargetSound: 0
+  - word: "\u0628\u0634\u0642\u0627\u0628 "
+    image: {fileID: 21300000, guid: 50cea2b8ad560ac4a8f678135b14641c, type: 3}
+    audio: {fileID: 0}
+    startsWithTarget: 0
+    containsTargetSound: 0
+  - word: "\u06A9\u0641\u0634"
+    image: {fileID: 21300000, guid: 7fc6983b17f221d4cb99673733aa1be0, type: 3}
+    audio: {fileID: 0}
+    startsWithTarget: 0
+    containsTargetSound: 0
+  pictureHuntInstructionText: 
+  pictureHuntInstructionAudio: {fileID: 0}
+  letterNameAudio: {fileID: 0}
+  letterSoundAudio: {fileID: 8300000, guid: c61472aa16c181f48822b440cfd6c3eb, type: 3}

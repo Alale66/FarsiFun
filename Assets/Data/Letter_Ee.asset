@@ -12,27 +12,86 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67622f9b8d37db340a703b23254506a1, type: 3}
   m_Name: Letter_Ee
   m_EditorClassIdentifier: Assembly-CSharp::LetterData
-  lessonType: 0
+  lessonType: 1
   forms:
-  - baseText: 
+  - baseText: "\u0627\u06CC\u0640"
     markText: 
-  - baseText: 
+  - baseText: "\u06CC\u0640"
     markText: 
-  - baseText: 
+  - baseText: "\u06CC"
     markText: 
-  - baseText: 
+  - baseText: "\u0627\u06CC"
     markText: 
-  targetLetter: 
+  targetLetter: "\u0627\u06CC"
   choices:
-  - 
-  - 
-  - 
-  correctLetter: 
-  matchForms: []
-  letterName: 
-  examples: []
-  pictureHuntMode: 0
-  pictureHuntDistractors: []
+  - "\u0627\u06CC"
+  - "\u0627\u0650"
+  - "\u0622"
+  correctLetter: "\u0627\u06CC"
+  matchForms:
+  - "\u0627\u06CC\u0640"
+  - "\u06CC\u0640"
+  - "\u06CC"
+  - "\u0627\u06CC"
+  letterName: "\u0627\u06CC\u0640  \u06CC\u0640  \u06CC  \u0627\u06CC "
+  examples:
+  - word: "\u0633\u06CC\u0628 "
+    image: {fileID: 21300000, guid: 1d178648db1946e4982486a3a1752a02, type: 3}
+    audio: {fileID: 0}
+    startsWithTarget: 0
+    containsTargetSound: 1
+  - word: "\u0645\u0627\u0647\u06CC"
+    image: {fileID: 21300000, guid: 456254102edc90e478a8b045e50d8725, type: 3}
+    audio: {fileID: 0}
+    startsWithTarget: 0
+    containsTargetSound: 1
+  - word: "\u0645\u06CC\u0632 "
+    image: {fileID: 21300000, guid: 0fd47e53a727cec4aa9ae865720cbf93, type: 3}
+    audio: {fileID: 0}
+    startsWithTarget: 0
+    containsTargetSound: 1
+  - word: "\u0633\u06CC\u0646\u06CC"
+    image: {fileID: 21300000, guid: 4693b2c11e48a9f448a33aca0985a24d, type: 3}
+    audio: {fileID: 0}
+    startsWithTarget: 0
+    containsTargetSound: 1
+  - word: "\u0634\u06CC\u0631 "
+    image: {fileID: 21300000, guid: 19776437fab3cd649b8e8c280a2eb230, type: 3}
+    audio: {fileID: 0}
+    startsWithTarget: 0
+    containsTargetSound: 1
+  - word: "\u0627\u06CC\u0631\u0627\u0646 "
+    image: {fileID: 21300000, guid: 3436e08089e72a443a481a7494148d65, type: 3}
+    audio: {fileID: 0}
+    startsWithTarget: 1
+    containsTargetSound: 1
+  - word: "\u0627\u06CC\u0633\u062A\u06AF\u0627\u0647"
+    image: {fileID: 21300000, guid: 4f816a891d102d64fbedf4f0513fdf79, type: 3}
+    audio: {fileID: 0}
+    startsWithTarget: 1
+    containsTargetSound: 1
+  - word: "\u0622\u0628\u06CC"
+    image: {fileID: 21300000, guid: 4cb73492351e25e4cac897f143fd84fa, type: 3}
+    audio: {fileID: 0}
+    startsWithTarget: 0
+    containsTargetSound: 1
+  pictureHuntMode: 1
+  pictureHuntDistractors:
+  - word: "\u062C\u0648\u0631\u0627\u0628 "
+    image: {fileID: 21300000, guid: 27e84734383fb4049b566efa6c80fc4b, type: 3}
+    audio: {fileID: 0}
+    startsWithTarget: 0
+    containsTargetSound: 0
+  - word: "\u0644\u0627\u06A9\u200C\u067E\u0634\u062A "
+    image: {fileID: 21300000, guid: c181b84d5b9c3d747a30555e5e408659, type: 3}
+    audio: {fileID: 0}
+    startsWithTarget: 0
+    containsTargetSound: 0
+  - word: "\u0642\u0627\u0634\u0642 "
+    image: {fileID: 21300000, guid: 8832b549d4640124f8c88dd512de206b, type: 3}
+    audio: {fileID: 0}
+    startsWithTarget: 0
+    containsTargetSound: 0
   pictureHuntInstructionText: 
   pictureHuntInstructionAudio: {fileID: 0}
   letterNameAudio: {fileID: 0}

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbc866c95fe6e51428f780a14a05515a, type: 3}
+  m_Name: Lesson_06
+  m_EditorClassIdentifier: Assembly-CSharp::LessonData
+  lessonName: 
+  letters:
+  - {fileID: 11400000, guid: 034c7ffd79df3984fae2a3ddb614e240, type: 2}
+  - {fileID: 11400000, guid: c8e0f6ed5cc57284aadb7f93a85b3bbc, type: 2}
+  - {fileID: 11400000, guid: 15885f67d6dfbce42b171458d11997c9, type: 2}
+  - {fileID: 11400000, guid: 0441511b4996b78499cdbb7ec6ffb343, type: 2}
+  - {fileID: 11400000, guid: 0d90be49e074d8b488468d7b6e781060, type: 2}

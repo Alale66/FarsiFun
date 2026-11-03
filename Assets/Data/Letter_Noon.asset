@@ -20,55 +20,55 @@ MonoBehaviour:
     markText: 
   targetLetter: "\u0646"
   choices:
-  - 
-  - 
-  - 
+  - "\u0644"
+  - "\u0646"
+  - "\u0628"
   correctLetter: "\u0646"
   matchForms:
   - "\u0646\u0640"
   - "\u0646"
   letterName: "\u0646\u0648\u0646"
   examples:
-  - word: 
-    image: {fileID: 0}
+  - word: "\u0646\u0627\u0646 "
+    image: {fileID: 21300000, guid: 2591fe8ee2b883d4cae0292387cd6edd, type: 3}
+    audio: {fileID: 0}
+    startsWithTarget: 1
+    containsTargetSound: 1
+  - word: "\u0646\u0627\u0631\u0646\u06AF\u06CC "
+    image: {fileID: 21300000, guid: 7b3ddf19f9bc9384a82e1cc2a1f5efc5, type: 3}
+    audio: {fileID: 0}
+    startsWithTarget: 1
+    containsTargetSound: 1
+  - word: "\u0646\u064E\u0647\u064E\u0646\u06AF "
+    image: {fileID: 21300000, guid: 32fabb2d650fb1c4ab8f56df55ae6d6a, type: 3}
+    audio: {fileID: 0}
+    startsWithTarget: 1
+    containsTargetSound: 1
+  - word: "\u0646\u064E\u062E"
+    image: {fileID: 21300000, guid: 391e4d77574fe6d4aa75dd133e4f81e2, type: 3}
+    audio: {fileID: 0}
+    startsWithTarget: 1
+    containsTargetSound: 1
+  - word: "\u0646\u064E\u0631\u062F\u0650\u0628\u0627\u0646 "
+    image: {fileID: 5266067843512441219, guid: 8dfc704e5ae20dd4295a542d5466018c, type: 3}
+    audio: {fileID: 0}
+    startsWithTarget: 1
+    containsTargetSound: 1
+  - word: "\u0646\u0627\u0646\u0648\u0627 "
+    image: {fileID: 21300000, guid: 6cb52638ea7187a498d38a3b9716fcb6, type: 3}
+    audio: {fileID: 0}
+    startsWithTarget: 1
+    containsTargetSound: 1
+  - word: "\u062F\u064E\u0646\u062F\u0627\u0646 "
+    image: {fileID: 21300000, guid: 30575023b495a26429034228e6fb4d21, type: 3}
     audio: {fileID: 0}
     startsWithTarget: 0
     containsTargetSound: 1
-  - word: 
-    image: {fileID: 0}
+  - word: "\u0628\u0627\u0631\u0627\u0646"
+    image: {fileID: 21300000, guid: fe95230a1f7bf4049a2f1cf77444e942, type: 3}
     audio: {fileID: 0}
     startsWithTarget: 0
-    containsTargetSound: 0
-  - word: 
-    image: {fileID: 0}
-    audio: {fileID: 0}
-    startsWithTarget: 0
-    containsTargetSound: 0
-  - word: 
-    image: {fileID: 0}
-    audio: {fileID: 0}
-    startsWithTarget: 0
-    containsTargetSound: 0
-  - word: 
-    image: {fileID: 0}
-    audio: {fileID: 0}
-    startsWithTarget: 0
-    containsTargetSound: 0
-  - word: 
-    image: {fileID: 0}
-    audio: {fileID: 0}
-    startsWithTarget: 0
-    containsTargetSound: 0
-  - word: 
-    image: {fileID: 0}
-    audio: {fileID: 0}
-    startsWithTarget: 0
-    containsTargetSound: 0
-  - word: 
-    image: {fileID: 0}
-    audio: {fileID: 0}
-    startsWithTarget: 0
-    containsTargetSound: 0
+    containsTargetSound: 1
   pictureHuntMode: 0
   pictureHuntDistractors: []
   pictureHuntInstructionText: 

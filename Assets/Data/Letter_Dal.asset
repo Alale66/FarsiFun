@@ -31,7 +31,7 @@ MonoBehaviour:
     audio: {fileID: 0}
     startsWithTarget: 0
     containsTargetSound: 1
-  - word: "\u062F\u0648\u0686\u064E\u0631\u062E\u0650\u0647"
+  - word: "\u062F\u0648\u0686\u0631\u062E\u0647"
     image: {fileID: 21300000, guid: bde2002419f01d84cbda341d7e111451, type: 3}
     audio: {fileID: 0}
     startsWithTarget: 1
@@ -56,7 +56,7 @@ MonoBehaviour:
     audio: {fileID: 0}
     startsWithTarget: 1
     containsTargetSound: 1
-  - word: "\u062F\u0627\u0646\u0650\u0647"
+  - word: "\u062F\u0627\u0646\u0647 "
     image: {fileID: 21300000, guid: 102f88d2bf904284a9d558a5359010f6, type: 3}
     audio: {fileID: 0}
     startsWithTarget: 1

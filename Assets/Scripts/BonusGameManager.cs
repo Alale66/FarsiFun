@@ -145,6 +145,16 @@ public class BonusGameManager : MonoBehaviour
         activeGame = selectedEntry.Game;
         activeContentRoot = selectedEntry.ContentRoot;
 
+        Debug.Log(
+            $"Bonus Game | Lesson: {lesson.name} | " +
+            $"Index: {currentLetterIndex} | " +
+            $"Letter: {currentLetterData.name} | " +
+            $"Vowel: {currentLetterData.IsVowel} | " +
+            $"WordComplete: {currentLetterData.UsesWordCompleteGame} | " +
+            $"Game: {activeGame.GetType().Name} | " +
+            $"Root: {activeContentRoot.name}"
+        );
+
         activeContentRoot.SetActive(true);
 
         activeGame.GameplayCompleted +=
@@ -295,10 +305,16 @@ public class BonusGameManager : MonoBehaviour
         bool isMonsterGame =
             entry.Game is FeedMonsterGame;
 
+        bool isWordCompleteGame =
+            entry.Game is WordCompleteGame;
+
+        if (currentLetterData.UsesWordCompleteGame)
+            return isWordCompleteGame;
+
         if (currentLetterData.IsVowel)
             return isMonsterGame;
 
-        return !isMonsterGame;
+        return !isMonsterGame && !isWordCompleteGame;
     }
 
     private void HandleGameplayCompleted()

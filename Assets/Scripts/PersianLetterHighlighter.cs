@@ -16,21 +16,23 @@ public class PersianLetterHighlighter : MonoBehaviour
 
     private Coroutine colorCoroutine;
     private string currentWord;
+    private bool silentWawOnly;
 
     public void SetText(string word, params string[] targetForms)
     {
+        silentWawOnly = false;
         currentWord = word ?? string.Empty;
         targetCharacters.Clear();
 
         if (textComponent == null)
             textComponent = GetComponent<TMP_Text>();
 
+        bool hasShadda = false;
         bool hasWaw = false;
         bool hasVowelMark = false;
 
         if (targetForms != null)
         {
-            // Detect the long "oo" form before checking short vowels.
             foreach (string form in targetForms)
             {
                 if (string.IsNullOrWhiteSpace(form))
@@ -39,13 +41,19 @@ public class PersianLetterHighlighter : MonoBehaviour
                 string normalized =
                     form.Normalize(NormalizationForm.FormKC);
 
+                if (normalized.Contains("\u0651"))
+                    hasShadda = true;
+
                 if (normalized.Contains("و"))
                     hasWaw = true;
             }
 
-            if (hasWaw)
+            if (hasShadda)
             {
-                // In word examples, highlight Waw, not Alef or damma.
+                targetCharacters.Add('\u0651');
+            }
+            else if (hasWaw)
+            {
                 targetCharacters.Add('و');
             }
             else
@@ -55,7 +63,10 @@ public class PersianLetterHighlighter : MonoBehaviour
                     if (string.IsNullOrEmpty(form))
                         continue;
 
-                    foreach (char character in form)
+                    string normalized =
+                        form.Normalize(NormalizationForm.FormKC);
+
+                    foreach (char character in normalized)
                     {
                         if (IsShortVowel(character))
                         {
@@ -89,6 +100,27 @@ public class PersianLetterHighlighter : MonoBehaviour
                 }
             }
         }
+        // Include Heh when explicitly listed in the Kasra lesson.
+        if (targetCharacters.Contains('\u0650') &&
+            targetForms != null)
+        {
+            foreach (string form in targetForms)
+            {
+                if (string.IsNullOrWhiteSpace(form))
+                    continue;
+
+                string normalized = form
+                    .Normalize(NormalizationForm.FormKC)
+                    .Replace("\u0640", "")
+                    .Trim();
+
+                if (normalized == "ه")
+                {
+                    targetCharacters.Add('ه');
+                    break;
+                }
+            }
+        }
 
         if (textComponent == null)
             return;
@@ -98,7 +130,18 @@ public class PersianLetterHighlighter : MonoBehaviour
 
         textComponent.richText = true;
 
-        string displayWord = PersianLetterDisplay.GetWordText(currentWord);
+        string wordForDisplay = currentWord;
+
+        if (targetCharacters.Contains('\u0644'))
+        {
+            wordForDisplay = wordForDisplay.Replace(
+                "\u0644\u0627",
+                "\uFEDD\u0627"
+            );
+        }
+
+        string displayWord =
+            PersianLetterDisplay.GetWordText(wordForDisplay);
 
         if (currentWord.Length >= 2 &&
             currentWord[0] == 'ا' &&
@@ -111,6 +154,14 @@ public class PersianLetterHighlighter : MonoBehaviour
         }
 
         textComponent.text = displayWord;
+        RefreshHighlight();
+    }
+
+    public void SetSilentWawText(string word)
+    {
+        SetText(word, "و");
+
+        silentWawOnly = true;
         RefreshHighlight();
     }
 
@@ -134,16 +185,32 @@ public class PersianLetterHighlighter : MonoBehaviour
 
     private bool IsTarget(char displayedCharacter)
     {
-        // Waw may be rendered as an Arabic presentation form.
-        if (displayedCharacter == '\u0648' ||
-            displayedCharacter == '\uFEED' ||
-            displayedCharacter == '\uFEEE')
+        // Recognize all displayed forms of Lam.
+        if (targetCharacters.Contains('\u0644') &&
+            (displayedCharacter == '\u0644' ||
+             (displayedCharacter >= '\uFEDD' &&
+              displayedCharacter <= '\uFEE0')))
         {
-            return targetCharacters.Contains('\u0648');
+            return true;
+        }
+
+        // Waw: normal, isolated, and final forms.
+        if (targetCharacters.Contains('\u0648') &&
+            (displayedCharacter == '\u0648' ||
+             displayedCharacter == '\uFEED' ||
+             displayedCharacter == '\uFEEE'))
+        {
+            return true;
         }
 
         string normalized = displayedCharacter.ToString()
             .Normalize(NormalizationForm.FormKC);
+
+        if (targetCharacters.Contains('\u0651') &&
+            normalized.Contains("\u0651"))
+        {
+            return true;
+        }
 
         return normalized.Length == 1 &&
                targetCharacters.Contains(
@@ -185,18 +252,13 @@ public class PersianLetterHighlighter : MonoBehaviour
         yield return new WaitForEndOfFrame();
 
         textComponent.ForceMeshUpdate();
-
-        ApplyHighlight(textComponent.textInfo);
-
-        textComponent.UpdateVertexData(
-            TMP_VertexDataUpdateFlags.Colors32
-        );
-
         colorCoroutine = null;
     }
 
     private void ApplyHighlight(TMP_TextInfo textInfo)
     {
+        PersianLetterDisplay.ApplyWordMarkSpacing(textInfo);
+
         for (int i = 0; i < textInfo.characterCount; i++)
         {
             TMP_CharacterInfo character =
@@ -205,7 +267,15 @@ public class PersianLetterHighlighter : MonoBehaviour
             if (!character.isVisible)
                 continue;
 
-            Color32 color = IsTarget(character.character)
+            bool shouldHighlight = IsTarget(character.character);
+
+            if (silentWawOnly)
+            {
+                shouldHighlight =
+                    shouldHighlight && HasKhahOnRight(textInfo, i);
+            }
+
+            Color32 color = shouldHighlight
                 ? targetColor
                 : character.color;
 
@@ -214,9 +284,7 @@ public class PersianLetterHighlighter : MonoBehaviour
             ].colors32;
 
             for (int vertex = 0; vertex < 4; vertex++)
-            {
                 colors[character.vertexIndex + vertex] = color;
-            }
         }
     }
 
@@ -224,5 +292,53 @@ public class PersianLetterHighlighter : MonoBehaviour
     {
         if (textComponent != null)
             textComponent.OnPreRenderText -= ApplyHighlight;
+    }
+
+    private bool HasKhahOnRight(TMP_TextInfo info, int index)
+    {
+        TMP_CharacterInfo waw = info.characterInfo[index];
+
+        float wawCenter =
+            (waw.bottomLeft.x + waw.topRight.x) * 0.5f;
+
+        float nearestDistance = float.PositiveInfinity;
+        char nearestLetter = '\0';
+
+        for (int i = 0; i < info.characterCount; i++)
+        {
+            if (i == index)
+                continue;
+
+            TMP_CharacterInfo candidate = info.characterInfo[i];
+
+            if (!candidate.isVisible ||
+                candidate.lineNumber != waw.lineNumber)
+            {
+                continue;
+            }
+
+            string normalized = candidate.character.ToString()
+                .Normalize(NormalizationForm.FormKC);
+
+            if (normalized.Length != 1 ||
+                !char.IsLetter(normalized[0]) ||
+                normalized[0] == '\u0640')
+            {
+                continue;
+            }
+
+            float center =
+                (candidate.bottomLeft.x + candidate.topRight.x) * 0.5f;
+
+            float distance = center - wawCenter;
+
+            if (distance > 0f && distance < nearestDistance)
+            {
+                nearestDistance = distance;
+                nearestLetter = normalized[0];
+            }
+        }
+
+        return nearestLetter == 'خ';
     }
 }

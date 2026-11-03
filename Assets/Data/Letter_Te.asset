@@ -63,7 +63,7 @@ MonoBehaviour:
     image: {fileID: 21300000, guid: a1c60d06590a1af409c1388d8f57c1aa, type: 3}
     audio: {fileID: 0}
     startsWithTarget: 0
-    containsTargetSound: 0
+    containsTargetSound: 1
   - word: "\u06A9\u0650\u0628\u0631\u06CC\u062A"
     image: {fileID: 21300000, guid: ac991339774874c49be1a85eb1e32742, type: 3}
     audio: {fileID: 0}

@@ -105,19 +105,19 @@ public class MatchCardView : MonoBehaviour
         PersianLetterHighlighter highlighter =
             exampleText.GetComponent<PersianLetterHighlighter>();
 
-        if (highlighter != null)
-            highlighter.SetText(data.word);
-        else
+        if (highlighter == null)
         {
-            exampleText.richText = true;
-            exampleText.text =
-                PersianLetterDisplay.GetWordText(data.word);
+            highlighter =
+                exampleText.gameObject.AddComponent<
+                    PersianLetterHighlighter
+                >();
         }
 
-        ResetForNewRound();
+        highlighter.SetText(
+            data != null ? data.word : string.Empty
+        );
 
-        if (baseline != null)
-            baseline.SetActive(true);
+        ResetForNewRound();
     }
 
     private void ResetForNewRound()

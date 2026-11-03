@@ -9,6 +9,8 @@ public class LetterChoiceGame : MonoBehaviour
 {
     [Header("Lesson Data")]
     [SerializeField] private LessonData lesson;
+    [SerializeField]
+    private MainGameLessonLoader lessonLoader;
 
     [SerializeField]
     private LessonData[] islandLessons =
@@ -31,6 +33,7 @@ public class LetterChoiceGame : MonoBehaviour
     [SerializeField] private LetterFormSlot[] letterFormSlots;
     [SerializeField] private Button[] introButtonsToLock;
     [SerializeField] private Button letterNameButton;
+    [SerializeField] private Button letterSoundButton;
 
     [Header("Quiz UI")]
     [SerializeField] private TMP_Text feedbackText;
@@ -73,6 +76,14 @@ public class LetterChoiceGame : MonoBehaviour
     [Header("Editor Testing")]
     [SerializeField, Min(0)]
     private int bonusGameTestLetterIndex;
+
+    [Header("Test Lesson From Intro")]
+    [SerializeField] private LessonData introTestLesson;
+
+    [SerializeField, Min(0)]
+    private int introTestLetterIndex;
+
+    private bool testingLessonFromIntro;
     private readonly List<ExampleData> currentIntroExamples =
     new List<ExampleData>();
     private bool quizCompleted;
@@ -105,16 +116,26 @@ public class LetterChoiceGame : MonoBehaviour
 
         int islandIndex = SceneNavigator.SelectedIslandIndex;
 
-        if (islandLessons == null ||
-            islandIndex < 0 ||
-            islandIndex >= islandLessons.Length ||
-            islandLessons[islandIndex] == null)
+        if (lessonLoader != null && lessonLoader.IsConfigured)
         {
-            Debug.LogError("Lesson for the selected island is missing.");
-            return;
+            lesson = lessonLoader.LoadLesson(islandIndex);
         }
+        else
+        {
+            if (islandLessons == null ||
+                islandIndex < 0 ||
+                islandIndex >= islandLessons.Length ||
+                islandLessons[islandIndex] == null)
+            {
+                Debug.LogError(
+                    "Lesson for the selected island is missing."
+                );
 
-        lesson = islandLessons[islandIndex];
+                return;
+            }
+
+            lesson = islandLessons[islandIndex];
+        }
 
         if (lesson == null || lesson.letters == null ||
     lesson.letters.Length == 0)
@@ -267,9 +288,23 @@ public class LetterChoiceGame : MonoBehaviour
                     .GetComponent<PersianLetterHighlighter>();
 
             if (highlighter != null)
-                highlighter.SetText(example.word, data.GetGameForms());
+            {
+                if (data.IsSilentWaw)
+                {
+                    highlighter.SetSilentWawText(example.word);
+                }
+                else
+                {
+                    highlighter.SetText(
+                        example.word,
+                        data.GetGameForms()
+                    );
+                }
+            }
             else
+            {
                 exampleTexts[i].text = example.word;
+            }
 
             Debug.Log(
                 $"Intro slot {i} | " +
@@ -314,7 +349,19 @@ public class LetterChoiceGame : MonoBehaviour
 
         LetterData data = lesson.letters[currentLetterIndex];
         if (letterNameButton != null)
-            letterNameButton.gameObject.SetActive(!data.IsVowel);
+        {
+            letterNameButton.gameObject.SetActive(
+                data.IsTashdid ||
+                (!data.IsVowel && !data.UsesWordCompleteGame)
+            );
+        }
+
+        if (letterSoundButton != null)
+        {
+            letterSoundButton.gameObject.SetActive(
+                !data.IsTashdid
+            );
+        }
 
         for (int i = 0; i < letterFormSlots.Length; i++)
         {
@@ -347,7 +394,10 @@ public class LetterChoiceGame : MonoBehaviour
             displayName +
             "</color>";
 
-        ResetQuiz();
+        if (data.UsesWordCompleteGame)
+            SetCompletionUI(false);
+        else
+            ResetQuiz();
     }
 
     private void ResetQuiz()
@@ -456,9 +506,9 @@ public class LetterChoiceGame : MonoBehaviour
             quizCompleted ||
             (gameAudioManager != null &&
             gameAudioManager.IsPlayingLocked))
-                {
-                    return;
-                }
+        {
+            return;
+        }
 
         LetterData data = lesson.letters[currentLetterIndex];
 
@@ -656,7 +706,7 @@ public class LetterChoiceGame : MonoBehaviour
         if (!data.IsVowel && data.letterNameAudio != null)
             clips.Add(data.letterNameAudio);
 
-        if (data.letterSoundAudio != null)
+        if (!data.IsTashdid && data.letterSoundAudio != null)
             clips.Add(data.letterSoundAudio);
 
         if (clips.Count > 0)
@@ -716,6 +766,9 @@ public class LetterChoiceGame : MonoBehaviour
     {
         LetterData data = lesson.letters[currentLetterIndex];
 
+        if (data.IsTashdid)
+            return;
+
         if (gameAudioManager != null)
             gameAudioManager.PlayLocked(data.letterSoundAudio);
     }
@@ -763,6 +816,14 @@ public class LetterChoiceGame : MonoBehaviour
     // Quiz
     public void StartQuiz()
     {
+        LetterData data = lesson.letters[currentLetterIndex];
+
+        if (data.UsesWordCompleteGame)
+        {
+            StartMiniGame();
+            return;
+        }
+
         ShowStage(LessonStage.Quiz, quizPanel);
 
         if (sharedGamePanelUI != null)
@@ -816,6 +877,14 @@ public class LetterChoiceGame : MonoBehaviour
     // Letter Hunt
     public void StartLetterHunt()
     {
+        LetterData data = lesson.letters[currentLetterIndex];
+
+        if (data.UsesWordCompleteGame)
+        {
+            StartMiniGame();
+            return;
+        }
+
         if (letterHuntPanel == null || letterHuntGame == null)
             return;
 
@@ -897,6 +966,13 @@ public class LetterChoiceGame : MonoBehaviour
     // Picture Hunt
     public void StartPictureHunt()
     {
+        LetterData data = lesson.letters[currentLetterIndex];
+
+        if (data.UsesWordCompleteGame)
+        {
+            StartMiniGame();
+            return;
+        }
         if (pictureHuntPanel == null || pictureHuntGame == null)
             return;
 
@@ -1053,6 +1129,13 @@ public class LetterChoiceGame : MonoBehaviour
 
     private void OnBonusGameCompleted()
     {
+        if (testingLessonFromIntro)
+        {
+            LoadLetter(currentLetterIndex);
+            ShowIntro();
+            PlayIntroLetterAudio();
+            return;
+        }
         const int lettersPerIsland = 5;
         const int totalIslands = 8;
 
@@ -1117,6 +1200,21 @@ public class LetterChoiceGame : MonoBehaviour
         );
     }
 
+    public void SharedHome()
+    {
+        StopAllCoroutines();
+        StopSuccessSounds();
+
+        if (gameAudioManager != null)
+            gameAudioManager.StopAudio();
+
+        Time.timeScale = 1f;
+
+        UnityEngine.SceneManagement.SceneManager.LoadScene(
+            "ProfileSelection"
+        );
+    }
+
     public void SharedBack()
     {
         switch (currentStage)
@@ -1146,7 +1244,11 @@ public class LetterChoiceGame : MonoBehaviour
                 break;
 
             case LessonStage.MemoryMatch:
-                BackToPictureHunt();
+                if (lesson.letters[currentLetterIndex].UsesWordCompleteGame)
+                    BackToIntro();
+                else
+                    BackToPictureHunt();
+
                 break;
         }
     }
@@ -1214,7 +1316,7 @@ public class LetterChoiceGame : MonoBehaviour
                 data.pictureHuntMode ==
                 PictureHuntMode.ContainsTargetSound
                     ? "کدوم کلمه‌ها این صدا رو دارن؟"
-                    : "کدوم کلمه‌ها با این حرف شروع می‌شن؟";
+                    : "کدوم کلمه‌ها با این نشانه شروع می‌شن؟";
         }
 
         pictureHuntInstructionLabel.text = instruction;
@@ -1263,7 +1365,6 @@ public class LetterChoiceGame : MonoBehaviour
         LetterData currentData =
             lesson.letters[currentLetterIndex];
 
-        // Prefer the current lesson for its own valid forms.
         if (currentData.IsGameForm(choice))
             return currentData.letterSoundAudio;
 
@@ -1275,24 +1376,9 @@ public class LetterChoiceGame : MonoBehaviour
         if (clip != null)
             return clip;
 
-        if (islandLessons != null)
-        {
-            foreach (LessonData islandLesson in islandLessons)
-            {
-                if (islandLesson == lesson)
-                    continue;
-
-                clip = FindChoiceAudioInLesson(
-                    islandLesson,
-                    choice
-                );
-
-                if (clip != null)
-                    return clip;
-            }
-        }
-
-        return null;
+        return lessonLoader != null
+            ? lessonLoader.FindChoiceAudio(choice)
+            : null;
     }
 
     private AudioClip FindChoiceAudioInLesson(
@@ -1370,4 +1456,45 @@ public class LetterChoiceGame : MonoBehaviour
 
         gameAudioManager.PlayLocked(clip);
     }
+
+#if UNITY_EDITOR
+    [ContextMenu("Test Lesson From Intro")]
+    private void TestLessonFromIntro()
+    {
+        if (!Application.isPlaying)
+        {
+            Debug.LogWarning("Enter Play Mode first.");
+            return;
+        }
+
+        if (introTestLesson == null ||
+            introTestLesson.letters == null ||
+            introTestLetterIndex < 0 ||
+            introTestLetterIndex >= introTestLesson.letters.Length ||
+            introTestLesson.letters[introTestLetterIndex] == null)
+        {
+            Debug.LogWarning(
+                "Assign Intro Test Lesson and a valid letter index."
+            );
+            return;
+        }
+
+        if (bonusGameManager != null)
+            bonusGameManager.StopBonusGame();
+
+        StopAllCoroutines();
+        StopSuccessSounds();
+
+        introAudioRoutine = null;
+        wrongAnswerRoutine = null;
+        successSoundRoutine = null;
+
+        testingLessonFromIntro = true;
+        lesson = introTestLesson;
+
+        LoadLetter(introTestLetterIndex);
+        ShowIntro();
+        PlayIntroLetterAudio();
+    }
+#endif
 }

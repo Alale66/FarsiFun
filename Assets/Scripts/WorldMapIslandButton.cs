@@ -9,8 +9,9 @@ public class WorldMapIslandButton : MonoBehaviour
     [SerializeField] private Sprite unlockedSprite;
     [SerializeField] private Sprite lockedSprite;
     [SerializeField] private GameObject lockIcon;
+    [SerializeField] private AudioClip clickSound;
 
-    private const int LettersPerIsland = 4;
+    private const int LettersPerIsland = 5;
 
     public event Action<int> IslandSelected;
 
@@ -18,6 +19,8 @@ public class WorldMapIslandButton : MonoBehaviour
     {
         if (!GetComponent<Button>().interactable)
             return;
+
+        NavigationClickAudio.Play(clickSound);
 
         IslandSelected?.Invoke(islandIndex);
     }

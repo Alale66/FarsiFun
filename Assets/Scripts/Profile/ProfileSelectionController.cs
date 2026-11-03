@@ -9,6 +9,7 @@ public class ProfileSelectionController : MonoBehaviour
     [SerializeField] private GameObject createProfileModal;
     [SerializeField] private ProfileSelectionTransition profileTransition;
     [SerializeField] private TMP_InputField nameInputField;
+    [SerializeField] private TMP_Text nameErrorText;
 
     [Header("Buttons")]
     [SerializeField] private Button addProfileButton;
@@ -85,6 +86,13 @@ public class ProfileSelectionController : MonoBehaviour
                 ContinueToGame
             );
         }
+
+        if (nameInputField != null)
+        {
+            nameInputField.onValueChanged.AddListener(
+                HandleNameChanged
+            );
+        }
     }
 
     private void Start()
@@ -105,6 +113,7 @@ public class ProfileSelectionController : MonoBehaviour
 
     private void OpenCreateModal()
     {
+        SetNameError(string.Empty);
         profileTransition.OpenCreateModal();
 
         nameInputField.text = string.Empty;
@@ -153,27 +162,42 @@ public class ProfileSelectionController : MonoBehaviour
 
     private void CreateProfile()
     {
-        string playerName =
-            nameInputField.text.Trim();
+        string playerName = nameInputField.text.Trim();
 
-        if (string.IsNullOrEmpty(playerName))
+        if (string.IsNullOrWhiteSpace(playerName))
         {
+            SetNameError("لطفا اسمت رو بنویس.");
+
+            nameInputField.Select();
             nameInputField.ActivateInputField();
+
             return;
         }
+
+        SetNameError(string.Empty);
 
         if (PlayerProfileManager.Instance == null)
         {
+            SetNameError("ساخت پروفایل انجام نشد. دوباره امتحان کن.");
+
             Debug.LogError(
                 "PlayerProfileManager is missing."
             );
+
             return;
         }
 
-        PlayerProfileManager.Instance.CreateProfile(
-            playerName,
-            selectedAvatarIndex
-        );
+        PlayerProfileData createdProfile =
+            PlayerProfileManager.Instance.CreateProfile(
+                playerName,
+                selectedAvatarIndex
+            );
+
+        if (createdProfile == null)
+        {
+            SetNameError("امکان ساخت پروفایل جدید نیست.");
+            return;
+        }
 
         CloseCreateModal();
         RefreshProfileCards();
@@ -411,5 +435,30 @@ public class ProfileSelectionController : MonoBehaviour
                 ContinueToGame
             );
         }
+
+        if (nameInputField != null)
+        {
+            nameInputField.onValueChanged.RemoveListener(
+                HandleNameChanged
+            );
+        }
+    }
+
+    private void SetNameError(string message)
+    {
+        if (nameErrorText == null)
+            return;
+
+        nameErrorText.text = message;
+
+        nameErrorText.gameObject.SetActive(
+            !string.IsNullOrEmpty(message)
+        );
+    }
+
+    private void HandleNameChanged(string value)
+    {
+        if (!string.IsNullOrWhiteSpace(value))
+            SetNameError(string.Empty);
     }
 }

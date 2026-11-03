@@ -5,39 +5,90 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Button))]
 public class IslandContinueButton : MonoBehaviour
 {
+    private const int LettersPerIsland = 5;
+    private const int IslandCount = 8;
+
     [SerializeField] private LessonData lesson;
     [SerializeField] private SceneNavigator navigator;
+
+    [SerializeField, HideInInspector]
+    private bool hasCachedLessonData;
+
+    [SerializeField, HideInInspector]
+    private int cachedLetterCount;
+
+    [SerializeField, HideInInspector]
+    private bool cachedAllLettersValid;
 
     private bool canContinue;
     private int nextIslandIndex;
 
     private void Start()
     {
-        nextIslandIndex =
-            SceneNavigator.SelectedIslandIndex + 1;
+        Refresh();
+    }
+
+    public void Refresh()
+    {
+        int currentIslandIndex =
+            SceneNavigator.SelectedIslandIndex;
+
+        nextIslandIndex = currentIslandIndex + 1;
 
         PlayerProfileData profile =
             PlayerProfileManager.Instance != null
                 ? PlayerProfileManager.Instance.SelectedProfile
                 : null;
 
-        int nextLetterIndex = nextIslandIndex * 4;
+        int letterCount = cachedLetterCount;
+        bool allLettersValid = cachedAllLettersValid;
+
+        // Preserve existing behavior until conversion is run.
+        if (!hasCachedLessonData)
+        {
+            letterCount =
+                lesson != null && lesson.letters != null
+                    ? lesson.letters.Length
+                    : 0;
+
+            allLettersValid = letterCount > 0;
+
+            if (allLettersValid)
+            {
+                foreach (LetterData letter in lesson.letters)
+                {
+                    if (letter == null)
+                    {
+                        allLettersValid = false;
+                        break;
+                    }
+                }
+            }
+        }
 
         canContinue =
-            nextIslandIndex < 8 &&
+            currentIslandIndex >= 0 &&
+            nextIslandIndex < IslandCount &&
             profile != null &&
             profile.completedLetterIndices != null &&
-            lesson != null &&
-            lesson.letters != null &&
-            nextLetterIndex < lesson.letters.Length &&
-            lesson.letters[nextLetterIndex] != null;
+            allLettersValid &&
+            letterCount > 0 &&
+            letterCount <= LettersPerIsland;
 
         if (canContinue)
         {
-            for (int i = 0; i < nextLetterIndex; i++)
+            int firstLetterIndex =
+                currentIslandIndex * LettersPerIsland;
+
+            for (int i = 0; i < letterCount; i++)
             {
+                int globalLetterIndex =
+                    firstLetterIndex + i;
+
                 if (Array.IndexOf(
-                    profile.completedLetterIndices, i) < 0)
+                    profile.completedLetterIndices,
+                    globalLetterIndex
+                ) < 0)
                 {
                     canContinue = false;
                     break;
@@ -59,7 +110,16 @@ public class IslandContinueButton : MonoBehaviour
 
     public void OpenNextIsland()
     {
-        if (canContinue && navigator != null)
+        if (!canContinue)
+            return;
+
+        if (navigator == null)
+        {
+            navigator =
+                FindAnyObjectByType<SceneNavigator>();
+        }
+
+        if (navigator != null)
             navigator.GoToIsland(nextIslandIndex);
     }
 }

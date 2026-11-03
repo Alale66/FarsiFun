@@ -69,7 +69,7 @@ MonoBehaviour:
     audio: {fileID: 0}
     startsWithTarget: 0
     containsTargetSound: 1
-  pictureHuntMode: 0
+  pictureHuntMode: 1
   pictureHuntDistractors:
   - word: "\u0622\u0628 "
     image: {fileID: 21300000, guid: ba97bf251ad78374f994a97d4aaa0ff0, type: 3}

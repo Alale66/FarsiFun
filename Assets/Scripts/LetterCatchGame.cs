@@ -315,10 +315,43 @@ public class LetterCatchGame : BonusGameBase
     /// </summary>
     private bool IsTargetLetter(string letter)
     {
-        if (targetFamily != null)
-            return targetFamily.IsGameForm(letter);
+        if (string.IsNullOrWhiteSpace(letter))
+            return false;
 
-        return letter == targetLetter;
+        if (targetFamily == null)
+            return letter == targetLetter;
+
+        if (targetFamily.IsGameForm(letter))
+            return true;
+
+        string caughtDisplay =
+            PersianLetterDisplay.GetText(letter);
+
+        foreach (string form in targetFamily.GetGameForms())
+        {
+            if (string.IsNullOrWhiteSpace(form))
+                continue;
+
+            // Compare with the original target form.
+            if (caughtDisplay ==
+                PersianLetterDisplay.GetText(form))
+            {
+                return true;
+            }
+
+            // Also compare with the form used by bonus games.
+            string bonusForm =
+                LetterData.GetBonusGameForm(form);
+
+            if (!string.IsNullOrWhiteSpace(bonusForm) &&
+                caughtDisplay ==
+                PersianLetterDisplay.GetText(bonusForm))
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private void OnLetterCaught(FallingLetter fallingLetter)

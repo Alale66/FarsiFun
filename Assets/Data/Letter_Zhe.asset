@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67622f9b8d37db340a703b23254506a1, type: 3}
+  m_Name: Letter_Zhe
+  m_EditorClassIdentifier: Assembly-CSharp::LetterData
+  lessonType: 0
+  forms:
+  - baseText: "\u0698"
+    markText: 
+  targetLetter: "\u0698"
+  choices:
+  - "\u0631"
+  - "\u0632"
+  - "\u0698"
+  correctLetter: "\u0698"
+  matchForms:
+  - "\u0698"
+  letterName: "\u0698"
+  examples:
+  - word: "\u0698\u0627\u06A9\u062A"
+    image: {fileID: 21300000, guid: e0e23e4b7f1dbe44fafa7465da6b68b1, type: 3}
+    audio: {fileID: 0}
+    startsWithTarget: 1
+    containsTargetSound: 1
+  - word: "\u0698\u0644\u0647"
+    image: {fileID: 21300000, guid: dd2592f9803f25c47b3e0aedfb4fe449, type: 3}
+    audio: {fileID: 0}
+    startsWithTarget: 1
+    containsTargetSound: 1
+  - word: "\u0645\u0698\u0647"
+    image: {fileID: 21300000, guid: e0fb06496aaa5ed4db2cac9911018bba, type: 3}
+    audio: {fileID: 0}
+    startsWithTarget: 0
+    containsTargetSound: 1
+  - word: "\u0645\u0627\u0698\u06CC\u06A9"
+    image: {fileID: 21300000, guid: 829fb6d7b5084584988d73912cbff7c8, type: 3}
+    audio: {fileID: 0}
+    startsWithTarget: 0
+    containsTargetSound: 1
+  - word: "\u0627\u0650\u0698\u062F\u0650\u0647\u0627"
+    image: {fileID: 21300000, guid: 32ec82786194bfb41bb0dc420acff587, type: 3}
+    audio: {fileID: 0}
+    startsWithTarget: 0
+    containsTargetSound: 1
+  - word: "\u0698\u0627\u0644\u0647"
+    image: {fileID: 21300000, guid: 84c8f5ce05c678d46978eae043198e14, type: 3}
+    audio: {fileID: 0}
+    startsWithTarget: 1
+    containsTargetSound: 1
+  - word: "\u067E\u064E\u0698\u0645\u064F\u0631\u062F\u0647"
+    image: {fileID: 21300000, guid: 99792ea2e25bc1a439a80c19a1dbdfd2, type: 3}
+    audio: {fileID: 0}
+    startsWithTarget: 0
+    containsTargetSound: 1
+  - word: "\u0698\u06CC\u0645\u0646\u0627\u0633\u062A"
+    image: {fileID: 21300000, guid: 9be4313c86e336b49b6e19c37e1c0235, type: 3}
+    audio: {fileID: 0}
+    startsWithTarget: 0
+    containsTargetSound: 1
+  pictureHuntMode: 0
+  pictureHuntDistractors: []
+  pictureHuntInstructionText: 
+  pictureHuntInstructionAudio: {fileID: 0}
+  letterNameAudio: {fileID: 0}
+  letterSoundAudio: {fileID: 0}

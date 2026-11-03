@@ -33,12 +33,12 @@ MonoBehaviour:
     image: {fileID: 21300000, guid: 1d178648db1946e4982486a3a1752a02, type: 3}
     audio: {fileID: 0}
     startsWithTarget: 1
-    containsTargetSound: 0
+    containsTargetSound: 1
   - word: "\u0633\u064E\u0628\u064E\u062F"
     image: {fileID: 21300000, guid: 3b4781ca765c27945855880425d449f4, type: 3}
     audio: {fileID: 0}
     startsWithTarget: 1
-    containsTargetSound: 0
+    containsTargetSound: 1
   - word: "\u0633\u064E\u06AF"
     image: {fileID: 21300000, guid: c359d07d243678440a05e21ed6cdc37c, type: 3}
     audio: {fileID: 0}
