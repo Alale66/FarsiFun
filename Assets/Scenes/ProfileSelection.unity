@@ -1435,6 +1435,7 @@ MonoBehaviour:
   createProfileModal: {fileID: 1117792811}
   profileTransition: {fileID: 403171447}
   nameInputField: {fileID: 269188006}
+  nameErrorText: {fileID: 0}
   addProfileButton: {fileID: 1250789531}
   closeButton: {fileID: 1045937825}
   confirmButton: {fileID: 1650672500}
@@ -6818,7 +6819,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -84.999985}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1692515609
@@ -7204,8 +7205,8 @@ MonoBehaviour:
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
   m_ActiveFontFeatures: 6e72656bu
-  m_enableExtraPadding: 1
-  checkPaddingRequired: 0
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 1
   m_isRichText: 1
   m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
@@ -8460,8 +8461,8 @@ MonoBehaviour:
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
   m_ActiveFontFeatures: 6e72656bu
-  m_enableExtraPadding: 1
-  checkPaddingRequired: 0
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 1
   m_isRichText: 1
   m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1

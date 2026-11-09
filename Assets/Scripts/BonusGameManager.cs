@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Serialization;
+using TMPro;
 
 public class BonusGameManager : MonoBehaviour
 {
@@ -53,6 +54,15 @@ public class BonusGameManager : MonoBehaviour
     [SerializeField]
     private Button continueButton;
 
+    [Header("Completion Message")]
+    [SerializeField] private TMP_Text completeText;
+
+    [SerializeField, TextArea(3, 5)]
+    private string islandCompleteMessage =
+        "آفرین، رفیق!\n" +
+        "همه‌ی نشانه‌های این بخش از سفر رو یاد گرفتی!\n" +
+        "آماده‌ای ماجراجویی‌مون رو ادامه بدیم؟";
+
     [Header("Shared Target")]
     [Tooltip("Displays the current target letter for every bonus game.")]
     [SerializeField]
@@ -81,6 +91,7 @@ public class BonusGameManager : MonoBehaviour
 
     [Header("Wallet")]
     [SerializeField] private GameObject playerWallet;
+    [SerializeField] private Canvas sharedHomeCanvas;
 
     public event Action Completed;
 
@@ -89,6 +100,43 @@ public class BonusGameManager : MonoBehaviour
     private LetterData currentLetterData;
     private Coroutine panelVoiceRoutine;
     private bool ownsLockedAudio;
+    private string normalCompleteMessage =
+    "آفرین!\n" +
+    "کارت عالی بود!\n" +
+    "حالا آماده‌ای بریم سراغ نشانه بعدی؟";
+
+    [SerializeField] private RectTransform sharedBackButton;
+
+    private Vector3 originalHomePosition;
+    private bool homeMovedForBonus;
+
+    private void SetBonusHomePosition(bool isBonus)
+    {
+        if (sharedHomeCanvas == null)
+            return;
+
+        RectTransform homeRect =
+            sharedHomeCanvas.GetComponent<RectTransform>();
+
+        if (isBonus)
+        {
+            if (sharedBackButton == null)
+                return;
+
+            if (!homeMovedForBonus)
+            {
+                originalHomePosition = homeRect.anchoredPosition3D;
+                homeMovedForBonus = true;
+            }
+
+            homeRect.position = sharedBackButton.position;
+        }
+        else if (homeMovedForBonus)
+        {
+            homeRect.anchoredPosition3D = originalHomePosition;
+            homeMovedForBonus = false;
+        }
+    }
 
     /// <summary>
     /// Selects and prepares one random bonus game.
@@ -97,6 +145,10 @@ public class BonusGameManager : MonoBehaviour
     LessonData lesson,
     int currentLetterIndex)
     {
+        SetBonusHomePosition(true);
+
+        if (sharedHomeCanvas != null)
+            sharedHomeCanvas.overrideSorting = true;
 #if UNITY_EDITOR
         if (overrideLessonForTesting)
         {
@@ -127,17 +179,9 @@ public class BonusGameManager : MonoBehaviour
         }
 
         currentLetterData = lesson.letters[currentLetterIndex];
+        UpdateCompletionMessage(currentLetterIndex, lesson.letters.Length);
 
         int selectedIndex = ChooseRandomGameIndex();
-
-        if (selectedIndex < 0)
-        {
-            Debug.LogWarning(
-                "BonusGameManager has no valid bonus games."
-            );
-
-            return;
-        }
 
         BonusGameEntry selectedEntry =
             bonusGames[selectedIndex];
@@ -206,6 +250,7 @@ public class BonusGameManager : MonoBehaviour
     /// </summary>
     public void ContinueAfterCompletion()
     {
+        SetBonusHomePosition(false);
         StopPanelVoice();
 
         if (celebrationEffect != null)
@@ -222,7 +267,6 @@ public class BonusGameManager : MonoBehaviour
         }
 
         Completed?.Invoke();
-        SetPanelActive(playerWallet, true);
     }
 
     /// <summary>
@@ -230,6 +274,11 @@ public class BonusGameManager : MonoBehaviour
     /// </summary>
     public void StopBonusGame()
     {
+        SetBonusHomePosition(false);
+
+        if (sharedHomeCanvas != null)
+            sharedHomeCanvas.overrideSorting = false;
+
         StopPanelVoice();
         StopCurrentGame();
         SetAllGameContentActive(false);
@@ -574,6 +623,53 @@ public class BonusGameManager : MonoBehaviour
 
         if (continueButton != null)
             continueButton.interactable = true;
+    }
+
+    private void UpdateCompletionMessage(
+    int localLetterIndex,
+    int lessonLetterCount)
+    {
+        if (completeText == null)
+            return;
+
+        const int lettersPerIsland = 5;
+
+        int letterCount = Mathf.Min(
+            lessonLetterCount,
+            lettersPerIsland
+        );
+
+        PlayerProfileData profile =
+            PlayerProfileManager.Instance != null
+                ? PlayerProfileManager.Instance.SelectedProfile
+                : null;
+
+        bool islandFinished =
+            profile != null &&
+            letterCount > 0 &&
+            localLetterIndex == letterCount - 1;
+
+        int firstLetterIndex =
+            SceneNavigator.SelectedIslandIndex *
+            lettersPerIsland;
+
+        // The current sign is saved after pressing Continue.
+        // Check that every earlier sign is already completed.
+        for (int i = 0; islandFinished && i < localLetterIndex; i++)
+        {
+            if (profile.completedLetterIndices == null ||
+                Array.IndexOf(
+                    profile.completedLetterIndices,
+                    firstLetterIndex + i
+                ) < 0)
+            {
+                islandFinished = false;
+            }
+        }
+
+        completeText.text = islandFinished
+            ? islandCompleteMessage
+            : normalCompleteMessage;
     }
 
     private void OnDisable()

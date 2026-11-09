@@ -181,6 +181,7 @@ public class IslandLetterButton : MonoBehaviour
             image.sprite = unlockedSprite;
 
         NavigationClickAudio.Play(unlockSound);
+        StartCoroutine(ScatterRockPieces(image));
 
         // Pop and briefly glow gold.
         const float revealDuration = 0.65f;
@@ -218,6 +219,155 @@ public class IslandLetterButton : MonoBehaviour
         PlayerPrefs.Save();
     }
 
+    private IEnumerator ScatterRockPieces(Image source)
+    {
+        if (lockedSprite == null)
+            yield break;
+
+        const int grid = 3;
+        const int count = grid * grid;
+        const float duration = 0.65f;
+
+        RectTransform sourceRect = source.rectTransform;
+        Rect spriteRect = lockedSprite.textureRect;
+        Texture2D texture = lockedSprite.texture;
+
+        RockFragmentGraphic[] pieces = new RockFragmentGraphic[count];
+        Vector3[] origins = new Vector3[count];
+        Vector3[] velocities = new Vector3[count];
+        float[] spins = new float[count];
+
+        // Shared irregular edges keep the fragments fitted together.
+        int steps = grid * 2;
+        Vector2[,] fracturePoints =
+            new Vector2[steps + 1, steps + 1];
+
+        for (int x = 0; x <= steps; x++)
+        {
+            for (int y = 0; y <= steps; y++)
+            {
+                float px = x / (float)steps;
+                float py = y / (float)steps;
+
+                if (x > 0 && x < steps)
+                    px += Random.Range(-0.045f, 0.045f);
+
+                if (y > 0 && y < steps)
+                    py += Random.Range(-0.045f, 0.045f);
+
+                fracturePoints[x, y] = new Vector2(px, py);
+            }
+        }
+
+        int[] edgeX = { 0, 0, 0, 1, 2, 2, 2, 1 };
+        int[] edgeY = { 0, 1, 2, 2, 2, 1, 0, 0 };
+
+        for (int i = 0; i < count; i++)
+        {
+            int x = i % grid;
+            int y = i / grid;
+
+            GameObject piece = new GameObject(
+                "rock_piece",
+                typeof(RectTransform),
+                typeof(CanvasRenderer),
+                typeof(RockFragmentGraphic)
+            );
+
+            piece.transform.SetParent(sourceRect, false);
+            piece.transform.SetAsLastSibling();
+
+            RockFragmentGraphic graphic =
+                piece.GetComponent<RockFragmentGraphic>();
+
+            Vector2 center = new Vector2(
+                (x + 0.5f) * sourceRect.rect.width / grid,
+                (y + 0.5f) * sourceRect.rect.height / grid
+            );
+
+            Vector2[] vertices = new Vector2[8];
+            Vector2[] uvs = new Vector2[8];
+
+            for (int j = 0; j < vertices.Length; j++)
+            {
+                Vector2 point = fracturePoints[
+                    x * 2 + edgeX[j],
+                    y * 2 + edgeY[j]
+                ];
+
+                vertices[j] = new Vector2(
+                    point.x * sourceRect.rect.width,
+                    point.y * sourceRect.rect.height
+                ) - center;
+
+                uvs[j] = new Vector2(
+                    (spriteRect.x + point.x * spriteRect.width)
+                        / texture.width,
+                    (spriteRect.y + point.y * spriteRect.height)
+                        / texture.height
+                );
+            }
+
+            RectTransform rect = graphic.rectTransform;
+            rect.anchorMin = Vector2.zero;
+            rect.anchorMax = Vector2.zero;
+            rect.pivot = new Vector2(0.5f, 0.5f);
+            rect.sizeDelta = sourceRect.rect.size / grid;
+            rect.anchoredPosition = center;
+
+            graphic.Configure(texture, vertices, uvs);
+
+            pieces[i] = graphic;
+            origins[i] = rect.anchoredPosition3D;
+
+            velocities[i] = new Vector3(
+                (x - 1) * Random.Range(160f, 260f)
+                    + Random.Range(-70f, 70f),
+                Random.Range(180f, 380f),
+                0f
+            );
+
+            spins[i] = Random.Range(-400f, 400f);
+        }
+
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.unscaledDeltaTime;
+            float t = Mathf.Min(elapsed, duration);
+            float progress = t / duration;
+
+            for (int i = 0; i < count; i++)
+            {
+                if (pieces[i] == null)
+                    continue;
+
+                RectTransform rect = pieces[i].rectTransform;
+
+                rect.anchoredPosition3D =
+                    origins[i] + velocities[i] * t
+                    + Vector3.down * (600f * t * t);
+
+                rect.localRotation =
+                    Quaternion.Euler(0f, 0f, spins[i] * t);
+
+                pieces[i].color = new Color(
+                    1f, 1f, 1f,
+                    1f - Mathf.InverseLerp(0.35f, 1f, progress)
+                );
+            }
+
+            yield return null;
+        }
+
+        foreach (RockFragmentGraphic piece in pieces)
+        {
+            if (piece != null)
+                Destroy(piece.gameObject);
+        }
+    }
+
     public void OpenLetter()
     {
         if (!unlocked || revealingUnlock)
@@ -237,5 +387,62 @@ public class IslandLetterButton : MonoBehaviour
                 "IslandView: SceneNavigator is missing."
             );
         }
+    }
+}
+
+public class RockFragmentGraphic : MaskableGraphic
+{
+    private Texture fragmentTexture;
+    private Vector2[] points;
+    private Vector2[] textureUVs;
+
+    public override Texture mainTexture =>
+        fragmentTexture != null
+            ? fragmentTexture
+            : Texture2D.whiteTexture;
+
+    public void Configure(
+        Texture texture,
+        Vector2[] vertices,
+        Vector2[] uvs)
+    {
+        fragmentTexture = texture;
+        points = vertices;
+        textureUVs = uvs;
+
+        raycastTarget = false;
+        SetAllDirty();
+    }
+
+    protected override void OnPopulateMesh(VertexHelper mesh)
+    {
+        mesh.Clear();
+
+        if (points == null || points.Length < 3)
+            return;
+
+        Vector2 center = Vector2.zero;
+        Vector2 centerUV = Vector2.zero;
+
+        for (int i = 0; i < points.Length; i++)
+        {
+            center += points[i];
+            centerUV += textureUVs[i];
+        }
+
+        center /= points.Length;
+        centerUV /= points.Length;
+
+        mesh.AddVert(center, color, centerUV);
+
+        for (int i = 0; i < points.Length; i++)
+            mesh.AddVert(points[i], color, textureUVs[i]);
+
+        for (int i = 0; i < points.Length; i++)
+            mesh.AddTriangle(
+                0,
+                i + 1,
+                (i + 1) % points.Length + 1
+            );
     }
 }

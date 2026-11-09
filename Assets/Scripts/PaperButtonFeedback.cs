@@ -18,8 +18,6 @@ public class PaperButtonFeedback : MonoBehaviour,
     [SerializeField, Range(0f, 1f)]
     private float pressedBrightness = 0.8f;
 
-    private static AudioSource sharedAudioSource;
-
     private Button button;
     private Graphic targetGraphic;
     private Color originalColor;
@@ -33,12 +31,26 @@ public class PaperButtonFeedback : MonoBehaviour,
         if (targetGraphic != null)
             originalColor = targetGraphic.color;
 
-        if (sharedAudioSource == null)
+        if (button == null)
+            return;
+
+        bool alreadyConnected = false;
+
+        for (int i = 0;
+             i < button.onClick.GetPersistentEventCount();
+             i++)
         {
-            GameObject audioObject = new GameObject("UI Click Audio");
-            sharedAudioSource = audioObject.AddComponent<AudioSource>();
-            sharedAudioSource.playOnAwake = false;
+            if (button.onClick.GetPersistentTarget(i) == this &&
+                button.onClick.GetPersistentMethodName(i) ==
+                    nameof(PlayClick))
+            {
+                alreadyConnected = true;
+                break;
+            }
         }
+
+        if (!alreadyConnected)
+            button.onClick.AddListener(PlayClick);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -79,11 +91,15 @@ public class PaperButtonFeedback : MonoBehaviour,
 
     public void PlayClick()
     {
-        if (!playClickSound || !button.interactable ||
-            clickSound == null || sharedAudioSource == null)
+        if (!playClickSound ||
+            button == null ||
+            !button.interactable ||
+            clickSound == null)
+        {
             return;
+        }
 
-        sharedAudioSource.PlayOneShot(clickSound);
+        NavigationClickAudio.Play(clickSound);
     }
 
     private void OnDisable()

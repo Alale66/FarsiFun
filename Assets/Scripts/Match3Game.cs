@@ -247,10 +247,10 @@ public class Match3Game : BonusGameBase
             new List<string>();
 
         for (int i = 0; i < alphabetData.letters.Length; i++)
-                {
-                    string letter = LetterData.GetBonusGameForm(
-            alphabetData.letters[i]
-        );
+        {
+            string letter = LetterData.GetBonusGameForm(
+    alphabetData.letters[i]
+);
 
             if (!string.IsNullOrWhiteSpace(letter) &&
                 !availableLetters.Contains(letter))
@@ -1790,6 +1790,8 @@ public class Match3Game : BonusGameBase
             yield break;
         }
 
+        if (closedChest != null)
+            closedChest.SetActive(false);
         openChest.SetActive(true);
         openChest.transform.localScale =
             Vector3.one * 0.65f;

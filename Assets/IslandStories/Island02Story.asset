@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d08cbf640ee09a04c888e2b89c64ba9a, type: 3}
+  m_Name: Island02Story
+  m_EditorClassIdentifier: Assembly-CSharp::IslandStoryData
+  islandIndex: 1
+  itemName: "\u062C\u0627\u06CC \u062E\u0648\u0627\u0628"
+  price: 300
+  itemSprite: {fileID: 21300000, guid: a8f8c36332ce21b44b900d2e89b0e592, type: 3}
+  introductionClip: {fileID: 32900000, guid: ee0a90e495bdd0d4bba92e0998a2b498, type: 3}
+  afterPurchaseClips: []

@@ -5,6 +5,8 @@ public class PlayerWalletDisplay : MonoBehaviour
 {
     [SerializeField] private TMP_Text coinCountText;
 
+    private bool animatingPayment;
+
     private void Start()
     {
         RefreshDisplay();
@@ -18,7 +20,8 @@ public class PlayerWalletDisplay : MonoBehaviour
 
     private void HandleCoinsChanged(int newCoinCount)
     {
-        SetCoinText(newCoinCount);
+        if (!animatingPayment)
+            SetCoinText(newCoinCount);
     }
 
     public void RefreshDisplay()
@@ -69,5 +72,22 @@ public class PlayerWalletDisplay : MonoBehaviour
             PlayerProfileManager.Instance.CoinsChanged -=
                 HandleCoinsChanged;
         }
+    }
+
+    public void BeginPaymentDisplay(int startingCoins)
+    {
+        animatingPayment = true;
+        SetCoinText(startingCoins);
+    }
+
+    public void ShowPaymentBalance(int coins)
+    {
+        SetCoinText(Mathf.Max(0, coins));
+    }
+
+    public void EndPaymentDisplay()
+    {
+        animatingPayment = false;
+        RefreshDisplay();
     }
 }

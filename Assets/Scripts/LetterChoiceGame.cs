@@ -83,6 +83,9 @@ public class LetterChoiceGame : MonoBehaviour
     [SerializeField, Min(0)]
     private int introTestLetterIndex;
 
+    [Header("Island Story")]
+    [SerializeField] private IslandStoryController islandStoryController;
+
     private bool testingLessonFromIntro;
     private readonly List<ExampleData> currentIntroExamples =
     new List<ExampleData>();
@@ -1131,17 +1134,20 @@ public class LetterChoiceGame : MonoBehaviour
     {
         if (testingLessonFromIntro)
         {
+            bonusGameManager?.StopBonusGame();
             LoadLetter(currentLetterIndex);
             ShowIntro();
             PlayIntroLetterAudio();
             return;
         }
+
         const int lettersPerIsland = 5;
         const int totalIslands = 8;
 
+        int islandIndex = SceneNavigator.SelectedIslandIndex;
+
         int globalLetterIndex =
-            SceneNavigator.SelectedIslandIndex * lettersPerIsland
-            + currentLetterIndex;
+            islandIndex * lettersPerIsland + currentLetterIndex;
 
         if (PlayerProfileManager.Instance != null)
         {
@@ -1151,11 +1157,16 @@ public class LetterChoiceGame : MonoBehaviour
             );
         }
 
-        Debug.Log(
-            $"Island={SceneNavigator.SelectedIslandIndex}, " +
-            $"LocalLetter={currentLetterIndex}, " +
-            $"Unlocked={PlayerProfileManager.Instance?.SelectedProfile?.highestUnlockedLetterIndex}"
-        );
+        bool isLastLetterOfIsland =
+     currentLetterIndex == lettersPerIsland - 1;
+
+        if (isLastLetterOfIsland &&
+            islandStoryController != null &&
+            islandStoryController.TryBegin(islandIndex))
+        {
+            bonusGameManager?.StopBonusGame();
+            return;
+        }
 
         UnityEngine.SceneManagement.SceneManager.LoadScene(
             "IslandView"

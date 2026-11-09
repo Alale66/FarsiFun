@@ -34,4 +34,12 @@ public class BonusGameTargetDisplay : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+
+    [SerializeField] private GameObject targetPointerHand;
+
+    public void SetPointerVisible(bool visible)
+    {
+        if (targetPointerHand != null)
+            targetPointerHand.SetActive(visible);
+    }
 }

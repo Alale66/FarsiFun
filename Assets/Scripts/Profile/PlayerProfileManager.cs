@@ -128,9 +128,16 @@ public class PlayerProfileManager : MonoBehaviour
 
         profile.completedLetterIndices = completed.ToArray();
 
+        const int lettersPerIsland = 5;
+
+        int currentIslandLastLetterIndex = Mathf.Min(
+            (letterIndex / lettersPerIsland + 1) * lettersPerIsland - 1,
+            totalLetters - 1
+        );
+
         int nextLetterIndex = Mathf.Min(
             letterIndex + 1,
-            totalLetters - 1
+            currentIslandLastLetterIndex
         );
 
         int previousUnlockedIndex = profile.highestUnlockedLetterIndex;
@@ -151,6 +158,78 @@ public class PlayerProfileManager : MonoBehaviour
 
             PlayerPrefs.Save();
         }
+    }
+
+    public bool TryPurchaseNextIsland(int islandIndex, int price)
+    {
+        const int lettersPerIsland = 5;
+        const int totalIslands = 8;
+
+        PlayerProfileData profile = SelectedProfile;
+
+        if (profile == null ||
+            islandIndex < 0 ||
+            islandIndex >= totalIslands - 1 ||
+            price <= 0)
+        {
+            return false;
+        }
+
+        int firstLetterIndex = islandIndex * lettersPerIsland;
+        int nextIslandFirstLetterIndex =
+            (islandIndex + 1) * lettersPerIsland;
+
+        // Already unlocked: never charge again.
+        if (profile.highestUnlockedLetterIndex >=
+            nextIslandFirstLetterIndex)
+        {
+            return false;
+        }
+
+        // All five signs must be completed before purchasing.
+        for (int i = 0; i < lettersPerIsland; i++)
+        {
+            if (Array.IndexOf(
+                    profile.completedLetterIndices ?? new int[0],
+                    firstLetterIndex + i) < 0)
+            {
+                return false;
+            }
+        }
+
+        if (profile.coins < price)
+            return false;
+
+        int previousCoins = profile.coins;
+        int previousUnlockedIndex =
+            profile.highestUnlockedLetterIndex;
+
+        profile.coins -= price;
+        profile.highestUnlockedLetterIndex =
+            nextIslandFirstLetterIndex;
+
+        try
+        {
+            Save();
+        }
+        catch (Exception exception)
+        {
+            profile.coins = previousCoins;
+            profile.highestUnlockedLetterIndex =
+                previousUnlockedIndex;
+
+            Debug.LogException(exception);
+            return false;
+        }
+
+        PlayerPrefs.SetInt(
+            "PendingLetterUnlock_" + profile.id,
+            nextIslandFirstLetterIndex
+        );
+        PlayerPrefs.Save();
+
+        CoinsChanged?.Invoke(profile.coins);
+        return true;
     }
 
     public void ChangeCoins(int amount)
@@ -222,4 +301,69 @@ public class PlayerProfileManager : MonoBehaviour
             Application.persistentDataPath
         );
     }
+
+    public bool TryPurchaseFinalShovel(int price)
+    {
+        PlayerProfileData profile = SelectedProfile;
+
+        if (profile == null ||
+            profile.hasPurchasedFinalShovel ||
+            price <= 0 ||
+            profile.coins < price ||
+            profile.highestUnlockedLetterIndex < 35)
+        {
+            return false;
+        }
+
+        // All five signs of island eight must be completed.
+        for (int i = 35; i < 40; i++)
+        {
+            if (Array.IndexOf(
+                    profile.completedLetterIndices ?? new int[0],
+                    i) < 0)
+            {
+                return false;
+            }
+        }
+
+        int previousCoins = profile.coins;
+
+        profile.coins -= price;
+        profile.hasPurchasedFinalShovel = true;
+
+        try
+        {
+            Save();
+        }
+        catch (Exception exception)
+        {
+            profile.coins = previousCoins;
+            profile.hasPurchasedFinalShovel = false;
+
+            Debug.LogException(exception);
+            return false;
+        }
+
+        CoinsChanged?.Invoke(profile.coins);
+        return true;
+    }
+
+#if UNITY_EDITOR
+    [ContextMenu("Testing/Add Coins Up To 350")]
+    private void AddTestCoins()
+    {
+        if (!Application.isPlaying)
+        {
+            Debug.LogWarning("Enter Play mode first.");
+            return;
+        }
+
+        PlayerProfileData profile = SelectedProfile;
+
+        if (profile == null)
+            return;
+
+        ChangeCoins(Mathf.Max(0, 350 - profile.coins));
+    }
+#endif
 }

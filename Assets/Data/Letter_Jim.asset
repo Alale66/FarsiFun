@@ -49,7 +49,7 @@ MonoBehaviour:
     audio: {fileID: 0}
     startsWithTarget: 1
     containsTargetSound: 1
-  - word: "\u062C\u064E\u0646\u06AF\u064E\u0644"
+  - word: "\u062C\u064E\u0646\u06AF\u0644"
     image: {fileID: 21300000, guid: 29751105927aded45bcff02c748d2dcd, type: 3}
     audio: {fileID: 0}
     startsWithTarget: 1

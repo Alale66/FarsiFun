@@ -16,6 +16,9 @@ public abstract class BonusGameBase : MonoBehaviour
     [Tooltip("The looping background music used during gameplay.")]
     [SerializeField] private AudioSource backgroundMusicSource;
 
+    [SerializeField]
+    private BonusGameTargetDisplay sharedTargetDisplay;
+
     public event Action GameplayCompleted;
 
     public abstract void SetupGame(
@@ -45,6 +48,9 @@ public abstract class BonusGameBase : MonoBehaviour
     /// </summary>
     protected void ShowInstructionState()
     {
+        if (sharedTargetDisplay != null)
+            sharedTargetDisplay.SetPointerVisible(true);
+
         StopBackgroundMusic();
 
         SetActive(instructionContent, true);
@@ -57,6 +63,9 @@ public abstract class BonusGameBase : MonoBehaviour
     /// </summary>
     protected void ShowGameplayState()
     {
+        if (sharedTargetDisplay != null)
+            sharedTargetDisplay.SetPointerVisible(false);
+
         SetActive(instructionContent, false);
         SetActive(gameplayContent, true);
 

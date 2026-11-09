@@ -70,6 +70,7 @@ public class IslandContinueButton : MonoBehaviour
             currentIslandIndex >= 0 &&
             nextIslandIndex < IslandCount &&
             profile != null &&
+            profile.highestUnlockedLetterIndex >= nextIslandIndex * LettersPerIsland &&
             profile.completedLetterIndices != null &&
             allLettersValid &&
             letterCount > 0 &&
@@ -99,6 +100,8 @@ public class IslandContinueButton : MonoBehaviour
         GetComponent<Button>().interactable = canContinue;
 
         CanvasGroup group = GetComponent<CanvasGroup>();
+        if (group == null)
+            group = gameObject.AddComponent<CanvasGroup>();
 
         if (group != null)
         {
@@ -110,6 +113,8 @@ public class IslandContinueButton : MonoBehaviour
 
     public void OpenNextIsland()
     {
+        Refresh();
+
         if (!canContinue)
             return;
 

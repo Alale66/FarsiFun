@@ -41,22 +41,10 @@ public class WorldMapIslandButton : MonoBehaviour
 
         if (islandIndex > 0 && profile != null)
         {
-            unlocked = true;
+            int firstLetterIndex = islandIndex * LettersPerIsland;
 
-            int requiredLetters =
-                islandIndex * LettersPerIsland;
-
-            for (int i = 0; i < requiredLetters; i++)
-            {
-                if (profile.completedLetterIndices == null ||
-                    Array.IndexOf(
-                        profile.completedLetterIndices, i
-                    ) < 0)
-                {
-                    unlocked = false;
-                    break;
-                }
-            }
+            unlocked =
+                profile.highestUnlockedLetterIndex >= firstLetterIndex;
         }
 
         Button button = GetComponent<Button>();
