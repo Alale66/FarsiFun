@@ -166,8 +166,10 @@ public class ProfileSelectionController : MonoBehaviour
 
         if (string.IsNullOrWhiteSpace(playerName))
         {
-            SetNameError("لطفا اسمت رو بنویس.");
-
+            SetNameError(GameTexts.Get(
+                "profile_name_required",
+                "لطفا اسمت رو بنویس."
+            ));
             nameInputField.Select();
             nameInputField.ActivateInputField();
 
@@ -178,7 +180,10 @@ public class ProfileSelectionController : MonoBehaviour
 
         if (PlayerProfileManager.Instance == null)
         {
-            SetNameError("ساخت پروفایل انجام نشد. دوباره امتحان کن.");
+            SetNameError(GameTexts.Get(
+                "profile_create_failed",
+                "ساخت پروفایل انجام نشد. دوباره امتحان کن."
+            ));
 
             Debug.LogError(
                 "PlayerProfileManager is missing."
@@ -195,7 +200,11 @@ public class ProfileSelectionController : MonoBehaviour
 
         if (createdProfile == null)
         {
-            SetNameError("امکان ساخت پروفایل جدید نیست.");
+            SetNameError(GameTexts.Get(
+                "profile_create_unavailable",
+                "امکان ساخت پروفایل جدید نیست."
+            ));
+
             return;
         }
 

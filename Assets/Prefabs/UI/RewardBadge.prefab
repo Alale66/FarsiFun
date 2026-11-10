@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 655282497810974683}
   - component: {fileID: 1311609130149787731}
   - component: {fileID: 4022330049413944800}
+  - component: {fileID: 1208068844206917419}
   m_Layer: 5
   m_Name: AfarinText
   m_TagString: Untagged
@@ -255,6 +256,19 @@ MonoBehaviour:
   originalText: "\u0622\u0641\u0631\u06CC\u0646!"
   fixTags: 1
   forceFix: 0
+--- !u!114 &1208068844206917419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4283658146569989140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37d15222460b12f45b74f619b79c37cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameTextLabel
+  key: well_done
 --- !u!1 &7539354901504358449
 GameObject:
   m_ObjectHideFlags: 0

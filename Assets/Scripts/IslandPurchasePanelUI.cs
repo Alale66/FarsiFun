@@ -78,8 +78,11 @@ public class IslandPurchasePanelUI : MonoBehaviour
         itemImage.preserveAspect = true;
 
         SetText(itemNameText, story.itemName);
-        SetText(priceText, ToPersianDigits(story.price) + " سکه");
-
+        SetText(
+            priceText,
+            ToPersianDigits(story.price) +
+            GameTexts.Get("coin_suffix", " سکه")
+        );
         Refresh(story.price, coins);
 
         if (canvasGroup == null)
@@ -126,8 +129,15 @@ public class IslandPurchasePanelUI : MonoBehaviour
         SetText(
             statusText,
             missing > 0
-                ? ToPersianDigits(missing) + " سکه دیگه لازم داری!"
-                : "برای ادامهٔ سفر آماده‌ای؟"
+                ? ToPersianDigits(missing) +
+                GameTexts.Get(
+                    "missing_coins_suffix",
+                    " سکه دیگه لازم داری!"
+                )
+                : GameTexts.Get(
+                    "purchase_ready",
+                    "برای ادامه‌ی سفر آماده‌ای؟"
+                )
         );
     }
 
@@ -371,7 +381,10 @@ public class IslandPurchasePanelUI : MonoBehaviour
         if (playerWallet != null)
             playerWallet.ShowPaymentBalance(remainingCoins);
 
-        SetText(statusText, "خرید انجام شد!\n");
+        SetText(
+            statusText,
+            GameTexts.Get("purchase_success", "خرید انجام شد!\n")
+        );
         statusText.color = new Color32(38, 115, 67, 255);
 
         yield return new WaitForSecondsRealtime(3f);

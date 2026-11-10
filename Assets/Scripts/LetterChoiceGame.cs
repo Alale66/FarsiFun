@@ -392,8 +392,10 @@ public class LetterChoiceGame : MonoBehaviour
         letterTitleText.richText = true;
 
         letterTitleText.text =
-            "یادگیری " +
-            "<color=#C9443A>" +
+            GameTexts.Get(
+                "intro_title_prefix",
+                "یادگیری <color=#C9443A>"
+            ) +
             displayName +
             "</color>";
 
@@ -688,6 +690,9 @@ public class LetterChoiceGame : MonoBehaviour
     private IEnumerator PlayIntroLetterAudioSequence()
     {
         SetIntroButtonsInteractable(false);
+        // Wait for the first frame to render before starting narration.
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForSecondsRealtime(0.35f);
 
         if (lesson == null ||
             lesson.letters == null ||
@@ -1326,8 +1331,14 @@ public class LetterChoiceGame : MonoBehaviour
             instruction =
                 data.pictureHuntMode ==
                 PictureHuntMode.ContainsTargetSound
-                    ? "کدوم کلمه‌ها این صدا رو دارن؟"
-                    : "کدوم کلمه‌ها با این نشانه شروع می‌شن؟";
+                    ? GameTexts.Get(
+                        "picture_hunt_contains_instruction",
+                        "کدوم کلمه‌ها این صدا رو دارن؟"
+                    )
+                    : GameTexts.Get(
+                        "picture_hunt_starts_instruction",
+                        "کدوم کلمه‌ها با این نشانه شروع می‌شن؟"
+                    );
         }
 
         pictureHuntInstructionLabel.text = instruction;

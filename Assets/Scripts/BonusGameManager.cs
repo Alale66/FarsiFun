@@ -668,8 +668,14 @@ public class BonusGameManager : MonoBehaviour
         }
 
         completeText.text = islandFinished
-            ? islandCompleteMessage
-            : normalCompleteMessage;
+     ? GameTexts.Get(
+         "island_complete",
+         islandCompleteMessage
+     )
+     : GameTexts.Get(
+         "letter_complete",
+         normalCompleteMessage
+     );
     }
 
     private void OnDisable()

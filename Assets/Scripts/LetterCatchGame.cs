@@ -477,10 +477,8 @@ public class LetterCatchGame : BonusGameBase
         {
             resultCountText.text =
                 ToPersianDigits(caughtTargetCount) +
-                " از " +
-                ToPersianDigits(
-                    requiredTargetCount
-                );
+                GameTexts.Get("letter_catch_count_separator", " از ") +
+                ToPersianDigits(requiredTargetCount);
         }
 
         if (resultPanel != null)

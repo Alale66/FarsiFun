@@ -1,0 +1,164 @@
+{
+  "entries": [
+    {
+      "key": "letter_complete",
+      "value": "آفرین!\nکارت عالی بود!\nحالا آماده‌ای بریم سراغ نشانه‌ی بعدی؟"
+    },
+    {
+      "key": "island_complete",
+      "value": "آفرین، رفیق!\nهمه‌ی نشانه‌های این بخش از سفر رو یاد گرفتی!\nآماده‌ای ماجراجویی‌مون رو ادامه بدیم؟"
+    },
+    {
+      "key": "bonus_start",
+      "value": "آفرین!\r\nهمه‌ی تمرین‌های این نشانه رو انجام دادی.\r\nحالا وقت زنگ تفریحه! "
+    },
+    {
+      "key": "start_game",
+      "value": "شروع بازی"
+    },
+    {
+      "key": "continue",
+      "value": "ادامه"
+    },
+    {
+      "key": "ready",
+      "value": "آماده‌ام!"
+    },
+    {
+      "key": "next",
+      "value": "بعدی"
+    },
+    {
+      "key": "letter_name",
+      "value": "نام"
+    },
+    {
+      "key": "letter_sound",
+      "value": "صدا"
+    },
+    {
+      "key": "well_done",
+      "value": "آفرین!"
+    },
+    {
+      "key": "quiz_instruction",
+      "value": "نشانه‌ای که <color=#C9443A>می‌شنوی</color> را انتخاب کن"
+    },
+    {
+      "key": "letter_hunt_instruction",
+      "value": "نشانه‌ای که <color=#C9443A>می‌شنوی</color> را جمع کن"
+    },
+    {
+      "key": "picture_hunt_instruction_scene",
+      "value": "کدوم کلمه‌ها با این صدا شروع می‌شن؟"
+    },
+    {
+      "key": "picture_hunt_contains_instruction",
+      "value": "کدوم کلمه‌ها این صدا رو دارن؟"
+    },
+    {
+      "key": "picture_hunt_starts_instruction",
+      "value": "کدوم کلمه‌ها با این نشانه شروع می‌شن؟"
+    },
+    {
+      "key": "memory_match_instruction",
+      "value": "کلمه و تصویر مشابه را پیدا کن"
+    },
+    {
+      "key": "match3_instruction",
+      "value": "سه نشانه هم خانواده رو کنار هم بچین و نشانه هدف رو جمع کن تا صندوق گنج باز بشه!"
+    },
+    {
+      "key": "letter_catch_instruction",
+      "value": "کشتی را به چپ و راست حرکت بده و هدف را بگیر!"
+    },
+    {
+      "key": "letter_cannon_instruction",
+      "value": "نشانه هدف را پیدا کن\nو به آن شلیک کن!"
+    },
+    {
+      "key": "feed_monster_instruction",
+      "value": "به صدا گوش کن! عکس‌هایی که این صدا رو دارن، بکش و بذار توی دهن هیولا."
+    },
+    {
+      "key": "word_complete_shadda_instruction",
+      "value": "جای تشدید خالیه!\nتشدید رو بکش و کلمه رو کامل کن!"
+    },
+    {
+      "key": "word_complete_silent_waw_instruction",
+      "value": "جای «و» خالیه!\nواو ناخوانا رو بکش و کلمه رو کامل کن!"
+    },
+    {
+      "key": "letter_catch_success",
+      "value": "همه‌شون رو گرفتی!"
+    },
+    {
+      "key": "letter_catch_count_separator",
+      "value": " از "
+    },
+    {
+      "key": "target_label",
+      "value": "هدف:"
+    },
+    {
+      "key": "target_preview",
+      "value": "هدف"
+    },
+    {
+      "key": "intro_title_prefix",
+      "value": "یادگیری <color=#C9443A>"
+    },
+    {
+      "key": "profile_selection_title",
+      "value": "چه کسی بازی می‌کند؟"
+    },
+    {
+      "key": "profile_create_title",
+      "value": "پروفایلت رو بساز"
+    },
+    {
+      "key": "profile_delete_confirmation",
+      "value": "مطمئنی می‌خوای این پروفایل رو حذف کنی؟"
+    },
+    {
+      "key": "profile_name_placeholder",
+      "value": "اسمت رو بنویس"
+    },
+    {
+      "key": "profile_name_required",
+      "value": "لطفا اسمت رو بنویس."
+    },
+    {
+      "key": "profile_create_failed",
+      "value": "ساخت پروفایل انجام نشد. دوباره امتحان کن."
+    },
+    {
+      "key": "profile_create_unavailable",
+      "value": "امکان ساخت پروفایل جدید نیست."
+    },
+    {
+      "key": "purchase_buy",
+      "value": "خرید و ادامه"
+    },
+    {
+      "key": "return_to_island",
+      "value": "برگشت به جزیره"
+    },
+    {
+      "key": "purchase_ready",
+      "value": "برای ادامه‌ی سفر آماده‌ای؟"
+    },
+    {
+      "key": "purchase_success",
+      "value": "خرید انجام شد!\n"
+    },
+    {
+      "key": "coin_suffix",
+      "value": " سکه"
+    },
+    {
+      "key": "missing_coins_suffix",
+      "value": " سکه دیگه لازم داری!"
+    }
+  ]
+}

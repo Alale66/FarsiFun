@@ -165,8 +165,14 @@ public class WordCompleteGame : BonusGameBase
         if (instructionText != null)
         {
             instructionText.text = isShaddaLesson
-                ? "جای تشدید خالیه!\nتشدید رو بکش و کلمه رو کامل کن!"
-                : "جای «و» خالیه!\nواوِ ناخوانا رو بکش و کلمه رو کامل کن!";
+                ? GameTexts.Get(
+                    "word_complete_shadda_instruction",
+                    "جای تشدید خالیه!\nتشدید رو بکش و کلمه رو کامل کن!"
+                )
+                : GameTexts.Get(
+                    "word_complete_silent_waw_instruction",
+                    "جای «و» خالیه!\nواو ناخوانا رو بکش و کلمه رو کامل کن!"
+                );
         }
 
         HashSet<string> usedWords = new HashSet<string>();
