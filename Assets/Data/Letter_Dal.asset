@@ -28,37 +28,37 @@ MonoBehaviour:
   examples:
   - word: "\u0645\u0650\u062F\u0627\u062F"
     image: {fileID: 21300000, guid: 71b5b83054aee8148834cc0b3b6a919b, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 9e23b58a820140d4bb8eae9b01d35a93, type: 3}
     startsWithTarget: 0
     containsTargetSound: 1
   - word: "\u062F\u0648\u0686\u0631\u062E\u0647"
     image: {fileID: 21300000, guid: bde2002419f01d84cbda341d7e111451, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: aed63fadfce7f67479e59397e0229893, type: 3}
     startsWithTarget: 1
     containsTargetSound: 1
   - word: "\u062F\u064E\u0633\u062A"
     image: {fileID: 21300000, guid: ab68a9647ed0ff94286c3c4e05834944, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: be56ad1384e0ac642b0acb6ba44c6595, type: 3}
     startsWithTarget: 1
     containsTargetSound: 1
   - word: "\u062F\u0650\u0631\u064E\u062E\u062A"
     image: {fileID: 21300000, guid: a1c60d06590a1af409c1388d8f57c1aa, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 446a2389f8e4e8948a9dda7b68d5cc3d, type: 3}
     startsWithTarget: 1
     containsTargetSound: 1
   - word: "\u062F\u064E\u0631\u06CC\u0627"
     image: {fileID: 21300000, guid: e5af5793096c755418ffa0f53cee1475, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 317ad719d3166a847b9a9f5bb14c650e, type: 3}
     startsWithTarget: 1
     containsTargetSound: 1
   - word: "\u062F\u0648\u062F"
     image: {fileID: 21300000, guid: 8d987952c0dd674448a2ad07d990ce9e, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: fe464d9749ed13042adcdef36cbda818, type: 3}
     startsWithTarget: 1
     containsTargetSound: 1
   - word: "\u062F\u0627\u0646\u0647 "
     image: {fileID: 21300000, guid: 102f88d2bf904284a9d558a5359010f6, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: b951f97a678659248892189aebe56868, type: 3}
     startsWithTarget: 1
     containsTargetSound: 1
   - word: "\u0627\u0631\u062F\u06A9"
@@ -70,5 +70,5 @@ MonoBehaviour:
   pictureHuntDistractors: []
   pictureHuntInstructionText: 
   pictureHuntInstructionAudio: {fileID: 0}
-  letterNameAudio: {fileID: 0}
-  letterSoundAudio: {fileID: 0}
+  letterNameAudio: {fileID: 8300000, guid: 174499af92fd3694b942d684685b690a, type: 3}
+  letterSoundAudio: {fileID: 8300000, guid: b6ef53652b8c24f43a4af343b5cd4b74, type: 3}

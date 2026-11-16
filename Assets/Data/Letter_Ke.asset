@@ -31,52 +31,52 @@ MonoBehaviour:
   examples:
   - word: "\u06A9\u0628\u0648\u062A\u0631 "
     image: {fileID: 21300000, guid: 8bfd4240977345d4c9564138e1fedcba, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 8c05c2e8986cfca44b7be37a7501ccf8, type: 3}
     startsWithTarget: 1
     containsTargetSound: 1
   - word: "\u06A9\u062F\u0648 "
     image: {fileID: 21300000, guid: b98a595df53443642b607f3ab41c3dea, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: cfceb129da0fee040a71e216f8a46823, type: 3}
     startsWithTarget: 1
     containsTargetSound: 1
   - word: "\u06A9\u0648\u062F\u06A9 "
     image: {fileID: 21300000, guid: 090e743425d1d6b4790400569d1955d2, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 3ef247afb3786534eae15f50dfaa9db8, type: 3}
     startsWithTarget: 1
     containsTargetSound: 1
   - word: "\u06A9\u062A\u0627\u0628"
     image: {fileID: 21300000, guid: 71dac59522fec2249a516ee4bdb1a205, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: d80d1748e6f01c54abe1694fef290a61, type: 3}
     startsWithTarget: 1
     containsTargetSound: 1
   - word: "\u06A9\u0641\u0634"
     image: {fileID: 21300000, guid: 7fc6983b17f221d4cb99673733aa1be0, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: b629e97c5a018bb4d984493017a09ca9, type: 3}
     startsWithTarget: 1
     containsTargetSound: 1
   - word: "\u06A9\u06CC\u06A9"
     image: {fileID: 21300000, guid: c983800011b667844bf83a57a7dac6ba, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 6a554e475a5aa254681740b76834be60, type: 3}
     startsWithTarget: 1
     containsTargetSound: 1
   - word: "\u06A9\u0627\u0633\u0647 "
     image: {fileID: 21300000, guid: edc24bdf7e7f80f4092f2d010dc5eaf5, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: bf55b9d8cb80c914ea8ec03c27a59552, type: 3}
     startsWithTarget: 1
     containsTargetSound: 1
   - word: "\u06A9\u0650\u0628\u0631\u06CC\u062A"
     image: {fileID: 21300000, guid: ac991339774874c49be1a85eb1e32742, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: b63b9d4a62a046b4da8ec299227bf6e3, type: 3}
     startsWithTarget: 1
     containsTargetSound: 1
   - word: "\u0627\u0631\u062F\u06A9"
     image: {fileID: 21300000, guid: 0368bc46a099f4b41a371bd98365cb58, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: f66fdad1bf3fa844e9ec8f4a72f4a20a, type: 3}
     startsWithTarget: 0
     containsTargetSound: 1
   pictureHuntMode: 0
   pictureHuntDistractors: []
   pictureHuntInstructionText: 
   pictureHuntInstructionAudio: {fileID: 0}
-  letterNameAudio: {fileID: 0}
-  letterSoundAudio: {fileID: 0}
+  letterNameAudio: {fileID: 8300000, guid: 9548b287430b432458d2b8374513ac0d, type: 3}
+  letterSoundAudio: {fileID: 8300000, guid: d60f477c2a010db42b069820d47ba7b8, type: 3}

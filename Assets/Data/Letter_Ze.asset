@@ -28,47 +28,47 @@ MonoBehaviour:
   examples:
   - word: "\u0632\u0646\u0628\u0648\u0631"
     image: {fileID: 21300000, guid: 20629ea384973c3499d6e99cb32fbaf5, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 62e49d321f1ac244e80e27fefbd796a6, type: 3}
     startsWithTarget: 1
     containsTargetSound: 1
   - word: "\u0632\u0631\u0627\u0641\u0647"
     image: {fileID: 21300000, guid: 4e299e1f30d38cd488e950531ffe5726, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 1b6e310278a8f4844918c3ded163f20b, type: 3}
     startsWithTarget: 1
     containsTargetSound: 1
   - word: "\u0632\u0631\u062F\u0622\u0644\u0648 "
     image: {fileID: 21300000, guid: 4b020cf7b3899484ab5d71811ed6b2fd, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: df6947e7cd88fab48be969d73f821050, type: 3}
     startsWithTarget: 1
     containsTargetSound: 1
   - word: "\u0632\u06CC\u062A\u0648\u0646"
     image: {fileID: -26916986612398448, guid: 88b5e3f04d08c544d8bd67ee711b4144, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 2d37f1235b5d89841b90ea530894b1f7, type: 3}
     startsWithTarget: 1
     containsTargetSound: 1
   - word: "\u0645\u06CC\u0632 "
     image: {fileID: 21300000, guid: 0fd47e53a727cec4aa9ae865720cbf93, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: e217c329a220b2d4e9bee4c58fff75c8, type: 3}
     startsWithTarget: 0
     containsTargetSound: 1
   - word: "\u0632\u0631\u062F"
     image: {fileID: 21300000, guid: 3f7a2e2b0305326409c063f729e99fef, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 816588a67ad375743b2930a5e2ab57af, type: 3}
     startsWithTarget: 1
     containsTargetSound: 1
   - word: "\u0633\u0628\u0632 "
     image: {fileID: 21300000, guid: 6b1647d4e9348af4c8dc5e8798028fa6, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 788dfc4955bf81a40b231b5531ccc396, type: 3}
     startsWithTarget: 0
     containsTargetSound: 1
   - word: "\u0633\u0631\u0628\u0627\u0632"
     image: {fileID: 21300000, guid: a0714a094feb262419eb5191ea3f439c, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: d100656ea6e430d429954119701d2b89, type: 3}
     startsWithTarget: 0
     containsTargetSound: 1
   pictureHuntMode: 0
   pictureHuntDistractors: []
   pictureHuntInstructionText: 
   pictureHuntInstructionAudio: {fileID: 0}
-  letterNameAudio: {fileID: 0}
-  letterSoundAudio: {fileID: 0}
+  letterNameAudio: {fileID: 8300000, guid: df878c37021dc5d43810c0654288ec47, type: 3}
+  letterSoundAudio: {fileID: 8300000, guid: 618ae0f142696cf42854458745be91ef, type: 3}

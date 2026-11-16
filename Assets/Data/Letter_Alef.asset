@@ -61,17 +61,17 @@ MonoBehaviour:
     containsTargetSound: 1
   - word: "\u0628\u0627\u062F\u0627\u0645"
     image: {fileID: 21300000, guid: 77230b25a407c7e4b966eefb021bd26f, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 3ea68e7b1767dc44c9d64a2dd5631616, type: 3}
     startsWithTarget: 0
     containsTargetSound: 1
   - word: "\u0622\u0647\u0648"
     image: {fileID: 21300000, guid: 7b78d40140654cb47a954519fb5e4533, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 7327550c25a343240940cfe08ef42e90, type: 3}
     startsWithTarget: 1
     containsTargetSound: 1
   pictureHuntMode: 0
   pictureHuntDistractors: []
   pictureHuntInstructionText: 
   pictureHuntInstructionAudio: {fileID: 0}
-  letterNameAudio: {fileID: 8300000, guid: 73be56c9552df2f41b6b860c8886ca06, type: 3}
-  letterSoundAudio: {fileID: 0}
+  letterNameAudio: {fileID: 8300000, guid: 7d8a2f7de4b603645a99381dafd20c23, type: 3}
+  letterSoundAudio: {fileID: 8300000, guid: f189689cbbbae30499cd3319b9cf362d, type: 3}

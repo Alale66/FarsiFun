@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class ProfileSelectionController : MonoBehaviour
 {
@@ -117,7 +118,7 @@ public class ProfileSelectionController : MonoBehaviour
         profileTransition.OpenCreateModal();
 
         nameInputField.text = string.Empty;
-        nameInputField.ActivateInputField();
+        StartCoroutine(FocusNameInput());
 
         if (avatarOptions.Length > 0 &&
             avatarOptions[0] != null)
@@ -469,5 +470,31 @@ public class ProfileSelectionController : MonoBehaviour
     {
         if (!string.IsNullOrWhiteSpace(value))
             SetNameError(string.Empty);
+    }
+
+    private IEnumerator FocusNameInput()
+    {
+        yield return null;
+
+        while (nameInputField != null &&
+               nameInputField.gameObject.activeInHierarchy &&
+               !nameInputField.IsInteractable())
+        {
+            yield return null;
+        }
+
+        if (nameInputField == null ||
+            !nameInputField.gameObject.activeInHierarchy)
+        {
+            yield break;
+        }
+
+        nameInputField.customCaretColor = true;
+        nameInputField.caretColor = new Color(0.3f, 0.15f, 0.05f, 1f);
+        nameInputField.caretWidth = 3;
+        nameInputField.caretBlinkRate = 0.85f;
+
+        nameInputField.Select();
+        nameInputField.ActivateInputField();
     }
 }

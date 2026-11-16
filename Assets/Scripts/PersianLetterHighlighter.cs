@@ -9,7 +9,7 @@ public class PersianLetterHighlighter : MonoBehaviour
     [SerializeField] private TMP_Text textComponent;
 
     private readonly Color32 targetColor =
-        new Color32(201, 68, 58, 255);
+        new Color32(255, 128, 117, 255);
 
     private readonly HashSet<char> targetCharacters =
         new HashSet<char>();

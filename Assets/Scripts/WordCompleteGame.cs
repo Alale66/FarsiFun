@@ -49,6 +49,8 @@ public class WordCompleteGame : BonusGameBase
     [Header("Instruction")]
     [SerializeField] private TMP_Text instructionText;
 
+    [SerializeField] private AudioClip instructionVoice;
+
     [Header("Piece Font Size")]
     [SerializeField] private float shaddaPieceFontSize = 140f;
     [SerializeField] private float wawPieceFontSize = 75f;
@@ -164,15 +166,10 @@ public class WordCompleteGame : BonusGameBase
 
         if (instructionText != null)
         {
-            instructionText.text = isShaddaLesson
-                ? GameTexts.Get(
-                    "word_complete_shadda_instruction",
-                    "جای تشدید خالیه!\nتشدید رو بکش و کلمه رو کامل کن!"
-                )
-                : GameTexts.Get(
-                    "word_complete_silent_waw_instruction",
-                    "جای «و» خالیه!\nواو ناخوانا رو بکش و کلمه رو کامل کن!"
-                );
+            instructionText.text = GameTexts.Get(
+                "word_complete_instruction",
+                "جای خالی رو پر کن و کلمه رو کامل کن!"
+            );
         }
 
         HashSet<string> usedWords = new HashSet<string>();
@@ -245,11 +242,28 @@ public class WordCompleteGame : BonusGameBase
     {
         ShowInstructionState();
 
-        if (instructionDuration > 0f)
+        if (instructionVoice != null && gameAudioManager != null)
         {
-            yield return new WaitForSecondsRealtime(
-                instructionDuration
-            );
+            while (gameAudioManager.IsPlayingLocked)
+                yield return null;
+
+            if (!running)
+                yield break;
+
+            ownsWordAudio = true;
+            gameAudioManager.PlayLocked(instructionVoice);
+
+            while (gameAudioManager != null &&
+                   gameAudioManager.IsPlayingLocked)
+            {
+                yield return null;
+            }
+
+            ownsWordAudio = false;
+        }
+        else if (instructionDuration > 0f)
+        {
+            yield return new WaitForSecondsRealtime(instructionDuration);
         }
 
         if (!running)

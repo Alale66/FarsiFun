@@ -80,6 +80,8 @@ public class BonusGameManager : MonoBehaviour
 
     [SerializeField]
     private AudioClip completePanelVoice;
+    [SerializeField] private AudioClip islandCompletePanelVoice;
+    private bool isIslandComplete;
 
     [Header("Shared Celebration")]
     [SerializeField]
@@ -542,15 +544,19 @@ public class BonusGameManager : MonoBehaviour
             yield break;
         }
 
+        AudioClip completionVoice = isIslandComplete
+            ? islandCompletePanelVoice
+            : completePanelVoice;
+
         AudioClip[] clips;
 
         if (celebrationSound != null &&
-            completePanelVoice != null)
+            completionVoice != null)
         {
             clips = new AudioClip[]
             {
             celebrationSound,
-            completePanelVoice
+            completionVoice
             };
         }
         else if (celebrationSound != null)
@@ -560,11 +566,11 @@ public class BonusGameManager : MonoBehaviour
             celebrationSound
             };
         }
-        else if (completePanelVoice != null)
+        else if (completionVoice != null)
         {
             clips = new AudioClip[]
             {
-            completePanelVoice
+            completionVoice
             };
         }
         else
@@ -667,6 +673,7 @@ public class BonusGameManager : MonoBehaviour
             }
         }
 
+        isIslandComplete = islandFinished;
         completeText.text = islandFinished
      ? GameTexts.Get(
          "island_complete",

@@ -28,47 +28,47 @@ MonoBehaviour:
   examples:
   - word: "\u0698\u0627\u06A9\u062A"
     image: {fileID: 21300000, guid: e0e23e4b7f1dbe44fafa7465da6b68b1, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 9e398abff59a8a744a65f97b1a3b4f53, type: 3}
     startsWithTarget: 1
     containsTargetSound: 1
   - word: "\u0698\u0644\u0647"
     image: {fileID: 21300000, guid: dd2592f9803f25c47b3e0aedfb4fe449, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 6e8972fd982a96f449fe3959e5aae04d, type: 3}
     startsWithTarget: 1
     containsTargetSound: 1
   - word: "\u0645\u0698\u0647"
     image: {fileID: 21300000, guid: e0fb06496aaa5ed4db2cac9911018bba, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 18777518e752c0b4b94cde0bb0c08127, type: 3}
     startsWithTarget: 0
     containsTargetSound: 1
   - word: "\u0645\u0627\u0698\u06CC\u06A9"
     image: {fileID: 21300000, guid: 829fb6d7b5084584988d73912cbff7c8, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: a9b05809c4f4f6b40a40980dcce96768, type: 3}
     startsWithTarget: 0
     containsTargetSound: 1
   - word: "\u0627\u0650\u0698\u062F\u0650\u0647\u0627"
     image: {fileID: 21300000, guid: 32ec82786194bfb41bb0dc420acff587, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: fc4b1410faf4d1a45bab3a2ac807e63d, type: 3}
     startsWithTarget: 0
     containsTargetSound: 1
   - word: "\u0698\u0627\u0644\u0647"
     image: {fileID: 21300000, guid: 84c8f5ce05c678d46978eae043198e14, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 79fab6bf7de07334d976a68649e2a200, type: 3}
     startsWithTarget: 1
     containsTargetSound: 1
   - word: "\u067E\u064E\u0698\u0645\u064F\u0631\u062F\u0647"
     image: {fileID: 21300000, guid: 99792ea2e25bc1a439a80c19a1dbdfd2, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 158b85618353cf3418d399cd995b1318, type: 3}
     startsWithTarget: 0
     containsTargetSound: 1
-  - word: "\u0698\u06CC\u0645\u0646\u0627\u0633\u062A"
+  - word: "\u0698\u06CC\u0645\u0646\u0627\u0633\u062A\u06CC\u06A9"
     image: {fileID: 21300000, guid: 9be4313c86e336b49b6e19c37e1c0235, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 6d764a30cac6c1f428bb125ba1916dc6, type: 3}
     startsWithTarget: 0
     containsTargetSound: 1
   pictureHuntMode: 0
   pictureHuntDistractors: []
   pictureHuntInstructionText: 
   pictureHuntInstructionAudio: {fileID: 0}
-  letterNameAudio: {fileID: 0}
-  letterSoundAudio: {fileID: 0}
+  letterNameAudio: {fileID: 8300000, guid: 76c7bbae5cc6a674daf4f1835db0ad1c, type: 3}
+  letterSoundAudio: {fileID: 8300000, guid: 657de54a26f149c42bd96765ef873963, type: 3}

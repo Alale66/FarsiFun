@@ -359,12 +359,9 @@ public class LetterChoiceGame : MonoBehaviour
             );
         }
 
-        if (letterSoundButton != null)
-        {
-            letterSoundButton.gameObject.SetActive(
-                !data.IsTashdid
-            );
-        }
+        letterSoundButton.gameObject.SetActive(
+            !data.IsTashdid && !data.IsSilentWaw
+        );
 
         for (int i = 0; i < letterFormSlots.Length; i++)
         {
@@ -1189,10 +1186,9 @@ public class LetterChoiceGame : MonoBehaviour
 
         if (data.pictureHuntInstructionAudio != null)
         {
-            // This clip already contains the full question.
             PlayInstructionThenLetter(
                 data.pictureHuntInstructionAudio,
-                null
+                data.letterSoundAudio
             );
 
             return;

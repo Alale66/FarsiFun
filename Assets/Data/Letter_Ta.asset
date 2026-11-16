@@ -28,42 +28,42 @@ MonoBehaviour:
   examples:
   - word: "\u0637\u0648\u0637\u06CC "
     image: {fileID: 21300000, guid: d344e0d43fc64c54da97d3f7db2d424b, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 6bb08200282afff4a8b444711a2f57c7, type: 3}
     startsWithTarget: 1
     containsTargetSound: 1
   - word: "\u0637\u0646\u0627\u0628 "
     image: {fileID: 21300000, guid: 74e5d8f3f265f784ea6b36d2626cb683, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 9670c1b80829a8546b6b47d0dff94543, type: 3}
     startsWithTarget: 1
     containsTargetSound: 1
   - word: "\u0637\u0628\u0644 "
     image: {fileID: 21300000, guid: c70b8cbf49109164f901a0b5176653bc, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: eea951e8c6b15c343b187602c575afe8, type: 3}
     startsWithTarget: 1
     containsTargetSound: 1
   - word: "\u0628\u0637\u0631\u06CC "
     image: {fileID: 21300000, guid: 86272ea396b47904687ab791f5920199, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: f9be06fa56fd67e47ab4b5a8c2a5cab1, type: 3}
     startsWithTarget: 0
     containsTargetSound: 1
   - word: "\u062D\u06CC\u0627\u0637 "
     image: {fileID: 21300000, guid: b50dda4f5a6566b4fbb3a7fcd0b1ce4e, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 8fead10f176fb634db09a619e833ce29, type: 3}
     startsWithTarget: 0
     containsTargetSound: 1
   - word: "\u0633\u0637\u0644 "
     image: {fileID: 21300000, guid: fe9e6a8a0665f3949bf94c2617344609, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: aa84b0f90af86df4ab3499e4218e882f, type: 3}
     startsWithTarget: 0
     containsTargetSound: 1
   - word: "\u062E\u064E\u0637\u200C\u06A9\u0650\u0634"
     image: {fileID: 21300000, guid: 47c1624b6eea1ec4ea07aba90cf86d93, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 388694ea4da1ca34c917034af352c5b5, type: 3}
     startsWithTarget: 0
     containsTargetSound: 1
   - word: "\u0642\u0637\u0627\u0631"
     image: {fileID: 21300000, guid: b3b2eae465d50ef4981f2dbc81068adc, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 30f892758b447bc4ba5ff2eac43672a4, type: 3}
     startsWithTarget: 0
     containsTargetSound: 1
   pictureHuntMode: 0

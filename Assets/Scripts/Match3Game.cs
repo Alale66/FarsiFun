@@ -315,8 +315,11 @@ public class Match3Game : BonusGameBase
 
     private void AddFamilyIfUnique(LetterData family)
     {
-        if (family == null)
+        if (family == null ||
+    family.GetBonusGameForms().Length == 0)
+        {
             return;
+        }
 
         string familyId = GetFamilyId(family);
 

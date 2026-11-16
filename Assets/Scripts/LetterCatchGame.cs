@@ -463,48 +463,20 @@ public class LetterCatchGame : BonusGameBase
         isCompleting = true;
         isRunning = false;
 
-        // Keep the ship visible but stop its movement.
         if (player != null)
             player.enabled = false;
 
-        // Give the child time to see the final score.
-        yield return new WaitForSeconds(0.45f);
+        yield return new WaitForSecondsRealtime(0.45f);
 
         ClearActiveLetters();
         SetGameplayUIVisible(false);
 
-        if (resultCountText != null)
-        {
-            resultCountText.text =
-                ToPersianDigits(caughtTargetCount) +
-                GameTexts.Get("letter_catch_count_separator", " از ") +
-                ToPersianDigits(requiredTargetCount);
-        }
-
         if (resultPanel != null)
-        {
-            resultPanel.SetActive(true);
-
-            if (resultCard != null)
-            {
-                yield return StartCoroutine(
-                    AnimateResultCard()
-                );
-            }
-
-            yield return new WaitForSeconds(
-                resultHoldDuration
-            );
-
             resultPanel.SetActive(false);
-        }
-
-        yield return new WaitForSeconds(0.2f);
 
         if (player != null)
             player.gameObject.SetActive(false);
 
-        // Notify the shared bonus-game flow after the result sequence ends.
         NotifyGameplayCompleted();
     }
 

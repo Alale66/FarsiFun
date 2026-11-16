@@ -145,11 +145,20 @@ public class LetterData : ScriptableObject
         if (string.IsNullOrWhiteSpace(value))
             return false;
 
-        string[] gameForms = GetGameForms();
+        string normalizedValue = value.Trim().Normalize(
+            System.Text.NormalizationForm.FormKC
+        );
 
-        for (int i = 0; i < gameForms.Length; i++)
+        foreach (string form in GetGameForms())
         {
-            if (gameForms[i] == value)
+            if (string.IsNullOrWhiteSpace(form))
+                continue;
+
+            string normalizedForm = form.Trim().Normalize(
+                System.Text.NormalizationForm.FormKC
+            );
+
+            if (normalizedForm == normalizedValue)
                 return true;
         }
 

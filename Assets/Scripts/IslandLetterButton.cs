@@ -8,6 +8,7 @@ public class IslandLetterButton : MonoBehaviour
 {
     [SerializeField, Range(0, 4)]
     private int letterIndex;
+    public int LocalLetterIndex => letterIndex;
 
     [SerializeField] private LessonData lesson;
     [SerializeField] private Sprite unlockedSprite;
@@ -109,6 +110,14 @@ public class IslandLetterButton : MonoBehaviour
 
         button.transition = Selectable.Transition.None;
         button.interactable = unlocked;
+
+        Debug.Log(
+            $"[IslandUnlock] island={SceneNavigator.SelectedIslandIndex}, " +
+            $"local={letterIndex}, global={actualLetterIndex}, " +
+            $"highest={highestUnlockedIndex}, unlocked={unlocked}, " +
+            $"profileFound={profile != null}",
+            gameObject
+        );
 
         image.color = Color.white;
 

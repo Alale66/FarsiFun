@@ -37,42 +37,42 @@ MonoBehaviour:
   examples:
   - word: "\u063A\u0627\u0631"
     image: {fileID: 21300000, guid: 8f862f543653a9c449d092f54d6fc3b2, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 58d99c3c2e3b6c3479c0a51cc21708a4, type: 3}
     startsWithTarget: 1
     containsTargetSound: 1
   - word: "\u063A\u0646\u0686\u0647"
     image: {fileID: 21300000, guid: ba1400021c834194782d078319a984da, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 5355604879383ac4293cd29869e44185, type: 3}
     startsWithTarget: 1
     containsTargetSound: 1
   - word: "\u063A\u0631\u0648\u0628 "
     image: {fileID: 21300000, guid: 95868ab6282a85c4cbe7bca3c5abe223, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: cf23999cc834c324eaa696e526d2df8a, type: 3}
     startsWithTarget: 1
     containsTargetSound: 1
   - word: "\u06A9\u0644\u0627\u063A "
     image: {fileID: 21300000, guid: c05a40af40f6f46489fa65111e6c0634, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 02618640256fb884aaf014b203de2043, type: 3}
     startsWithTarget: 0
     containsTargetSound: 1
   - word: "\u062C\u064F\u063A\u062F"
     image: {fileID: 21300000, guid: 2355f6eb7542f614a846709c77352595, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 216905408a9909549b9bb7bbacc4141d, type: 3}
     startsWithTarget: 0
     containsTargetSound: 1
   - word: "\u0645\u064F\u0631\u063A\u0627\u0628\u06CC"
     image: {fileID: 21300000, guid: 2344b39c8a0475a4a8d4e80cb3720a3f, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 6e6a4695767fd30409b71d0f75450418, type: 3}
     startsWithTarget: 0
     containsTargetSound: 1
   - word: "\u0628\u0627\u063A"
     image: {fileID: 21300000, guid: 90581f0bb7c679d4c9331e0619e84699, type: 3}
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: be334b468ba51d74383cff8a31ffdd38, type: 3}
     startsWithTarget: 0
     containsTargetSound: 1
   pictureHuntMode: 0
   pictureHuntDistractors: []
   pictureHuntInstructionText: 
   pictureHuntInstructionAudio: {fileID: 0}
-  letterNameAudio: {fileID: 0}
-  letterSoundAudio: {fileID: 0}
+  letterNameAudio: {fileID: 8300000, guid: 760e1bfb4ad22e144b8133bc7c37ad18, type: 3}
+  letterSoundAudio: {fileID: 8300000, guid: d6afc84cc5652e5499336ba81d21031d, type: 3}
