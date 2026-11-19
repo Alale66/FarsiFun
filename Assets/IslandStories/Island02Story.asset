@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::IslandStoryData
   islandIndex: 1
   itemName: "\u062C\u0627\u06CC \u062E\u0648\u0627\u0628"
-  price: 300
+  price: 200
   itemSprite: {fileID: 21300000, guid: a8f8c36332ce21b44b900d2e89b0e592, type: 3}
   introductionClip: {fileID: 32900000, guid: ee0a90e495bdd0d4bba92e0998a2b498, type: 3}
   afterPurchaseClips: []

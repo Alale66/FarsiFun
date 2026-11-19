@@ -14,7 +14,7 @@ public class IslandStoryData : ScriptableObject
     public string itemName;
 
     [Min(1)]
-    public int price = 300;
+    public int price = 200;
 
     public Sprite itemSprite;
 

@@ -41,30 +41,61 @@ public class PlayerProfileManager : MonoBehaviour
     }
 
     public PlayerProfileData CreateProfile(
-        string playerName,
-        int avatarIndex)
+     string playerName,
+     int avatarIndex)
     {
-        if (saveData.profiles.Count >= MaximumProfiles)
+        if (saveData.profiles.Count >= MaximumProfiles ||
+            string.IsNullOrWhiteSpace(playerName))
         {
-            Debug.LogWarning(
-                "Maximum profile count reached."
-            );
-
             return null;
         }
+
+        const string giftSuffix = "#FRIEND2000";
+        const int giftCoins = 2000;
+
+        string displayName = playerName.Trim();
+
+        bool hasGiftCode = displayName.EndsWith(
+            giftSuffix,
+            StringComparison.OrdinalIgnoreCase
+        );
+
+        if (hasGiftCode)
+        {
+            displayName = displayName.Substring(
+                0,
+                displayName.Length - giftSuffix.Length
+            ).Trim();
+        }
+
+        if (string.IsNullOrWhiteSpace(displayName))
+            return null;
 
         PlayerProfileData profile =
             new PlayerProfileData(
                 Guid.NewGuid().ToString(),
-                playerName.Trim(),
+                displayName,
                 avatarIndex,
-                StartingCoins
+                StartingCoins + (hasGiftCode ? giftCoins : 0)
             );
+
+        string previousSelectedId = saveData.selectedProfileId;
 
         saveData.profiles.Add(profile);
         saveData.selectedProfileId = profile.id;
 
-        Save();
+        try
+        {
+            Save();
+        }
+        catch (Exception exception)
+        {
+            saveData.profiles.Remove(profile);
+            saveData.selectedProfileId = previousSelectedId;
+            Debug.LogException(exception);
+            return null;
+        }
+
         return profile;
     }
 
