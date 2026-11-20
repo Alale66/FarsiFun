@@ -12890,10 +12890,6 @@ MonoBehaviour:
   - FarsiFunLessonCache/Lesson_07
   - FarsiFunLessonCache/Lesson_08
   choiceSounds:
-  - form: "\uFE91"
-    clip: {fileID: 8300000, guid: 61061ba70f461a24cb652821c5c5fb4b, type: 3}
-  - form: "\u0628"
-    clip: {fileID: 8300000, guid: 61061ba70f461a24cb652821c5c5fb4b, type: 3}
   - form: "\u0627\u064E"
     clip: {fileID: 8300000, guid: fb51bee4291e6eb49af4fe174c7cda35, type: 3}
   - form: "\u064E"
@@ -12910,18 +12906,136 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 27a58975d51e96c4fb09409da4ddddd4, type: 3}
   - form: "\u0627\u06CC"
     clip: {fileID: 8300000, guid: 27a58975d51e96c4fb09409da4ddddd4, type: 3}
+  - form: "\u0639\u0640"
+    clip: {fileID: 8300000, guid: cf8fb116f14afa2409a8a88575ce6e61, type: 3}
+  - form: "\u0640\u0639\u0640 "
+    clip: {fileID: 8300000, guid: cf8fb116f14afa2409a8a88575ce6e61, type: 3}
+  - form: "\u0640\u0639\u0640"
+    clip: {fileID: 8300000, guid: cf8fb116f14afa2409a8a88575ce6e61, type: 3}
+  - form: "\u0640\u0639"
+    clip: {fileID: 8300000, guid: cf8fb116f14afa2409a8a88575ce6e61, type: 3}
+  - form: "\u0639"
+    clip: {fileID: 8300000, guid: cf8fb116f14afa2409a8a88575ce6e61, type: 3}
+  - form: "\u0622"
+    clip: {fileID: 8300000, guid: f189689cbbbae30499cd3319b9cf362d, type: 3}
+  - form: "\u0627"
+    clip: {fileID: 8300000, guid: f189689cbbbae30499cd3319b9cf362d, type: 3}
+  - form: "\uFE91"
+    clip: {fileID: 8300000, guid: c77a622af27e8bd429b6e383a7baf78f, type: 3}
+  - form: "\u0628"
+    clip: {fileID: 8300000, guid: c77a622af27e8bd429b6e383a7baf78f, type: 3}
+  - form: "\u0686\u0640"
+    clip: {fileID: 8300000, guid: 4d84c65afb10e5d42a8e2dea2d270d74, type: 3}
+  - form: "\u0686"
+    clip: {fileID: 8300000, guid: 4d84c65afb10e5d42a8e2dea2d270d74, type: 3}
+  - form: "\u062F"
+    clip: {fileID: 8300000, guid: b6ef53652b8c24f43a4af343b5cd4b74, type: 3}
   - form: "\u0627\u0650"
-    clip: {fileID: 8300000, guid: a03cc3ff8bbfd6f43bb6f5e013f411e8, type: 3}
+    clip: {fileID: 8300000, guid: 372276ca8245f714da80eb16b6c20129, type: 3}
   - form: "\u0650"
-    clip: {fileID: 8300000, guid: a03cc3ff8bbfd6f43bb6f5e013f411e8, type: 3}
+    clip: {fileID: 8300000, guid: 372276ca8245f714da80eb16b6c20129, type: 3}
   - form: "\u0640\u0647 "
-    clip: {fileID: 8300000, guid: a03cc3ff8bbfd6f43bb6f5e013f411e8, type: 3}
+    clip: {fileID: 8300000, guid: 372276ca8245f714da80eb16b6c20129, type: 3}
+  - form: "\u0640\u0647"
+    clip: {fileID: 8300000, guid: 372276ca8245f714da80eb16b6c20129, type: 3}
   - form: "\u0647"
-    clip: {fileID: 8300000, guid: a03cc3ff8bbfd6f43bb6f5e013f411e8, type: 3}
+    clip: {fileID: 8300000, guid: 372276ca8245f714da80eb16b6c20129, type: 3}
+  - form: "\u0641\u0640"
+    clip: {fileID: 8300000, guid: 14963ca4ba4547240bac822579e251e8, type: 3}
+  - form: "\u0641"
+    clip: {fileID: 8300000, guid: 14963ca4ba4547240bac822579e251e8, type: 3}
+  - form: "\u06AF\u0640"
+    clip: {fileID: 8300000, guid: 59cdef1489769c54aa6fa7323daa85e4, type: 3}
+  - form: "\u06AF"
+    clip: {fileID: 8300000, guid: 59cdef1489769c54aa6fa7323daa85e4, type: 3}
+  - form: "\u063A\u0640"
+    clip: {fileID: 8300000, guid: d6afc84cc5652e5499336ba81d21031d, type: 3}
+  - form: "\u0640\u063A\u0640"
+    clip: {fileID: 8300000, guid: d6afc84cc5652e5499336ba81d21031d, type: 3}
+  - form: "\u0640\u063A"
+    clip: {fileID: 8300000, guid: d6afc84cc5652e5499336ba81d21031d, type: 3}
+  - form: "\u063A"
+    clip: {fileID: 8300000, guid: d6afc84cc5652e5499336ba81d21031d, type: 3}
+  - form: "\u0647\u0640"
+    clip: {fileID: 8300000, guid: 4985b4981af460645a3e5ec2f81c2951, type: 3}
+  - form: "\u0640\u0647\u0640"
+    clip: {fileID: 8300000, guid: 4985b4981af460645a3e5ec2f81c2951, type: 3}
+  - form: "\u062D\u0640"
+    clip: {fileID: 8300000, guid: 97b60cca0a9fcff42833b1ecbfbe7798, type: 3}
+  - form: "\u062D"
+    clip: {fileID: 8300000, guid: 97b60cca0a9fcff42833b1ecbfbe7798, type: 3}
+  - form: "\u062C\u0640"
+    clip: {fileID: 8300000, guid: 7b95f3b04ea28b44ea3fe79633258903, type: 3}
+  - form: "\u062C"
+    clip: {fileID: 8300000, guid: 7b95f3b04ea28b44ea3fe79633258903, type: 3}
+  - form: "\u06A9\u0640"
+    clip: {fileID: 8300000, guid: d60f477c2a010db42b069820d47ba7b8, type: 3}
+  - form: "\u06A9"
+    clip: {fileID: 8300000, guid: d60f477c2a010db42b069820d47ba7b8, type: 3}
+  - form: "\u062E\u0640"
+    clip: {fileID: 8300000, guid: ab1a0e64dd7620a49bfc6ad627083330, type: 3}
+  - form: "\u062E"
+    clip: {fileID: 8300000, guid: ab1a0e64dd7620a49bfc6ad627083330, type: 3}
+  - form: "\u0644\u0640"
+    clip: {fileID: 8300000, guid: 9d02f2b48a1e02e4190bb86566f57418, type: 3}
+  - form: "\u0644"
+    clip: {fileID: 8300000, guid: 9d02f2b48a1e02e4190bb86566f57418, type: 3}
+  - form: "\u0645\u0640"
+    clip: {fileID: 8300000, guid: 3033109c8e0d394408200c52c8ab714d, type: 3}
+  - form: "\u0645"
+    clip: {fileID: 8300000, guid: 3033109c8e0d394408200c52c8ab714d, type: 3}
+  - form: "\u0646\u0640"
+    clip: {fileID: 8300000, guid: 2506166cb6d81004d946945500768a32, type: 3}
+  - form: "\u0646"
+    clip: {fileID: 8300000, guid: 2506166cb6d81004d946945500768a32, type: 3}
   - form: "\u0627\u064F"
-    clip: {fileID: 8300000, guid: c61472aa16c181f48822b440cfd6c3eb, type: 3}
+    clip: {fileID: 8300000, guid: bad558e0bd882054886cce8c5df22dc1, type: 3}
   - form: "\u064F"
-    clip: {fileID: 8300000, guid: c61472aa16c181f48822b440cfd6c3eb, type: 3}
+    clip: {fileID: 8300000, guid: bad558e0bd882054886cce8c5df22dc1, type: 3}
+  - form: "\u067E\u0640"
+    clip: {fileID: 8300000, guid: 444bce9098ac2504694f2627cb781ef7, type: 3}
+  - form: "\u067E"
+    clip: {fileID: 8300000, guid: 444bce9098ac2504694f2627cb781ef7, type: 3}
+  - form: "\u0642\u0640"
+    clip: {fileID: 8300000, guid: fb1bc201e5d674643b0e3b1133d502f7, type: 3}
+  - form: "\u0642"
+    clip: {fileID: 8300000, guid: fb1bc201e5d674643b0e3b1133d502f7, type: 3}
+  - form: "\u0631"
+    clip: {fileID: 8300000, guid: 95fcb83cfc19a9f4aaf6e5c13b66b6d1, type: 3}
+  - form: "\u0635"
+    clip: {fileID: 8300000, guid: 5f99f76628eee1c4d8d88f4d553e0431, type: 3}
+  - form: "\u0635\u0640"
+    clip: {fileID: 8300000, guid: 5f99f76628eee1c4d8d88f4d553e0431, type: 3}
+  - form: "\u062B\u0640"
+    clip: {fileID: 8300000, guid: f47f1de8605a9c54d81ded3c04a302ac, type: 3}
+  - form: "\u062B"
+    clip: {fileID: 8300000, guid: f47f1de8605a9c54d81ded3c04a302ac, type: 3}
+  - form: "\u0633\u0640"
+    clip: {fileID: 8300000, guid: f5f08498fc45bf14d82ea87311600bfd, type: 3}
+  - form: "\u0633"
+    clip: {fileID: 8300000, guid: f5f08498fc45bf14d82ea87311600bfd, type: 3}
+  - form: "\u0634\u0640"
+    clip: {fileID: 8300000, guid: 87b332cb6286080449f424093e89d5d2, type: 3}
+  - form: "\u0634"
+    clip: {fileID: 8300000, guid: 87b332cb6286080449f424093e89d5d2, type: 3}
+  - form: "\u062A\u0640"
+    clip: {fileID: 8300000, guid: 7853119d83bd44e48baa33f63c4ea7f8, type: 3}
+  - form: "\u062A"
+    clip: {fileID: 8300000, guid: 7853119d83bd44e48baa33f63c4ea7f8, type: 3}
+  - form: "\u0638"
+    clip: {fileID: 8300000, guid: fad04e24412c87e4481aa862c6f4f28d, type: 3}
+  - form: "\u0636\u0640"
+    clip: {fileID: 8300000, guid: a2810fb6332c4ac4c84f8832f8785186, type: 3}
+  - form: "\u0636"
+    clip: {fileID: 8300000, guid: a2810fb6332c4ac4c84f8832f8785186, type: 3}
+  - form: "\u0630"
+    clip: {fileID: 8300000, guid: 605c655f5ab69bb44ad8e39814028bd1, type: 3}
+  - form: "\u0632"
+    clip: {fileID: 8300000, guid: 618ae0f142696cf42854458745be91ef, type: 3}
+  - form: "\u0698"
+    clip: {fileID: 8300000, guid: 657de54a26f149c42bd96765ef873963, type: 3}
+  - form: "\u0637"
+    clip: {fileID: 8300000, guid: 1e052d897c0b3424fbfe21aba4102ac8, type: 3}
 --- !u!1001 &963054113
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27793,7 +27907,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2121303611
 RectTransform:
   m_ObjectHideFlags: 0

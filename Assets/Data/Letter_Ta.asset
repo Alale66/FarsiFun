@@ -70,5 +70,5 @@ MonoBehaviour:
   pictureHuntDistractors: []
   pictureHuntInstructionText: 
   pictureHuntInstructionAudio: {fileID: 0}
-  letterNameAudio: {fileID: 0}
-  letterSoundAudio: {fileID: 0}
+  letterNameAudio: {fileID: 8300000, guid: 3ccc26d3d8981124096f2bd55e08dd73, type: 3}
+  letterSoundAudio: {fileID: 8300000, guid: 1e052d897c0b3424fbfe21aba4102ac8, type: 3}
